@@ -1,0 +1,170 @@
+package h2o.common.util.collections;
+
+import h2o.common.exception.ExceptionUtil;
+
+
+@SuppressWarnings("unchecked")
+public class Args implements java.io.Serializable {	
+
+	private static final long serialVersionUID = -1159068677332269042L;
+
+	public int c;
+	
+	public Object a0;
+	
+	public Object a1;
+	
+	public Object a2;
+	
+	public Object a3;
+	
+	public Object a4;
+	
+	public Object a5;
+	
+	public Object a6;
+	
+	public Object a7;
+	
+	public Object a8;
+	
+	public Object a9;
+	
+	public Object a10;	
+	
+	public Args() {}
+	
+	public Args( int c , Object a0 ) { 
+		this.c = c;
+		this.a0 = a0;
+	}
+	
+	public Args( Object... args ) {
+		try {
+			for( int i = 0 , len = args.length > 10 ? 10 : args.length ; i < len ; i++ ) {
+				jodd.util.ReflectUtil.invoke(this, "setA" + ( i  + 1 ), new Class[] { Object.class } , new Object[] { args[i] } );
+			}
+		} catch( Exception e ) {
+			throw ExceptionUtil.toRuntimeException(e);
+		}
+	}
+
+	public int getC() {
+		return c;
+	}
+
+	public Args setC(int c) {
+		this.c = c;
+		return this;
+	}
+
+	public <T> T getA0() {
+		return (T)a0;
+	}
+
+	public Args setA0(Object a0) {
+		this.a0 = a0;
+		return this;
+	}
+
+	public <T> T getA1() {
+		return (T)a1;
+	}
+
+	public Args setA1(Object a1) {
+		this.a1 = a1;
+		return this;
+	}
+
+	public <T> T getA2() {
+		return (T)a2;
+	}
+
+	public Args setA2(Object a2) {
+		this.a2 = a2;
+		return this;
+	}
+
+	public <T> T getA3() {
+		return (T)a3;
+	}
+
+	public Args setA3(Object a3) {
+		this.a3 = a3;
+		return this;
+	}
+
+	public <T> T getA4() {
+		return (T)a4;
+	}
+
+	public Args setA4(Object a4) {
+		this.a4 = a4;
+		return this;
+	}
+
+	public <T> T getA5() {
+		return (T)a5;
+	}
+
+	public Args setA5(Object a5) {
+		this.a5 = a5;
+		return this;
+	}
+
+	public <T> T getA6() {
+		return (T)a6;
+	}
+
+	public Args setA6(Object a6) {
+		this.a6 = a6;
+		return this;
+	}
+
+	public <T> T getA7() {
+		return (T)a7;
+	}
+
+	public Args setA7(Object a7) {
+		this.a7 = a7;
+		return this;
+	}
+
+	public <T> T getA8() {
+		return (T)a8;
+	}
+
+	public Args setA8(Object a8) {
+		this.a8 = a8;
+		return this;
+	}
+
+	public <T> T getA9() {
+		return (T)a9;
+	}
+
+	public Args setA9(Object a9) {
+		this.a9 = a9;
+		return this;
+	}
+
+	public <T> T getA10() {
+		return (T)a10;
+	}
+
+	public Args setA10(Object a10) {
+		this.a10 = a10;
+		return this;
+	}
+
+	public Object[] getArgs() {
+		return new Object[] { a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10 };
+	}
+
+	@Override
+	public String toString() {
+		return "Args [c=" + c + ", a0=" + a0 + ", a1=" + a1 + ", a2=" + a2 + ", a3=" + a3 + ", a4=" + a4 + ", a5=" + a5 + ", a6=" + a6 + ", a7=" + a7 + ", a8=" + a8 + ", a9=" + a9 + ", a10=" + a10 + "]";
+	}
+
+
+}

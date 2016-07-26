@@ -1,0 +1,36 @@
+package h2o.common.bean;
+
+import java.util.List;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
+
+public class Page<T> implements java.io.Serializable {
+
+	private static final long serialVersionUID = -4017120973784492101L;
+
+	private Pageable pageInfo;
+
+	private List<T> records;
+
+	public Pageable getPageInfo() {
+		return pageInfo;
+	}
+
+	public void setPageInfo(Pageable pageInfo) {
+		this.pageInfo = pageInfo;
+	}
+
+	public List<T> getRecords() {
+		return records;
+	}
+
+	public void setRecords(List<T> records) {
+		this.records = records;
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
+
+}

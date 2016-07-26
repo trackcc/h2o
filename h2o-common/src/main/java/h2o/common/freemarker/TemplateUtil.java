@@ -1,0 +1,107 @@
+package h2o.common.freemarker;
+
+import h2o.common.Tools;
+import h2o.common.exception.ExceptionUtil;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.Map;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+
+public class TemplateUtil {
+	
+	
+    @SuppressWarnings("deprecation")
+	protected Configuration createDefaultConfiguration() {
+        Configuration config = new Configuration();
+        configurationPreSet(config);
+        return config;
+    }
+    
+    protected void configurationPreSet( Configuration config ) {}
+	
+	
+	public String process( Map<String, ?> data , String t ) {
+		
+		java.io.StringReader sr = new java.io.StringReader(t);
+		String s = this.process(data, sr);
+		
+		sr.close();
+		
+		return s;
+		
+	}
+	
+
+	
+	public String process(Map<String, ?> data, Reader r) {
+
+		StringWriter sw = new StringWriter();
+
+		process(data, r, sw, this.createDefaultConfiguration());
+
+		sw.flush();
+		try {
+			sw.close();
+		} catch (IOException e) {			
+			Tools.log.debug("process" , e);
+		}
+		
+		return sw.toString();
+
+	}
+	
+	
+	public static String process(Map<String, ?> data, Template  t ) {
+
+		StringWriter sw = new StringWriter();
+
+		process(data, t , sw);
+
+		sw.flush();
+		try {
+			sw.close();
+		} catch (IOException e) {			
+			Tools.log.debug("process" , e);
+		}
+		
+		return sw.toString();
+
+	}
+	
+
+	public static void process( Map<String, ?> data , Reader r  , Writer w , Configuration c) {
+		
+		try {
+		
+			Template  t = new Template( "stringTemplate" , r , c );				
+			t.process(data , w );	
+			
+			
+		} catch( Exception e) {			
+			Tools.log.debug("process" , e);
+			throw ExceptionUtil.toRuntimeException(e);
+		}
+			
+			
+	}
+	
+	public static void process( Map<String, ?> data , Template  t  , Writer w ) {
+		
+		try {
+			t.process(data , w );	
+				
+		} catch( Exception e) {			
+			Tools.log.debug("process" , e);
+			throw ExceptionUtil.toRuntimeException(e);
+		}
+			
+			
+	}
+
+
+}
