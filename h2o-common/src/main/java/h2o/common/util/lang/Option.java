@@ -17,25 +17,30 @@ public class Option<E> {
         this.obj = obj;
     }
 
-    public Option<E> def( E def ) {
+    public Option<E> val(Object obj) {
+        this.obj = obj;
+        return this;
+    }
+
+    public Option<E> def(E def ) {
         this.def = def;
         return this;
     }
 
 
     public E get() {
-        return val(obj);
+        return value(obj);
     }
 
     public E get( Object key ) {
-        return val( ((Map)obj).get(key) );
+        return value( ((Map)obj).get(key) );
     }
 
     public E get( int index ) {
-        return val( ((List)obj).get(index) );
+        return value( ((List)obj).get(index) );
     }
 
-    private E val( Object o ) {
+    private E value( Object o ) {
         if( valIsNone(o) ) {
             return def;
         } else {
@@ -58,5 +63,7 @@ public class Option<E> {
     protected boolean valIsNone( Object o ) {
         return o == null;
     }
+
+
 
 }
