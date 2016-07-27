@@ -118,6 +118,54 @@ public class BeanUtil {
 		this.setCover(cover);
 	}
 
+
+	private BeanUtil( BeanUtil beanUtil ) {
+
+		this.beanVo 	= beanUtil.beanVo;
+		this.mapVo  	= beanUtil.mapVo;
+
+		this.cover 		= beanUtil.cover;
+		this.procNull 	= beanUtil.procNull;
+
+		this.beanDescriptor 	= beanUtil.beanDescriptor;
+		this.beanPropertyInfo 	= beanUtil.beanPropertyInfo;
+
+	}
+
+	public BeanUtil cover( boolean cover ) {
+
+		BeanUtil beanUtil = new BeanUtil(this);
+		beanUtil.setCover(cover);
+
+		return beanUtil;
+	}
+
+	public BeanUtil procNull( boolean procNull ) {
+
+		BeanUtil beanUtil = new BeanUtil(this);
+		beanUtil.setProcNull(procNull);
+
+		return beanUtil;
+	}
+
+	public BeanUtil beanVo( ValOperate beanVo ) {
+
+		BeanUtil beanUtil = new BeanUtil(this);
+		beanUtil.setBeanVo(beanVo);
+
+		return beanUtil;
+	}
+
+	public BeanUtil mapVo( ValOperate mapVo ) {
+
+		BeanUtil beanUtil = new BeanUtil(this);
+		beanUtil.setMapVo(mapVo);
+
+		return beanUtil;
+	}
+
+
+
 	
 	protected <T> T cerateBean( Class<T> beanClass) {		
 		return InstanceUtil.newInstance(beanClass);			
