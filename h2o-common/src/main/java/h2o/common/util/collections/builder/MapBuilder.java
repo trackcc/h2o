@@ -53,6 +53,10 @@ public class MapBuilder<K,V> {
 	public static <X,Y> Map<X,Y> newMap() {
 		return new HashMap<X,Y>();
 	}
+
+	public static <X,Y> Map<X,Y> newMap( int i ) {
+		return new HashMap<X,Y>(i);
+	}
 	
 	public static <X,Y> Map<X,Y> newMap( Object... kvs ) {
 		return new MapBuilder<X,Y>( CollectionUtil.java5ArgsIsBlank(kvs) ? 0 : (kvs.length / 2) ).puts(kvs).get();
@@ -64,6 +68,10 @@ public class MapBuilder<K,V> {
 	
 	public static <X,Y> ConcurrentHashMap<X,Y> newConcurrentHashMap() {
 		return new ConcurrentHashMap<X,Y>();
+	}
+
+	public static <X,Y> ConcurrentHashMap<X,Y> newConcurrentHashMap( int i ) {
+		return new ConcurrentHashMap<X,Y>(i);
 	}
 	
 	public static <X,Y> ConcurrentHashMap<X,Y> newConcurrentHashMap( Object... kvs ) {
