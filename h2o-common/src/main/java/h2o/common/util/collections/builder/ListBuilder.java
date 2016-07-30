@@ -42,13 +42,17 @@ public class ListBuilder<E> {
 	public static <F> List<F> newList() {
 		return new ArrayList<F>();
 	}
+
+	public static <F> List<F> newList( int i ) {
+		return new ArrayList<F>(i);
+	}
 	
 	public static <F> List<F> newList( F... es ) {
-		return new ListBuilder<F>(es.length).add(es).get();		
+		return new ListBuilder<F>(es.length).add(es).get();
 	}
 	
 	public static <F> List<F> newListAndAddAll( Collection<? extends F> c ) {
-		return new ListBuilder<F>().addAll(c).get();		
+		return new ListBuilder<F>( c == null ? 0 :c.size() ).addAll(c).get();
 	}
 	
 	public static <F> CopyOnWriteArrayList<F> newCopyOnWriteArrayList() {
@@ -58,7 +62,10 @@ public class ListBuilder<E> {
 	public static <F> CopyOnWriteArrayList<F> newCopyOnWriteArrayList( F... es ) {
 		return (CopyOnWriteArrayList<F>) new ListBuilder<F>( new CopyOnWriteArrayList<F>() ).add(es).get();
 	}
-	
+
+	public static <F> List<F> newCopyOnWriteArrayListAndAddAll( Collection<? extends F> c ) {
+		return new ListBuilder<F>( new CopyOnWriteArrayList<F>() ).addAll(c).get();
+	}
 
 
 	
@@ -84,12 +91,12 @@ public class ListBuilder<E> {
 	}
 
 	public ListBuilder<E> addAll(Collection<? extends E> c) {
-		l.addAll(c);
+		if( c != null ) l.addAll(c);
 		return this;
 	}
 
 	public ListBuilder<E> addAll(int index, Collection<? extends E> c) {
-		l.addAll(index, c);
+		if( c != null ) l.addAll(index, c);
 		return this;
 	}
 

@@ -55,11 +55,11 @@ public class MapBuilder<K,V> {
 	}
 	
 	public static <X,Y> Map<X,Y> newMap( Object... kvs ) {
-		return new MapBuilder<X,Y>( kvs.length / 2 ).puts(kvs).get();
+		return new MapBuilder<X,Y>( CollectionUtil.java5ArgsIsBlank(kvs) ? 0 : (kvs.length / 2) ).puts(kvs).get();
 	}
 	
 	public static <X,Y> Map<X,Y> newMapAndPutAll( Map<? extends X, ? extends Y> m ) {
-		return new MapBuilder<X,Y>().putAll(m).get();
+		return new MapBuilder<X,Y>( m == null ? 0 : m.size() ).putAll(m).get();
 	}
 	
 	public static <X,Y> ConcurrentHashMap<X,Y> newConcurrentHashMap() {
@@ -67,7 +67,13 @@ public class MapBuilder<K,V> {
 	}
 	
 	public static <X,Y> ConcurrentHashMap<X,Y> newConcurrentHashMap( Object... kvs ) {
-		return  (ConcurrentHashMap<X, Y>) new MapBuilder<X,Y>(new ConcurrentHashMap<X,Y>()).puts(kvs).get();
+		return  (ConcurrentHashMap<X, Y>) new MapBuilder<X,Y>(
+				new ConcurrentHashMap<X,Y>( CollectionUtil.java5ArgsIsBlank(kvs) ? 0 : (kvs.length / 2) )
+		).puts(kvs).get();
+	}
+
+	public static <X,Y> Map<X,Y> newConcurrentHashMapAndPutAll( Map<? extends X, ? extends Y> m ) {
+		return new MapBuilder<X,Y>(new ConcurrentHashMap<X,Y>( m == null ? 0 : m.size() )).putAll(m).get();
 	}
 	
 
@@ -128,7 +134,7 @@ public class MapBuilder<K,V> {
 	}
 
 	public MapBuilder<K,V> putAll(Map<? extends K, ? extends V> m) {
-		this.m.putAll(m);
+		if( m != null ) this.m.putAll(m);
 		return this;
 	}
 
