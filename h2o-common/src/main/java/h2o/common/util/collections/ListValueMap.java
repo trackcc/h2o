@@ -104,6 +104,10 @@ public class ListValueMap<K,E> implements Map<K, List<E>> , java.io.Serializable
 		return lvm.entrySet();
 	}
 
+	public Map<K, List<E>> getRealMap() {
+		return lvm;
+	}
+
 	public boolean equals(Object o) {
 		return lvm.equals(o);
 	}
