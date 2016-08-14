@@ -49,8 +49,14 @@ public class ParaTypeConverter {
 
 
 	public Map<String,Object> convert( Map<String,?> m , Map<String,Tuple2<Class,Object>> t ) {
+
+		if ( m == null ) {
+			return null;
+		} else if ( m.isEmpty() ) {
+			return MapBuilder.newEmptyMap();
+		}
 		
-		Map<String,Object> nm = MapBuilder.newMap();		
+		Map<String,Object> nm = MapBuilder.newMap(m.size());
 		for( Map.Entry<String, ?> e : m.entrySet() ) {
 			
 			String k = e.getKey();

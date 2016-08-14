@@ -2,11 +2,7 @@ package h2o.common.util.collections;
 
 import h2o.common.util.bean.PreOperate;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -67,11 +63,11 @@ public class CollectionUtil {
 		return r.substring(1);
 	}
 
-	public static <T> ArrayList<T> toList(T[] array, PreOperate<T>... pos) {
+	public static <T> List<T> toList(T[] array, PreOperate<T>... pos) {
 		return toList(Arrays.asList(array), pos);
 	}
 
-	public static <T> ArrayList<T> toList(Collection<T> c, PreOperate<T>... pos) {
+	public static <T> List<T> toList(Collection<T> c, PreOperate<T>... pos) {
 
 		ArrayList<T> r = new ArrayList<T>();
 
@@ -91,15 +87,15 @@ public class CollectionUtil {
 	}
 	
 	
-	public static ArrayList<String> string2List( String str, String[] tns , String def) {
+	public static List<String> string2List( String str, String[] tns , String def) {
 		return string2List(true, str, tns , def);
 	}
 	
-	public static ArrayList<String> string2List(  String str, String... tns) {
+	public static List<String> string2List(  String str, String... tns) {
 		return string2List(true, str, tns, "");
 	}
 
-	public static ArrayList<String> string2List( boolean isAll , String str ,  String[] tns , String def) {
+	public static List<String> string2List( boolean isAll , String str ,  String[] tns , String def) {
 
 		ArrayList<String> r = new ArrayList<String>();
 		r.add(str);

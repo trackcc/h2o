@@ -1,21 +1,17 @@
 package h2o.common.util.image;
 
+import com.sun.jimi.core.Jimi;
+import com.sun.jimi.core.JimiWriter;
+import com.sun.jimi.core.options.JPGOptions;
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-import h2o.common.util.image.gif.AnimatedGifEncoder;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageProducer;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
-
-import com.sun.jimi.core.Jimi;
-import com.sun.jimi.core.JimiException;
-import com.sun.jimi.core.JimiWriter;
-import com.sun.jimi.core.options.JPGOptions;
 
 public class ImageUtil {
 
@@ -54,18 +50,11 @@ public class ImageUtil {
 				tag.getGraphics().drawImage(src, 0, 0, w, h, null);
 			}
 
-			if (dest.toLowerCase().trim().endsWith("gif")) {
-				AnimatedGifEncoder e = new AnimatedGifEncoder();
-				e.start(dest);
-				e.addFrame(tag);
-				e.finish();
-			} else if (dest.toLowerCase().trim().endsWith("tif") || dest.toLowerCase().trim().endsWith("tiff")) {
-				toTIF(tag, dest);
-			} else {
-				JimiWriter writer = Jimi.createJimiWriter(dest);
-				writer.setSource(tag);
-				writer.putImage(dest);
-			}
+
+			JimiWriter writer = Jimi.createJimiWriter(dest);
+			writer.setSource(tag);
+			writer.putImage(dest);
+
 
 		} catch (Exception e) {
 			Tools.log.debug("convert", e);
@@ -98,18 +87,6 @@ public class ImageUtil {
 			Tools.log.debug("toJPG", je);
 			throw ExceptionUtil.toRuntimeException(je);
 		}
-	}
-
-	private static void toTIF(Image img, String dest) throws JimiException {
-		if (!dest.toLowerCase().trim().endsWith("tif")) {
-			dest += ".tif";
-			System.out.println("Overriding to TIF, output file: " + dest);
-		}
-		dest = dest.substring(0, dest.lastIndexOf(".")) + ".jpg";
-		JimiWriter writer = Jimi.createJimiWriter(dest);
-		writer.setSource(img);
-		dest = dest.substring(0, dest.lastIndexOf(".")) + ".tif";
-		writer.putImage(dest);
 	}
 
 }
