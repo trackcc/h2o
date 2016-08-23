@@ -23,6 +23,21 @@
         <versions.spring>4.2.6.RELEASE</versions.spring>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>jdk</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>${versions.jdk}</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>${versions.jdk}</maven.compiler.source>
+                <maven.compiler.target>${versions.jdk}</maven.compiler.target>
+                <maven.compiler.compilerVersion>${versions.jdk}</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+    </profiles>
+
 
 
     <build>
