@@ -5,6 +5,7 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.lang.InstanceUtil;
+import h2o.common.util.lang.StringUtil;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.UnsupportedEncodingException;
@@ -63,7 +64,11 @@ public class JsonBeanSerialize implements BeanStrSerialize , BeanSerialize  {
 
     @Override
     public String bean2string(Object bean) {
-        return bean.getClass().getName() + ":" + this.bean2json(bean);
+
+        return StringUtil.append(
+                new StringBuilder() ,
+                bean.getClass().getName() , ":" , this.bean2json(bean)
+        ).toString();
     }
 
     @Override
