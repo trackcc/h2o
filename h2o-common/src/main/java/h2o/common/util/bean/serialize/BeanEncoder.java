@@ -12,12 +12,15 @@ import java.io.ObjectOutputStream;
 
 public class BeanEncoder implements BeanSerialize {
 
-	private String sharsetName = "UTF-8";
+    private final String charsetName;
 
-	public BeanEncoder setSharsetName(String sharsetName) {
-		this.sharsetName = sharsetName;
-		return this;
-	}
+    public BeanEncoder() {
+        this.charsetName = "UTF-8";
+    }
+
+    public BeanEncoder( String charsetName ) {
+        this.charsetName = charsetName;
+    }
 
 	public byte[] bean2bytes(Object bean) {
 
@@ -71,7 +74,7 @@ public class BeanEncoder implements BeanSerialize {
 			xe.writeObject(bean);
 			xe.close();
 
-			return new String(bao.toByteArray(), sharsetName);
+			return new String(bao.toByteArray(), charsetName);
 
 		} catch (Exception e) {
 			Tools.log.debug(e);
@@ -83,7 +86,7 @@ public class BeanEncoder implements BeanSerialize {
 
 		try {
 
-			ByteArrayInputStream bai = new ByteArrayInputStream(xml.getBytes(sharsetName));
+			ByteArrayInputStream bai = new ByteArrayInputStream(xml.getBytes(charsetName));
 
 			XMLDecoder xd = new XMLDecoder(bai);
 			Object bean = xd.readObject();

@@ -1,13 +1,12 @@
 package h2o.common.util.bean.serialize;
 
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 
 import java.io.ByteArrayOutputStream;
-
-import com.esotericsoftware.kryo.Kryo;
-import com.esotericsoftware.kryo.io.Input;
-import com.esotericsoftware.kryo.io.Output;
 
 public class KryoEncoder implements BeanSerialize {
 
