@@ -1,6 +1,5 @@
 package h2o.common.util.collections;
 
-import com.sun.jimi.core.util.P;
 import h2o.common.util.bean.PreOperate;
 
 import java.util.*;
@@ -145,7 +144,7 @@ public class CollectionUtil {
 
 
 
-	public static <E,T> T each( Collection<E> c , EachCallBack<E,T> ec ) {
+	public static <E,T> T each( Collection<E> c , EachCallback<E,T> ec ) {
 
 	    T t = ec.init();
 

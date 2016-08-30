@@ -5,7 +5,7 @@ import java.util.Collection;
 /**
  * Created by zhangjianwei on 16/8/23.
  */
-public interface EachCallBack<E,T> {
+public interface EachCallback<E,T> {
 
     T init();
 
