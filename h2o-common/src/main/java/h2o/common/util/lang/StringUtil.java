@@ -19,6 +19,8 @@ public class StringUtil {
 	private StringUtil() {
 	}
 
+	public static final String EMPTY = "";
+
 	public static String referReplace(String str, String t, String searchString, String replacement) {
 		return referReplace(str, t, searchString, replacement, -1);
 	}

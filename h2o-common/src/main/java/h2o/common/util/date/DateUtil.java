@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 
-public class DateUtil {
+public abstract class DateUtil {
 
 	private DateUtil() {};
 	
