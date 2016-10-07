@@ -22,8 +22,11 @@ public abstract class DateUtil {
 	public static String toLongString(Date d) {
 		return dateTime.toLongString(d);
 	}
-	
-	
+
+    public static String toTimeString(Date d) {
+        return dateTime.toTimeString(d);
+    }
+
 	public static String toString(Date d, String fmt) {
 		return dateTime.toString(d,fmt);
 	}

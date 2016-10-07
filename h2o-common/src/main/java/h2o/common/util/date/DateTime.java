@@ -40,7 +40,7 @@ public final class DateTime {
 
 
 	private static final String fmt = "yyyy-MM-dd HH:mm:ss";
-	public  String toString(Date d) {
+	public String toString(Date d) {
 		return toString( d , fmt );
 	}
 
@@ -53,9 +53,17 @@ public final class DateTime {
 	public String toLongString(Date d) {
 		return toString( d , longFmt );
 	}
-	
-	
-	public String toString(Date d, String fmt) {
+
+
+
+    private static final String timeFmt = "HH:mm:ss";
+    public String toTimeString(Date d) {
+        return toString( d , timeFmt );
+    }
+
+
+
+    public String toString(Date d, String fmt) {
 		return new SimpleDateFormat(fmt).format(d);
 	}
 	

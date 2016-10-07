@@ -70,7 +70,30 @@ public class SqlParameterUtil {
 	
 	@SuppressWarnings("rawtypes")
 	protected Object valConvert( Object val ) {
-		return  (val != null && val instanceof Enum ) ? ((Enum)val).name() : val;
+
+        if( val == null ) {
+
+            return null;
+
+        } else if( val instanceof Enum ) {
+
+            return ((Enum)val).name();
+
+        } else if( val instanceof List ) {
+
+            List<Object> ll = (List)val;
+            List<Object> nl = ListBuilder.newList(ll.size());
+
+            for( Object l : ll ) {
+                nl.add( valConvert(l) );
+            }
+            return nl;
+
+        } else {
+
+            return val;
+        }
+
 	}
 	
 	
