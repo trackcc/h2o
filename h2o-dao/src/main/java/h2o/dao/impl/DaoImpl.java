@@ -74,7 +74,8 @@ public class DaoImpl extends AbstractDao implements Dao {
 			 if(fieldName == null) {
 				 return getBDao().readObject(sql, paramMap);
 			 } else {
-				 return (T)getBDao().readMap(sql, paramMap).get(fieldName);
+                 Map<String, Object> data = getBDao().readMap(sql, paramMap);
+                 return data == null ? null : (T) data.get(fieldName);
 			 }
 
 		} catch (Exception e) {
