@@ -8,14 +8,15 @@ public class ObjectFactory {
 	private static final ButterflyFactory bf = new ButterflyFactory( "app" , "app.bcs");
 	
 	
-	public static <T> T get( String id) {		
-		return bf.get(id);
+	public static <T> T get( String id , Object... args) {
+		return bf.get(id,args);
 	}
 	
 	
-	public static <T> T silentlyGet( String id ) {
-		return bf.silentlyGet(id);
+	public static <T> T silentlyGet( String id , Object... args  ) {
+		return bf.silentlyGet(id,args);
 	}
+
 	
 	public static void dispose() {
 		bf.dispose();

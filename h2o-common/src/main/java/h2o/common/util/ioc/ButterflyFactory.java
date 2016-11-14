@@ -2,7 +2,7 @@ package h2o.common.util.ioc;
 
 import h2o.common.Tools;
 
-public class ButterflyFactory {
+public class ButterflyFactory implements Factory {
 	
 	private final String name;
 	
