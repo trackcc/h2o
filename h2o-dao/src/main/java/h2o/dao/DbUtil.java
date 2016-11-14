@@ -8,6 +8,7 @@ import h2o.common.util.collections.builder.MapBuilder;
 import h2o.common.util.dao.SqlTable;
 import h2o.common.util.dao.butterflydb.ButterflyDb;
 import h2o.common.util.ioc.ButterflyFactory;
+import h2o.common.util.ioc.Factory;
 import h2o.dao.exception.DaoException;
 
 import java.util.Map;
@@ -17,7 +18,7 @@ import javax.sql.DataSource;
 public final class DbUtil {
 	
 	
-	public static final ButterflyFactory dbConfig = new ButterflyFactory( "db" , "db.bcs"); 
+	public static final Factory dbConfig = DbConfigProvider.getDbConfig();
 	
 	
 	public static final SqlTable sqlTable = newSqlTable();
