@@ -1,8 +1,8 @@
 package h2o.common.bean;
 
-import java.util.List;
-
 import org.apache.commons.lang.builder.ToStringBuilder;
+
+import java.util.List;
 
 public class Page<T> implements java.io.Serializable {
 

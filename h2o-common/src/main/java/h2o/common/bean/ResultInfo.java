@@ -1,8 +1,8 @@
 package h2o.common.bean;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang.builder.ToStringBuilder;
+
+import java.io.Serializable;
 
 public class ResultInfo implements Serializable {
 

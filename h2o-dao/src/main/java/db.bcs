@@ -1,3 +1,5 @@
+dbConfig = 1 h2o.common.util.ioc.ButterflyFactory("db","db.bcs");
+
 
 sqlTable 		= 1 h2o.common.util.dao.SqlTable();
 sqlTemplateUtil = 1 h2o.common.freemarker.TemplateUtil();
