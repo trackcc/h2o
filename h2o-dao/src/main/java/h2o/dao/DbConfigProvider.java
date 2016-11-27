@@ -9,7 +9,24 @@ import h2o.common.util.ioc.Factory;
 public final class DbConfigProvider {
 
     public static Factory getDbConfig() {
-        return new ButterflyFactory( "db" , "db.bcs").get("dbConfig");
+
+        ButterflyFactory dbButterflyFactory = new ButterflyFactory( "db" , "db.bcs");
+
+        Factory factory = dbButterflyFactory.silentlyGet("dbConfig");
+
+        if ( factory == null ) {
+
+            return dbButterflyFactory;
+
+        } else {
+
+            try {
+                dbButterflyFactory.dispose();
+            } catch ( Exception e ) {
+            }
+
+            return factory;
+        }
     }
 
 }
