@@ -69,7 +69,7 @@ public class MapDao implements IMapDao {
     private Map readRecordIntoMap(ResultSet result, ResultSetMetaData metaData, Map map) throws SQLException {
         if(map == null) map = new HashMap();
         for(int i=1, n=metaData.getColumnCount(); i<=n; i++){
-            map.put(metaData.getColumnName(i), result.getObject(i));
+            map.put(metaData.getColumnLabel(i), result.getObject(i));
         }
         return map;
     }

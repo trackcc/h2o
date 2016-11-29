@@ -114,7 +114,7 @@ public class ObjectReader implements IObjectReader {
     public Object read(IObjectMapping mapping, ResultSet result, Object persistentObject)  throws PersistenceException{
         try{
             for(int i=1, n=result.getMetaData().getColumnCount(); i <= n; i++){
-                String columnName = result.getMetaData().getColumnName(i);
+                String columnName = result.getMetaData().getColumnLabel(i);
                 ISetterMapping fieldMapping = mapping.getSetterMapping(columnName);
                 if(fieldMapping != null){
                     fieldMapping.insertValueIntoObject(persistentObject, result);
