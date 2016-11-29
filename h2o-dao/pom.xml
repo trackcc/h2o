@@ -104,7 +104,7 @@
        <dependency>
             <groupId>jenkov</groupId>
             <artifactId>butterfly-persistence</artifactId>
-            <version>5.2.0</version>
+            <version>5.2.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
