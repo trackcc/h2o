@@ -98,7 +98,7 @@ public class Dispatcher {
 					
 				
 				} catch( InterruptedException e ) {
-					Tools.log.debug("InterruptedException", e);
+					Tools.log.error("InterruptedException", e);
 				}
 				
 				
