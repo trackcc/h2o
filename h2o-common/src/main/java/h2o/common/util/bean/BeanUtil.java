@@ -2,6 +2,7 @@ package h2o.common.util.bean;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
+import h2o.common.spring.util.Assert;
 import h2o.common.util.bean.serialize.BeanEncoder;
 import h2o.common.util.bean.serialize.BeanSerialize;
 import h2o.common.util.bean.support.BeanDescriptorImpl;
@@ -275,6 +276,9 @@ public class BeanUtil {
 
 	public static <T> T beanCopy(Object srcBean, T bean, String[] srcPrepnames, String[] prepnames, ValOperate svo, ValOperate vo , boolean cover , boolean procNull , BeanPropertyInfo beanPropertyInfo ) {
 
+        Assert.isNull(srcBean   , "srcBean == null");
+        Assert.isNull(bean      , "bean == null");
+
 		if ( CollectionUtil.java5ArgsIsBlank(prepnames) ) {
 			throw new RuntimeException("prepnames == null");
 		}
@@ -303,6 +307,9 @@ public class BeanUtil {
 
 	public <T> T beanCopy(Object srcBean, T bean, String[] srcPrepnames0, String[] nkeys, String[] skeys, String[] dkeys, ValOperate svo, ValOperate vo) {
 
+        Assert.isNull(srcBean   , "srcBean == null");
+        Assert.isNull(bean      , "bean == null");
+
 		if ( CollectionUtil.java5ArgsIsBlank(srcPrepnames0) ) {
 			srcPrepnames0 = this.getPrepNames(srcBean);
 		}
@@ -314,6 +321,10 @@ public class BeanUtil {
 	}
 
 	public <T> T beanCopy(Object srcBean, T bean) {
+
+        Assert.isNull(srcBean   , "srcBean == null");
+        Assert.isNull(bean      , "bean == null");
+
 		return this.beanCopy(srcBean, bean, this.getPrepNames(bean));
 	}
 
@@ -322,6 +333,9 @@ public class BeanUtil {
 	}
 
 	public <T> T beanCopy(Object srcBean, T bean, String[] srcPrepnames, String[] prepnames) {
+
+        Assert.isNull(srcBean   , "srcBean == null");
+        Assert.isNull(bean      , "bean == null");
 
 		if ( CollectionUtil.java5ArgsIsBlank(prepnames) ) {
 			prepnames = this.getPrepNames(bean);
@@ -338,6 +352,10 @@ public class BeanUtil {
 	}
 
 	public <T> T map2JavaBean(Map<?,?> m, T bean) {
+
+        Assert.isNull(m        , "map  == null");
+        Assert.isNull(bean     , "bean == null");
+
 		return this.map2JavaBean(m, bean, this.getPrepNames(bean));
 	}
 
@@ -348,6 +366,9 @@ public class BeanUtil {
 
 
 	public <T> T map2JavaBean(Map<?,?> m, T bean, String[] srcPrepnames, String[] prepnames) {
+
+        Assert.isNull(m        , "map  == null");
+        Assert.isNull(bean     , "bean == null");
 
 		if ( CollectionUtil.java5ArgsIsBlank(prepnames) ) {
 			prepnames = this.getPrepNames(bean);
@@ -362,6 +383,9 @@ public class BeanUtil {
 
 
 	public <T> T map2JavaBean3(Map<?,?> m, T bean, String[] nkeys, String[] skeys, String[] dkeys) {
+
+        Assert.isNull(m        , "map  == null");
+        Assert.isNull(bean     , "bean == null");
 
 		String[] prepnames = this.getPrepNames(bean);
 
@@ -383,6 +407,9 @@ public class BeanUtil {
 
 	public <T> T map2JavaBean(Map<?,?> m, Class<T> beanClazz, String[] srcPrepnames, String[] prepnames) {
 
+        Assert.isNull(m             , "map  == null");
+        Assert.isNull(beanClazz     , "beanClazz == null");
+
 		T bean = cerateBean(beanClazz);
 	
 
@@ -402,6 +429,9 @@ public class BeanUtil {
 
 	public <T> T map2JavaBean3(Map<?,?> m, Class<T> beanClazz, String[] nkeys, String[] skeys, String[] dkeys) {
 
+        Assert.isNull(m             , "map  == null");
+        Assert.isNull(beanClazz     , "beanClazz == null");
+
 		T bean = cerateBean(beanClazz);
 
 		String[] prepnames = this.getPrepNames(bean);
@@ -413,6 +443,8 @@ public class BeanUtil {
 
 
 	public <T> List<T> maps2JavaBeanList(Collection<?> ms, Class<T> beanClazz) {
+
+        Assert.isNull(beanClazz     , "beanClazz == null");
 
 		String[] prepnames;
 		try {
@@ -445,6 +477,9 @@ public class BeanUtil {
 	}
 
 	public Map<String, Object> javaBean2Map(Object bean) {
+
+        Assert.isNull(bean     , "bean == null");
+
 		return this.javaBean2Map(bean, new HashMap<String, Object>(), this.getPrepNames(bean));
 	}
 
@@ -457,6 +492,10 @@ public class BeanUtil {
 	}
 
 	public <K, V> Map<K, V> javaBean2Map(Object bean, Map<K, V> m) {
+
+        Assert.isNull(bean     , "bean == null");
+        Assert.isNull(m        , "map == null");
+
 		return this.javaBean2Map(bean, m, this.getPrepNames(bean));
 	}
 
@@ -465,6 +504,9 @@ public class BeanUtil {
 	}
 
 	public <K, V> Map<K, V> javaBean2Map(Object bean, Map<K, V> m, String[] srcPrepnames, String[] prepnames) {
+
+        Assert.isNull(bean     , "bean == null");
+        Assert.isNull(m        , "map == null");
 
 		if ( CollectionUtil.java5ArgsIsBlank(srcPrepnames) ) {
 			srcPrepnames = this.getPrepNames(bean);
@@ -498,6 +540,9 @@ public class BeanUtil {
 	}
 
 	public <K, V> Map<K, V> javaBean2Map3(Object bean, Map<K, V> m, String[] nkeys, String[] skeys, String[] dkeys) {
+
+        Assert.isNull(bean     , "bean == null");
+        Assert.isNull(m        , "map == null");
 
 		String[] srcPrepnames = this.getPrepNames(bean);
 
@@ -555,7 +600,7 @@ public class BeanUtil {
 
 		List<T> rl = new ArrayList<T>();
 
-		for (Object[] os : osl) {
+		if( osl != null ) for (Object[] os : osl) {
 			rl.add(this.map2JavaBean(this.objectArray2Map(os, keys, nkeys), beanClazz));
 		}
 
@@ -570,7 +615,7 @@ public class BeanUtil {
 
 		List<T> rl = new ArrayList<T>();
 
-		for (Collection<?> os : osl) {			
+        if( osl != null ) for (Collection<?> os : osl) {
 			rl.add(this.map2JavaBean(this.objectArray2Map(os.toArray(), keys, nkeys), beanClazz));
 		}
 
@@ -582,7 +627,7 @@ public class BeanUtil {
 	
 	
 	
-	public <S,T> List<T> objects2Otherlist(Collection<S> ss,  BeanCallback<S,T> bc) {
+	public <S,T> List<T> objects2OtherList(Collection<S> ss,  BeanCallback<S,T> bc) {
 
 		if( bc == null ) {
 			throw new RuntimeException("bc == null");
