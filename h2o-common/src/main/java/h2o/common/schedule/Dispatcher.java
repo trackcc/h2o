@@ -28,6 +28,8 @@ public class Dispatcher {
 
 	private volatile boolean stop = false;
 	private volatile boolean running = false;
+	private volatile boolean interruptible = true;
+
 
 	private final Lock lock = Locks.newLock();
 	
@@ -60,11 +62,10 @@ public class Dispatcher {
 				
 					sleep(firstDelay.getVar());
 					
-					
-					
+
 					while( !stop ) {
 						
-						long st;
+						long st = freeSleepTime.getVar();
 						
 						try {
 							int r =  task.getVar().doTask();
@@ -83,16 +84,29 @@ public class Dispatcher {
 							}
 							
 						} catch( InterruptedException e ) {
-							throw e;
+
+						    if( interruptible ) {
+                                throw e;
+                            }
+
 						} catch( Throwable e) {
+
 							Tools.log.debug("Dispatcher-run",e);
 							st = errSleepTime.getVar();
+
 						}
 						
-						
-						sleep(st);
-						
-						
+						try {
+
+                            sleep(st);
+
+                        } catch( InterruptedException e ) {
+
+                            if( interruptible ) {
+                                throw e;
+                            }
+
+                        }
 						
 					}
 					
@@ -184,7 +198,6 @@ public class Dispatcher {
 		this.task.setVar(task);
 	}
 
-	
 	public void setFirstDelay(long firstDelay) {
 		this.firstDelay.setVar(firstDelay);
 	}
@@ -200,7 +213,8 @@ public class Dispatcher {
 	public void setErrSleepTime(long errSleepTime) {
 		this.errSleepTime.setVar(errSleepTime);
 	}
-	
 
-
+    public void setInterruptible( boolean interruptible ) {
+        this.interruptible = interruptible;
+    }
 }
