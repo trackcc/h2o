@@ -65,7 +65,7 @@ public class Dispatcher {
 
 					while( !stop ) {
 						
-						long st = freeSleepTime.getVar();
+						long st;
 						
 						try {
 							int r =  task.getVar().doTask();
@@ -87,6 +87,8 @@ public class Dispatcher {
 
 						    if( interruptible ) {
                                 throw e;
+                            } else {
+                                st = errSleepTime.getVar();
                             }
 
 						} catch( Throwable e) {
@@ -95,19 +97,9 @@ public class Dispatcher {
 							st = errSleepTime.getVar();
 
 						}
-						
-						try {
 
-                            sleep(st);
+                        sleep(st);
 
-                        } catch( InterruptedException e ) {
-
-                            if( interruptible ) {
-                                throw e;
-                            }
-
-                        }
-						
 					}
 					
 				
@@ -139,7 +131,9 @@ public class Dispatcher {
 				}
 				
 			} catch( InterruptedException e) {
-				throw e;
+			    if( interruptible ) {
+                    throw e;
+                }
 			} catch (Throwable e) {
 				Tools.log.debug("Sleepping", e);
 			} finally {
