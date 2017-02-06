@@ -73,6 +73,11 @@ public class QuartzUtil {
     }
 
 
+    public Date scheduleJob(JobKey jobKey , Class<? extends Job> jobClass , String triggerName , String cron ) {
+        return this.scheduleJob( jobKey , jobClass , triggerName , cron , null );
+    }
+
+
     public Date scheduleJob(JobKey jobKey , Class<? extends Job> jobClass , String triggerName , String cron , Map<?,?> args ) {
 
         Assert.notNull( sched , "Scheduler is null" );
@@ -82,6 +87,12 @@ public class QuartzUtil {
         return scheduleJob( jobKey , jobClass , trigger , args );
 
     }
+
+
+    public Date scheduleJob( JobKey jobKey , Class<? extends Job> jobClass , Trigger trigger  ) {
+        return this.scheduleJob( jobKey , jobClass , trigger , null );
+    }
+
 
     public Date scheduleJob( JobKey jobKey , Class<? extends Job> jobClass , Trigger trigger , Map<?,?> args ) {
         
