@@ -82,7 +82,8 @@ public class QuartzUtil {
 
         Assert.notNull( sched , "Scheduler is null" );
         
-        CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(triggerName, jobKey.getGroup() ).withSchedule(CronScheduleBuilder.cronSchedule(cron)).build();
+        CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(triggerName, jobKey.getGroup() )
+                .withSchedule(CronScheduleBuilder.cronSchedule(cron)).build();
 
         return scheduleJob( jobKey , jobClass , trigger , args );
 
@@ -119,52 +120,124 @@ public class QuartzUtil {
         return ft;
     }
 
-    public boolean deleteJob(JobKey jobKey) throws SchedulerException {
-        return sched.deleteJob(jobKey);
+    public boolean deleteJob(JobKey jobKey)  {
+        try {
+            return sched.deleteJob(jobKey);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
-    public void pauseJob(JobKey jobKey) throws SchedulerException {
-        sched.pauseJob(jobKey);
+    public void pauseJob(JobKey jobKey) {
+        try {
+            sched.pauseJob(jobKey);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
-    public void resumeJob(JobKey jobKey) throws SchedulerException {
-        sched.resumeJob(jobKey);
+    public void resumeJob(JobKey jobKey) {
+        try {
+            sched.resumeJob(jobKey);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
-    public void pauseAll() throws SchedulerException {
-        sched.pauseAll();
+    public void pauseAll() {
+        try {
+            sched.pauseAll();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
-    public void resumeAll() throws SchedulerException {
-        sched.resumeAll();
+    public void resumeAll() {
+        try {
+            sched.resumeAll();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
-    public void clear() throws SchedulerException {
-        sched.clear();
+    public void clear() {
+        try {
+            sched.clear();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
 
-    public void start() throws SchedulerException {
-        sched.start();
+    public void start() {
+        try {
+            sched.start();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
-    public void startDelayed(int seconds) throws SchedulerException {
-        sched.startDelayed(seconds);
+    public void startDelayed(int seconds) {
+        try {
+            sched.startDelayed(seconds);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
-    public boolean isStarted() throws SchedulerException {
-        return sched.isStarted();
+    public boolean isStarted() {
+        try {
+            return sched.isStarted();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
-    public void shutdown() throws SchedulerException {
-        sched.shutdown();
+    public void shutdown() {
+        try {
+            sched.shutdown();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
-    public void shutdown(boolean waitForJobsToComplete) throws SchedulerException {
-        sched.shutdown(waitForJobsToComplete);
+    public void shutdown(boolean waitForJobsToComplete) {
+        try {
+            sched.shutdown(waitForJobsToComplete);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 
-    public boolean isShutdown() throws SchedulerException {
-        return sched.isShutdown();
+    public boolean isShutdown() {
+        try {
+            return sched.isShutdown();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            Tools.log.debug(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
     }
 }
