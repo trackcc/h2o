@@ -14,6 +14,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -28,60 +29,89 @@ public class HttpClientUtil {
 	
 	private HttpClientUtil() {}	
 	
-	public static String get(URI uri) {		
+	public static String get(URI uri) {
+
 		HttpGet httpget = new HttpGet(uri);
+
 		return echo(httpget,null);
+
 	}
 
 	public static String get(String url) {
-		HttpGet httpget = new HttpGet(url);	
+
+		HttpGet httpget = new HttpGet(url);
+
 		return echo(httpget,null);
+
 	}
 	
-	public static String get(URI uri , String charset) {		
+	public static String get(URI uri , String charset) {
+
 		HttpGet httpget = new HttpGet(uri);
+
 		return echo(httpget,charset);
+
 	}
 
 	public static String get(String url , String charset) {
-		HttpGet httpget = new HttpGet(url);	
+
+		HttpGet httpget = new HttpGet(url);
+
 		return echo(httpget,charset);
+
 	}
 	
 	
 	public static String post(URI uri) {
+
 		return post( uri , (Map<String,String>)null , null );
+
 	}
 	
 	public static String post(String url) {
+
 		return post( url , (Map<String,String>)null , null);
+
 	}
 	
 	public static String post(URI uri , String charset) {
+
 		return post( uri , (Map<String,String>)null , charset );
+
 	}
 	
 	public static String post(String url , String charset) {
+
 		return post( url , (Map<String,String>)null , charset);
+
 	}
 	
 	public static String post(URI uri , Map<String,String> para ) {
+
 		HttpPost httppost = new HttpPost(uri);		
 		return post(httppost , para , null);
+
 	}
 	
-	public static String post(String url , Map<String,String> para ) {		 
+	public static String post(String url , Map<String,String> para ) {
+
 		HttpPost httppost = new HttpPost(url);		
 		return post(httppost , para , null);
+
 	}
 	
 	public static String post(URI uri , Map<String,String> para , String charset ) {
-		HttpPost httppost = new HttpPost(uri);		
+
+		HttpPost httppost = new HttpPost(uri);
+
 		return post(httppost , para , charset);
+
 	}
 	
-	public static String post(String url , Map<String,String> para , String charset ) {		 
-		HttpPost httppost = new HttpPost(url);		
+	public static String post(String url , Map<String,String> para , String charset ) {
+
+		HttpPost httppost = new HttpPost(url);
+
 		return post(httppost , para , charset);
 	}
 		
@@ -100,8 +130,10 @@ public class HttpClientUtil {
 			return post(httppost , entity , charset );
 			
 		} catch( Exception e ) {
+
 			Tools.log.debug("echoPost",e);
 			throw ExceptionUtil.toRuntimeException(e);
+
 		}
 		
 
@@ -110,34 +142,50 @@ public class HttpClientUtil {
 	
 	
 	public static String post(URI uri , String data , String charset ) {
+
 		return post(uri , data , null , charset);
+
 	}
 	
 	public static String post(String url , String data , String charset ) {
+
 		return post(url , data , null , charset);
+
 	}
 	
 	
 	public static String post(URI uri , String data , String contentType ,  String charset ) {
+
 		HttpEntity entity = StringUtils.isBlank(contentType) ? new StringEntity(data , charset) : new StringEntity(data , ContentType.create(contentType, charset));
+
 		return post(uri , entity , charset);
+
 	}
 	
-	public static String post(String url , String data , String contentType ,String charset ) {		 
+	public static String post(String url , String data , String contentType ,String charset ) {
+
 		HttpEntity entity = StringUtils.isBlank(contentType) ? new StringEntity(data , charset) : new StringEntity(data , ContentType.create(contentType, charset));
+
 		return post(url , entity , charset);
+
 	}
 
 
 
 	public static String post(URI uri , HttpEntity entity , String charset ) {
-		HttpPost httppost = new HttpPost(uri);		
+
+		HttpPost httppost = new HttpPost(uri);
+
 		return post(httppost , entity , charset);
+
 	}
 	
-	public static String post(String url , HttpEntity entity , String charset ) {		 
-		HttpPost httppost = new HttpPost(url);		
+	public static String post(String url , HttpEntity entity , String charset ) {
+
+		HttpPost httppost = new HttpPost(url);
+
 		return post(httppost , entity , charset);
+
 	}
 
 	
@@ -150,10 +198,11 @@ public class HttpClientUtil {
 		}
 
 		return echo(httppost, charset);
+
 	}
 	
 	
-	private static List<NameValuePair> para2nvList( Map<String,String> para ) {
+    static List<NameValuePair> para2nvList( Map<String,String> para ) {
 		
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		
@@ -166,29 +215,47 @@ public class HttpClientUtil {
 	}
 	
 	public static String echo(HttpUriRequest request , String charset ) {
-		
-		CloseableHttpClient httpclient = HttpClients.createDefault();
-		try {						
-			
-			HttpResponse response = httpclient.execute(request);
-			HttpEntity entity = response.getEntity();			
-		
-			return entity == null ? null : EntityUtils.toString(entity,charset);			
-		
-		} catch( Exception e ) {
-			
-			Tools.log.debug("echo",e);
-			throw ExceptionUtil.toRuntimeException(e);
-			
-		} finally {
-			try {
-				httpclient.close();
-			} catch (IOException e) {
-				Tools.log.debug( "", e );
-			}
-		}
+
+        return echo( HttpClients.createDefault() , request, charset , true );
+
 	}
 
+
+    public static String echo( CloseableHttpClient httpclient , HttpUriRequest request , String charset , boolean close ) {
+
+        CloseableHttpResponse response = null;
+        try {
+
+            response = httpclient.execute(request);
+            HttpEntity entity = response.getEntity();
+
+            return entity == null ? null : EntityUtils.toString(entity,charset);
+
+        } catch( Exception e ) {
+
+            Tools.log.debug("echo",e);
+            throw ExceptionUtil.toRuntimeException(e);
+
+        } finally {
+
+            if (response != null ) try {
+
+                response.close();
+
+            } catch (IOException e) {
+                Tools.log.debug( "", e );
+            }
+
+            if ( close && httpclient != null ) try {
+
+                httpclient.close();
+
+            } catch (IOException e) {
+                Tools.log.debug( "", e );
+            }
+
+        }
+    }
 	
 
 }
