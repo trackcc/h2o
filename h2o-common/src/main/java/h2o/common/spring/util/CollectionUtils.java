@@ -17,13 +17,7 @@
 package h2o.common.spring.util;
 
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Miscellaneous collection utility methods.

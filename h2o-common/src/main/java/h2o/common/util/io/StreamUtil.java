@@ -2,20 +2,10 @@ package h2o.common.util.io;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
-import java.net.URL;
-
 import org.apache.commons.configuration.ConfigurationUtils;
+
+import java.io.*;
+import java.net.URL;
 
 public class StreamUtil {
 

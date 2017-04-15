@@ -1,6 +1,8 @@
 package h2o.common.util.dao.butterflydb.impl;
 
-import static h2o.common.util.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
+import com.jenkov.db.itf.IPreparedStatementManager;
+import com.jenkov.db.itf.PersistenceException;
+import com.jenkov.db.util.JdbcUtil;
 import h2o.common.Tools;
 import h2o.common.util.collections.tuple.Tuple2;
 
@@ -11,9 +13,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 
-import com.jenkov.db.itf.IPreparedStatementManager;
-import com.jenkov.db.itf.PersistenceException;
-import com.jenkov.db.util.JdbcUtil;
+import static h2o.common.util.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
 
 public class PreparedStatementManagerBatch implements IPreparedStatementManager {
 	

@@ -3,10 +3,9 @@ package h2o.dao.impl.sql;
 import h2o.common.util.collections.builder.MapBuilder;
 import h2o.dao.DbUtil;
 import h2o.dao.SqlSource;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.Map;
-
-import org.apache.commons.lang.StringUtils;
 
 public class TSql extends Sql implements SqlSource {	
 

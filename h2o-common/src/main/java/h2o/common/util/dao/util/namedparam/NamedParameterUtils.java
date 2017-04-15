@@ -19,16 +19,10 @@ package h2o.common.util.dao.util.namedparam;
 import h2o.common.spring.jdbc.core.SqlParameter;
 import h2o.common.spring.jdbc.core.SqlParameterValue;
 import h2o.common.spring.util.Assert;
-
 import h2o.common.util.collections.tuple.Tuple3;
 import h2o.common.util.collections.tuple.TupleUtil;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 

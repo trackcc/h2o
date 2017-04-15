@@ -1,6 +1,8 @@
 package h2o.dao.impl;
 
-import static h2o.common.util.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
+import com.jenkov.db.itf.IDaos;
+import com.jenkov.db.itf.IResultSetProcessor;
+import com.jenkov.db.itf.PersistenceException;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.collections.CollectionUtil;
 import h2o.common.util.collections.builder.ListBuilder;
@@ -21,10 +23,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-
-import com.jenkov.db.itf.IDaos;
-import com.jenkov.db.itf.IResultSetProcessor;
-import com.jenkov.db.itf.PersistenceException;
+import static h2o.common.util.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
 
 
 public class DaoImpl extends AbstractDao implements Dao {

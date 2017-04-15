@@ -1,14 +1,10 @@
 package h2o.common.freemarker.model;
 
+import freemarker.template.*;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
-
-import freemarker.template.DefaultObjectWrapper;
-import freemarker.template.TemplateHashModel;
-import freemarker.template.TemplateModel;
-import freemarker.template.TemplateModelException;
-import freemarker.template.TemplateScalarModel;
 
 
 

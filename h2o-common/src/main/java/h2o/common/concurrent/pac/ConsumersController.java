@@ -1,15 +1,10 @@
 package h2o.common.concurrent.pac;
 
 import h2o.common.Tools;
+import org.apache.commons.lang.Validate;
 
 import java.util.Collection;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.lang.Validate;
+import java.util.concurrent.*;
 
 public class ConsumersController<T> {
 	

@@ -1,11 +1,12 @@
 package h2o.common.util.debug;
 
 import h2o.common.Tools;
+import h2o.common.util.collections.CollectionUtil;
+import org.apache.commons.configuration.PropertiesConfiguration;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-
-import org.apache.commons.configuration.PropertiesConfiguration;
 
 public class Mode {
 	
@@ -49,10 +50,10 @@ public class Mode {
 			String userModes = config.getString("userMode","").trim().toUpperCase();
 			
 			if( !"".equals(userModes) ) {
-				String[] ums = userModes.split(",");
-				for( String um : ums ) {
-					userModeSet.add(um.trim());
-				}
+
+                List<String> ums =  CollectionUtil.string2List( false , userModes, new String[] {":",",",";"," ", "\t"} , null );
+			    userModeSet.addAll( ums );
+
 			}
 			
 			

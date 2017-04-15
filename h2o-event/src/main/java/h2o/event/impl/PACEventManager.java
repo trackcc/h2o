@@ -1,10 +1,6 @@
 package h2o.event.impl;
 
 
-import java.util.Map;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.Executors;
-
 import h2o.common.Tools;
 import h2o.common.concurrent.pac.Consumer;
 import h2o.common.concurrent.pac.ConsumersController;
@@ -12,6 +8,10 @@ import h2o.common.util.collections.builder.MapBuilder;
 import h2o.event.Event;
 import h2o.event.EventHandler;
 import h2o.event.EventManager;
+
+import java.util.Map;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.Executors;
 
 /**
  * Created by zhangjianwei on 16/7/2.

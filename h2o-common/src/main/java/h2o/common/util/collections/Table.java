@@ -2,11 +2,10 @@ package h2o.common.util.collections;
 
 import h2o.common.util.collections.builder.ListBuilder;
 import h2o.common.util.collections.builder.MapBuilder;
+import org.apache.commons.lang.Validate;
 
 import java.util.List;
 import java.util.Map;
-
-import org.apache.commons.lang.Validate;
 
 public class Table implements java.io.Serializable {
 	

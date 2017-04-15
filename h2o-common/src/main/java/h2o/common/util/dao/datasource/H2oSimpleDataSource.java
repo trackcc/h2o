@@ -3,13 +3,12 @@ package h2o.common.util.dao.datasource;
 import h2o.common.Tools;
 import h2o.common.concurrent.RunUtil;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
-
-import javax.sql.DataSource;
 
 public class H2oSimpleDataSource extends AbstractDataSourceProxy {	
 	

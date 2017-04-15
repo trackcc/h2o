@@ -1,7 +1,6 @@
 package h2o.common.util.job;
 
 import h2o.common.Tools;
-import h2o.common.concurrent.OneTimeInitVar;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.spring.util.Assert;
 import org.quartz.*;

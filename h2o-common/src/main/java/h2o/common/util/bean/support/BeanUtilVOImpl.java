@@ -3,7 +3,6 @@ package h2o.common.util.bean.support;
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.bean.ValOperate;
-
 import org.apache.commons.beanutils.PropertyUtils;
 
 

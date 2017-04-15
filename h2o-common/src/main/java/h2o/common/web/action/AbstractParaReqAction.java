@@ -1,16 +1,14 @@
 package h2o.common.web.action;
 
-import java.io.IOException;
+import h2o.common.Tools;
+import h2o.common.util.web.ParameterUtil;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
-import h2o.common.Tools;
-import h2o.common.util.web.ParameterUtil;
+import java.io.IOException;
 
 abstract public class AbstractParaReqAction extends AbstractAction implements Action {
 

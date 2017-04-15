@@ -3,16 +3,14 @@ package h2o.common.smooks;
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.io.StreamUtil;
-
-import java.io.Reader;
+import org.milyn.Smooks;
+import org.milyn.container.ExecutionContext;
+import org.milyn.payload.JavaResult;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
-
-import org.milyn.Smooks;
-import org.milyn.container.ExecutionContext;
-import org.milyn.payload.JavaResult;
+import java.io.Reader;
 
 public class SmooksUtil {
 

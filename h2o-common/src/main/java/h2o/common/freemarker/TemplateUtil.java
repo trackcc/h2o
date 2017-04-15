@@ -1,5 +1,7 @@
 package h2o.common.freemarker;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 
@@ -8,9 +10,6 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Map;
-
-import freemarker.template.Configuration;
-import freemarker.template.Template;
 
 public class TemplateUtil {
 	

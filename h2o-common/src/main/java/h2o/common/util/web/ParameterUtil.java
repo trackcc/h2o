@@ -3,12 +3,11 @@ package h2o.common.util.web;
 import h2o.common.util.collections.builder.ListBuilder;
 import h2o.common.util.collections.builder.MapBuilder;
 
+import javax.servlet.ServletRequest;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Map;
 import java.util.Set;
-
-import javax.servlet.ServletRequest;
 
 public class ParameterUtil implements Map<String,Object> {
 	

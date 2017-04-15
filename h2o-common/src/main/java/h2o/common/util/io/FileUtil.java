@@ -1,11 +1,10 @@
 package h2o.common.util.io;
 
 import h2o.common.Tools;
+import org.apache.commons.configuration.ConfigurationUtils;
 
 import java.io.File;
 import java.net.URL;
-
-import org.apache.commons.configuration.ConfigurationUtils;
 
 public class FileUtil {
 

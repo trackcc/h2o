@@ -7,13 +7,11 @@ import h2o.common.util.bean.Map2BeanUtil;
 import h2o.common.util.collections.builder.MapBuilder;
 import h2o.common.util.dao.SqlTable;
 import h2o.common.util.dao.butterflydb.ButterflyDb;
-import h2o.common.util.ioc.ButterflyFactory;
 import h2o.common.util.ioc.Factory;
 import h2o.dao.exception.DaoException;
 
-import java.util.Map;
-
 import javax.sql.DataSource;
+import java.util.Map;
 
 public final class DbUtil {
 	

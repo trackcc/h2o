@@ -1,18 +1,13 @@
 package h2o.common.util.dao.butterflydb;
 
+import com.jenkov.db.itf.*;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Collection;
 import java.util.List;
-
-import com.jenkov.db.itf.IObjectDao;
-import com.jenkov.db.itf.IPersistenceConfiguration;
-import com.jenkov.db.itf.IReadFilter;
-import com.jenkov.db.itf.PersistenceException;
-
-import com.jenkov.db.itf.UpdateResult;
 
 @SuppressWarnings("rawtypes")
 public class ButterflyObjectDao implements IObjectDao {

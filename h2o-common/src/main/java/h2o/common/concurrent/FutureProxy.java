@@ -1,12 +1,8 @@
 package h2o.common.concurrent;
 
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
 import org.apache.commons.lang.Validate;
+
+import java.util.concurrent.*;
 
 public class FutureProxy<T> implements Future<T> {
 

@@ -1,11 +1,10 @@
 package h2o.common.util.dao.springdb;
 
 import h2o.common.util.collections.Args;
-
-import javax.sql.DataSource;
-
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+
+import javax.sql.DataSource;
 
 
 public class JdbcUtil {

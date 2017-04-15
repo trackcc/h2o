@@ -1,14 +1,13 @@
 package h2o.common.web.action.result;
 
-import java.io.IOException;
+import h2o.common.WebTools;
+import h2o.common.web.action.Result;
+import h2o.common.web.action.ResultProcessor;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import h2o.common.WebTools;
-import h2o.common.web.action.Result;
-import h2o.common.web.action.ResultProcessor;
+import java.io.IOException;
 
 public class JsonResultProcessor implements ResultProcessor {
 	

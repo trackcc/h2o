@@ -7,11 +7,7 @@ import h2o.common.util.collections.tuple.Tuple2;
 import h2o.common.util.collections.tuple.TupleUtil;
 import h2o.common.util.lang.Null;
 import h2o.common.util.lang.type.TypeConverter;
-import h2o.common.util.lang.type.converter.Null2ObjectConverter;
-import h2o.common.util.lang.type.converter.String2BigDecimalConverter;
-import h2o.common.util.lang.type.converter.String2DoubleConverter;
-import h2o.common.util.lang.type.converter.String2IntegerConverter;
-import h2o.common.util.lang.type.converter.String2LongConverter;
+import h2o.common.util.lang.type.converter.*;
 
 import java.math.BigDecimal;
 import java.util.Map;

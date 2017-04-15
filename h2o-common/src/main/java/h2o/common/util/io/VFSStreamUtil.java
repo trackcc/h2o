@@ -4,16 +4,11 @@ import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.collections.tuple.Tuple2;
 import h2o.common.util.collections.tuple.TupleUtil;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.Writer;
-
 import org.apache.commons.vfs2.FileObject;
 import org.apache.commons.vfs2.FileSystemException;
 import org.apache.commons.vfs2.VFS;
+
+import java.io.*;
 
 public class VFSStreamUtil {
 

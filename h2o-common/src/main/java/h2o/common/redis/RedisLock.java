@@ -1,9 +1,9 @@
 package h2o.common.redis;
 
-import java.util.Random;
-
 import h2o.common.Tools;
 import redis.clients.jedis.Jedis;
+
+import java.util.Random;
 
 /**
  * @author Teaey

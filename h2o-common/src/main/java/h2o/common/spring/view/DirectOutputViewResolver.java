@@ -1,14 +1,13 @@
 package h2o.common.spring.view;
 
 import h2o.common.util.collections.builder.MapBuilder;
-
-import java.util.Locale;
-import java.util.Map;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
+
+import java.util.Locale;
+import java.util.Map;
 
 public class DirectOutputViewResolver implements ViewResolver , Ordered {
 	

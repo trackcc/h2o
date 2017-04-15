@@ -1,30 +1,28 @@
 package h2o.common.util.dao.butterflydb;
 
 
-import static h2o.common.util.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
+import com.jenkov.db.itf.*;
 import h2o.common.Tools;
 import h2o.common.util.collections.CollectionUtil;
 import h2o.common.util.collections.IgnoreCaseMap;
 import h2o.common.util.collections.builder.ListBuilder;
 import h2o.common.util.collections.tuple.Tuple2;
 import h2o.common.util.dao.rowproc.RowDataProcessor;
+import h2o.common.util.debug.Mode;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import com.jenkov.db.itf.IDaos;
-import com.jenkov.db.itf.IJdbcDao;
-import com.jenkov.db.itf.IMapDao;
-import com.jenkov.db.itf.IPreparedStatementManager;
-import com.jenkov.db.itf.IResultSetProcessor;
-import com.jenkov.db.itf.PersistenceException;
+import static h2o.common.util.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
 
 
 @SuppressWarnings({"rawtypes","unchecked"})
 public class ButterflyDao {
-	
-	private IDaos daos;
+
+    private static boolean SHOWSQL = Mode.isUserMode("DONTSHOWSQL") ? false : true;
+
+    private IDaos daos;
 	private final IJdbcDao jdbcDao;
 	private final IMapDao mapDao;
 	
@@ -44,7 +42,11 @@ public class ButterflyDao {
 	}
 
 	public Long readLong(String sql) {
-		Tools.log.info("readLong(sql):{}" , sql);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readLong(sql):{}", sql);
+        }
+
 		try {
 			return jdbcDao.readLong(sql);
 		} catch (PersistenceException e) {
@@ -52,10 +54,15 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 
 	public Long readLong(String sql, Object... parameters) {
-		Tools.log.info("readLong(sql, Object...):{}, para:{}" , sql , Arrays.asList(parameters));
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readLong(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+        }
+
 		try {
 			return jdbcDao.readLong(sql, parameters);
 		} catch (PersistenceException e) {
@@ -63,19 +70,29 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 	
 
-	public Long readLong(String sql, Map paramMap) {		
-		Tools.log.info("readLong(sql, Map):{}, para:{}" , sql , paramMap);
+	public Long readLong(String sql, Map paramMap) {
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readLong(sql, Map):{}, para:{}", sql, paramMap);
+        }
+
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
 		
 		return readLong(sqlAndPara.e0,sqlAndPara.e1);
+
 	}
 
 
 	public String readIdString(String sql) {
-		Tools.log.info("readIdString(sql]):{}" , sql );
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readIdString(sql]):{}", sql);
+        }
+
 		try {
 			return jdbcDao.readIdString(sql);
 		} catch (PersistenceException e) {
@@ -83,10 +100,15 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 
 	public String readIdString(String sql, Object... parameters) {
-		Tools.log.info("readIdString(sql, Object...):{}, para:{}" , sql , Arrays.asList(parameters));
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readIdString(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+        }
+
 		try {
 			return jdbcDao.readIdString(sql, parameters);
 		} catch (PersistenceException e) {
@@ -94,19 +116,29 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 	
 
 	public String readIdString(String sql,  Map paramMap) {
-		Tools.log.info("readIdString(sql, Map):{}, para:{}" , sql , paramMap);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readIdString(sql, Map):{}, para:{}", sql, paramMap);
+        }
+
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
 		
 		return readIdString(sqlAndPara.e0,sqlAndPara.e1);
+
 	}
 	
 
 	public String readIdString(String sql, IPreparedStatementManager statementManager) {
-		Tools.log.info("readIdString(sql,IPreparedStatementManager):{}" , sql);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readIdString(sql,IPreparedStatementManager):{}", sql);
+        }
+
 		try {
 			return jdbcDao.readIdString(sql, statementManager);
 		} catch (PersistenceException e) {
@@ -114,10 +146,15 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 
 	public <T> T read(String sql, IResultSetProcessor processor) {
-		Tools.log.info("read(sql,IResultSetProcessor):{}" , sql);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("read(sql,IResultSetProcessor):{}", sql);
+        }
+
 		try {
 			return (T)jdbcDao.read(sql, processor);
 		} catch (PersistenceException e) {
@@ -125,10 +162,15 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 
 	public <T> T read(String sql, IResultSetProcessor processor, Object... parameters) {
-		Tools.log.info("read(sql,IResultSetProcessor,Object...):{}, para:{}" , sql , Arrays.asList(parameters));
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("read(sql,IResultSetProcessor,Object...):{}, para:{}", sql, Arrays.asList(parameters));
+        }
+
 		try {
 			return (T)jdbcDao.read(sql, processor, parameters);
 		} catch (PersistenceException e) {
@@ -136,18 +178,28 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 	
 
 	public <T> T read(String sql, IResultSetProcessor processor,  Map paramMap) {
-		Tools.log.info("read(sql,IResultSetProcessor,Map):{}, para:{}" , sql , paramMap);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("read(sql,IResultSetProcessor,Map):{}, para:{}", sql, paramMap);
+        }
+
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
 		
 		return read(sqlAndPara.e0,processor,sqlAndPara.e1);
+
 	}
 
 	public <T> T read(String sql, IPreparedStatementManager statementManager, IResultSetProcessor processor) {
-		Tools.log.info("read(sql,IPreparedStatementManager,IResultSetProcessor):{}" , sql );
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("read(sql,IPreparedStatementManager,IResultSetProcessor):{}", sql);
+        }
+
 		try {
 			return (T)jdbcDao.read(sql, statementManager, processor);
 		} catch (PersistenceException e) {
@@ -155,10 +207,15 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 
 	public int update(String sql) {
-		Tools.log.info("update(sql):{}" , sql );
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("update(sql):{}", sql);
+        }
+
 		try {
 			return jdbcDao.update(sql);
 		} catch (PersistenceException e) {
@@ -166,10 +223,15 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 
 	public int update(String sql, Object... parameters) {
-		Tools.log.info("update(sql, Object...):{}, para:{}" , sql , Arrays.asList(parameters) );
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("update(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+        }
+
 		try {
 			return jdbcDao.update(sql, parameters);
 		} catch (PersistenceException e) {
@@ -177,18 +239,25 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 	
 
 	public int update(String sql, Map paramMap) {
-		Tools.log.info("update(sql, Map):{}, para:{}" , sql , paramMap);
+	    if ( SHOWSQL ) {
+            Tools.log.info("update(sql, Map):{}, para:{}", sql, paramMap);
+        }
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
 		
 		return update(sqlAndPara.e0,sqlAndPara.e1);
 	}
 
 	public int update(String sql, IPreparedStatementManager statementManager) {
-		Tools.log.info("update(sql, IPreparedStatementManager):{}" , sql );
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("update(sql, IPreparedStatementManager):{}", sql);
+        }
+
 		try {
 			return jdbcDao.update(sql, statementManager);
 		} catch (PersistenceException e) {
@@ -196,6 +265,7 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 	
 	
@@ -247,8 +317,10 @@ public class ButterflyDao {
 	
 	
 	public <T> T readObject(String sql) {
-		
-		Tools.log.info("readObject(sql):{}" , sql);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readObject(sql):{}", sql);
+        }
 		
 		try {
 			
@@ -264,8 +336,11 @@ public class ButterflyDao {
 	}
 
 	public <T> T readObject(String sql, Object... parameters) {
-		
-		Tools.log.info("readObject(sql, Object...):{}, para:{}" , sql , Arrays.asList(parameters));
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readObject(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+        }
+
 		try {
 			
 			Map data = mapDao.readMap(sql, parameters);
@@ -298,7 +373,11 @@ public class ButterflyDao {
 	
 	
 	public Map<String,Object> readMap(String sql) {
-		Tools.log.info("readMap(sql):{}" , sql);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readMap(sql):{}", sql);
+        }
+
 		try {
 			return dataProc( mapDao.readMap(sql) );
 		} catch (PersistenceException e) {
@@ -306,11 +385,16 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 
 
 	public Map<String,Object> readMap(String sql, Object... parameters) {
-		Tools.log.info("readMap(sql, Object...):{}, para:{}" , sql , Arrays.asList(parameters));
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readMap(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+        }
+
 		try {
 			return dataProc( mapDao.readMap(sql, parameters) );
 		} catch (PersistenceException e) {
@@ -318,18 +402,28 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}	
 
 	public Map<String,Object> readMap(String sql, Map paramMap) {
-		Tools.log.info("readMap(sql, Map):{}, para:{}" , sql , paramMap);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readMap(sql, Map):{}, para:{}", sql, paramMap);
+        }
+
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
 		
 		return readMap(sqlAndPara.e0,sqlAndPara.e1);
+
 	}
 
 
 	public Map<String,Object> readMap(String sql, IPreparedStatementManager statementManager) {
-		Tools.log.info("readMap(sql, IPreparedStatementManager):{}" , sql);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readMap(sql, IPreparedStatementManager):{}", sql);
+        }
+
 		try {
 			return dataProc( mapDao.readMap(sql, statementManager) );
 		} catch (PersistenceException e) {
@@ -337,6 +431,7 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 
 
@@ -344,7 +439,11 @@ public class ButterflyDao {
 	
 	
 	public List<Map<String,Object>> readMapList(String sql) {
-		Tools.log.info("readMapList(sql):{}" , sql);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readMapList(sql):{}", sql);
+        }
+
 		try {
 			return listProc( mapDao.readMapList(sql) );
 		} catch (PersistenceException e) {
@@ -352,11 +451,16 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 	
 
 	public List<Map<String,Object>> readMapList(String sql, Object... parameters) {
-		Tools.log.info("readMapList(sql, Object...):{}, para:{}" , sql , Arrays.asList(parameters));
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readMapList(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+        }
+
 		try {
 			return listProc( mapDao.readMapList(sql, parameters) );
 		} catch (PersistenceException e) {
@@ -364,18 +468,28 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 	
 	public List<Map<String,Object>> readMapList(String sql, Map paramMap) {
-		Tools.log.info("readMapList(sql, Map):{}, para:{}" , sql , paramMap);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readMapList(sql, Map):{}, para:{}", sql, paramMap);
+        }
+
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
 		
 		return readMapList(sqlAndPara.e0,sqlAndPara.e1);
+
 	}
 
 
 	public List<Map<String,Object>> readMapList(String sql, IPreparedStatementManager statementManager) {
-		Tools.log.info("readMapList(sql, IPreparedStatementManager):{}" , sql);
+
+	    if ( SHOWSQL ) {
+            Tools.log.info("readMapList(sql, IPreparedStatementManager):{}", sql);
+        }
+
 		try {
 			return listProc( mapDao.readMapList(sql, statementManager) );
 		} catch (PersistenceException e) {
@@ -383,6 +497,7 @@ public class ButterflyDao {
 		} finally {
 			autoCloseConnection();
 		}
+
 	}
 	
 	

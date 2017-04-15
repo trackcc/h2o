@@ -4,9 +4,7 @@ import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.collections.tuple.Tuple2;
 import h2o.common.util.collections.tuple.TupleUtil;
-
 import org.apache.commons.lang.StringUtils;
-
 import redis.clients.jedis.Jedis;
 
 public class JedisUtil {

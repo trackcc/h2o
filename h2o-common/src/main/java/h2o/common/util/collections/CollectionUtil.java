@@ -1,10 +1,9 @@
 package h2o.common.util.collections;
 
 import h2o.common.util.bean.PreOperate;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.*;
-
-import org.apache.commons.lang.StringUtils;
 
 
 

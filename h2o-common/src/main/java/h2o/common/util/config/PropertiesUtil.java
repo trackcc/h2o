@@ -1,7 +1,6 @@
 package h2o.common.util.config;
 
 import h2o.common.exception.ExceptionUtil;
-import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
 import java.math.BigDecimal;

@@ -1,12 +1,12 @@
 package h2o.common.util.valid;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import h2o.common.util.collections.builder.ListBuilder;
 import h2o.common.util.collections.tuple.Tuple2;
 import h2o.common.util.collections.tuple.TupleUtil;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public final class ValidateUtil {
 	

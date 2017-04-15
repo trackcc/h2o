@@ -2,12 +2,6 @@ package h2o.common.util.debug;
 
 import h2o.common.concurrent.factory.InstanceFactory;
 import h2o.common.concurrent.factory.InstanceTable;
-import h2o.common.util.collections.tuple.Tuple3;
-import h2o.common.util.collections.tuple.TupleUtil;
-
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import h2o.common.util.lang.RuntimeUtil;
 import h2o.common.util.lang.StringUtil;
 import org.slf4j.Logger;

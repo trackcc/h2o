@@ -3,11 +3,10 @@ package h2o.common.cluster.locks;
 import h2o.common.Tools;
 import h2o.common.cluster.locks.impl.HazelcastLockProvider;
 import h2o.common.util.lang.InstanceUtil;
-
-import java.util.concurrent.locks.Lock;
-
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
+
+import java.util.concurrent.locks.Lock;
 
 public class LockUtil {
 	

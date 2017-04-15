@@ -6,11 +6,10 @@ import h2o.dao.colinfo.ColInfo;
 import h2o.dao.colinfo.ColInfoUtil;
 import h2o.dao.exception.DaoException;
 import h2o.dao.impl.sql.TSql;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 import java.util.Map;
-
-import org.apache.commons.lang.StringUtils;
 
 
 

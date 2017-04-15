@@ -1,7 +1,5 @@
 package h2o.common.util.collections;
 
-import java.util.Collection;
-
 /**
  * Created by zhangjianwei on 16/8/23.
  */

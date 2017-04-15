@@ -3,15 +3,14 @@ package h2o.common.dynalang;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.collections.CollectionUtil;
 import h2o.common.util.io.FileUtil;
-
-import java.io.File;
-import java.util.concurrent.atomic.AtomicReference;
-
 import org.apache.commons.lang.ClassUtils;
 import org.apache.commons.lang.StringUtils;
 import org.codehaus.commons.compiler.AbstractJavaSourceClassLoader;
 import org.codehaus.commons.compiler.CompilerFactoryFactory;
 import org.codehaus.commons.compiler.ICompilerFactory;
+
+import java.io.File;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class JavaSourceClassUtil {
 

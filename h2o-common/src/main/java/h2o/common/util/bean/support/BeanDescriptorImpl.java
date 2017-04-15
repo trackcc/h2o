@@ -3,10 +3,9 @@ package h2o.common.util.bean.support;
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.bean.BeanDescriptor;
+import org.apache.commons.beanutils.BeanUtils;
 
 import java.util.Set;
-
-import org.apache.commons.beanutils.BeanUtils;
 
 public class BeanDescriptorImpl implements BeanDescriptor {
 	

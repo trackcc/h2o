@@ -1,14 +1,13 @@
 package h2o.event.impl;
 
 
-
-import java.util.List;
-
 import h2o.common.Tools;
 import h2o.common.schedule.Dispatcher;
 import h2o.common.schedule.RepetitiveTask;
 import h2o.event.Event;
 import h2o.event.EventReceiver;
+
+import java.util.List;
 
 /**
  * Created by zjw on 16-6-30.

@@ -1,11 +1,10 @@
 package h2o.common.util.id;
 
-import java.util.Date;
-
+import h2o.common.util.security.RadixConvertUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.FastDateFormat;
 
-import h2o.common.util.security.RadixConvertUtil;
+import java.util.Date;
 
 public class TimeIdUtil {
 	

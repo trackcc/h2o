@@ -1,17 +1,15 @@
 package h2o.common.util.dao.butterflydb;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import h2o.common.Tools;
-import h2o.common.exception.ExceptionUtil;
-
-import javax.sql.DataSource;
-
 import com.jenkov.db.PersistenceManager;
 import com.jenkov.db.itf.IDaos;
 import com.jenkov.db.itf.PersistenceException;
 import com.jenkov.db.scope.ScopingDataSource;
+import h2o.common.Tools;
+import h2o.common.exception.ExceptionUtil;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class ButterflyDb {
 	

@@ -1,11 +1,11 @@
 package h2o.common.spring.factory;
 
-import java.util.concurrent.locks.Lock;
-
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.concurrent.locks.Lock;
 
 public class Factory implements BeanFactoryAware {
 	

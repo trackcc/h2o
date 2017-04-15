@@ -1,7 +1,6 @@
 package h2o.common.util.bean.support;
 
 import h2o.common.util.bean.BeanPropertyInfo;
-
 import org.apache.commons.lang.StringUtils;
 
 public class StringBlankBeanPropertyInfoImpl extends DefaultBeanPropertyInfoImpl implements BeanPropertyInfo {

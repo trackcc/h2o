@@ -3,7 +3,6 @@ package h2o.common.util.dao;
 import h2o.common.util.bean.PreOperate;
 import h2o.common.util.collections.CollectionUtil;
 import h2o.common.util.dao.util.StringSingleQuoteEscape;
-
 import org.apache.commons.lang.StringUtils;
 
 public class SqlFormatUtil {

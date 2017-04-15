@@ -6,17 +6,10 @@ import h2o.dao.annotation.Column;
 import h2o.dao.annotation.ColumnDefValue;
 import h2o.dao.annotation.Table;
 import h2o.dao.exception.DaoException;
+import org.apache.commons.lang.StringUtils;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.commons.lang.StringUtils;
+import java.util.*;
 
 public class ColInfoUtil {
 	

@@ -1,18 +1,16 @@
 package h2o.common.util.lang;
 
-import static org.apache.commons.lang.StringUtils.EMPTY;
-import static org.apache.commons.lang.StringUtils.INDEX_NOT_FOUND;
-import static org.apache.commons.lang.StringUtils.isEmpty;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import h2o.common.util.format.FormattingTuple;
+import h2o.common.util.format.MessageFormatter;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.text.StrBuilder;
 
-import h2o.common.util.format.FormattingTuple;
-import h2o.common.util.format.MessageFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.apache.commons.lang.StringUtils.INDEX_NOT_FOUND;
+import static org.apache.commons.lang.StringUtils.isEmpty;
 
 public class StringUtil {
 

@@ -1,12 +1,11 @@
 package h2o.common.freemarker.model;
 
 
+import freemarker.template.TemplateMethodModelEx;
+import freemarker.template.TemplateModelException;
 import h2o.common.util.web.JsonUtil;
 
 import java.util.List;
-
-import freemarker.template.TemplateMethodModelEx;
-import freemarker.template.TemplateModelException;
 
 public class ParseJsonMethod implements TemplateMethodModelEx {
 

@@ -1,15 +1,14 @@
 package h2o.common.util.ioc;
 
+import com.jenkov.container.Container;
+import com.jenkov.container.IContainer;
+import com.jenkov.container.script.ScriptFactoryBuilder;
 import h2o.common.Tools;
 import h2o.common.util.io.StreamUtil;
 
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.concurrent.locks.Lock;
-
-import com.jenkov.container.Container;
-import com.jenkov.container.IContainer;
-import com.jenkov.container.script.ScriptFactoryBuilder;
 
 public class Butterfly {
 	

@@ -1,14 +1,14 @@
 package h2o.common.schedule;
 
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
-
 import h2o.common.Tools;
 import h2o.common.concurrent.Door;
 import h2o.common.concurrent.Locks;
 import h2o.common.concurrent.OneTimeInitVar;
 import h2o.common.concurrent.RunUtil;
+
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
 
 public class Dispatcher {
 	

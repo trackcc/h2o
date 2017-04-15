@@ -6,11 +6,10 @@ import h2o.common.freemarker.TemplateUtil;
 import h2o.common.util.collections.builder.MapBuilder;
 import h2o.common.util.io.StreamUtil;
 import h2o.common.util.lang.RuntimeUtil;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
-
-import org.apache.commons.lang.StringUtils;
 
 public class SqlTable {
 	

@@ -5,9 +5,8 @@ import h2o.common.util.collections.builder.MapBuilder;
 import h2o.common.util.web.Beanfilter;
 import h2o.common.util.web.JsonUtil;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 
 

@@ -1,15 +1,13 @@
 package h2o.common.spring.jdbc.datasource;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import javax.sql.DataSource;
-
-import org.springframework.jdbc.datasource.DataSourceUtils;
-
 import h2o.common.Tools;
 import h2o.common.util.dao.datasource.AbstractDataSourceProxy;
 import h2o.common.util.dao.jdbc.AbstractConnectionProxy;
+import org.springframework.jdbc.datasource.DataSourceUtils;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class SpringTransactionManagerDataSource extends AbstractDataSourceProxy {
 

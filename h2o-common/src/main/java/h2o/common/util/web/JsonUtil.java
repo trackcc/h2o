@@ -1,11 +1,11 @@
 package h2o.common.util.web;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 public class JsonUtil {
 

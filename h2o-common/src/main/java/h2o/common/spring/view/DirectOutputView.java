@@ -1,11 +1,10 @@
 package h2o.common.spring.view;
 
-import java.util.Map;
+import org.springframework.web.servlet.View;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.servlet.View;
+import java.util.Map;
 
 public class DirectOutputView implements View {
 	

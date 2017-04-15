@@ -1,9 +1,8 @@
 package h2o.common.caucho;
 
+import com.caucho.hessian.client.HessianProxyFactory;
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-
-import com.caucho.hessian.client.HessianProxyFactory;
 
 public final class HessianFactory {
 	

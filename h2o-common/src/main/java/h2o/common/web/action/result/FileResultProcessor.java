@@ -1,15 +1,14 @@
 package h2o.common.web.action.result;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import h2o.common.web.action.Result;
+import h2o.common.web.action.ResultProcessor;
+import h2o.common.web.action.result.data.FileData;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import h2o.common.web.action.Result;
-import h2o.common.web.action.ResultProcessor;
-import h2o.common.web.action.result.data.FileData;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class FileResultProcessor implements ResultProcessor {
 	

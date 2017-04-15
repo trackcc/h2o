@@ -2,10 +2,9 @@ package h2o.common.util.lang;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
+import org.apache.commons.lang.ClassUtils;
 
 import java.lang.reflect.Constructor;
-
-import org.apache.commons.lang.ClassUtils;
 
 public class InstanceUtil {
 	
