@@ -3,6 +3,7 @@ package h2o.common.util.math;
 import h2o.common.spring.util.NumberUtils;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public final class Arith {
 
@@ -130,21 +131,27 @@ public final class Arith {
 
 	public static <T> T div( T v1, T v2, int scale) {
 
-		if (scale < 0) {
+        return div(v1,v2,scale,RoundingMode.HALF_UP);
 
-			throw new IllegalArgumentException(
+    }
 
-			"The scale must be a positive integer or zero");
+    public static <T> T div( T v1, T v2, int scale , RoundingMode roundingMode ) {
 
-		}
+        if (scale < 0) {
 
-		BigDecimal b1 = toBigDecimal(v1);
+            throw new IllegalArgumentException(
 
-		BigDecimal b2 = toBigDecimal(v2);
+                    "The scale must be a positive integer or zero");
 
-		return toOtherType( b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP) , v1 );
+        }
 
-	}
+        BigDecimal b1 = toBigDecimal(v1);
+
+        BigDecimal b2 = toBigDecimal(v2);
+
+        return toOtherType( b1.divide(b2, scale, roundingMode) , v1 );
+
+    }
 
 	/**
 	 * 
@@ -160,7 +167,13 @@ public final class Arith {
 	 * 
 	 */
 
-	public static <T> T round(T v, int scale) {
+    public static <T> T round(T v, int scale ) {
+
+        return round(v,scale,RoundingMode.HALF_UP);
+
+    }
+
+	public static <T> T round(T v, int scale , RoundingMode roundingMode) {
 
 		if (scale < 0) {
 
@@ -174,9 +187,11 @@ public final class Arith {
 
 		BigDecimal one = new BigDecimal("1");
 
-		return toOtherType(b.divide(one, scale, BigDecimal.ROUND_HALF_UP) , v );
+		return toOtherType(b.divide( one , scale , roundingMode ) , v );
 
 	}
+
+
 	
 	
 	public static <T> int compareTo( T v1, T v2 ) {
