@@ -26,6 +26,12 @@ public class HttpClient {
 
 	private final CloseableHttpClient client;
 
+	private volatile HttpEchoCallback callback = null;
+
+    public void setCallback(HttpEchoCallback callback) {
+        this.callback = callback;
+    }
+
     public HttpClient() {
         this.contentType = null;
         this.charset = null;
@@ -175,7 +181,7 @@ public class HttpClient {
 
     public String echo(HttpUriRequest request) {
 
-        return HttpClientUtil.echo( client , request , charset , false );
+        return HttpClientUtil.echo( client , false , request , charset , callback );
 
     }
 

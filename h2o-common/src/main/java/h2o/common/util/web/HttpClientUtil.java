@@ -214,20 +214,31 @@ public class HttpClientUtil {
 	
 	public static String echo(HttpUriRequest request , String charset ) {
 
-        return echo( HttpClients.createDefault() , request, charset , true );
+        return echo( HttpClients.createDefault() , true , request, charset , null );
 
 	}
 
 
-    public static String echo( CloseableHttpClient httpclient , HttpUriRequest request , String charset , boolean close ) {
+    public static String echo( CloseableHttpClient httpclient , boolean close , HttpUriRequest request , String charset , HttpEchoCallback  callback ) {
 
         CloseableHttpResponse response = null;
         try {
 
             response = httpclient.execute(request);
-            HttpEntity entity = response.getEntity();
 
-            return entity == null ? null : EntityUtils.toString(entity,charset);
+            if( callback == null ) {
+
+                HttpEntity entity = response.getEntity();
+
+                return entity == null ? null : EntityUtils.toString(entity,charset);
+
+            } else {
+
+                return callback.getString( response , charset );
+
+            }
+
+
 
         } catch( Exception e ) {
 
