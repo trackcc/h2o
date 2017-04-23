@@ -17,19 +17,33 @@ public class StreamUtil {
 	}
 
 	public static Reader readFile(String path, String characterEncoding) {
-
-		Tools.log.debug("readFile path -- {}", path);
-		URL fileUrl = ConfigurationUtils.locate(path);
-
-		Tools.log.debug("readFile fileUrl -- {}", fileUrl);
-
-		try {
-			return toReader(fileUrl.openStream(), characterEncoding);
-		} catch (IOException e) {
-			Tools.log.debug("readFile", e);
-			throw ExceptionUtil.toRuntimeException(e);
-		}
+        return toReader( openStream( path ) , characterEncoding);
 	}
+
+
+	public static InputStream openStream( String path ) {
+
+
+        try {
+            return getURL( path ).openStream();
+        } catch (IOException e) {
+            Tools.log.debug("openStream", e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
+    }
+
+    public static URL getURL( String path ) {
+
+        Tools.log.debug("path -- {}", path);
+        URL url = ConfigurationUtils.locate(path);
+
+        Tools.log.debug("url -- {}", url);
+
+        return url;
+
+    }
+
+
 
 	public static Reader readFile(File f) {
 		return readFile(f, null);
