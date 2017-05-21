@@ -77,8 +77,10 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
                     });
 
                 } catch ( Exception e ) {
+
                     e.printStackTrace();
                     throw ExceptionUtil.toRuntimeException(e);
+
                 }
 
             }
@@ -87,11 +89,13 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
 
     @Override
     public void stop() {
+
         try {
             this.channel.close();
         } catch ( Exception e ) {
             e.printStackTrace();
         }
+
 
     }
 

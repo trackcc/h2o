@@ -29,9 +29,12 @@ public class RabbitMQEventSender implements EventSender {
             }
 
         } catch ( Exception e ) {
+
             e.printStackTrace();
             throw ExceptionUtil.toRuntimeException(e);
+
         } finally {
+
             if ( channel != null ) {
                 try {
                     channel.close();
@@ -39,6 +42,7 @@ public class RabbitMQEventSender implements EventSender {
                     e.printStackTrace();
                 }
             }
+
         }
 
     }
