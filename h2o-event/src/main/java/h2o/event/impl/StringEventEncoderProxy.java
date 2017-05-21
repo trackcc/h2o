@@ -1,7 +1,6 @@
 package h2o.event.impl;
 
 import h2o.common.Tools;
-import h2o.common.redis.JedisUtil;
 import h2o.common.util.collections.builder.MapBuilder;
 import h2o.event.Event;
 import h2o.event.EventEncoder;
@@ -10,27 +9,15 @@ import org.apache.commons.lang.StringUtils;
 import java.util.Map;
 
 /**
- * Created by zhangjianwei on 16/7/3.
+ * Created by zhangjianwei on 2017/5/20.
  */
-public class RedisEventHelper {
+public class StringEventEncoderProxy implements EventEncoder<String> {
 
-    final String eventQueueName;
-
-    final JedisUtil jedisUtil;
-
-    public RedisEventHelper(JedisUtil jedisUtil ) {
-        this(jedisUtil, "EventQueue");
-    }
-
-    public RedisEventHelper(JedisUtil jedisUtil , String eventQueue ) {
-        this.jedisUtil = jedisUtil;
-        this.eventQueueName = eventQueue;
-    }
 
     private final Map<String,EventEncoder<String>> ees = MapBuilder.newConcurrentHashMap();
 
-
-    Event parse(String strEvent ) {
+    @Override
+    public Event parse(String strEvent ) {
 
         String type = StringUtils.substringBefore( strEvent , ":" );
 
@@ -46,7 +33,8 @@ public class RedisEventHelper {
 
     }
 
-    String encode( Event event ) {
+    @Override
+    public String encode( Event event ) {
 
         if( event == null ) {
             return null;
@@ -64,7 +52,7 @@ public class RedisEventHelper {
     }
 
 
-    public RedisEventHelper regEventEncoder(String eventType, EventEncoder<String> eventEncoder ) {
+    public StringEventEncoderProxy regEventEncoder(String eventType, EventEncoder<String> eventEncoder ) {
         ees.put(eventType,eventEncoder);
         return this;
     }
@@ -78,6 +66,8 @@ public class RedisEventHelper {
             }
         }
     }
+
+
 
 
 }

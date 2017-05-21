@@ -5,8 +5,8 @@ package h2o.event;
  */
 public interface EventEncoder<S> {
 
-    Event parse(S strEvent);
+    Event parse( S sEvent );
 
-    S encode(Event event);
+    S encode( Event event );
 
 }

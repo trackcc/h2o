@@ -1,10 +1,8 @@
 package h2o.event.impl;
 
 
-import h2o.common.Tools;
 import h2o.common.concurrent.pac.Consumer;
 import h2o.common.concurrent.pac.ConsumersController;
-import h2o.common.util.collections.builder.MapBuilder;
 import h2o.event.Event;
 import h2o.event.EventHandler;
 import h2o.event.EventManager;
@@ -19,7 +17,7 @@ import java.util.concurrent.Executors;
 public class PACEventManager implements EventManager {
 
 
-    private final Map<String,EventHandler>  ehs = MapBuilder.newConcurrentHashMap();
+    private final DefaultEventManager defEventManager = new DefaultEventManager();
 
     private final ConsumersController<Event> cc;
 
@@ -30,12 +28,7 @@ public class PACEventManager implements EventManager {
 
             @Override
             public void consume(Event event) {
-                EventHandler eventHandler = ehs.get(event.getEventType());
-                if( eventHandler == null ) {
-                    Tools.log.error("没有对应的事件处理器[{}]",event);
-                } else {
-                    eventHandler.proc(event);
-                }
+                defEventManager.onEvent( event );
             }
 
         } , n );
@@ -49,17 +42,16 @@ public class PACEventManager implements EventManager {
 
     @Override
     public void regEventHandler(String eventType, EventHandler eventHandler) {
-        ehs.put(eventType,eventHandler);
+        defEventManager.regEventHandler( eventType , eventHandler );
     }
 
-
-
-    // Spring
     public void setEventHandlers(Map<String, EventHandler> ehs) {
-        this.ehs.putAll(ehs);
+        defEventManager.setEventHandlers(ehs);
     }
 
     public void done() {
         cc.done();
     }
+
+
 }

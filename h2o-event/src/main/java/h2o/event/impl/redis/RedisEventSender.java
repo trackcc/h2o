@@ -1,4 +1,4 @@
-package h2o.event.impl;
+package h2o.event.impl.redis;
 
 import h2o.common.redis.JedisCallBack;
 import h2o.event.Event;
@@ -10,25 +10,25 @@ import redis.clients.jedis.Jedis;
  */
 public class RedisEventSender implements EventSender {
 
-    private RedisEventHelper redisHelper;
+    private final RedisEventHelper helper;
 
     public RedisEventSender( RedisEventHelper redisHelper ) {
-        this.redisHelper = redisHelper;
+        this.helper = redisHelper;
     }
 
 
     @Override
     public void putEvents( final Event... events) {
 
-        redisHelper.jedisUtil.callback(new JedisCallBack<Void>() {
+        helper.jedisUtil.callback(new JedisCallBack<Void>() {
 
             @Override
             public Void doCallBack(Jedis jedis) throws Exception {
 
                 for( Event event : events ) {
-                    String strEvent = redisHelper.encode(event);
+                    String strEvent = helper.encode(event);
                     if( strEvent != null ) {
-                        jedis.lpush( redisHelper.eventQueueName , strEvent );
+                        jedis.lpush( helper.eventQueueName , strEvent );
                     }
                 }
 
