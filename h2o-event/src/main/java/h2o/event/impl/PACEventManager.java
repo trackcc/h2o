@@ -1,8 +1,10 @@
 package h2o.event.impl;
 
 
+import h2o.common.Tools;
 import h2o.common.concurrent.pac.Consumer;
 import h2o.common.concurrent.pac.ConsumersController;
+import h2o.common.exception.ExceptionUtil;
 import h2o.event.Event;
 import h2o.event.EventManager;
 
@@ -39,7 +41,15 @@ public class PACEventManager extends BasicEventManager implements EventManager {
 
     @Override
     public void onEvent(Event event) {
-        cc.offerProduct(event);
+
+        try {
+            cc.putProduct(event);
+        } catch ( Exception e ) {
+            Tools.log.error(e);
+            throw ExceptionUtil.toRuntimeException(e);
+        }
+
+
     }
 
 

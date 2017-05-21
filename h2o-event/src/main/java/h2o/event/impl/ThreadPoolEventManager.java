@@ -18,6 +18,10 @@ public class ThreadPoolEventManager extends BasicEventManager implements EventMa
         this.es = Executors.newCachedThreadPool();
     }
 
+    public ThreadPoolEventManager( int n ) {
+        this.es = Executors.newFixedThreadPool(n);
+    }
+
     public ThreadPoolEventManager(ExecutorService es) {
         this.es = es;
     }
