@@ -1,4 +1,4 @@
-package h2o.event.impl;
+package h2o.event.encoder;
 
 import h2o.common.Tools;
 import h2o.common.util.collections.builder.MapBuilder;
@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by zhangjianwei on 2017/5/20.
  */
-public class StringEventEncoderProxy implements EventEncoder<String> {
+public class TypeEventEncoderProxy implements EventEncoder<String> {
 
 
     private final Map<String,EventEncoder<String>> ees = MapBuilder.newConcurrentHashMap();
@@ -52,7 +52,7 @@ public class StringEventEncoderProxy implements EventEncoder<String> {
     }
 
 
-    public StringEventEncoderProxy regEventEncoder(String eventType, EventEncoder<String> eventEncoder ) {
+    public TypeEventEncoderProxy regEventEncoder(String eventType, EventEncoder<String> eventEncoder ) {
         ees.put(eventType,eventEncoder);
         return this;
     }

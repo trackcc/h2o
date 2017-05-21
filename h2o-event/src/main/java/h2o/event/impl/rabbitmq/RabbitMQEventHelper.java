@@ -4,7 +4,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import h2o.common.exception.ExceptionUtil;
 import h2o.event.Event;
-import h2o.event.impl.StringEventEncoderProxy;
+import h2o.event.EventEncoder;
 
 /**
  * Created by zhangjianwei on 16/7/3.
@@ -12,7 +12,7 @@ import h2o.event.impl.StringEventEncoderProxy;
 public class RabbitMQEventHelper {
 
     private final ConnectionFactory connectionFactory;
-    private final StringEventEncoderProxy eventEncoderProxy;
+    private final EventEncoder<String> eventEncoder;
 
     final Connection connection;
 
@@ -21,9 +21,9 @@ public class RabbitMQEventHelper {
     String queue;
 
 
-    public RabbitMQEventHelper( StringEventEncoderProxy eventEncoderProxy , ConnectionFactory connectionFactory ) {
+    public RabbitMQEventHelper( EventEncoder<String> eventEncoder , ConnectionFactory connectionFactory ) {
 
-        this.eventEncoderProxy = eventEncoderProxy;
+        this.eventEncoder = eventEncoder;
         this.connectionFactory = connectionFactory;
 
         try {
@@ -42,7 +42,7 @@ public class RabbitMQEventHelper {
 
             String strEvent = new String( bytesEvent , "UTF-8");
 
-            return eventEncoderProxy.parse(strEvent);
+            return eventEncoder.parse(strEvent);
 
         } catch ( Exception e ) {
             throw ExceptionUtil.toRuntimeException(e);
@@ -53,7 +53,7 @@ public class RabbitMQEventHelper {
 
     byte[] encode( Event event ) {
 
-        String strEvent = eventEncoderProxy.encode( event );
+        String strEvent = eventEncoder.encode( event );
 
         try {
 

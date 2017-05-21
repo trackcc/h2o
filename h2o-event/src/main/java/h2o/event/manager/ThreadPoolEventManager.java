@@ -1,4 +1,4 @@
-package h2o.event.impl;
+package h2o.event.manager;
 
 import h2o.event.Event;
 import h2o.event.EventManager;

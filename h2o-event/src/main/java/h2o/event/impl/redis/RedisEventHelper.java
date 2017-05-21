@@ -4,7 +4,7 @@ import h2o.common.redis.JedisUtil;
 import h2o.common.util.collections.builder.MapBuilder;
 import h2o.event.Event;
 import h2o.event.EventEncoder;
-import h2o.event.impl.StringEventEncoderProxy;
+import h2o.event.encoder.TypeEventEncoderProxy;
 
 import java.util.Map;
 
@@ -17,14 +17,14 @@ public class RedisEventHelper {
 
     final JedisUtil jedisUtil;
 
-    private final StringEventEncoderProxy eventEncoderProxy;
+    private final EventEncoder<String> eventEncoder;
 
-    public RedisEventHelper( StringEventEncoderProxy eventEncoderProxy , JedisUtil jedisUtil ) {
-        this(eventEncoderProxy , jedisUtil, "EventQueue");
+    public RedisEventHelper( EventEncoder<String> eventEncoder , JedisUtil jedisUtil ) {
+        this(eventEncoder , jedisUtil, "EventQueue");
     }
 
-    public RedisEventHelper(StringEventEncoderProxy eventEncoderProxy , JedisUtil jedisUtil , String eventQueue ) {
-        this.eventEncoderProxy = eventEncoderProxy;
+    public RedisEventHelper( EventEncoder<String> eventEncoder , JedisUtil jedisUtil , String eventQueue ) {
+        this.eventEncoder = eventEncoder;
         this.jedisUtil = jedisUtil;
         this.eventQueueName = eventQueue;
     }
@@ -33,11 +33,11 @@ public class RedisEventHelper {
 
 
     Event parse(String strEvent ) {
-        return eventEncoderProxy.parse( strEvent );
+        return eventEncoder.parse( strEvent );
     }
 
     String encode( Event event ) {
-        return eventEncoderProxy.encode( event );
+        return eventEncoder.encode( event );
     }
 
 }
