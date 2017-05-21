@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by zhangjianwei on 2017/5/20.
  */
-public class DefaultEventManager implements EventManager {
+public class BasicEventManager implements EventManager {
 
     private final Map<String,EventHandler> ehs = MapBuilder.newConcurrentHashMap();
 
