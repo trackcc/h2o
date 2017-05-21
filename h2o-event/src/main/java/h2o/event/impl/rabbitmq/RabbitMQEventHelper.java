@@ -22,6 +22,7 @@ public class RabbitMQEventHelper {
 
 
     public RabbitMQEventHelper( StringEventEncoderProxy eventEncoderProxy , ConnectionFactory connectionFactory ) {
+
         this.eventEncoderProxy = eventEncoderProxy;
         this.connectionFactory = connectionFactory;
 
