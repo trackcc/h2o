@@ -1,7 +1,7 @@
 package h2o.event.impl;
 
 
-import h2o.event.EventManager;
+import h2o.event.EventProcessor;
 import h2o.event.EventReceiver;
 
 /**
@@ -11,10 +11,10 @@ public abstract class AbstractEventReceiver implements EventReceiver {
 
 
 
-    protected EventManager eventManager;
+    protected EventProcessor eventManager;
 
     @Override
-    public void setEventManager(EventManager em) {
+    public void setEventManager(EventProcessor em) {
         this.eventManager = em;
     }
 

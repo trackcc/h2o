@@ -5,7 +5,7 @@ package h2o.event;
  */
 public interface EventReceiver {
 
-    void setEventManager(EventManager em);
+    void setEventManager(EventProcessor em);
 
     void start();
 

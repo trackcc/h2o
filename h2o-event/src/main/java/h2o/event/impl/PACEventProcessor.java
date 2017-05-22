@@ -6,7 +6,7 @@ import h2o.common.concurrent.pac.Consumer;
 import h2o.common.concurrent.pac.ConsumersController;
 import h2o.common.exception.ExceptionUtil;
 import h2o.event.Event;
-import h2o.event.EventManager;
+import h2o.event.EventProcessor;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Executors;
@@ -14,12 +14,12 @@ import java.util.concurrent.Executors;
 /**
  * Created by zhangjianwei on 16/7/2.
  */
-public class PACEventManager extends BasicEventManager implements EventManager {
+public class PACEventProcessor extends BasicEventProcessor implements EventProcessor {
 
 
     private final ConsumersController<Event> cc;
 
-    public PACEventManager( int n ) {
+    public PACEventProcessor(int n ) {
     	
         cc = new ConsumersController<Event>(Executors.newFixedThreadPool(n),new ArrayBlockingQueue<Event>(n));
         cc.addConsumers( new Consumer<Event>() {

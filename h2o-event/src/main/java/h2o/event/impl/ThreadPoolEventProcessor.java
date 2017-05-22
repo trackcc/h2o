@@ -1,7 +1,7 @@
 package h2o.event.impl;
 
 import h2o.event.Event;
-import h2o.event.EventManager;
+import h2o.event.EventProcessor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -9,20 +9,20 @@ import java.util.concurrent.Executors;
 /**
  * Created by zhangjianwei on 2017/5/21.
  */
-public class ThreadPoolEventManager extends BasicEventManager implements EventManager {
+public class ThreadPoolEventProcessor extends BasicEventProcessor implements EventProcessor {
 
 
     private final ExecutorService es;
 
-    public ThreadPoolEventManager() {
+    public ThreadPoolEventProcessor() {
         this.es = Executors.newCachedThreadPool();
     }
 
-    public ThreadPoolEventManager( int n ) {
+    public ThreadPoolEventProcessor(int n ) {
         this.es = Executors.newFixedThreadPool(n);
     }
 
-    public ThreadPoolEventManager(ExecutorService es) {
+    public ThreadPoolEventProcessor(ExecutorService es) {
         this.es = es;
     }
 

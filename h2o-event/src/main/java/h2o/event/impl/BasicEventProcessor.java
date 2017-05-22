@@ -1,32 +1,26 @@
 package h2o.event.impl;
 
-import h2o.common.Tools;
 import h2o.common.util.collections.builder.MapBuilder;
 import h2o.event.Event;
 import h2o.event.EventHandler;
-import h2o.event.EventManager;
+import h2o.event.EventProcessor;
 
 import java.util.Map;
 
 /**
  * Created by zhangjianwei on 2017/5/20.
  */
-public class BasicEventManager implements EventManager {
+public class BasicEventProcessor extends AbstractEventProcessor implements EventProcessor {
 
     private final Map<String,EventHandler> ehs = MapBuilder.newConcurrentHashMap();
 
 
     @Override
-    public void onEvent(Event event) {
-        EventHandler eventHandler = ehs.get(event.getEventType());
-        if( eventHandler == null ) {
-            Tools.log.error("没有对应的事件处理器[{}]",event);
-        } else {
-            eventHandler.proc(event);
-        }
+    protected EventHandler getEventHandler(Event event) {
+        return ehs.get( event.getEventType() );
     }
 
-    @Override
+
     public void regEventHandler(String eventType, EventHandler eventHandler) {
         ehs.put(eventType,eventHandler);
     }
@@ -35,5 +29,6 @@ public class BasicEventManager implements EventManager {
     public void setEventHandlers(Map<String, EventHandler> ehs) {
         this.ehs.putAll(ehs);
     }
+
 
 }
