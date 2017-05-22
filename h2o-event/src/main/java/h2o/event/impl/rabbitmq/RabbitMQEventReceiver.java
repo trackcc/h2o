@@ -40,7 +40,7 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                     Event event = helper.parse(body);
-                    eventManager.onEvent(event);
+                    eventProcessor.onEvent(event);
                 }
 
             });

@@ -37,7 +37,7 @@ public abstract class AbstractDispatcherEventReceiver extends AbstractEventRecei
                     return 0;
                 } else {
                     for( Event event : events ) {
-                        eventManager.onEvent(event);
+                        eventProcessor.onEvent(event);
                     }
                     return 1;
                 }

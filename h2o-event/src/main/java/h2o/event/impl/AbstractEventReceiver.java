@@ -11,11 +11,11 @@ public abstract class AbstractEventReceiver implements EventReceiver {
 
 
 
-    protected EventProcessor eventManager;
+    protected EventProcessor eventProcessor;
 
     @Override
-    public void setEventManager(EventProcessor em) {
-        this.eventManager = em;
+    public void setEventProcessor(EventProcessor ep) {
+        this.eventProcessor = ep;
     }
 
 
