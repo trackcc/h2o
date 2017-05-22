@@ -15,11 +15,32 @@ public class RabbitMQUtil {
     private final Connection connection;
     private final Channel channel;
 
+    private final boolean closeConnection;
+
     public RabbitMQUtil(ConnectionFactory connectionFactory) {
 
         try {
-            connection = connectionFactory.newConnection();
-            channel = connection.createChannel();
+
+            this.connection = connectionFactory.newConnection();
+            this.channel = connection.createChannel();
+
+            this.closeConnection = true;
+
+        } catch ( Exception e ) {
+            throw ExceptionUtil.toRuntimeException(e);
+        }
+
+    }
+
+    public RabbitMQUtil( Connection connection ) {
+
+        try {
+
+            this.connection = connection;
+            this.channel = connection.createChannel();
+
+            this.closeConnection = false;
+
         } catch ( Exception e ) {
             throw ExceptionUtil.toRuntimeException(e);
         }
@@ -169,7 +190,8 @@ public class RabbitMQUtil {
             } catch (Exception e) {
             }
         }
-        if( this.connection != null ) {
+
+        if( this.closeConnection && this.connection != null ) {
             try {
                 this.connection.close();
             } catch (Exception e) {
