@@ -1,4 +1,4 @@
-package h2o.event.encoder;
+package h2o.event.impl;
 
 import h2o.common.Tools;
 import h2o.common.util.collections.builder.MapBuilder;

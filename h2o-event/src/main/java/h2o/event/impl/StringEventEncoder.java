@@ -1,4 +1,4 @@
-package h2o.event.encoder;
+package h2o.event.impl;
 
 import h2o.common.util.bean.serialize.BeanStrSerialize;
 import h2o.common.util.bean.serialize.JsonBeanSerialize;
