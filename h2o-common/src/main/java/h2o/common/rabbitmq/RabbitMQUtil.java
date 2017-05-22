@@ -1,4 +1,4 @@
-package h2o.event.impl.rabbitmq;
+package h2o.common.rabbitmq;
 
 import com.rabbitmq.client.*;
 import h2o.common.exception.ExceptionUtil;
