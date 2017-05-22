@@ -18,11 +18,11 @@ public class ThreadPoolEventProcessor extends BasicEventProcessor implements Eve
         this.es = Executors.newCachedThreadPool();
     }
 
-    public ThreadPoolEventProcessor(int n ) {
+    public ThreadPoolEventProcessor( int n ) {
         this.es = Executors.newFixedThreadPool(n);
     }
 
-    public ThreadPoolEventProcessor(ExecutorService es) {
+    public ThreadPoolEventProcessor( ExecutorService es ) {
         this.es = es;
     }
 
