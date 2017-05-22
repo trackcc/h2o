@@ -10,6 +10,7 @@ import h2o.event.EventReceiver;
 import h2o.event.impl.AbstractEventReceiver;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -68,6 +69,11 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
 
                     }
 
+                }
+
+                try {
+                    TimeUnit.SECONDS.sleep(30);
+                } catch (InterruptedException e) {
                 }
             }
 
