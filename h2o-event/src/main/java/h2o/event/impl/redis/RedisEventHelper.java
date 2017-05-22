@@ -4,7 +4,6 @@ import h2o.common.redis.JedisUtil;
 import h2o.common.util.collections.builder.MapBuilder;
 import h2o.event.Event;
 import h2o.event.EventEncoder;
-import h2o.event.encoder.TypeEventEncoderProxy;
 
 import java.util.Map;
 

@@ -1,7 +1,10 @@
 package h2o.event.impl.rabbitmq;
 
-import com.rabbitmq.client.*;
-import h2o.common.exception.ExceptionUtil;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.DefaultConsumer;
+import com.rabbitmq.client.Envelope;
+import h2o.common.Tools;
 import h2o.event.Event;
 import h2o.event.EventReceiver;
 import h2o.event.impl.AbstractEventReceiver;
@@ -16,57 +19,29 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
 
 
     private final RabbitMQEventHelper helper;
-    private final Channel channel;
 
     public RabbitMQEventReceiver(RabbitMQEventHelper helper) {
         this.helper = helper;
-
-        try {
-            this.channel = helper.connection.createChannel();
-        } catch ( Exception e ) {
-            e.printStackTrace();
-            throw ExceptionUtil.toRuntimeException(e);
-        }
     }
 
 
 
-    @Override
-    public void start() {
 
-        new Thread(new Runnable() {
+    private volatile boolean stop = false;
 
-            @Override
-            public void run() {
+    private final Thread recvThread = new Thread(new Runnable() {
 
+        @Override
+        public void run() {
+
+            while ( !stop ) {
+
+                Channel channel = null;
                 try {
 
-                    channel.basicConsume(helper.queue, true, new Consumer() {
+                    channel = helper.connection.createChannel();
 
-                        @Override
-                        public void handleConsumeOk(String consumerTag) {
-
-                        }
-
-                        @Override
-                        public void handleCancelOk(String consumerTag) {
-
-                        }
-
-                        @Override
-                        public void handleCancel(String consumerTag) throws IOException {
-
-                        }
-
-                        @Override
-                        public void handleShutdownSignal(String consumerTag, ShutdownSignalException sig) {
-
-                        }
-
-                        @Override
-                        public void handleRecoverOk(String consumerTag) {
-
-                        }
+                    channel.basicConsume(helper.queue, true, new DefaultConsumer(channel) {
 
                         @Override
                         public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
@@ -79,23 +54,40 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
                 } catch ( Exception e ) {
 
                     e.printStackTrace();
-                    throw ExceptionUtil.toRuntimeException(e);
+                    Tools.log.error(e);
+
+                } finally {
+
+                    if ( channel != null ) {
+
+                        try {
+                            channel.close();
+                        } catch ( Exception e ) {
+                            e.printStackTrace();
+                        }
+
+                    }
 
                 }
-
             }
-        }).start();
+
+        }
+    });
+
+
+
+
+    @Override
+    public void start() {
+
+        this.recvThread.start();
     }
 
     @Override
     public void stop() {
 
-        try {
-            this.channel.close();
-        } catch ( Exception e ) {
-            e.printStackTrace();
-        }
-
+        this.stop = true;
+        this.recvThread.interrupt();
 
     }
 
