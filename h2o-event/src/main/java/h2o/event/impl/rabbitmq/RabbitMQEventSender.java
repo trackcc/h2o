@@ -16,12 +16,16 @@ public class RabbitMQEventSender implements EventSender {
         this.helper = helper;
     }
 
+    private Channel channel;
+
     @Override
     public void putEvents( Event... events ) {
 
-        Channel channel = null;
+
         try {
-            channel = helper.connection.createChannel();
+            if ( channel == null ) {
+                channel = helper.connection.createChannel();
+            }
 
             for ( Event event : events ) {
                 byte[] body = helper.encode(event);
@@ -33,17 +37,26 @@ public class RabbitMQEventSender implements EventSender {
             e.printStackTrace();
             throw ExceptionUtil.toRuntimeException(e);
 
-        } finally {
+        }
 
-            if ( channel != null ) {
-                try {
-                    channel.close();
-                } catch ( Exception e ) {
-                    e.printStackTrace();
-                }
+    }
+
+
+    public void close() {
+
+        if ( channel != null ) {
+
+            try {
+                channel.close();
+            } catch ( Exception e ) {
+                e.printStackTrace();
             }
 
+            channel = null;
         }
+
+        helper.close();
+
 
     }
 

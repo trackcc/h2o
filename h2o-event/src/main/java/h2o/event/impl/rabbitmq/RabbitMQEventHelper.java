@@ -66,6 +66,15 @@ public class RabbitMQEventHelper {
     }
 
 
+    void close() {
+        if ( this.connection != null ) {
+            try {
+                this.connection.close();
+            } catch ( Exception e ) {}
+        }
+    }
+
+
     public void setExchange(String exchange) {
         this.exchange = exchange;
     }
