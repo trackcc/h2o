@@ -34,8 +34,21 @@ public class ButterflyFactory implements Factory {
 		
 		return null;
 	}
-	
-	public void dispose() {
+
+
+    public void init() {
+        bf.init();
+    }
+
+    public void execPhase(String phase) {
+        bf.execPhase(phase);
+    }
+
+    public void execPhase(String phase, String name) {
+        bf.execPhase(phase, name);
+    }
+
+    public void dispose() {
 		bf.dispose();
 	}
 

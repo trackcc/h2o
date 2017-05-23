@@ -134,13 +134,23 @@ public class Butterfly {
 		this.getContainer().init();
 	}
 	
-	public void dispose() {
-		this.getContainer().dispose();
-	}
-	
-	
-	
-	public IContainer getContainer() {		
+
+    public void execPhase(String phase) {
+        this.getContainer().execPhase( phase );
+    }
+
+    public void execPhase(String phase, String name) {
+        this.getContainer().execPhase( phase , name );
+    }
+
+
+    public void dispose() {
+        this.getContainer().dispose();
+    }
+
+
+
+    public IContainer getContainer() {
 		if( !isInit ) {			
 			lock.lock();
 			try {

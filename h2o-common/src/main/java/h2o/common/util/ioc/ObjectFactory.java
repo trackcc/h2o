@@ -17,8 +17,20 @@ public class ObjectFactory {
 		return bf.silentlyGet(id,args);
 	}
 
-	
-	public static void dispose() {
+
+	public static void init() {
+        bf.init();
+    }
+
+    public static void execPhase(String phase) {
+        bf.execPhase(phase);
+    }
+
+    public static void execPhase(String phase, String name) {
+        bf.execPhase(phase, name);
+    }
+
+    public static void dispose() {
 		bf.dispose();
 	}
 	
