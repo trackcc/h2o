@@ -2,6 +2,7 @@ package h2o.event.impl;
 
 import h2o.common.Tools;
 import h2o.event.Event;
+import h2o.event.EventContext;
 import h2o.event.EventHandler;
 import h2o.event.EventProcessor;
 
@@ -10,16 +11,18 @@ import h2o.event.EventProcessor;
  */
 public abstract class AbstractEventProcessor implements EventProcessor {
 
+
     @Override
-    public void onEvent(Event event) {
+    public void proc( EventContext context , Event event ) {
         EventHandler eventHandler = getEventHandler(event);
         if( eventHandler == null ) {
-            Tools.log.error("没有对应的事件处理器[{}]",event);
+            Tools.log.error("没有对应的事件处理器[{}]" , event );
         } else {
-            eventHandler.proc(event);
+            eventHandler.onEvent( context , event );
         }
     }
 
-    protected abstract EventHandler getEventHandler(Event even);
+
+    protected abstract EventHandler getEventHandler( Event event );
 
 }

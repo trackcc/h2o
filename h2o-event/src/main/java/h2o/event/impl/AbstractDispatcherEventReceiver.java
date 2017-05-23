@@ -37,7 +37,7 @@ public abstract class AbstractDispatcherEventReceiver extends AbstractEventRecei
                     return 0;
                 } else {
                     for( Event event : events ) {
-                        eventProcessor.onEvent(event);
+                        procEvent(event);
                     }
                     return 1;
                 }
@@ -46,6 +46,12 @@ public abstract class AbstractDispatcherEventReceiver extends AbstractEventRecei
             }
         });
     }
+
+
+    protected void procEvent( Event event) {
+        eventProcessor.proc( new NothingEventContext() , event);
+    }
+
 
     @Override
     public void stop() {

@@ -1,6 +1,7 @@
 package h2o.event.impl;
 
 import h2o.event.Event;
+import h2o.event.EventContext;
 import h2o.event.EventProcessor;
 
 import java.util.concurrent.ExecutorService;
@@ -26,19 +27,19 @@ public class ThreadPoolEventProcessor extends BasicEventProcessor implements Eve
         this.es = es;
     }
 
-    private void procEvent( Event event ) {
-        super.onEvent(event);
+    private void _procEvent( EventContext context , Event event ) {
+        super.proc( context , event );
     }
 
 
     @Override
-    public void onEvent( final  Event event) {
+    public void proc( final EventContext context ,  final  Event event) {
 
         this.es.submit(new Runnable() {
 
             @Override
             public void run() {
-                procEvent(event);
+                _procEvent( context , event);
             }
 
         });

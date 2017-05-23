@@ -1,13 +1,11 @@
 package h2o.event.impl.rabbitmq;
 
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.DefaultConsumer;
-import com.rabbitmq.client.Envelope;
+import com.rabbitmq.client.*;
 import h2o.common.Tools;
 import h2o.event.Event;
 import h2o.event.EventReceiver;
 import h2o.event.impl.AbstractEventReceiver;
+import h2o.event.impl.NothingEventContext;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -25,7 +23,9 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
         this.helper = helper;
     }
 
-    private Channel channel;
+
+
+    private volatile Channel channel;
 
 
     @Override
@@ -33,17 +33,8 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
 
         try {
 
-
             channel = helper.connection.createChannel();
-            channel.basicConsume(helper.queue, true, new DefaultConsumer(channel) {
-
-                @Override
-                public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
-                    Event event = helper.parse(body);
-                    eventProcessor.onEvent(event);
-                }
-
-            });
+            channel.basicConsume(helper.queue, true, callback(channel) );
 
         } catch ( Exception e ) {
 
@@ -54,6 +45,21 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
 
         }
     }
+
+
+    protected Consumer callback( Channel channel ) {
+
+       return new DefaultConsumer(channel) {
+
+           @Override
+           public void handleDelivery( String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body ) throws IOException {
+               Event event = helper.parse(body);
+               eventProcessor.proc( new NothingEventContext() , event );
+           }
+
+       };
+    }
+
 
     @Override
     public void stop() {

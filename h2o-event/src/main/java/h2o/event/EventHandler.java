@@ -5,6 +5,6 @@ package h2o.event;
  */
 public interface EventHandler {
 
-     void proc(Event event);
+     void onEvent( EventContext context , Event event);
 
 }
