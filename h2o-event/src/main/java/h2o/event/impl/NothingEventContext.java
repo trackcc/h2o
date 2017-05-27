@@ -11,6 +11,9 @@ public class NothingEventContext implements EventContext {
     public void confirm() {}
 
     @Override
+    public void reject() {}
+
+    @Override
     public void delete() {}
 
     @Override
