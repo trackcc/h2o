@@ -7,6 +7,8 @@ public interface EventContext {
 
     void confirm();
 
+    void reject();
+
     void delete();
 
     void reply( Object r );
