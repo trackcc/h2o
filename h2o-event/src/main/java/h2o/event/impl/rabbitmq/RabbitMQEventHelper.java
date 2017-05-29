@@ -14,17 +14,21 @@ public class RabbitMQEventHelper {
     private final ConnectionFactory connectionFactory;
     private final EventEncoder<String> eventEncoder;
 
-    final Connection connection;
+    public final Connection connection;
 
-    String exchange;
-    String routingKey;
-    String queue;
+    public final String exchange;
+    public final String routingKey;
+    public final String queue;
 
 
-    public RabbitMQEventHelper( EventEncoder<String> eventEncoder , ConnectionFactory connectionFactory ) {
+    public RabbitMQEventHelper( EventEncoder<String> eventEncoder , ConnectionFactory connectionFactory , String exchange , String routingKey , final String queue ) {
 
         this.eventEncoder = eventEncoder;
         this.connectionFactory = connectionFactory;
+
+        this.exchange = exchange;
+        this.routingKey = routingKey;
+        this.queue = queue;
 
         try {
             this.connection = connectionFactory.newConnection();
@@ -36,7 +40,7 @@ public class RabbitMQEventHelper {
 
 
 
-    Event parse( byte[] bytesEvent ) {
+    public Event parse( byte[] bytesEvent ) {
 
         try {
 
@@ -51,7 +55,7 @@ public class RabbitMQEventHelper {
 
     }
 
-    byte[] encode( Event event ) {
+    public byte[] encode( Event event ) {
 
         String strEvent = eventEncoder.encode( event );
 
@@ -66,7 +70,7 @@ public class RabbitMQEventHelper {
     }
 
 
-    void close() {
+    public void close() {
         if ( this.connection != null ) {
             try {
                 this.connection.close();
@@ -75,15 +79,6 @@ public class RabbitMQEventHelper {
     }
 
 
-    public void setExchange(String exchange) {
-        this.exchange = exchange;
-    }
 
-    public void setRoutingKey(String routingKey) {
-        this.routingKey = routingKey;
-    }
 
-    public void setQueue(String queue) {
-        this.queue = queue;
-    }
 }

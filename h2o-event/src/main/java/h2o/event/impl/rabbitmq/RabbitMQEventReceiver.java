@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class RabbitMQEventReceiver extends AbstractEventReceiver implements EventReceiver {
 
 
-    private final RabbitMQEventHelper helper;
+    protected final RabbitMQEventHelper helper;
 
     public RabbitMQEventReceiver(RabbitMQEventHelper helper) {
         this.helper = helper;
@@ -25,7 +25,7 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
 
 
 
-    private volatile Channel channel;
+    protected volatile Channel channel;
 
 
     @Override
@@ -34,7 +34,7 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
         try {
 
             channel = helper.connection.createChannel();
-            channel.basicConsume(helper.queue, true, callback(channel) );
+            this.recv();
 
         } catch ( Exception e ) {
 
@@ -44,6 +44,10 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
             this.close();
 
         }
+    }
+
+    protected void recv() throws Exception {
+        channel.basicConsume( helper.queue, true, callback(channel) );
     }
 
 

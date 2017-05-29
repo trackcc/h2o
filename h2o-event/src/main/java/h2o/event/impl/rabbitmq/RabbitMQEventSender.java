@@ -10,13 +10,13 @@ import h2o.event.EventSender;
  */
 public class RabbitMQEventSender implements EventSender {
 
-    private final RabbitMQEventHelper helper;
+    protected final RabbitMQEventHelper helper;
 
     public RabbitMQEventSender(RabbitMQEventHelper helper) {
         this.helper = helper;
     }
 
-    private Channel channel;
+    protected Channel channel;
 
     @Override
     public void putEvents( Event... events ) {
@@ -28,8 +28,7 @@ public class RabbitMQEventSender implements EventSender {
             }
 
             for ( Event event : events ) {
-                byte[] body = helper.encode(event);
-                channel.basicPublish(helper.exchange, helper.routingKey, null, body );
+                this.send( event );
             }
 
         } catch ( Exception e ) {
@@ -39,6 +38,12 @@ public class RabbitMQEventSender implements EventSender {
 
         }
 
+    }
+
+
+    protected void send( Event event ) throws Exception {
+        byte[] body = helper.encode(event);
+        channel.basicPublish(helper.exchange, helper.routingKey, null, body );
     }
 
 

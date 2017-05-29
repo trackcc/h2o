@@ -12,9 +12,9 @@ import java.util.Map;
  */
 public class RedisEventHelper {
 
-    final String eventQueueName;
+    public final String eventQueueName;
 
-    final JedisUtil jedisUtil;
+    public final JedisUtil jedisUtil;
 
     private final EventEncoder<String> eventEncoder;
 
@@ -28,14 +28,12 @@ public class RedisEventHelper {
         this.eventQueueName = eventQueue;
     }
 
-    private final Map<String,EventEncoder<String>> ees = MapBuilder.newConcurrentHashMap();
 
-
-    Event parse(String strEvent ) {
+    public Event parse(String strEvent ) {
         return eventEncoder.parse( strEvent );
     }
 
-    String encode( Event event ) {
+    public String encode( Event event ) {
         return eventEncoder.encode( event );
     }
 
