@@ -17,16 +17,24 @@ public class PageInfo implements Pageable, Serializable {
 	public PageInfo() {}
 
 	public PageInfo(long pageNo, long pageRecordSize) {
+
 		this.pageNo = pageNo;
 		this.pageRecordSize = pageRecordSize;
+
 	}
 
 	public PageInfo(long pageNo, long pageRecordSize, long totalRecord) {
+
 		this(pageNo, pageRecordSize);
 		this.totalRecord = totalRecord;
 
-		this.totalPage = (this.totalRecord + this.pageRecordSize - 1) / this.pageRecordSize;
+        this.calcTotalPage();
 	}
+
+
+	public void calcTotalPage() {
+        this.totalPage = (this.totalRecord + this.pageRecordSize - 1) / this.pageRecordSize;
+    }
 
 	public long getTotalRecord() {
 		return totalRecord;
