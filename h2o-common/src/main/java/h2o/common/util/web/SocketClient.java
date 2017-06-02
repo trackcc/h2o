@@ -39,28 +39,12 @@ public class SocketClient {
 		
 			socket = new Socket(this.server , this.port);
 			socket.setSoTimeout(timeout);
-			
-			out = new BufferedOutputStream( socket.getOutputStream() );
-			in  = socket.getInputStream();
-			
-			byte[] buf = req.getBytes( characterEncoding );
-			
-			String len = StringUtils.leftPad( Integer.toString(buf.length) , this.headLen , '0' );
-			
-			out.write(len.getBytes());
-			out.flush();
-			out.write(buf);
-			out.flush();
 
-			BufferedInputStream bufin = new BufferedInputStream(in);
-			byte[] l = StreamUtil.readBytes( bufin , this.headLen );
-			int inlen = Integer.parseInt( new String(l) );
+            in  = socket.getInputStream();
+			out = socket.getOutputStream();
 
-			byte[] inbuf = StreamUtil.readBytes(bufin, inlen);
-			String res = new String(inbuf, revCharacterEncoding);
 
-			
-			return res;
+			return proc( in , out , req );
 			
 		} catch (Exception e) {
 			Tools.log.error("Send Exception", e);
@@ -117,7 +101,6 @@ public class SocketClient {
 
 
         return res;
-
 
     }
 
