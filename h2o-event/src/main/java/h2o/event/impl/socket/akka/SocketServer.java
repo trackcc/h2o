@@ -54,23 +54,5 @@ public class SocketServer extends UntypedActor {
 
 	}
 	
-	
-	
-	 public static void main(String[] args) {
-		  
-	        // 创建系统  
-	        final ActorSystem system = ActorSystem.create("tcpserver");  
-	        final ActorRef tcpManager = Tcp.get(system).getManager();
-	        
-	        int port = 9000;
-	        if( args.length == 1 ) {
-	        	port = Integer.parseInt( args[0] );
-	        }
-
-	  
-	        // 创建一个接待者  
-	        system.actorOf(Props.create(SocketServer.class,tcpManager,port), "server");
-	 
-	}
 
 }

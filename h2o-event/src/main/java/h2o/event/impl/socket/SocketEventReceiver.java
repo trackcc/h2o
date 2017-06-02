@@ -5,6 +5,7 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.io.Tcp;
 import com.typesafe.config.ConfigFactory;
+import h2o.common.Tools;
 import h2o.event.Event;
 import h2o.event.EventEncoder;
 import h2o.event.EventReceiver;
@@ -67,8 +68,15 @@ public class SocketEventReceiver extends AbstractEventReceiver implements EventR
     @Override
     public String proc(String msg) {
 
-        Event event = eventEncoder.parse(msg);
-        eventProcessor.proc( new NothingEventContext() , event );
+        try {
+
+            Event event = eventEncoder.parse(msg);
+
+            eventProcessor.proc( new NothingEventContext() , event );
+
+        } catch ( Exception e ) {
+            Tools.log.error(e);
+        }
 
         return "ok";
 
