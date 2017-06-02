@@ -32,16 +32,16 @@ public class SocketClient {
 	public String send(String req) {
 		
 		Socket socket = null;
-		InputStream in = null;
-		OutputStream out = null;
+        BufferedInputStream in = null;
+        BufferedOutputStream out = null;
 		
 		try {
 		
 			socket = new Socket(this.server , this.port);
 			socket.setSoTimeout(timeout);
 
-            in  = socket.getInputStream();
-			out = socket.getOutputStream();
+            in  = new BufferedInputStream( socket.getInputStream() );
+			out = new BufferedOutputStream( socket.getOutputStream() );
 
 
 			return proc( in , out , req );
@@ -79,9 +79,7 @@ public class SocketClient {
 
 
 
-	protected String proc( InputStream in, OutputStream out , String req  ) throws Exception {
-
-        BufferedOutputStream bufOut = new BufferedOutputStream( out );
+	protected String proc( BufferedInputStream in, BufferedOutputStream out , String req  ) throws Exception {
 
         byte[] buf = req.getBytes( characterEncoding );
 
@@ -92,11 +90,11 @@ public class SocketClient {
         out.write(buf);
         out.flush();
 
-        BufferedInputStream bufin = new BufferedInputStream(in);
-        byte[] l = StreamUtil.readBytes( bufin , this.headLen );
+
+        byte[] l = StreamUtil.readBytes( in , this.headLen );
         int inlen = Integer.parseInt( new String(l) );
 
-        byte[] inbuf = StreamUtil.readBytes(bufin, inlen);
+        byte[] inbuf = StreamUtil.readBytes( in, inlen );
         String res = new String(inbuf, revCharacterEncoding);
 
 
