@@ -103,7 +103,6 @@ public class SocketClient {
 
 
 
-
     public void setServer(String server) {
         this.server = server;
     }
