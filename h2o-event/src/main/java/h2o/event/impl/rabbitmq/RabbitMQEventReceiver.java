@@ -67,7 +67,6 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
 
     @Override
     public void stop() {
-
         this.close();
     }
 

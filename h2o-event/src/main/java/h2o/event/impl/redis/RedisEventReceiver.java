@@ -4,6 +4,7 @@ import h2o.common.Tools;
 import h2o.common.redis.JedisCallBack;
 import h2o.common.util.collections.builder.ListBuilder;
 import h2o.event.Event;
+import h2o.event.EventReceiver;
 import h2o.event.impl.AbstractDispatcherEventReceiver;
 import redis.clients.jedis.Jedis;
 
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * Created by zhangjianwei on 16/7/2.
  */
-public class RedisEventReceiver extends AbstractDispatcherEventReceiver {
+public class RedisEventReceiver extends AbstractDispatcherEventReceiver implements EventReceiver {
 
     private final RedisEventHelper helper;
 
@@ -42,8 +43,6 @@ public class RedisEventReceiver extends AbstractDispatcherEventReceiver {
                         events.add( event );
                     }
                 }
-
-
 
                 return null;
             }

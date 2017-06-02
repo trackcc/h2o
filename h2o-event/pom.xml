@@ -32,6 +32,19 @@
             <version>4.1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-http-core_2.12</artifactId>
+            <version>10.0.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-http_2.12</artifactId>
+            <version>10.0.5</version>
+        </dependency>
+
+
 
     </dependencies>
     
