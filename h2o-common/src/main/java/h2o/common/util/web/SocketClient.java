@@ -23,9 +23,6 @@ public class SocketClient {
 	private volatile String revCharacterEncoding = "UTF-8";
 	
 	private volatile int headLen = 8;
-	
-
-
 
 
     //发送
@@ -45,6 +42,7 @@ public class SocketClient {
 
 
 			return proc( in , out , req );
+
 			
 		} catch (Exception e) {
 			Tools.log.error("Send Exception", e);
