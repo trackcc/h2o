@@ -28,7 +28,7 @@ public class Dispatcher {
 
 	private volatile boolean stop = false;
 	private volatile boolean running = false;
-	private volatile boolean interruptible = true;
+	private volatile boolean interruptible = false;
 
 
 	private final Lock lock = Locks.newLock();
@@ -88,6 +88,7 @@ public class Dispatcher {
 						    if( interruptible ) {
                                 throw e;
                             } else {
+						        Thread.currentThread().interrupt();
                                 st = errSleepTime.getVar();
                             }
 
@@ -124,6 +125,9 @@ public class Dispatcher {
 			
 			try {
 				door.close();
+				if( !interruptible) {
+                    throw new InterruptedException();
+                }
 				if( st > 0L ) {
 					door.await(st, TimeUnit.MILLISECONDS);
 				} else {
@@ -133,6 +137,8 @@ public class Dispatcher {
 			} catch( InterruptedException e) {
 			    if( interruptible ) {
                     throw e;
+                } else {
+                    Thread.currentThread().interrupt();
                 }
 			} catch (Throwable e) {
 				Tools.log.debug("Sleepping", e);

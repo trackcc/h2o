@@ -29,13 +29,15 @@ public class ConsumersController<T> {
 			while( !stop && !(es.isShutdown() && basket.isEmpty() )) {
 				
 				try {
-				
-					T p = basket.poll( 60 , TimeUnit.SECONDS );
-					
-					if( p != null ) {					
-						this.consumer.consume(p);
-					}
-				
+
+                    T p = basket.poll(60, TimeUnit.SECONDS);
+
+                    if (p != null) {
+                        this.consumer.consume(p);
+                    }
+
+                } catch ( InterruptedException e ) {
+                    Thread.currentThread().interrupt();
 				} catch( Throwable e) {
 					Tools.log.debug("ConsumersController.ConsumerThread::call",e);					
 				}
