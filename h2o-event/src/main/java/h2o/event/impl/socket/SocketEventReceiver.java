@@ -75,6 +75,7 @@ public class SocketEventReceiver extends AbstractEventReceiver implements EventR
             eventProcessor.proc( new NothingEventContext() , event );
 
         } catch ( Exception e ) {
+            e.printStackTrace();
             Tools.log.error(e);
         }
 
