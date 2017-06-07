@@ -3,6 +3,8 @@ package h2o.common.bean;
 
 public class ResultBool implements java.io.Serializable {
 
+    private static final long serialVersionUID = 2317776198697479575L;
+
     public final boolean success;
 
     public final String msg;

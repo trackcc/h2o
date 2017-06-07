@@ -2,6 +2,8 @@ package h2o.common.bean;
 
 public class ResultData implements java.io.Serializable {
 
+    private static final long serialVersionUID = 26132204178801391L;
+
     private boolean success;
 
     private String errorField;
