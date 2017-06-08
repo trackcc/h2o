@@ -1,4 +1,4 @@
-package h2o.common.bean;
+package h2o.common.bean.result;
 
 
 public class ResultBool implements java.io.Serializable {

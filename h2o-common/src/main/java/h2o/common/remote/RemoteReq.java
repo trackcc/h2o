@@ -1,7 +1,5 @@
 package h2o.common.remote;
 
-import h2o.common.bean.MethodSignature;
-
 public class RemoteReq implements java.io.Serializable {
 
 	private static final long serialVersionUID = -3481217587466198166L;

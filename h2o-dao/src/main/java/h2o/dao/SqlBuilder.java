@@ -209,7 +209,7 @@ public class SqlBuilder {
 		return this.buildUpdateSql2(true, false, bean, where , attrNames , skipAttrNames );
 	}
 	
-	public SqlSource buildUpdateSqlIncludeNull3( Object bean  , String where , String[] attrNames , String[] skipAttrNames ) throws DaoException {
+	public SqlSource buildUpdateSqlIncludeNull3( Object bean  , String where , String... skipAttrNames ) throws DaoException {
 		return this.buildUpdateSql2(true, false, bean, where , (String[])null , (String[])skipAttrNames );
 	}
 	

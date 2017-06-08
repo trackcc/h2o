@@ -1,4 +1,4 @@
-package h2o.common.bean;
+package h2o.common.bean.result;
 
 import java.io.Serializable;
 

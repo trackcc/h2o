@@ -1,7 +1,5 @@
 package h2o.common.remote;
 
-import h2o.common.bean.MethodSignature;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;

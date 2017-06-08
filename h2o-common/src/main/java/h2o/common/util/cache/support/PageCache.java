@@ -1,7 +1,7 @@
 package h2o.common.util.cache.support;
 
-import h2o.common.bean.Page;
-import h2o.common.bean.PageInfo;
+import h2o.common.bean.page.Page;
+import h2o.common.bean.page.PageInfo;
 import h2o.common.util.cache.DataCache;
 import h2o.common.util.collections.builder.ListBuilder;
 

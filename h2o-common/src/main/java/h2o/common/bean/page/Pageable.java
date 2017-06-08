@@ -1,4 +1,4 @@
-package h2o.common.bean;
+package h2o.common.bean.page;
 
 public interface Pageable {
 

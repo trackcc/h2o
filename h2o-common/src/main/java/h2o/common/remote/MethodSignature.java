@@ -1,4 +1,4 @@
-package h2o.common.bean;
+package h2o.common.remote;
 
 @SuppressWarnings("rawtypes")
 public class MethodSignature implements java.io.Serializable {
