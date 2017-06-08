@@ -57,8 +57,8 @@ public class TransResult implements Serializable {
         return this;
     }
 
-    public Object getResult() {
-        return result;
+    public <R> R getResult() {
+        return (R)result;
     }
 
     public TransResult setResult(Object result) {
