@@ -72,16 +72,16 @@ public class ResultData implements java.io.Serializable {
         return this;
     }
 
-    public <I> I getInfo() {
-        return (I)info;
+    public Object getInfo() {
+        return info;
     }
 
     public void setInfo(Object info) {
         this.info = info;
     }
 
-    public <R> R getResult() {
-        return (R)result;
+    public Object getResult() {
+        return result;
     }
 
     public ResultData setResult(Object result) {
