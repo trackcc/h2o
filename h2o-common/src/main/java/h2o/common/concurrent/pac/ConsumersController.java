@@ -26,7 +26,7 @@ public class ConsumersController<T> {
 
 		public String call() throws Exception {
 			
-			while( !stop && !(es.isShutdown() && basket.isEmpty() )) {
+			while( !stop || !(es.isShutdown() && basket.isEmpty() )) {
 				
 				try {
 
