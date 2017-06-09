@@ -33,4 +33,27 @@ public class TransResult extends TransStatus implements Serializable {
         return this;
     }
 
+    @Override
+    public TransResult setStatus(int status) {
+        super.setStatus(status);
+        return this;
+    }
+
+    @Override
+    public TransResult setFinal(boolean aFinal) {
+        super.setFinal(aFinal);
+        return this;
+    }
+
+    @Override
+    public TransResult setCode(String code) {
+        super.setCode(code);
+        return this;
+    }
+
+    @Override
+    public TransResult setMsg(String msg) {
+        super.setMsg(msg);
+        return this;
+    }
 }
