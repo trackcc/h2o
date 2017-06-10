@@ -125,9 +125,6 @@ public class Dispatcher {
 			
 			try {
 				door.close();
-				if( !interruptible) {
-                    throw new InterruptedException();
-                }
 				if( st > 0L ) {
 					door.await(st, TimeUnit.MILLISECONDS);
 				} else {
