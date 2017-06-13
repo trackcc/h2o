@@ -10,12 +10,13 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-public class H2oSimpleDataSource extends AbstractDataSourceProxy {	
-	
+public class H2oSimpleDataSource extends AbstractDataSourceProxy {
 	
 	private final BlockingQueue<Connection> cbq;
-	
-	public H2oSimpleDataSource( DataSource realDataSource , int size ) {
+
+    private volatile boolean stop = false;
+
+    public H2oSimpleDataSource( DataSource realDataSource , int size ) {
 		this(realDataSource, size, 2);
 	}
 	
@@ -29,7 +30,7 @@ public class H2oSimpleDataSource extends AbstractDataSourceProxy {
 
 			public void run() {
 				
-				while (true) {
+				while ( !stop ) {
 					
 					Connection c = null;
 					
@@ -47,9 +48,10 @@ public class H2oSimpleDataSource extends AbstractDataSourceProxy {
 							c = null;
 						}
 					} catch (InterruptedException e) {
+					    Thread.currentThread().interrupt();
 					} catch ( Exception e) {
 						e.printStackTrace();
-						Tools.log.debug("",e);
+						Tools.log.error(e);
 					} finally {
 						if( c != null ) {
 							try {
@@ -71,6 +73,7 @@ public class H2oSimpleDataSource extends AbstractDataSourceProxy {
 		try {
 			c = cbq.isEmpty() ? null : cbq.poll(10l,TimeUnit.MILLISECONDS);
 		} catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
 		}
 		if( c == null ) {
 			return getConnection0();
@@ -91,6 +94,10 @@ public class H2oSimpleDataSource extends AbstractDataSourceProxy {
 	}
 	
 	
-	
+
+	public void close() {
+        this.stop = true;
+    }
+
 
 }
