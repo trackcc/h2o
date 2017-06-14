@@ -5,12 +5,12 @@ import java.io.Serializable;
 /**
  * Created by zhangjianwei on 2017/6/7.
  */
-public class TransResult extends TransStatus implements Serializable {
+public class TransResult<R> extends TransStatus implements Serializable {
 
     private static final long serialVersionUID = -1448116426261181686L;
 
 
-    private Object result;
+    private R result;
 
     private Throwable e;
 
@@ -19,7 +19,7 @@ public class TransResult extends TransStatus implements Serializable {
         return (R)result;
     }
 
-    public TransResult setResult(Object result) {
+    public TransResult setResult( R result ) {
         this.result = result;
         return this;
     }
