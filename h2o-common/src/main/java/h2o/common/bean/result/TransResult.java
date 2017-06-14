@@ -15,8 +15,8 @@ public class TransResult<R> extends TransStatus implements Serializable {
     private Throwable e;
 
 
-    public <R> R getResult() {
-        return (R)result;
+    public R getResult() {
+        return result;
     }
 
     public TransResult setResult( R result ) {
