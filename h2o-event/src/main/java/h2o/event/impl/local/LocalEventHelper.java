@@ -1,11 +1,7 @@
 package h2o.event.impl.local;
 
 import h2o.common.concurrent.pac.ConsumersController;
-import h2o.common.redis.JedisUtil;
-import h2o.common.util.collections.tuple.Tuple2;
 import h2o.event.Event;
-import h2o.event.EventContext;
-import h2o.event.EventEncoder;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Executors;

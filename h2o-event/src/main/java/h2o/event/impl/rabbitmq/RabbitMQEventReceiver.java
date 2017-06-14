@@ -8,7 +8,6 @@ import h2o.event.impl.AbstractEventReceiver;
 import h2o.event.impl.NothingEventContext;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 
 /**

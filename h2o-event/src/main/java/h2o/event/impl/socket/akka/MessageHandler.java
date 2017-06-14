@@ -6,7 +6,6 @@ import akka.io.Tcp.ConnectionClosed;
 import akka.io.Tcp.Received;
 import akka.io.TcpMessage;
 import akka.util.ByteString;
-import h2o.common.Tools;
 
 public class MessageHandler extends UntypedActor {
 

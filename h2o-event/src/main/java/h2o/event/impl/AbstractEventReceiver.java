@@ -1,7 +1,6 @@
 package h2o.event.impl;
 
 
-import h2o.event.EventContext;
 import h2o.event.EventProcessor;
 import h2o.event.EventReceiver;
 

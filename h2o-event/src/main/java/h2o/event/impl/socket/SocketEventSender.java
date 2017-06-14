@@ -1,12 +1,9 @@
 package h2o.event.impl.socket;
 
-import h2o.common.redis.JedisCallBack;
 import h2o.common.util.web.SocketClient;
 import h2o.event.Event;
 import h2o.event.EventEncoder;
 import h2o.event.EventSender;
-import h2o.event.impl.socket.akka.Processor;
-import redis.clients.jedis.Jedis;
 
 /**
  * Created by zhangjianwei on 16/7/3.

@@ -2,11 +2,8 @@ package h2o.event.impl.local;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-import h2o.common.redis.JedisCallBack;
-import h2o.common.util.collections.tuple.TupleUtil;
 import h2o.event.Event;
 import h2o.event.EventSender;
-import redis.clients.jedis.Jedis;
 
 /**
  * Created by zhangjianwei on 16/7/3.

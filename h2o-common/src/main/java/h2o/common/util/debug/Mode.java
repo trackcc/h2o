@@ -32,7 +32,7 @@ public class Mode {
 		try {
 			PropertiesConfiguration config = new PropertiesConfiguration("mode.properties");
 			
-			m = config.getString("mode","PRODUCTION").trim().toUpperCase();			
+			m = config.getString("mode",PRODUCTION).trim().toUpperCase();
 			
 			if( TEST.equals(m) ) {				
 				t = true;				
@@ -40,7 +40,7 @@ public class Mode {
 				d = true;				
 			} else {				
 				p = true;
-				m = "PRODUCTION";
+				m = PRODUCTION;
 				
 				Tools.log.info("default mode !!!");
 			}
@@ -66,7 +66,7 @@ public class Mode {
 			d = false;
 			t = false;
 			
-			m = "PRODUCTION";
+			m = PRODUCTION;
 		}
 		
 		productionMode = p;

@@ -1,7 +1,6 @@
 package h2o.event.impl.socket.akka;
 
 import akka.util.ByteString;
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.io.StreamUtil;
 import org.apache.commons.lang.StringUtils;
