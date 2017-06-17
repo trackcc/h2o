@@ -18,7 +18,12 @@ public abstract class AbstractEventProcessor implements EventProcessor {
         if( eventHandler == null ) {
             Tools.log.error("没有对应的事件处理器[{}]" , event );
         } else {
-            eventHandler.onEvent( context , event );
+            try {
+                eventHandler.onEvent( context , event );
+            } catch ( Exception e ) {
+                Tools.log.error(e);
+            }
+
         }
     }
 
