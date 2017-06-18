@@ -16,7 +16,7 @@ public abstract class AbstractEventProcessor implements EventProcessor {
     public void proc( EventContext context , Event event ) {
         EventHandler eventHandler = getEventHandler(event);
         if( eventHandler == null ) {
-            Tools.log.error("没有对应的事件处理器[{}]" , event );
+            Tools.log.error("Not found event handler[{}]" , event );
         } else {
             try {
                 eventHandler.onEvent( context , event );
