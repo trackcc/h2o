@@ -21,7 +21,7 @@ public abstract class AbstractOneTimeJob implements Job {
 
     protected String jobId;
 
-    protected int timeout = 5 * 60;
+    protected int timeout = 2 * 60;
 
 
 
@@ -38,8 +38,7 @@ public abstract class AbstractOneTimeJob implements Job {
 
                 JobKey jobKey = context.getJobDetail().getKey();
                 jobId = StringUtil.build("H2oOneTimeJob_" ,
-                        jobKey.getGroup() , '_' , jobKey.getName() ,
-                        '_' , DateUtil.toString(context.getFireTime() , "yyyyMMddHHmmssSSS")  );
+                        jobKey.getGroup() , '_' , jobKey.getName() );
 
             }
 
