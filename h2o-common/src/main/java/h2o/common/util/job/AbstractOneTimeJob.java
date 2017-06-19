@@ -72,8 +72,17 @@ public abstract class AbstractOneTimeJob implements Job {
     protected abstract void init( JobExecutionContext context );
 
     protected void execOneTime( JobExecutionContext context , Boolean jr , Exception e ) throws JobExecutionException {
+
         if ( jr != null && jr ) {
+
+            Tools.log.debug( "执行任务:{}" , context.getJobDetail().getKey() );
+
             this.execOneTime( context );
+
+        } else {
+
+            Tools.log.debug( "跳过任务:{}" , context.getJobDetail().getKey() );
+
         }
     }
 
