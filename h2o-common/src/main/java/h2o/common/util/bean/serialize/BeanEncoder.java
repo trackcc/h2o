@@ -10,7 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class BeanEncoder implements BeanSerialize {
+public class BeanEncoder implements BeanSerialize , BeanStrSerialize {
 
     private final String charsetName;
 
@@ -64,7 +64,7 @@ public class BeanEncoder implements BeanSerialize {
 
 	}
 
-	public String bean2xml(Object bean) {
+	public String bean2string(Object bean) {
 
 		try {
 
@@ -82,7 +82,7 @@ public class BeanEncoder implements BeanSerialize {
 		}
 	}
 
-	public Object xml2bean(String xml) {
+	public Object string2bean(String xml) {
 
 		try {
 
