@@ -17,6 +17,7 @@
         <module>h2o-dao</module>
         <module>h2o-flow</module>
         <module>h2o-event</module>
+        <module>h2o-utils</module>
     </modules>
 
     <properties>
