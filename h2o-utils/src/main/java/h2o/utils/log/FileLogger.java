@@ -1,4 +1,4 @@
-package h2o.utils.log.impl;
+package h2o.utils.log;
 
 
 import h2o.common.Tools;
@@ -18,13 +18,13 @@ import java.util.Date;
 /**
  * Created by zhangjianwei on 16/8/18.
  */
-public class FileLoggerImpl implements Logger {
+public class FileLogger implements Logger {
 
     private final String baseDir;
 
     private final LogMeta logMeta;
 
-    public FileLoggerImpl( LogMeta logMeta , String baseDir ) {
+    public FileLogger(LogMeta logMeta , String baseDir ) {
         this.logMeta = logMeta;
         this.baseDir = baseDir;
     }
