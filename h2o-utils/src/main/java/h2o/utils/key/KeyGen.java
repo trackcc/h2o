@@ -8,7 +8,6 @@ import h2o.common.Tools;
 import h2o.common.concurrent.LockMap;
 import h2o.common.util.collections.tuple.Tuple2;
 import h2o.common.util.collections.tuple.Tuple3;
-import h2o.common.util.collections.tuple.Tuple4;
 import h2o.common.util.collections.tuple.TupleUtil;
 import h2o.common.util.dao.butterflydb.ButterflyDao;
 import h2o.common.util.dao.butterflydb.ButterflyDb;
