@@ -1,7 +1,8 @@
 package h2o.event.impl;
 
+import h2o.common.util.bean.serialize.Base64StrSerializeProxy;
 import h2o.common.util.bean.serialize.BeanStrSerialize;
-import h2o.common.util.bean.serialize.JsonBeanSerialize;
+import h2o.common.util.bean.serialize.HessianBeanSerialize;
 import h2o.event.Event;
 import h2o.event.EventEncoder;
 
@@ -10,7 +11,7 @@ import h2o.event.EventEncoder;
  */
 public class StringEventEncoder implements EventEncoder<String> {
 
-    private final BeanStrSerialize beanSerialize = new JsonBeanSerialize();
+    private final BeanStrSerialize beanSerialize = new Base64StrSerializeProxy( new HessianBeanSerialize() );
 
     @Override
     public Event parse(String sEvent) {
@@ -21,4 +22,5 @@ public class StringEventEncoder implements EventEncoder<String> {
     public String encode(Event event) {
         return beanSerialize.bean2string( event );
     }
+
 }
