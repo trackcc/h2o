@@ -1,4 +1,4 @@
-package h2o.dao.high;
+package h2o.dao.advanced;
 
 import h2o.common.Tools;
 import h2o.dao.colinfo.ColInfoUtil;
