@@ -140,20 +140,6 @@ public class CollectionUtil {
 	}
 
 
-
-
-
-	public static <E,T> T each( Collection<E> c , EachCallback<E,T> ec ) {
-
-	    T t = ec.init();
-
-        for ( E e : c ) {
-            ec.doEach( e , t );
-        }
-
-        return ec.result( t );
-
-    }
 	
 
 }
