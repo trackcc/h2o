@@ -1,3 +1,3 @@
-:{selSeq=SELECT SEQNO FROM SYS_VERSION WHERE SEQOBJ = ? };
-:{insSeq=insert into SYS_VERSION ( SEQOBJ , SEQNO ) values ( ? , ? )};
-:{updSeq=update SYS_VERSION set SEQNO = ?  where SEQOBJ = ?  and SEQNO = ? };
+:{selseq=select seqno from sys_version where seqobj = ? };
+:{insseq=insert into sys_version ( seqobj , seqno ) values ( ? , ? )};
+:{updseq=update sys_version set seqno = ?  where seqobj = ?  and seqno = ? };

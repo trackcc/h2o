@@ -1,3 +1,3 @@
-:{selSeq=SELECT CYCLICSPACE ,  SEQNO FROM SYS_CYCSEQ WHERE SEQOBJ = ? };
-:{insSeq=insert into SYS_CYCSEQ ( SEQOBJ , CYCLICSPACE ,  SEQNO ) values ( ? , ? , ? ) };
-:{updSeq=update SYS_CYCSEQ set SEQNO = ? , CYCLICSPACE = ?  where SEQOBJ = ?  and SEQNO = ? and CYCLICSPACE = ? };
+:{selseq=select cyclicspace ,  seqno from sys_cycseq where seqobj = ? };
+:{insseq=insert into sys_cycseq ( seqobj , cyclicspace ,  seqno ) values ( ? , ? , ? ) };
+:{updseq=update sys_cycseq set seqno = ? , cyclicspace = ?  where seqobj = ?  and seqno = ? and cyclicspace = ? };
