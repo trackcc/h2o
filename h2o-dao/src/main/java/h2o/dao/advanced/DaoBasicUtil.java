@@ -43,7 +43,7 @@ public final class DaoBasicUtil {
     }
 
     public <T extends AbstractEntity> T get( T entity ) {
-        return this.get( entity , true );
+        return this.get( entity , false );
     }
 
     public <T extends AbstractEntity> T getAndLock( T entity ) {
