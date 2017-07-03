@@ -38,7 +38,7 @@ public class InstanceTable<K,V> {
 				
 				V newv = instanceFactory.create( key );
 				if( newv == null && !allowNull) {
-					throw new RuntimeException(" instanceFactory.create( " + key + " ) == null ");
+					throw new RuntimeException(" instanceFactory.getRedis( " + key + " ) == null ");
 				}
 				
 				if( newv != null ) {

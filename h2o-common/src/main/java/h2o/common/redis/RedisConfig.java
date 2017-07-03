@@ -1,5 +1,8 @@
 package h2o.common.redis;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 /**
  * Created by zhangjianwei on 2017/7/3.
  */
@@ -34,5 +37,34 @@ public class RedisConfig {
         this.timeout = timeout;
     }
 
+    @Override
+    public boolean equals(Object o) {
 
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RedisConfig that = (RedisConfig) o;
+
+        return new EqualsBuilder()
+                .append(port, that.port)
+                .append(host, that.host)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(host)
+                .append(port)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "RedisConfig{" +
+                "host='" + host + '\'' +
+                ", port=" + port +
+                '}';
+    }
 }
