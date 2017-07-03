@@ -40,8 +40,10 @@ public class JedisUtil {
 
 
 	public Jedis getJedis() {
+
 		int i = ji;
 		Jedis j = getJedis(i);
+
 		if( check(j) ) {
 			return j;
 		} else {
@@ -124,7 +126,7 @@ public class JedisUtil {
 
 
 
-	protected void release( Jedis jedis ) {
+    public void release( Jedis jedis ) {
 		close( jedis );
 	}
 
