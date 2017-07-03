@@ -114,8 +114,8 @@ public class JedisUtil {
 		try {
 			return "PONG".equals(jedis.ping());
 		} catch (Exception e) {
-			Tools.log.debug("Check Jedis[{}] error!", jedis);		
-			close(jedis);
+			Tools.log.debug("Check Jedis[{}] error!", jedis);
+            release(jedis);
 		}
 
 		return false;
@@ -124,13 +124,18 @@ public class JedisUtil {
 
 
 
-	protected void close( Jedis jedis ) {
-		if( jedis != null ) try {
-			jedis.close();
-		} catch (Exception e) {
-			Tools.log.error("Close Jedis[" + jedis + "] error!", e );
-		}
+	protected void release( Jedis jedis ) {
+		close( jedis );
 	}
+
+
+	public static void close( Jedis jedis ) {
+        if( jedis != null ) try {
+            jedis.close();
+        } catch (Exception e) {
+            Tools.log.error("Close Jedis[" + jedis + "] error!", e );
+        }
+    }
 
 
 	
@@ -154,7 +159,7 @@ public class JedisUtil {
 		} catch( Exception e ) {
 			throw ExceptionUtil.toRuntimeException(e);
 		} finally {
-			close(jedis);
+            release(jedis);
 		}
 		
 		
