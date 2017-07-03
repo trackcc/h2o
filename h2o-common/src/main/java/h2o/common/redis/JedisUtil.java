@@ -2,33 +2,45 @@ package h2o.common.redis;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-import h2o.common.util.collections.tuple.Tuple2;
 import h2o.common.util.collections.tuple.TupleUtil;
+import h2o.common.util.lang.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import redis.clients.jedis.Jedis;
 
 public class JedisUtil {
 
-	private final Tuple2<String, Integer>[] clients;
+	protected final RedisConfig[] redisConfigs;
 
 	private volatile int ji = -1;
 
 	
 	@SuppressWarnings("unchecked")
-	public JedisUtil( String... hosts ) {
+	public JedisUtil( String... confs ) {
 		
-		clients = new Tuple2[hosts.length];
+		redisConfigs = new RedisConfig[confs.length];
 		
 		int i = 0;
-		for( String host : hosts ) {
+		for( String conf : confs ) {
+
+		    String pass = null;
+		    if( StringUtils.contains( conf , '@' ) ) {
+                pass = StringUtils.substringAfter( conf , "@");
+                conf = StringUtils.substringBefore( conf , "@");
+            }
 			
-			String h = StringUtils.substringBefore( host , ":");
-			String p = StringUtils.substringAfter( host , ":");
+			String host = StringUtils.substringBefore( conf , ":");
+			String p = StringUtils.substringAfter( conf , ":");
 			Integer port = StringUtils.isBlank(p) ? 6379 : new Integer(p);
 			
-			clients[i++] = TupleUtil.t(h,port);
+			redisConfigs[i++] = new RedisConfig( host , port , pass );
 		}
+
 	}
+
+
+    public JedisUtil( RedisConfig... confs ) {
+        redisConfigs = confs;
+    }
 
 
 	public Jedis getJedis() {
@@ -41,13 +53,40 @@ public class JedisUtil {
 		}
 		
 	}
-	
 
-	private Jedis create( int i) {		
-		return i == -1 ? null : new Jedis(clients[i].e0,clients[i].e1);
+
+    protected Jedis create( int i ) {
+		if ( i == -1 ) {
+		    return null;
+        }
+
+        try {
+
+		    RedisConfig conf = redisConfigs[i];
+
+            Jedis jedis = conf.timeout == null ?
+                        new Jedis(conf.host, conf.port) :
+                        new Jedis(conf.host, conf.port , conf.timeout);
+
+
+            if ( conf.pass != null ) {
+                jedis.auth(conf.pass);
+            }
+
+            return jedis;
+
+
+        } catch ( Exception e ) {
+
+		    Tools.log.error( e );
+
+		    return null;
+
+        }
+
 	}
 
-	private boolean check(Jedis jedis) {
+	protected boolean check(Jedis jedis) {
 
 		if (jedis == null) {
 			return false;
@@ -65,7 +104,7 @@ public class JedisUtil {
 	}
 
 	private Jedis select() {		
-		for (int i = 0; i < clients.length; i++) {			
+		for (int i = 0; i < redisConfigs.length; i++) {
 			Jedis j = create(i);
 			if (check(j)) {
 				ji = i;
