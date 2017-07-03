@@ -15,7 +15,6 @@ public class MessageHandler extends UntypedActor {
 
 	public MessageHandler( Processor processor ) {
 	    this.processor = processor;
-//      this.getContext().setReceiveTimeout(Duration.getRedis("10 seconds"));
     }
 
 	@Override

@@ -4,7 +4,6 @@ import h2o.common.Tools;
 import h2o.common.redis.JedisCallBack;
 import h2o.common.redis.JedisUtil;
 import h2o.common.spring.util.Assert;
-import h2o.common.util.date.DateUtil;
 import h2o.common.util.lang.StringUtil;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;

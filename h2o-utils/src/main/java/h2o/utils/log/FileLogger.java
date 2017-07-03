@@ -7,9 +7,6 @@ import h2o.common.util.date.DateUtil;
 import h2o.common.util.io.FileUtil;
 import h2o.common.util.io.StreamUtil;
 import h2o.common.util.lang.StringUtil;
-import h2o.utils.log.LogLevel;
-import h2o.utils.log.LogMeta;
-import h2o.utils.log.Logger;
 
 import java.io.IOException;
 import java.io.Writer;
