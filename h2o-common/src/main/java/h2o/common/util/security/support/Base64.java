@@ -5,22 +5,26 @@ import h2o.common.util.security.Encryptor;
 
 public class Base64 implements Encryptor {
 
-	private volatile Base64Util b64Util;
+    private final String charset;
 
-	public void setBase64Util(Base64Util b64Util) {
+    public Base64() {
+        this.charset = "UTF-8";
+    }
+
+    public Base64( String charset ) {
+        this.charset = charset;
+    }
+
+	private volatile Base64Util b64Util = new Base64Util();
+
+	public Base64 setBase64Util( Base64Util b64Util ) {
 		this.b64Util = b64Util;
+		return this;
 	}
 
-	public Base64() {
-		this.setBase64Util(new Base64Util());
-	}
 
-	public Base64(Base64Util b64Util) {
-		this.setBase64Util(b64Util);
-	}
-
-	public String enc(String str) {
-		return b64Util.encode(str);
+	public String enc( String str ) {
+		return b64Util.encode(str , charset );
 	}
 
 }

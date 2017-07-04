@@ -11,12 +11,15 @@ public final class MessageDigestUtil {
 	
 	private MessageDigestUtil() {}
 
-	public static String digest(String mdName, String str) {
+	public static String digest(String mdName, String str , String charset ) {
 
 		try {
+
 			MessageDigest md = MessageDigest.getInstance(mdName);
-			return ToHex.byteArrayToHexString(md.digest(str.getBytes()));
-		} catch (NoSuchAlgorithmException e) {
+
+			return ToHex.byteArrayToHexString( md.digest( charset == null ? str.getBytes() : str.getBytes(charset) ) );
+
+		} catch ( Exception e ) {
 			Tools.log.debug("", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
