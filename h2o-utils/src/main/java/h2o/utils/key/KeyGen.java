@@ -32,9 +32,9 @@ public class KeyGen {
     private static final LockMap lockMap = new LockMap();
 
 
-    private static final String SELSEQ = DbUtil.sqlTable.getSql("selSeq");
-    private static final String INSSEQ = DbUtil.sqlTable.getSql("insSeq");
-    private static final String UPDSEQ = DbUtil.sqlTable.getSql("updSeq");
+    private static final String SELSEQ = DbUtil.sqlTable.getSql("selseq");
+    private static final String INSSEQ = DbUtil.sqlTable.getSql("insseq");
+    private static final String UPDSEQ = DbUtil.sqlTable.getSql("updseq");
 
 
 
