@@ -10,7 +10,7 @@ public class SHA256 implements Encryptor {
     private final String charset;
 
     public SHA256() {
-        this.charset = "UTF-8";
+        this.charset = null;
     }
 
     public SHA256( String charset ) {

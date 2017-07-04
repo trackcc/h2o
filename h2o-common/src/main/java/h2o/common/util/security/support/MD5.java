@@ -10,7 +10,7 @@ public class MD5 implements Encryptor {
     private final String charset;
 
     public MD5() {
-        this.charset = "UTF-8";
+        this.charset = null;
     }
 
     public MD5(String charset) {

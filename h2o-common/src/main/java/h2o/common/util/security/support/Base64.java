@@ -8,7 +8,7 @@ public class Base64 implements Encryptor {
     private final String charset;
 
     public Base64() {
-        this.charset = "UTF-8";
+        this.charset = null;
     }
 
     public Base64( String charset ) {
@@ -24,7 +24,7 @@ public class Base64 implements Encryptor {
 
 
 	public String enc( String str ) {
-		return b64Util.encode(str , charset );
+		return charset == null ?  b64Util.encode( str ) : b64Util.encode( str , charset );
 	}
 
 }

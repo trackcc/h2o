@@ -10,7 +10,7 @@ public class SHA implements Encryptor {
     private final String charset;
 
     public SHA() {
-        this.charset = "UTF-8";
+        this.charset = null;
     }
 
     public SHA(String charset) {
