@@ -18,36 +18,48 @@ import java.net.URI;
 import java.util.Map;
 
 public class HttpClient {
-	
-	
-	private final String contentType;
-	
-	private final String charset;
 
-	private final CloseableHttpClient client;
+    private final CloseableHttpClient client;
+
+
+	private volatile String contentType;
+
+    private volatile String sendCharset;
+	
+	private volatile String charset;
 
 	private volatile HttpEchoCallback callback = null;
 
-    public void setCallback(HttpEchoCallback callback) {
-        this.callback = callback;
+
+    public HttpClient setContentType(String contentType) {
+        this.contentType = contentType;
+        return this;
     }
 
+    public HttpClient setSendCharset(String sendCharset) {
+        this.sendCharset = sendCharset;
+        return this;
+    }
+
+    public HttpClient setCharset(String charset) {
+        this.charset = charset;
+        return this;
+    }
+
+    public HttpClient setCallback(HttpEchoCallback callback) {
+        this.callback = callback;
+        return this;
+    }
+
+
     public HttpClient() {
-        this.contentType = null;
-        this.charset = null;
         this.client = HttpClients.createDefault();
     }
 
 
-    public HttpClient( String contentType , String charset , CloseableHttpClient client ) {
-        this.contentType = contentType;
-        this.charset = charset;
+    public HttpClient( CloseableHttpClient client ) {
         this.client = client;
     }
-
-
-
-
 
 
 
@@ -111,10 +123,10 @@ public class HttpClient {
             HttpEntity entity = null;
 
             if(para != null && !para.isEmpty()) {
-                entity = new UrlEncodedFormEntity(HttpClientUtil.para2nvList(para));
+                entity = new UrlEncodedFormEntity(HttpClientUtil.para2nvList(para) , sendCharset );
             }
 
-            return post(httppost , entity );
+            return post( httppost , entity );
 
         } catch( Exception e ) {
 

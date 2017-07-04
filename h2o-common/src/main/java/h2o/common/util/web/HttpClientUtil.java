@@ -100,11 +100,23 @@ public class HttpClientUtil {
 	
 	public static String post(URI uri , Map<String,String> para , String charset ) {
 
-		HttpPost httppost = new HttpPost(uri);
+        HttpPost httppost = new HttpPost(uri);
 
-		return post(httppost , para , charset);
+        return post(httppost , para , charset);
 
-	}
+    }
+
+
+    public static String post(URI uri , Map<String,String> para , String sendCharset , String charset ) {
+
+        HttpPost httppost = new HttpPost(uri);
+
+        return post(httppost , para , sendCharset , charset);
+
+    }
+
+
+
 	
 	public static String post(String url , Map<String,String> para , String charset ) {
 
@@ -112,17 +124,30 @@ public class HttpClientUtil {
 
 		return post(httppost , para , charset);
 	}
-		
+
+    public static String post(String url , Map<String,String> para , String sendCharset , String charset ) {
+
+        HttpPost httppost = new HttpPost(url);
+
+        return post(httppost , para , sendCharset , charset);
+    }
+
+
+
+
+
+    public static String post(HttpPost httppost , Map<String,String> para , String charset) {
+	    return post( httppost , para , (String)null , charset );
+    }
 	
-	
-	public static String post(HttpPost httppost , Map<String,String> para , String charset) {		
+	public static String post( HttpPost httppost , Map<String,String> para , String sendCharset , String charset ) {
 		
 		try {
 			
 			HttpEntity entity = null;
-			
+
 			if(para != null && !para.isEmpty()) {
-				entity = new UrlEncodedFormEntity(para2nvList(para));
+				entity = new UrlEncodedFormEntity( para2nvList(para) , sendCharset  );
 			}
 			
 			return post(httppost , entity , charset );
