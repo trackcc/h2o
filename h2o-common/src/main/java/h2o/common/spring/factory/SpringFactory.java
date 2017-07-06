@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.concurrent.locks.Lock;
 
-public class Factory implements BeanFactoryAware {
+public class SpringFactory implements BeanFactoryAware {
 	
 	private static final Lock lock = new java.util.concurrent.locks.ReentrantLock();
 
