@@ -14,7 +14,7 @@ public class MultiSourcePage {
 	private int totalRecord;
 	
 	public MultiSourcePage( Integer... sizes  ) {
-		if( !CollectionUtil.java5ArgsIsBlank( sizes ) ) {
+		if( !CollectionUtil.argsIsBlank( sizes ) ) {
 			for( Integer s : sizes ) {
 				soureceInfo.add( s );
 				totalRecord += s;

@@ -13,7 +13,7 @@ public class CollectionUtil {
 	
 	
 	
-	public static boolean java5ArgsIsBlank( Object[] args ) {
+	public static boolean argsIsBlank( Object[] args ) {
 		return args == null || args.length == 0 || ( args.length == 1 && args[0] == null);
 	}
 	
@@ -99,7 +99,7 @@ public class CollectionUtil {
 		ArrayList<String> r = new ArrayList<String>();
 		r.add(str);
 		
-		if(java5ArgsIsBlank(tns)) {
+		if(argsIsBlank(tns)) {
 			tns = new String[] { null };
 		}
 		

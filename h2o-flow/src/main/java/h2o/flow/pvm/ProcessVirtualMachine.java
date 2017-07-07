@@ -30,7 +30,7 @@ public final class ProcessVirtualMachine {
 	private final List<ProcessRunListener> processRunListeners = ListBuilder.newList();
 	
 	public ProcessVirtualMachine addProcessRunListener( ProcessRunListener... processRunListeners ) {
-		if( !CollectionUtil.java5ArgsIsBlank(processRunListeners) ) {
+		if( !CollectionUtil.argsIsBlank(processRunListeners) ) {
 			for( ProcessRunListener processRunListener : processRunListeners ) {
 				this.processRunListeners.add(processRunListener);
 			}

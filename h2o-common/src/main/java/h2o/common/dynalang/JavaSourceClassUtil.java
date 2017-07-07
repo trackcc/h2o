@@ -40,7 +40,7 @@ public class JavaSourceClassUtil {
 		if (cl == null) {
 
 			File[] dirs = null;
-			if (!CollectionUtil.java5ArgsIsBlank(srcDirs)) {
+			if (!CollectionUtil.argsIsBlank(srcDirs)) {
 				dirs = new File[srcDirs.length];
 				for (int i = 0; i < srcDirs.length; i++) {
 					dirs[i] = FileUtil.newFile(srcDirs[i]);

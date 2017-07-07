@@ -33,7 +33,7 @@ public class SqlParameterUtil {
 		
 		Map<String,Object> m = MapBuilder.newMap();
 		
-		if( !CollectionUtil.java5ArgsIsBlank(args) ) for( int i = 0 ; i < args.length ; i++ ) {
+		if( !CollectionUtil.argsIsBlank(args) ) for(int i = 0; i < args.length ; i++ ) {
 			
 			Object a = args[i];
 			

@@ -67,7 +67,7 @@ public class ColInfoUtil {
 		}
 		
 		
-		if(!CollectionUtil.java5ArgsIsBlank(attrNames)) {
+		if(!CollectionUtil.argsIsBlank(attrNames)) {
 			
 			Map<String,String> defValMap = new HashMap<String,String>();
 			Set<String> attrNameSet = new HashSet<String>();
@@ -119,7 +119,7 @@ public class ColInfoUtil {
 		}
 		
 		
-		if(!CollectionUtil.java5ArgsIsBlank(skipAttrNames)) {
+		if(!CollectionUtil.argsIsBlank(skipAttrNames)) {
 			
 			List<String> skipAttrNameList = Arrays.asList(skipAttrNames);
 			

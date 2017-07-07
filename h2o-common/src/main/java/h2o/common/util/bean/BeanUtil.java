@@ -204,7 +204,7 @@ public class BeanUtil {
 
 		this.map2JavaBean(m, bean);
 
-		if ( ! CollectionUtil.java5ArgsIsBlank(nkeys) ) {
+		if ( ! CollectionUtil.argsIsBlank(nkeys) ) {
 			this.beanCopy(srcBean, bean, nkeys);
 		}
 
@@ -223,12 +223,12 @@ public class BeanUtil {
 		Collection<String> srcKeys = new HashSet<String>(Arrays.asList(srcPrepnames0));
 
 		Collection<String> bkl = null;
-		if ( ! CollectionUtil.java5ArgsIsBlank(nkeys) ) {
+		if ( ! CollectionUtil.argsIsBlank(nkeys) ) {
 			bkl = new HashSet<String>(Arrays.asList(nkeys));
 		}
 
 		Map<String, String> mk = null;
-		if ( ! CollectionUtil.java5ArgsIsBlank(skeys) ) {
+		if ( ! CollectionUtil.argsIsBlank(skeys) ) {
 			mk = new HashMap<String, String>();
 			for (int i = 0; i < skeys.length; i++) {
 				srcKeys.add(skeys[i]);
@@ -272,11 +272,11 @@ public class BeanUtil {
         Assert.notNull(srcBean   , "srcBean == null");
         Assert.notNull(bean      , "bean == null");
 
-		if ( CollectionUtil.java5ArgsIsBlank(prepnames) ) {
+		if ( CollectionUtil.argsIsBlank(prepnames) ) {
 			throw new RuntimeException("prepnames == null");
 		}
 
-		if ( CollectionUtil.java5ArgsIsBlank(srcPrepnames) || srcPrepnames.length < prepnames.length) {
+		if ( CollectionUtil.argsIsBlank(srcPrepnames) || srcPrepnames.length < prepnames.length) {
 			throw new RuntimeException("srcPrepnames == null || srcPrepnames.length < prepnames.length");
 		}
 
@@ -303,7 +303,7 @@ public class BeanUtil {
         Assert.notNull(srcBean   , "srcBean == null");
         Assert.notNull(bean      , "bean == null");
 
-		if ( CollectionUtil.java5ArgsIsBlank(srcPrepnames0) ) {
+		if ( CollectionUtil.argsIsBlank(srcPrepnames0) ) {
 			srcPrepnames0 = this.getPrepNames(srcBean);
 		}
 
@@ -330,10 +330,10 @@ public class BeanUtil {
         Assert.notNull(srcBean   , "srcBean == null");
         Assert.notNull(bean      , "bean == null");
 
-		if ( CollectionUtil.java5ArgsIsBlank(prepnames) ) {
+		if ( CollectionUtil.argsIsBlank(prepnames) ) {
 			prepnames = this.getPrepNames(bean);
 		}
-		if ( CollectionUtil.java5ArgsIsBlank(srcPrepnames) ) {
+		if ( CollectionUtil.argsIsBlank(srcPrepnames) ) {
 			srcPrepnames = prepnames;
 		}
 
@@ -363,10 +363,10 @@ public class BeanUtil {
         Assert.notNull(m        , "map  == null");
         Assert.notNull(bean     , "bean == null");
 
-		if ( CollectionUtil.java5ArgsIsBlank(prepnames) ) {
+		if ( CollectionUtil.argsIsBlank(prepnames) ) {
 			prepnames = this.getPrepNames(bean);
 		}
-		if ( CollectionUtil.java5ArgsIsBlank(srcPrepnames) ) {
+		if ( CollectionUtil.argsIsBlank(srcPrepnames) ) {
 			srcPrepnames = prepnames;
 		}
 
@@ -406,10 +406,10 @@ public class BeanUtil {
 		T bean = cerateBean(beanClazz);
 	
 
-		if ( CollectionUtil.java5ArgsIsBlank(prepnames) ) {
+		if ( CollectionUtil.argsIsBlank(prepnames) ) {
 			prepnames = this.getPrepNames(bean);
 		}
-		if ( CollectionUtil.java5ArgsIsBlank(srcPrepnames) ) {
+		if ( CollectionUtil.argsIsBlank(srcPrepnames) ) {
 			srcPrepnames = prepnames;
 		}
 
@@ -501,10 +501,10 @@ public class BeanUtil {
         Assert.notNull(bean     , "bean == null");
         Assert.notNull(m        , "map == null");
 
-		if ( CollectionUtil.java5ArgsIsBlank(srcPrepnames) ) {
+		if ( CollectionUtil.argsIsBlank(srcPrepnames) ) {
 			srcPrepnames = this.getPrepNames(bean);
 		}
-		if ( CollectionUtil.java5ArgsIsBlank(prepnames) ) {
+		if ( CollectionUtil.argsIsBlank(prepnames) ) {
 			prepnames = srcPrepnames;
 		}
 		this.beanCopy(bean, m, srcPrepnames, prepnames, beanVo, mapVo);
@@ -552,7 +552,7 @@ public class BeanUtil {
 	public Map<String, Object> objectArray2Map(Object[] os, String[] keys, String... nkeys) {
 
 		Collection<String> bkl = null;
-		if ( ! CollectionUtil.java5ArgsIsBlank(nkeys) ) {
+		if ( ! CollectionUtil.argsIsBlank(nkeys) ) {
 			bkl = new HashSet<String>(Arrays.asList(nkeys));
 		}
 

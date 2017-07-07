@@ -15,7 +15,7 @@ public class SqlFormatUtil {
 		
 		Object s = o;
 		
-		if( !CollectionUtil.java5ArgsIsBlank(ops)  ) {
+		if( !CollectionUtil.argsIsBlank(ops)  ) {
 			for( PreOperate op : ops ) {
 				s = op.doOperate(s);
 			}
@@ -29,7 +29,7 @@ public class SqlFormatUtil {
 		
 		Object s = o;
 		
-		if( !CollectionUtil.java5ArgsIsBlank(ops)  ) {
+		if( !CollectionUtil.argsIsBlank(ops)  ) {
 			for( PreOperate op : ops ) {
 				s = op.doOperate(s);
 			}

@@ -59,7 +59,7 @@ public class MapBuilder<K,V> {
 	}
 	
 	public static <X,Y> Map<X,Y> newMap( Object... kvs ) {
-		return new MapBuilder<X,Y>( CollectionUtil.java5ArgsIsBlank(kvs) ? 0 : (kvs.length / 2) ).puts(kvs).get();
+		return new MapBuilder<X,Y>( CollectionUtil.argsIsBlank(kvs) ? 0 : (kvs.length / 2) ).puts(kvs).get();
 	}
 	
 	public static <X,Y> Map<X,Y> newMapAndPutAll( Map<? extends X, ? extends Y> m ) {
@@ -76,7 +76,7 @@ public class MapBuilder<K,V> {
 	
 	public static <X,Y> ConcurrentHashMap<X,Y> newConcurrentHashMap( Object... kvs ) {
 		return  (ConcurrentHashMap<X, Y>) new MapBuilder<X,Y>(
-				new ConcurrentHashMap<X,Y>( CollectionUtil.java5ArgsIsBlank(kvs) ? 0 : (kvs.length / 2) )
+				new ConcurrentHashMap<X,Y>( CollectionUtil.argsIsBlank(kvs) ? 0 : (kvs.length / 2) )
 		).puts(kvs).get();
 	}
 
@@ -123,7 +123,7 @@ public class MapBuilder<K,V> {
 	@SuppressWarnings("unchecked")
 	public MapBuilder<K,V> puts( Object... kvs ) {
 		
-		if( CollectionUtil.java5ArgsIsBlank(kvs) ) {
+		if( CollectionUtil.argsIsBlank(kvs) ) {
 			return this;
 		}  
 		
