@@ -4,7 +4,7 @@ public class Var<T> implements java.io.Serializable {
 
 	private static final long serialVersionUID = -8028944252330143592L;
 	
-	private T var;
+	private volatile T var;
 	
 	public Var() {}
 	

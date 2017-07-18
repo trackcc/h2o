@@ -8,29 +8,29 @@ public class Args implements java.io.Serializable {
 
 	private static final long serialVersionUID = -1159068677332269042L;
 
-	public int c;
+	public volatile int c;
 	
-	public Object a0;
+	public volatile Object a0;
 	
-	public Object a1;
+	public volatile Object a1;
 	
-	public Object a2;
+	public volatile Object a2;
 	
-	public Object a3;
+	public volatile Object a3;
 	
-	public Object a4;
+	public volatile Object a4;
 	
-	public Object a5;
+	public volatile Object a5;
 	
-	public Object a6;
+	public volatile Object a6;
 	
-	public Object a7;
+	public volatile Object a7;
 	
-	public Object a8;
+	public volatile Object a8;
 	
-	public Object a9;
+	public volatile Object a9;
 	
-	public Object a10;	
+	public volatile Object a10;
 	
 	public Args() {}
 	
