@@ -2,7 +2,9 @@ package h2o.common.spring.transaction;
 
 import h2o.common.spring.factory.SpringFactory;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionException;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -26,13 +28,25 @@ public class TransactionHelper {
     }
 
 
+    public TransactionHelper inNewTx() {
+        transactionTemplate.setPropagationBehavior( TransactionDefinition.PROPAGATION_REQUIRES_NEW );
+        return this;
+    }
 
-    public <T> T execute(TransactionCallback<T> action) throws TransactionException {
-        return transactionTemplate.execute(action);
+    public void execute( final WithoutReturnValueTransactionCallback action ) throws TransactionException {
+        transactionTemplate.execute( new TransactionCallback<Void>() {
+            @Override
+            public Void doInTransaction(TransactionStatus status) {
+                action.doInTransaction(status);
+                return null;
+            }
+        } );
     }
 
 
-
+    public <T> T executeAndReturn( TransactionCallback<T> action ) throws TransactionException {
+        return transactionTemplate.execute(action);
+    }
 
 
 
