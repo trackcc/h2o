@@ -13,7 +13,8 @@ import org.springframework.transaction.support.TransactionTemplate;
  */
 public class TransactionHelper {
 
-    private final TransactionTemplate transactionTemplate;
+    protected final TransactionTemplate transactionTemplate;
+
 
     public TransactionHelper() {
         this("transactionManager");
@@ -25,6 +26,10 @@ public class TransactionHelper {
 
     public TransactionHelper(PlatformTransactionManager transactionManager ) {
         this.transactionTemplate = new TransactionTemplate(transactionManager);
+    }
+
+    public TransactionHelper(TransactionTemplate transactionTemplate) {
+        this.transactionTemplate = transactionTemplate;
     }
 
 
@@ -47,6 +52,13 @@ public class TransactionHelper {
     public <T> T executeAndReturn( TransactionCallback<T> action ) throws TransactionException {
         return transactionTemplate.execute(action);
     }
+
+
+
+    public PlatformTransactionManager getTransactionManager() {
+        return transactionTemplate.getTransactionManager();
+    }
+
 
 
 
@@ -104,6 +116,8 @@ public class TransactionHelper {
     public String getName() {
         return transactionTemplate.getName();
     }
+
+
 
     @Override
     public String toString() {
