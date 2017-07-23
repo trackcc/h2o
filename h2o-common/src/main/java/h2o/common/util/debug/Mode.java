@@ -86,9 +86,9 @@ public class Mode {
 
 		mode = m;
 		
-		Tools.log.info("Mode : {}"      , mode );
-        Tools.log.info("debugMode : {}" , debugMode );
-		Tools.log.info("User Mode : {}" , userModeSet );
+		Tools.log.info("Mode : {}"       , mode );
+        Tools.log.info("Debug Mode : {}" , debugMode );
+		Tools.log.info("User Mode : {}"  , userModeSet );
 	}
 	
 	private Mode() {}
