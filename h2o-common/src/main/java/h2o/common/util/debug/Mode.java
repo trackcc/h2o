@@ -82,7 +82,7 @@ public class Mode {
 		devMode     = d;
 		testMode    = t;
 
-		debugMode      = debug;
+		debugMode   = debug;
 
 		mode = m;
 		

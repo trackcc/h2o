@@ -5,7 +5,6 @@ import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.security.support.ToHex;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public final class MessageDigestUtil {
 	
