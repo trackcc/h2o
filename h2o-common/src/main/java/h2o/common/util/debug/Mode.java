@@ -1,6 +1,7 @@
 package h2o.common.util.debug;
 
 import h2o.common.Tools;
+import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.collections.CollectionUtil;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
@@ -26,11 +27,11 @@ public class Mode {
 	
 	static {
 		
-		boolean p = true;
+		boolean p = false;
 		boolean t = false;
         boolean d = false;
 
-        boolean debug;
+        boolean debug = false;
 
 		String m;
 		
@@ -38,8 +39,13 @@ public class Mode {
 
 			PropertiesConfiguration config = new PropertiesConfiguration("mode.properties");
 			
-			m      = config.getString("mode", PROD).trim().toUpperCase();
-            debug  = config.getBoolean("debug" , false );
+			m = config.getString("mode", PROD ).trim().toUpperCase();
+			try {
+                debug  = config.getBoolean("debug" , false );
+            } catch ( Exception e ) {
+
+            }
+
 			
 			if( TEST.equals(m) ) {				
 				t = true;				
@@ -65,17 +71,13 @@ public class Mode {
 			
 			
 			
-		} catch (Throwable e) {	
-			
-			System.err.println(e.getClass().getName() + ":" + e.getMessage());
-			
-			p = true;
-			d = false;
-			t = false;
+		} catch (Throwable e) {
 
-            debug = false;
-			
-			m = PROD;
+		    e.fillInStackTrace();
+		    Tools.log.error( e );
+
+		    throw ExceptionUtil.toRuntimeException(e);
+
 		}
 		
 		prodMode    = p;
