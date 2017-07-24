@@ -46,19 +46,15 @@ public class Mode {
 
             }
 
-			
-			if( TEST.equals(m) ) {				
+			if ( PROD.equals( m ) ) {
+			    p = true;
+            } else if ( TEST.equals( m ) ) {
 				t = true;				
-			} else if( DEV.equals(m) ) {
+			} else if ( DEV.equals( m ) ) {
 				d = true;				
 			} else {				
-				p = true;
-				m = PROD;
-				
-				Tools.log.info("default mode !!!");
+                throw new IllegalArgumentException(m);
 			}
-			
-			
 			
 			String userModes = config.getString("userMode","").trim().toUpperCase();
 			
