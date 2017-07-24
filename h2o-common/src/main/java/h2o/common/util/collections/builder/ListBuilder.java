@@ -54,6 +54,10 @@ public class ListBuilder<E> {
 	public static <F> List<F> newListAndAddAll( Collection<? extends F> c ) {
 		return new ListBuilder<F>( c == null ? 0 :c.size() ).addAll(c).get();
 	}
+
+    public static <F> List<F> newListAndFillFromIterable( Iterable<? extends F> it ) {
+        return fillFromIterable( new ArrayList<F>() , it );
+    }
 	
 	public static <F> CopyOnWriteArrayList<F> newCopyOnWriteArrayList() {
 		return new CopyOnWriteArrayList<F>();
@@ -64,8 +68,25 @@ public class ListBuilder<E> {
 	}
 
 	public static <F> List<F> newCopyOnWriteArrayListAndAddAll( Collection<? extends F> c ) {
-		return new ListBuilder<F>( new CopyOnWriteArrayList<F>() ).addAll(c).get();
-	}
+        return new ListBuilder<F>( new CopyOnWriteArrayList<F>() ).addAll(c).get();
+    }
+
+    public static <F> List<F> newCopyOnWriteArrayListAndFillFromIterable( Iterable<? extends F> it ) {
+        return fillFromIterable( new CopyOnWriteArrayList<F>() , it );
+    }
+
+
+    private static <F> List<F> fillFromIterable( List<F> list , Iterable<? extends F> it ) {
+
+        if ( it != null ) {
+            Iterator<? extends F> ir = it.iterator();
+            while ( ir.hasNext() ) {
+                list.add( ir.next() );
+            }
+        }
+
+        return list;
+    }
 
 
 	
