@@ -56,7 +56,12 @@ public class ListBuilder<E> {
 	}
 
     public static <F> List<F> newListAndFillFromIterable( Iterable<? extends F> it ) {
+
+	    if ( it instanceof Collection ) {
+            return newListAndAddAll( ( Collection<? extends F> )it );
+        }
         return fillFromIterable( new ArrayList<F>() , it );
+
     }
 	
 	public static <F> CopyOnWriteArrayList<F> newCopyOnWriteArrayList() {
@@ -72,7 +77,13 @@ public class ListBuilder<E> {
     }
 
     public static <F> List<F> newCopyOnWriteArrayListAndFillFromIterable( Iterable<? extends F> it ) {
+
+        if ( it instanceof Collection ) {
+            return newCopyOnWriteArrayListAndAddAll( ( Collection<? extends F> )it );
+        }
+
         return fillFromIterable( new CopyOnWriteArrayList<F>() , it );
+
     }
 
 
