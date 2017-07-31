@@ -8,7 +8,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 /**
  * Created by zhangjianwei on 2017/7/1.
  */
-public abstract class AbstractEntity {
+public abstract class AbstractEntity<E extends AbstractEntity , B> {
 
     private final String _tableName;
 
@@ -30,12 +30,12 @@ public abstract class AbstractEntity {
     }
 
 
-    public <E extends AbstractEntity> E fill( Object bean ) {
+    public E fill( Object bean ) {
         Tools.b.beanCopy( bean , this );
         return (E)this;
     }
 
-    public <B> B toBean( B bean ) {
+    public B toBean( B bean ) {
         return (B) Tools.b.beanCopy( this , bean );
     }
 
