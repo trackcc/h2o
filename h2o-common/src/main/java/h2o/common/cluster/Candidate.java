@@ -12,64 +12,23 @@ import java.util.concurrent.TimeUnit;
 
 public class Candidate {
 
-    private final JedisUtil jedisUtil;
+    private final ClusterLock lock;
 
-    private final String topic;
-
-    private final String id = UuidUtil.getUuid();
-
-
-    private volatile boolean run = true;
-
-
-    private volatile boolean locked;
-
-    public static final int LOCK_TIME_OUT = 120;
-
-
-
-    public Candidate( JedisUtil jedisUtil, String topic ) {
-        this.jedisUtil = jedisUtil;
-        this.topic = "H2OCandidate_" + topic;
+    public Candidate( JedisUtil jedisUtil, String topic , int timeout ) {
+       this.lock = new ClusterLock( jedisUtil , "H2OCandidate_" + topic , timeout );
     }
 
     public void attend() {
 
-        Assert.isTrue( run == true , "Exited" );
+        Assert.isTrue( lock.run == true , "Exited" );
 
         RunUtil.call(new Runnable() {
             @Override
             public void run() {
 
-                while ( run ) {
+                while ( lock.run ) {
 
-                    try {
-
-                        jedisUtil.callback(new JedisCallBack<Void>() {
-
-                            @Override
-                            public Void doCallBack(Jedis jedis) throws Exception {
-
-                                if ( jedis.setnx( topic, id ) == 1 ||  ( id.equals( jedis.get(topic) ) ) ) {
-                                    jedis.expire( topic, LOCK_TIME_OUT );
-                                    locked = true;
-                                } else {
-                                    locked = false;
-                                }
-
-                                return null;
-                            }
-
-                        });
-
-                    } catch ( Exception e ) {
-
-                        e.printStackTrace();
-                        Tools.log.error(e);
-
-                        locked = false;
-
-                    }
+                    lock.tryLock();
 
                     try {
 
@@ -82,29 +41,7 @@ public class Candidate {
 
                 }
 
-                try {
-
-                    jedisUtil.callback(new JedisCallBack<Void>() {
-
-                        @Override
-                        public Void doCallBack(Jedis jedis) throws Exception {
-
-                            if ( id.equals( jedis.get(topic) ) ) {
-                                jedis.del(topic);
-                            }
-
-                            return null;
-
-                        }
-
-                    });
-
-                } catch ( Exception e ) {
-
-                    e.printStackTrace();
-                    Tools.log.error(e);
-
-                }
+               lock.ulock();
 
             }
         });
@@ -112,12 +49,12 @@ public class Candidate {
 
 
     public void exit() {
-        this.run = false;
+        lock.run = false;
     }
 
 
     public boolean isMe() {
-        return locked;
+        return lock.isLocked();
     }
 
 }
