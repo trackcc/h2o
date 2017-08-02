@@ -32,7 +32,7 @@ public class RedisLock {
     }
     
     public RedisLock(String key , Jedis jedis , int expire ) {
-        this.key = key;
+        this.key = "H2ORedisLock_" + key;
         this.jedis = jedis;
         this.expire = expire;
     }

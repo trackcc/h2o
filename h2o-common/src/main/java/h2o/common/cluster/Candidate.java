@@ -30,7 +30,7 @@ public class Candidate {
 
     public Candidate( JedisUtil jedisUtil, String topic ) {
         this.jedisUtil = jedisUtil;
-        this.topic = topic;
+        this.topic = "H2OCandidate_" + topic;
     }
 
     public void attend() {
