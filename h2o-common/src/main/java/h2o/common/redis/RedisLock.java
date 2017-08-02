@@ -1,6 +1,7 @@
 package h2o.common.redis;
 
 import h2o.common.Tools;
+import h2o.common.util.id.UuidUtil;
 import redis.clients.jedis.Jedis;
 
 import java.util.Random;
@@ -10,7 +11,8 @@ import java.util.Random;
  */
 public class RedisLock {
     //加锁标志
-    public static final String LOCKED = "TRUE";
+    private final String id = UuidUtil.getUuid();
+
     public static final long ONE_MILLI_NANOS = 1000000L;
     //默认超时时间（毫秒）
     public static final long DEFAULT_TIME_OUT = 3000;
@@ -23,7 +25,7 @@ public class RedisLock {
     private final Jedis jedis;
     private final String key;
     //锁状态标志
-    private boolean locked = false;
+    private volatile boolean locked = false;
 
     public RedisLock(String key , Jedis jedis ) {
         this(key , jedis , 5 * 60 );
@@ -35,12 +37,14 @@ public class RedisLock {
         this.expire = expire;
     }
 
-    public boolean lock(long timeout) {
+    public boolean lock( long timeout ) {
         long nano = System.nanoTime();
         timeout *= ONE_MILLI_NANOS;
         try {
+
             while ((System.nanoTime() - nano) < timeout) {
-                if (jedis.setnx(key, LOCKED) == 1) {
+
+                if (jedis.setnx(key, id) == 1 || id.equals( jedis.get(key) ) ) {
                     jedis.expire(key, expire);
                     locked = true;
                     return locked;
@@ -48,9 +52,14 @@ public class RedisLock {
                
                 Thread.sleep(50 + random.nextInt(50) );
             }
+
+
         } catch (Exception e) {
-        	Tools.log.error("",e);
+        	Tools.log.error(e);
         }
+
+        locked = false;
+
         return false;
     }
     public boolean lock() {
