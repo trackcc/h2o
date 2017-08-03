@@ -2,7 +2,6 @@ package h2o.common.util.security;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-import h2o.common.util.security.support.ToHex;
 
 import java.security.MessageDigest;
 
@@ -16,7 +15,7 @@ public final class MessageDigestUtil {
 
 			MessageDigest md = MessageDigest.getInstance(mdName);
 
-			return ToHex.byteArrayToHexString( md.digest( charset == null ? str.getBytes() : str.getBytes(charset) ) );
+			return HexUtil.byteArrayToHexString( md.digest( charset == null ? str.getBytes() : str.getBytes(charset) ) );
 
 		} catch ( Exception e ) {
 			Tools.log.debug("", e);
