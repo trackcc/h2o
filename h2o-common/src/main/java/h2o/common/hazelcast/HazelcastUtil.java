@@ -1,4 +1,4 @@
-package h2o.common.cluster.util;
+package h2o.common.hazelcast;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.GroupConfig;
