@@ -9,10 +9,21 @@ public class TransResult<R> extends TransStatus implements Serializable {
 
     private static final long serialVersionUID = -1448116426261181686L;
 
+    public TransResult() {}
+
+    public TransResult( TransStatus transStatus ) {
+        this.setStatus( transStatus.getStatus() );
+        this.setFinal( transStatus.isFinal() );
+        this.setCode( transStatus.getCode() );
+        this.setMsg( transStatus.getMsg() );
+    }
+
 
     private R result;
 
     private Throwable e;
+
+
 
 
     public R getResult() {
