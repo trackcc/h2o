@@ -56,4 +56,5 @@ public class TransResult<R> extends TransStatus implements Serializable {
         super.setMsg(msg);
         return this;
     }
+
 }

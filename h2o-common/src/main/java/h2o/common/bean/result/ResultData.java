@@ -1,5 +1,7 @@
 package h2o.common.bean.result;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 public class ResultData implements java.io.Serializable {
 
     private static final long serialVersionUID = 26132204178801391L;
@@ -87,5 +89,10 @@ public class ResultData implements java.io.Serializable {
     public ResultData setResult(Object result) {
         this.result = result;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }

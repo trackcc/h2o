@@ -1,5 +1,7 @@
 package h2o.common.bean.result;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.io.Serializable;
 
 /**
@@ -52,6 +54,12 @@ public class TransStatus implements Serializable {
     public TransStatus setMsg(String msg) {
         this.msg = msg;
         return this;
+    }
+
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 
