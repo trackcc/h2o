@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ClusterLock {
 
-    public static final long DEFAULT_TIME_OUT = 30000;
+    private static final long DEFAULT_TIME_OUT = 30000;
 
     private final String id = UuidUtil.getUuid();
 
@@ -18,7 +18,7 @@ public class ClusterLock {
 
     private final String key;
 
-    public  final int expire;
+    private final int expire;
 
     volatile boolean run = true;
 
