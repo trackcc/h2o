@@ -105,7 +105,7 @@ public class ClusterLock {
 
 
 
-    public void ulock() {
+    public void unlock() {
 
         locked = false;
 

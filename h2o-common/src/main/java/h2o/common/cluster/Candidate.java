@@ -41,7 +41,7 @@ public class Candidate {
 
                 }
 
-               lock.ulock();
+               lock.unlock();
 
             }
         });
