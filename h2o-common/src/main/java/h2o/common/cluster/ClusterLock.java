@@ -93,7 +93,6 @@ public class ClusterLock {
                 TimeUnit.MILLISECONDS.sleep(500);
 
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
             }
 
 

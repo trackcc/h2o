@@ -35,13 +35,13 @@ public class Candidate {
                         TimeUnit.SECONDS.sleep(30 );
 
                     } catch ( InterruptedException e ) {
-                        Thread.currentThread().interrupt();
                     }
 
 
                 }
 
-               lock.unlock();
+                lock.unlock();
+
 
             }
         });

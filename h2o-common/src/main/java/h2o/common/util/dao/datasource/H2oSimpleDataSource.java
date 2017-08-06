@@ -48,7 +48,6 @@ public class H2oSimpleDataSource extends AbstractDataSourceProxy {
 							c = null;
 						}
 					} catch (InterruptedException e) {
-					    Thread.currentThread().interrupt();
 					} catch ( Exception e) {
 						e.printStackTrace();
 						Tools.log.error(e);
@@ -73,7 +72,6 @@ public class H2oSimpleDataSource extends AbstractDataSourceProxy {
 		try {
 			c = cbq.isEmpty() ? null : cbq.poll(10l,TimeUnit.MILLISECONDS);
 		} catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
 		}
 		if( c == null ) {
 			return getConnection0();

@@ -6,8 +6,10 @@ import h2o.common.concurrent.Locks;
 import h2o.common.concurrent.OneTimeInitVar;
 import h2o.common.concurrent.RunUtil;
 
+import java.util.Date;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 
 public class Dispatcher {
@@ -88,7 +90,6 @@ public class Dispatcher {
 						    if( interruptible ) {
                                 throw e;
                             } else {
-						        Thread.currentThread().interrupt();
                                 st = errSleepTime.getVar();
                             }
 
@@ -105,13 +106,12 @@ public class Dispatcher {
 					
 				
 				} catch( InterruptedException e ) {
-					Tools.log.error("InterruptedException", e);
+					Tools.log.info("InterruptedException", e);
 				}
-				
 				
 				stop = true;
 				running = false;
-				
+
 			}
 			
 		} );
@@ -134,8 +134,6 @@ public class Dispatcher {
 			} catch( InterruptedException e) {
 			    if( interruptible ) {
                     throw e;
-                } else {
-                    Thread.currentThread().interrupt();
                 }
 			} catch (Throwable e) {
 				Tools.log.debug("Sleepping", e);
@@ -186,10 +184,10 @@ public class Dispatcher {
 		
 		
 	}
-	
-	
-	
-	
+
+
+
+
 	
 	public void setTask(RepetitiveTask task) {
 		this.task.setVar(task);
@@ -214,4 +212,6 @@ public class Dispatcher {
     public void setInterruptible( boolean interruptible ) {
         this.interruptible = interruptible;
     }
+
+
 }

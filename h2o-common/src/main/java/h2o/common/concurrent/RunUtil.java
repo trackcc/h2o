@@ -134,12 +134,18 @@ public class RunUtil {
 	}
 
 
-	public static void sleep( long millis) {
+    /**
+     *
+     * @param millis
+     * @return interrupted
+     */
+	public static boolean sleep( long millis) {
 
         try {
             Thread.sleep( millis );
+            return false;
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            return true;
         }
 
     }

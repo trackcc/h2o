@@ -37,7 +37,6 @@ public class ConsumersController<T> {
                     }
 
                 } catch ( InterruptedException e ) {
-                    Thread.currentThread().interrupt();
 				} catch( Throwable e) {
 					Tools.log.debug("ConsumersController.ConsumerThread::call",e);					
 				}

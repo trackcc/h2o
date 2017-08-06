@@ -113,7 +113,7 @@ public class SqlTable {
 			sqlTable.put(key, sql);
 		}
 		
-		Tools.log.debug("load sqlTable from path:{}\n{}",path , sqlTable);
+		Tools.log.debug("Load sqlTable from path:{}\n{}",path , sqlTable);
 		
 		return sqlTable;
 	}
