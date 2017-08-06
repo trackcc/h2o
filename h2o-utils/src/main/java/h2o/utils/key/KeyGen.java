@@ -164,8 +164,8 @@ public class KeyGen {
 
                         dao.update( UPDSEQ , "seqobj", key  , "cyclicspace" , cyclicSpace , "seqno" , r );
 
-                        rr[0] = r0;
-                        rr[1] = r;
+                        rr[0] = r;
+                        rr[1] = r0;
 
                     } catch ( Exception e ) {
                         Tools.log.error(e);
