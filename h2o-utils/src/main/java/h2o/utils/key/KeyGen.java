@@ -13,13 +13,16 @@ import h2o.common.util.dao.butterflydb.ButterflyDao;
 import h2o.common.util.dao.butterflydb.ButterflyDb;
 import h2o.common.util.dao.butterflydb.ButterflyDbCallback;
 import h2o.common.util.math.IntArith;
+import h2o.dao.Dao;
 import h2o.dao.DbUtil;
+import h2o.dao.TxCallback;
 import org.apache.commons.lang.StringUtils;
 
 import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 
@@ -27,7 +30,7 @@ public class KeyGen {
 
     public static final String DEFAULT_CYCLICSPACE = "_null_";
 
-    static final int RETRYTIMES = 100;
+    static final int RETRYTIMES = 10;
 
     private static final LockMap lockMap = new LockMap();
 
@@ -124,82 +127,65 @@ public class KeyGen {
 
         final String[] rr = {"-1", "-1"};
 
+        DbUtil.getDb("common" ).tx( new TxCallback<Void>() {
 
-        DbUtil.getButterflyDb("common").txCallback(new ButterflyDbCallback<String>() {
+            @Override
+            public Void doCallBack(Dao dao) throws Exception {
 
+                Map<String,Object> m =  dao.get( SELSEQ, "seqobj", key );
 
-            public String doCallBack(ButterflyDb butterflyDb, Connection connection) throws Exception {
+                if ( m == null ) {
 
-                final ButterflyDao jdbcDao = butterflyDb.getDao();
-
-                // 序列号,循环空间 , 记录是否存在
-                Tuple3<String, String, Boolean> qr = jdbcDao.read(SELSEQ, new IResultSetProcessor() {
-
-                    private Tuple3<String, String, Boolean> qr;
-
-                    public void init(ResultSet rs, IDaos daos) throws SQLException, PersistenceException {
-                        if (rs.next()) {
-
-                            String cycdb = rs.getString(1);
-                            String sndb  = rs.getString(2);
-
-                            qr = TupleUtil.t( sndb, cycdb , true);
-
-                        } else {
-
-                            qr = TupleUtil.t("0", null, false);
-
-                        }
-                    }
-
-                    public void process(ResultSet rs, IDaos daos) throws SQLException, PersistenceException {
-
-                    }
-
-                    public Object getResult() throws PersistenceException {
-                        return qr;
-                    }
-
-                }, key );
-
-
-
-
-                String cyclicSpace = cyclicSpaceSetter.getNewCyclicSpace( qr.e1 , qr.e0 );
-                if ( cyclicSpace == null ) {
-                    cyclicSpace = DEFAULT_CYCLICSPACE;
-                }
-
-                String r0 = ( qr.e2 &&  cyclicSpace.equals( qr.e1 ) ) ?  qr.e0 : "0";
-
-                String r = IntArith.add( r0 , incNum );
-
-                int unum = 0;
-                if (!qr.e2) {
                     try {
-                        unum = jdbcDao.update(INSSEQ, key, cyclicSpace, r);
-                    } catch (Exception e) {
-                        unum = 0;
-                    }
-                } else {
-                    unum = jdbcDao.update( UPDSEQ, r, cyclicSpace, key, qr.e0 , qr.e1);
-                }
 
-                rr[0] = (unum == 0 ? null : r);
-                rr[1] = qr.e0;
+                        dao.update( INSSEQ , "seqobj", key , "cyclicspace" , DEFAULT_CYCLICSPACE );
+
+                    } catch (Exception e) {
+                        Tools.log.error(e);
+                    }
+
+                    rr[0] = null;
+
+                } else {
+
+                    try {
+
+                        String oldCyc = (String)m.get("cyclicspace");
+                        String oldNo  = (String)m.get("seqno");
+
+                        String cyclicSpace = cyclicSpaceSetter.getNewCyclicSpace( oldCyc , oldNo );
+                        if ( cyclicSpace == null ) {
+                            cyclicSpace = DEFAULT_CYCLICSPACE;
+                        }
+
+                        String r0 = ( cyclicSpace.equals( oldCyc) ) ?  oldNo : "0";
+
+                        String r = IntArith.add( r0 , incNum );
+
+                        dao.update( UPDSEQ , "seqobj", key  , "cyclicspace" , cyclicSpace , "seqno" , r );
+
+                        rr[0] = r0;
+                        rr[1] = r;
+
+                    } catch ( Exception e ) {
+                        Tools.log.error(e);
+                        rr[0] = null;
+                    }
+
+                }
 
                 return null;
-
             }
 
         });
+
 
         return rr[0] == null ? null : TupleUtil.t( rr[0], rr[1] );
 
     }
 
 
-    
+
 
 
 }
