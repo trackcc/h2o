@@ -16,6 +16,8 @@ public class ClusterLock {
 
     private final JedisUtil jedisUtil;
 
+    private final Jedis _jedis;
+
     private final String key;
 
     private final int expire;
@@ -27,31 +29,48 @@ public class ClusterLock {
 
     public ClusterLock( JedisUtil jedisUtil, String key, int expire ) {
         this.jedisUtil = jedisUtil;
+        this._jedis = null;
+        this.key = "H2OClusterLock_" + key;
+        this.expire = expire;
+    }
+
+    public ClusterLock( Jedis jedis, String key, int expire ) {
+        this.jedisUtil = null;
+        this._jedis = jedis;
         this.key = "H2OClusterLock_" + key;
         this.expire = expire;
     }
 
 
+    private void tryLock( Jedis jedis ) {
+
+        if (jedis.setnx(key, id) == 1 || (id.equals(jedis.get(key)))) {
+
+            jedis.expire(key, expire);
+            locked = true;
+
+        } else {
+
+            locked = false;
+
+        }
+
+    }
 
     public boolean tryLock() {
 
         try {
 
-            jedisUtil.callback(new JedisCallBack<Void>() {
+            if ( jedisUtil == null ) {
+
+                tryLock( this._jedis );
+
+            } else jedisUtil.callback(new JedisCallBack<Void>() {
 
                 @Override
                 public Void doCallBack(Jedis jedis) throws Exception {
 
-                    if (jedis.setnx(key, id) == 1 || (id.equals(jedis.get(key)))) {
-
-                        jedis.expire(key, expire);
-                        locked = true;
-
-                    } else {
-
-                        locked = false;
-
-                    }
+                    tryLock( jedis );
 
                     return null;
 
@@ -81,7 +100,6 @@ public class ClusterLock {
 
         long t = System.currentTimeMillis();
 
-
         do {
 
             if ( tryLock() ) {
@@ -95,7 +113,6 @@ public class ClusterLock {
             } catch (InterruptedException e) {
             }
 
-
         } while ( System.currentTimeMillis() - t < timeout);
 
         return false;
@@ -104,20 +121,30 @@ public class ClusterLock {
 
 
 
+    private void unlock( Jedis jedis ) {
+
+        if ( id.equals( jedis.get(key) ) ) {
+            jedis.del(key);
+        }
+
+    }
+
     public void unlock() {
 
         locked = false;
 
         try {
 
-            jedisUtil.callback(new JedisCallBack<Void>() {
+            if ( jedisUtil == null ) {
+
+                unlock( this._jedis );
+
+            } else jedisUtil.callback(new JedisCallBack<Void>() {
 
                 @Override
                 public Void doCallBack(Jedis jedis) throws Exception {
 
-                    if ( id.equals( jedis.get(key) ) ) {
-                        jedis.del(key);
-                    }
+                    unlock( jedis );
 
                     return null;
 
@@ -137,4 +164,5 @@ public class ClusterLock {
     public boolean isLocked() {
         return run && locked;
     }
+
 }
