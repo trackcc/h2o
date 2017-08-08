@@ -95,7 +95,11 @@ public class SqlTable {
 		return this;
 	}
 
-	public void setTemplateUtil(TemplateUtil templateUtil) {
+    public Map<String, Object> getTemplateData() {
+        return templateData;
+    }
+
+    public void setTemplateUtil(TemplateUtil templateUtil) {
 		this.templateUtil = templateUtil;
 	}
 

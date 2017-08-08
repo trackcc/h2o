@@ -36,16 +36,17 @@ public class TSql extends Sql implements SqlSource {
 			data = MapBuilder.newMap();
 		}
 		
-		Map<String,Object> tSqldata; {
-			
-			if( this.tdata == null ) {
-				tSqldata = data;
-			} else {
-				tSqldata = MapBuilder.newMap();				
-				tSqldata.putAll( this.tdata );
-				tSqldata.putAll( data );
-			}
-			
+		Map<String,Object> tSqldata = MapBuilder.newMap(); {
+
+            Map<String, Object> templateData = DbUtil.newSqlTable().getTemplateData();
+            if( templateData != null ) {
+                tSqldata.putAll( templateData );
+            }
+            if( this.tdata != null ) {
+                tSqldata.putAll(this.tdata);
+            }
+            tSqldata.putAll( data );
+
 		}
 		
 		return DbUtil.sqlTemplateUtil.process( tSqldata , sql ) ;
