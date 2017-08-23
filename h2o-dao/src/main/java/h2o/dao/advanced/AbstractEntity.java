@@ -40,18 +40,17 @@ public abstract class AbstractEntity<E extends AbstractEntity> {
     }
 
 
-    public String getTableName() {
+    public String get_tableName() {
         return _tableName;
     }
 
-    public String getW() {
+    public String get_w() {
         return _w;
     }
 
-    public String[] getPks() {
+    public String[] get_pks() {
         return _pks;
     }
-
 
     @Override
     public String toString() {
