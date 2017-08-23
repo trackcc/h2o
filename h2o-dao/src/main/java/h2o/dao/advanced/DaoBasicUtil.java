@@ -1,5 +1,6 @@
 package h2o.dao.advanced;
 
+import h2o.common.util.collections.CollectionUtil;
 import h2o.common.util.lang.StringUtil;
 import h2o.dao.Dao;
 import h2o.dao.DbUtil;
@@ -34,8 +35,19 @@ public final class DaoBasicUtil {
         return dao.update( DbUtil.sqlBuilder.buildUpdateSql3( entity , entity.get_w() , entity.get_pks() ) , entity );
     }
 
-    public int edit(Object entity , String w , String... skip ) {
-        return dao.update( DbUtil.sqlBuilder.buildUpdateSql3( entity , w , skip ) , entity );
+    public int edit( AbstractEntity entity , String w , Object... args ) {
+
+        Object[] para;
+        if( CollectionUtil.argsIsBlank( args ) ) {
+            para = new Object[] { entity };
+        } else {
+            para = new Object[ args.length + 1 ];
+            para[0] = entity;
+
+            System.arraycopy( args , 0 , para , 1 , args.length  );
+        }
+
+        return dao.update( DbUtil.sqlBuilder.buildUpdateSql3( entity , w , entity.get_pks() ) , para );
     }
 
     public int del( AbstractEntity entity ) {
