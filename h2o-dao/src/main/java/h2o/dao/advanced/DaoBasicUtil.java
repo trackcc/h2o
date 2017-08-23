@@ -31,7 +31,7 @@ public final class DaoBasicUtil {
     }
 
     public int edit( AbstractEntity entity ) {
-        return dao.update( DbUtil.sqlBuilder.buildUpdateSql3( entity , entity.getW() , entity.getPks() ) , entity );
+        return dao.update( DbUtil.sqlBuilder.buildUpdateSql3( entity , entity.get_w() , entity.get_pks() ) , entity );
     }
 
     public int edit(Object entity , String w , String... skip ) {
@@ -39,7 +39,7 @@ public final class DaoBasicUtil {
     }
 
     public int del( AbstractEntity entity ) {
-        return dao.update( "delete from " + entity.getTableName() +  " where " + entity.getW() , entity );
+        return dao.update( "delete from " + entity.get_tableName() +  " where " + entity.get_w() , entity );
     }
 
     public <T extends AbstractEntity> T get( T entity ) {
@@ -54,7 +54,7 @@ public final class DaoBasicUtil {
 
         StringBuilder sql = new StringBuilder();
 
-        StringUtil.append( sql , "select * from " , entity.getTableName() ,  " where " , entity.getW() );
+        StringUtil.append( sql , "select * from " , entity.get_tableName() ,  " where " , entity.get_w() );
         if( lock ) {
             sql.append(" for update ");
         }
