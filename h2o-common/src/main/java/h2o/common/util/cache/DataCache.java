@@ -1,35 +1,27 @@
 package h2o.common.util.cache;
 
 
+import h2o.common.concurrent.TimesOut;
+
 public class DataCache<T> {
-	
-	private final long ct;
-	
-	private volatile int times = 0;
+
+    private final TimesOut timesOut;
 
 	private final T data;
 	
-	public DataCache( T data ) {
+	public DataCache( T data , long timeout , int times  ) {
 		this.data = data;
-		this.ct = System.currentTimeMillis();
+	    this.timesOut = new TimesOut( timeout , times );
 	}
 	
-	public T getCache( long timeout , int times ) {
+	public T getCache() {
 		
-		
-		if( timeout > 0 && System.currentTimeMillis() - ct > timeout ) {
-			return null;
-		}
-		
-		if( this.times > times ) {
-			return null;
-		}
-		
-		this.times ++;
+		if ( timesOut.out() ) {
+		    return null;
+        }
 		
 		return data;
-		
-		
+
 	}
 	
 
