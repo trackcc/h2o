@@ -1,50 +1,55 @@
 package h2o.common.util.cache.support;
 
+
+import h2o.common.concurrent.TimesOut;
 import h2o.common.util.cache.Cache;
-import h2o.common.util.cache.DataCache;
+
+public class TimeCache<T> implements Cache<T> {
 
 
-public class TimeCache<T>  implements Cache<T> {
-	
-	private final long timeout;
-	
-	private final int maxTimes;	
-	
-	private volatile DataCache<T> dataCache = null;
-	
-	public TimeCache( long timeout , int maxTimes ) {
-		this.timeout = timeout;
-		this.maxTimes = maxTimes;
+    private final long timeout;
+
+    private final int times;
+
+    private volatile TimesOut timesOut;
+
+
+    private volatile T data;
+
+    public TimeCache(long timeout, int times) {
+        this.timeout = timeout;
+        this.times = times;
+    }
+
+    @Override
+    public void set(T o) {
+        this.data = o;
+        this.timesOut = new TimesOut( timeout , times );
+    }
+
+    public T get() {
+
+        if ( data == null ) {
+            return null;
+        }
+		
+		if ( timesOut.out() ) {
+		    return null;
+        }
+		
+		return data;
+
 	}
-	
-	public DataCache<T> getCache() {
-		return dataCache;
-	}
 
-	public void set( T data ) {
-		dataCache = new DataCache<T>( data );		
-	}
+    @Override
+    public T clear() {
 
-	public T get() {
-		DataCache<T> d = dataCache;
-		if( d == null ) {
-			return null;
-		}
-		return d.getCache(timeout, maxTimes);
-	}
+        T d = data;
+        this.data = null;
+        this.timesOut = null;
 
-	public T clear() {
-		DataCache<T> d = dataCache;
-		if( d == null ) {
-			return null;
-		}
-		dataCache = null;
-		return d.getCache(timeout, maxTimes);
-	}
-	
-	
-
-
+        return d;
+    }
 
 
 }
