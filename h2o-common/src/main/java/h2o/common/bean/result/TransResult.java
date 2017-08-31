@@ -25,8 +25,6 @@ public class TransResult<R> extends TransStatus implements Serializable {
     private Throwable e;
 
 
-
-
     public R getResult() {
         return result;
     }
@@ -62,7 +60,6 @@ public class TransResult<R> extends TransStatus implements Serializable {
         super.setStatus(status);
         return this;
     }
-
 
 
     @Override

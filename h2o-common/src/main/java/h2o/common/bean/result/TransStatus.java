@@ -49,7 +49,6 @@ public class TransStatus implements Serializable {
     }
 
 
-
     public String getCode() {
         return code;
     }
