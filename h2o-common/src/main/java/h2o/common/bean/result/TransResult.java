@@ -12,8 +12,9 @@ public class TransResult<R> extends TransStatus implements Serializable {
     public TransResult() {}
 
     public TransResult( TransStatus transStatus ) {
-        this.setStatus( transStatus.getStatus() );
         this.setFinal( transStatus.isFinal() );
+        this.setSuccess( transStatus.isSuccess() );
+        this.setStatus( transStatus.getStatus() );
         this.setCode( transStatus.getCode() );
         this.setMsg( transStatus.getMsg() );
     }
@@ -45,16 +46,24 @@ public class TransResult<R> extends TransStatus implements Serializable {
     }
 
     @Override
+    public TransResult setFinal(boolean aFinal) {
+        super.setFinal(aFinal);
+        return this;
+    }
+
+    @Override
+    public TransStatus setSuccess(boolean success) {
+        super.setSuccess(success);
+        return this;
+    }
+
+    @Override
     public TransResult setStatus(int status) {
         super.setStatus(status);
         return this;
     }
 
-    @Override
-    public TransResult setFinal(boolean aFinal) {
-        super.setFinal(aFinal);
-        return this;
-    }
+
 
     @Override
     public TransResult setCode(String code) {

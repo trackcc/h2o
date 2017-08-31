@@ -15,10 +15,29 @@ public class TransStatus implements Serializable {
 
     private boolean isFinal;
 
+    private boolean success;
+
     private String code;
 
     private String msg;
 
+    public boolean isFinal() {
+        return isFinal;
+    }
+
+    public TransStatus setFinal(boolean aFinal) {
+        isFinal = aFinal;
+        return this;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public TransStatus setSuccess(boolean success) {
+        this.success = success;
+        return this;
+    }
 
     public int getStatus() {
         return status;
@@ -29,14 +48,7 @@ public class TransStatus implements Serializable {
         return this;
     }
 
-    public boolean isFinal() {
-        return isFinal;
-    }
 
-    public TransStatus setFinal(boolean aFinal) {
-        isFinal = aFinal;
-        return this;
-    }
 
     public String getCode() {
         return code;
