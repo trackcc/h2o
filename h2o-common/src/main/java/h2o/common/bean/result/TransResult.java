@@ -50,7 +50,7 @@ public class TransResult<R> extends TransStatus implements Serializable {
     }
 
     @Override
-    public TransStatus setSuccess(boolean success) {
+    public TransResult setSuccess(boolean success) {
         super.setSuccess(success);
         return this;
     }
