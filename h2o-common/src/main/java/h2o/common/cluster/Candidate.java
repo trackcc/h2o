@@ -14,8 +14,13 @@ public class Candidate {
 
     private final ClusterLock lock;
 
+    private final int timeout;
+
     public Candidate( JedisUtil jedisUtil, String topic , int timeout ) {
-       this.lock = new ClusterLock( jedisUtil , "H2OCandidate_" + topic , timeout );
+
+        Assert.isTrue( timeout > 5  , "'timeout' value must be greater than 5s");
+        this.timeout = timeout;
+        this.lock = new ClusterLock( jedisUtil , "H2OCandidate_" + topic , timeout );
     }
 
     public void attend() {
@@ -32,7 +37,7 @@ public class Candidate {
 
                     try {
 
-                        TimeUnit.SECONDS.sleep(30 );
+                        TimeUnit.SECONDS.sleep(1 );
 
                     } catch ( InterruptedException e ) {
                     }
