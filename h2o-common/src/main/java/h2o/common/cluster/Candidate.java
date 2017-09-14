@@ -18,7 +18,7 @@ public class Candidate {
 
     public Candidate( JedisUtil jedisUtil, String topic , int timeout ) {
 
-        Assert.isTrue( timeout >= 2  , "'timeout' value must not be less than 2s");
+        Assert.isTrue( timeout > 0  , "'timeout' value must be greater than 0" );
         this.timeout = timeout;
         this.lock = new ClusterLock( jedisUtil , "H2OCandidate_" + topic , timeout );
     }
@@ -37,7 +37,7 @@ public class Candidate {
 
                     try {
 
-                        TimeUnit.SECONDS.sleep(1 );
+                        TimeUnit.MILLISECONDS.sleep(500 );
 
                     } catch ( InterruptedException e ) {
                     }

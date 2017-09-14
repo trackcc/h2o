@@ -108,7 +108,7 @@ public class ClusterLock {
 
             try {
 
-                TimeUnit.MILLISECONDS.sleep(500);
+                TimeUnit.MILLISECONDS.sleep(50 );
 
             } catch (InterruptedException e) {
             }
