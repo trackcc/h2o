@@ -11,9 +11,9 @@ import java.lang.annotation.Target;
 
 public @interface Column {
 	
-	public String name() default "";
-	public String attrName() default "";
+	String name() default "";
+	String attrName() default "";
 	
-	public String defaultValue() default ColumnDefValue.UNDEFINED;
+	String defaultValue() default ColumnDefValue.UNDEFINED;
 	
 }

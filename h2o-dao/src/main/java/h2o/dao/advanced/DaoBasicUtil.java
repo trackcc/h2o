@@ -1,77 +1,174 @@
 package h2o.dao.advanced;
 
+import h2o.common.spring.util.Assert;
 import h2o.common.util.collections.CollectionUtil;
+import h2o.common.util.collections.builder.ListBuilder;
 import h2o.common.util.lang.StringUtil;
 import h2o.dao.Dao;
 import h2o.dao.DbUtil;
+import h2o.dao.colinfo.ColInfo;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
 /**
  * Created by zhangjianwei on 2017/7/1.
  */
-public final class DaoBasicUtil {
+public final class DaoBasicUtil<E> {
 
     private final Dao dao;
 
-    public DaoBasicUtil() {
+    private final EntityParser entityParser;
+
+
+    public DaoBasicUtil( Class<E> entityClazz ) {
         this.dao = DbUtil.getDao();
+        this.entityParser = new EntityParser( entityClazz );
     }
 
-    public DaoBasicUtil( Dao dao ) {
+    public DaoBasicUtil( Class<E> entityClazz , Dao dao ) {
         this.dao = dao;
+        this.entityParser = new EntityParser( entityClazz );
     }
 
 
-    public void add( Object entity ) {
+    public void add( E entity ) {
         dao.update( DbUtil.sqlBuilder.buildInsertSql(entity) , entity );
     }
 
-    public void batAdd( List<Object> entities ) {
+    public void batAdd( List<E> entities ) {
         dao.update( DbUtil.sqlBuilder.buildInsertSqlIncludeNull(entities.get(0)) , entities );
     }
 
-    public int edit( AbstractEntity entity ) {
-        return dao.update( DbUtil.sqlBuilder.buildUpdateSql3( entity , entity.get_w() , entity.get_pks() ) , entity );
+
+
+    public int edit( E entity ) {
+        return editByColInfos( entity , checkAndGetPk() );
     }
 
-    public int edit( AbstractEntity entity , String w , Object... args ) {
+    public int editByUnique( E entity , String uniqueName ) {
+        return editByColInfos( entity , checkAndGetUnique(uniqueName) );
+    }
 
-        Object[] para;
-        if( CollectionUtil.argsIsBlank( args ) ) {
-            para = new Object[] { entity };
-        } else {
-            para = new Object[ args.length + 1 ];
-            para[0] = entity;
+    public int editByAttrNames( E entity , String[] attrNames  ) {
+        return editByColInfos( entity , checkAndGetAttrs(attrNames) );
+    }
 
-            System.arraycopy( args , 0 , para , 1 , args.length  );
+    private int editByColInfos( E entity , List<ColInfo> cis ) {
+
+        List<String> ks = ListBuilder.newList();
+        for ( ColInfo ci : cis ) {
+            ks.add( ci.attrName );
         }
 
-        return dao.update( DbUtil.sqlBuilder.buildUpdateSql3( entity , w , entity.get_pks() ) , para );
+        return dao.update( DbUtil.sqlBuilder.buildUpdateSql3(
+                entity , buildWhereStr( cis )  , (String[])ks.toArray( new String[ks.size() ] )
+                ) , entity );
     }
 
-    public int del( AbstractEntity entity ) {
-        return dao.update( "delete from " + entity.get_tableName() +  " where " + entity.get_w() , entity );
-    }
 
-    public <T extends AbstractEntity> T get( T entity ) {
+
+
+
+    public E get( E entity ) {
         return this.get( entity , false );
     }
 
-    public <T extends AbstractEntity> T getAndLock( T entity ) {
+    public E getAndLock( E entity ) {
         return this.get( entity , true );
     }
 
-    public <T extends AbstractEntity> T get( T entity , boolean lock ) {
+    public E get( E entity  , boolean lock ) {
+        return getByColInfos( entity , checkAndGetPk() , lock );
+    }
+
+    public E getByUnique( E entity , String uniqueName , boolean lock ) {
+        return getByColInfos( entity , checkAndGetUnique(uniqueName) , lock );
+    }
+
+    public E getByAttrNames( E entity , String[] attrNames , boolean lock  ) {
+        return getByColInfos( entity , checkAndGetAttrs(attrNames) , lock );
+    }
+
+    private E getByColInfos( E entity , List<ColInfo> cis , boolean lock ) {
 
         StringBuilder sql = new StringBuilder();
 
-        StringUtil.append( sql , "select * from " , entity.get_tableName() ,  " where " , entity.get_w() );
+        StringUtil.append( sql , "select * from " , this.entityParser.getTableName() ,  " where " , buildWhereStr( cis )   );
         if( lock ) {
             sql.append(" for update ");
         }
 
-        return (T)dao.get( entity.getClass() , sql.toString() , entity );
+        return (E)dao.get( entity.getClass() , sql.toString() , entity );
+
     }
 
+
+
+
+
+    public int del( E entity ) {
+        return delByColInfos( entity , checkAndGetPk() );
+    }
+
+    public int delByUnique( E entity , String uniqueName ) {
+        return delByColInfos( entity , checkAndGetUnique(uniqueName) );
+    }
+
+    public int delByAttrNames( E entity , String[] attrNames  ) {
+        return delByColInfos( entity , checkAndGetAttrs(attrNames) );
+    }
+
+    private int delByColInfos( E entity , List<ColInfo> cis  ) {
+        return dao.update( "delete from " + this.entityParser.getTableName() +  " where " +  buildWhereStr( cis ) , entity );
+    }
+
+
+
+
+    private List<ColInfo> checkAndGetPk() {
+
+        List<ColInfo> cis = this.entityParser.getIds();
+        Assert.notEmpty( cis , "Primary key not defined" );
+
+        return cis;
+    }
+
+    private List<ColInfo> checkAndGetUnique( String uniqueName ) {
+
+        List<ColInfo> cis = this.entityParser.getUnique( uniqueName );
+        Assert.notEmpty( cis , "The unique constraint '" + uniqueName + "' is undefined" );
+
+        return cis;
+    }
+
+    private List<ColInfo> checkAndGetAttrs( String[] attrNames  ) {
+
+        List<ColInfo> cis = this.entityParser.getAttrs( attrNames );
+        Assert.notEmpty( cis , "Column is undefined" );
+
+        return cis;
+    }
+
+
+
+
+
+
+    private String buildWhereStr(List<ColInfo> wColInfos  ) {
+
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        for ( ColInfo ci : wColInfos ) {
+            if (  i++ > 0 ) {
+                sb.append( " and ");
+            }
+            sb.append( ci.colName );
+            sb.append( " = :");
+            sb.append( ci.attrName );
+        }
+        sb.append( ' ' );
+        return sb.toString();
+
+    }
 }

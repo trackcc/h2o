@@ -2,9 +2,7 @@ package h2o.dao.colinfo;
 
 import h2o.common.Tools;
 import h2o.common.util.collections.CollectionUtil;
-import h2o.dao.annotation.Column;
-import h2o.dao.annotation.ColumnDefValue;
-import h2o.dao.annotation.Table;
+import h2o.dao.annotation.*;
 import h2o.dao.exception.DaoException;
 import org.apache.commons.lang.StringUtils;
 
@@ -170,6 +168,16 @@ public class ColInfoUtil {
 			ci.colName =  StringUtils.isBlank( colName ) ? fieldName : colName;		
 			
 			ci.defVal = new ColumnDefValue( colAnn.defaultValue() );
+
+            Id id = f.getAnnotation( Id.class );
+            if( id != null ) {
+                ci.pk = true;
+            }
+
+            Unique unique = f.getAnnotation( Unique.class );
+            if( unique != null ) {
+                ci.uniqueNames = unique.value();
+            }
 			
 			colInfos.add(ci);
 		}
@@ -177,10 +185,6 @@ public class ColInfoUtil {
 		
 		return colInfos;
 	}
-	
-	
-	
-
 	
 	
 
