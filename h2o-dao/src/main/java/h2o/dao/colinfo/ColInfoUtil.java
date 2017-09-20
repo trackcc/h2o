@@ -169,7 +169,7 @@ public class ColInfoUtil {
 			
 			ci.defVal = new ColumnDefValue( colAnn.defaultValue() );
 
-            Id id = f.getAnnotation( Id.class );
+            PK id = f.getAnnotation( PK.class );
             if( id != null ) {
                 ci.pk = true;
             }
