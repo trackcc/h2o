@@ -44,7 +44,6 @@ public class EntityParser {
     }
 
     public String getTableName() {
-
         return tableName;
     }
 
@@ -53,7 +52,6 @@ public class EntityParser {
     }
 
     public List<ColInfo> getUnique( String uniqueName ) {
-
 
         List<ColInfo> u = ListBuilder.newList();
 
