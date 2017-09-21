@@ -36,7 +36,7 @@ public class EntityParser {
         return tableName;
     }
 
-    public List<ColInfo> getIds() {
+    public List<ColInfo> getPK() {
 
         if ( ids == null ) {
 

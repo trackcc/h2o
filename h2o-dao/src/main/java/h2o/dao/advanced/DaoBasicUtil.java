@@ -1,13 +1,11 @@
 package h2o.dao.advanced;
 
 import h2o.common.spring.util.Assert;
-import h2o.common.util.collections.CollectionUtil;
 import h2o.common.util.collections.builder.ListBuilder;
 import h2o.common.util.lang.StringUtil;
 import h2o.dao.Dao;
 import h2o.dao.DbUtil;
 import h2o.dao.colinfo.ColInfo;
-import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
@@ -128,7 +126,7 @@ public final class DaoBasicUtil<E> {
 
     private List<ColInfo> checkAndGetPk() {
 
-        List<ColInfo> cis = this.entityParser.getIds();
+        List<ColInfo> cis = this.entityParser.getPK();
         Assert.notEmpty( cis , "Primary key not defined" );
 
         return cis;
