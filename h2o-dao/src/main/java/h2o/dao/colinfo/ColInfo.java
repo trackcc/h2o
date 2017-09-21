@@ -5,16 +5,23 @@ import h2o.dao.annotation.Unique;
 
 public class ColInfo {
 
-	public String attrName;
-	public String colName;	
-	public ColumnDefValue defVal;
+	public final String attrName;
+	public final String colName;
+	public final ColumnDefValue defVal;
 
-	public boolean pk;
-	public String[] uniqueNames;
+	public final boolean pk;
+	public final String[] uniqueNames;
 
 
-	
-	@Override
+    public ColInfo( ColInfoVar civ ) {
+        this.attrName    = civ.attrName;
+        this.colName     = civ.colName;
+        this.defVal      = civ.defVal;
+        this.pk          = civ.pk;
+        this.uniqueNames = civ.uniqueNames;
+    }
+
+    @Override
 	public String toString() {			
 		return "ColInfo:{colName:" + colName  + ",attrName:" + attrName + ",defVal:" + defVal.getVal() + "}";
 	}

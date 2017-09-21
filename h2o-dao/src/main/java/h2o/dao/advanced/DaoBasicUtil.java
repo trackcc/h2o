@@ -1,5 +1,7 @@
 package h2o.dao.advanced;
 
+import h2o.common.concurrent.factory.InstanceFactory;
+import h2o.common.concurrent.factory.InstanceTable;
 import h2o.common.spring.util.Assert;
 import h2o.common.util.collections.builder.ListBuilder;
 import h2o.common.util.lang.StringUtil;
@@ -14,19 +16,34 @@ import java.util.List;
  */
 public final class DaoBasicUtil<E> {
 
-    private final Dao dao;
 
+
+    private static final InstanceTable<Class<?>,EntityParser> ENTITYPARSER_TABLE =
+            new InstanceTable<Class<?>, EntityParser>( new InstanceFactory<EntityParser>() {
+
+                @Override
+                public EntityParser create( Object entityClazz ) {
+                    return new EntityParser( (Class<?>) entityClazz );
+                }
+
+                @Override
+                public void free(Object id, EntityParser entityParser) {
+
+                }
+            });
+
+    private final Dao dao;
     private final EntityParser entityParser;
 
 
     public DaoBasicUtil( Class<E> entityClazz ) {
         this.dao = DbUtil.getDao();
-        this.entityParser = new EntityParser( entityClazz );
+        this.entityParser = ENTITYPARSER_TABLE.getAndCreateIfAbsent(entityClazz);
     }
 
     public DaoBasicUtil( Class<E> entityClazz , Dao dao ) {
         this.dao = dao;
-        this.entityParser = new EntityParser( entityClazz );
+        this.entityParser = ENTITYPARSER_TABLE.getAndCreateIfAbsent(entityClazz);
     }
 
 

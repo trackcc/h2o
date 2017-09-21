@@ -2,6 +2,7 @@ package h2o.dao.colinfo;
 
 import h2o.common.Tools;
 import h2o.common.util.collections.CollectionUtil;
+import h2o.common.util.collections.builder.ListBuilder;
 import h2o.dao.annotation.*;
 import h2o.dao.exception.DaoException;
 import org.apache.commons.lang.StringUtils;
@@ -104,13 +105,19 @@ public class ColInfoUtil {
 			
 			}		
 			
-			
+
+			List<ColInfo> defColInfos = ListBuilder.newList( colInfos.size() );
 			for( ColInfo ci :  colInfos ) {
 				if( defValMap.containsKey(ci.attrName) ) {
-					ci.defVal = new ColumnDefValue( defValMap.get(ci.attrName) );
-				}		
+				    ColInfoVar vci = new ColInfoVar( ci );
+                    vci.defVal = new ColumnDefValue( defValMap.get(ci.attrName) );
+                    defColInfos.add( vci.get() );
+				} else {
+				    defColInfos.add( ci );
+                }
 				
 			}
+			colInfos = defColInfos;
 					
 			
 			
@@ -121,14 +128,14 @@ public class ColInfoUtil {
 			
 			List<String> skipAttrNameList = Arrays.asList(skipAttrNames);
 			
-			List<ColInfo> colInfos2 = new ArrayList<ColInfo>();
+			List<ColInfo> skipColInfos = new ArrayList<ColInfo>();
 			for( ColInfo ci :  colInfos ) {
 				if( ! skipAttrNameList.contains(ci.attrName) ) {
-					colInfos2.add(ci);
+					skipColInfos.add(ci);
 				}				
 			}
 			
-			colInfos = colInfos2;
+			colInfos = skipColInfos;
 			
 		}
 		
@@ -155,7 +162,7 @@ public class ColInfoUtil {
 				continue;
 			}
 			
-			ColInfo ci = new ColInfo();
+			ColInfoVar ci = new ColInfoVar();
 			
 			String fieldName = f.getName();
 			
@@ -179,7 +186,7 @@ public class ColInfoUtil {
                 ci.uniqueNames = unique.value();
             }
 			
-			colInfos.add(ci);
+			colInfos.add(ci.get());
 		}
 		
 		

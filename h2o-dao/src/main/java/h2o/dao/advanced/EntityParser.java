@@ -13,63 +13,56 @@ import java.util.Map;
 
 public class EntityParser {
 
-    private final Class<?> entityClazz;
-    private final List<ColInfo> colInfos;
+    private final ColInfo[] colInfos;
 
-    private String tableName;
+    private final String tableName;
 
-    private List<ColInfo> ids;
+    private final ColInfo[] ids;
 
-    private Map<String,List<ColInfo>> uniques = MapBuilder.newMap();
 
     public EntityParser( Class<?> entityClazz ) {
-        this.entityClazz = entityClazz;
-        this.colInfos = ColInfoUtil.getColInfos( entityClazz );
+
+        {
+            List<ColInfo> cil = ColInfoUtil.getColInfos(entityClazz);
+            this.colInfos = cil.toArray(new ColInfo[cil.size()]);
+        }
+
+        this.tableName = ColInfoUtil.getTableName( entityClazz );
+
+        {
+            List<ColInfo> idl = ListBuilder.newList();
+
+            for (ColInfo ci : colInfos) {
+                if (ci.pk) {
+                    idl.add(ci);
+                }
+            }
+
+            ids = idl.toArray( new ColInfo[idl.size()] );
+        }
+
     }
 
     public String getTableName() {
-
-        if ( tableName == null ) {
-            tableName = ColInfoUtil.getTableName( entityClazz );
-        }
 
         return tableName;
     }
 
     public List<ColInfo> getPK() {
-
-        if ( ids == null ) {
-
-            ids = ListBuilder.newList();
-
-            for ( ColInfo ci : colInfos ) {
-                if ( ci.pk ) {
-                    ids.add(ci);
-                }
-            }
-        }
-
-        return ids;
-
+        return ListBuilder.newList( ids );
     }
 
     public List<ColInfo> getUnique( String uniqueName ) {
 
-        List<ColInfo> u = uniques.get( uniqueName );
 
-        if ( u == null ) {
+        List<ColInfo> u = ListBuilder.newList();
 
-            u = ListBuilder.newList();
-
-            for ( ColInfo ci : colInfos ) {
-                if ( ci.uniqueNames != null && Arrays.asList(ci.uniqueNames).contains( uniqueName ) ) {
-                    u.add(ci);
-                }
+        for ( ColInfo ci : colInfos ) {
+            if ( ci.uniqueNames != null && Arrays.asList(ci.uniqueNames).contains( uniqueName ) ) {
+                u.add(ci);
             }
-
-            uniques.put( uniqueName , u );
-
         }
+
 
         return u;
 
