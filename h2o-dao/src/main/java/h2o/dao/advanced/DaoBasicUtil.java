@@ -16,8 +16,6 @@ import java.util.List;
  */
 public final class DaoBasicUtil<E> {
 
-
-
     private static final InstanceTable<Class<?>,EntityParser> ENTITYPARSER_TABLE =
             new InstanceTable<Class<?>, EntityParser>( new InstanceFactory<EntityParser>() {
 
