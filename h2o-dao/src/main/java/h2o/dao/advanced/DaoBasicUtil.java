@@ -34,12 +34,12 @@ public final class DaoBasicUtil<E> {
     private final EntityParser entityParser;
 
 
-    public DaoBasicUtil( Class<E> entityClazz ) {
+    public DaoBasicUtil( Class<?> entityClazz ) {
         this.dao = DbUtil.getDao();
         this.entityParser = ENTITYPARSER_TABLE.getAndCreateIfAbsent(entityClazz);
     }
 
-    public DaoBasicUtil( Class<E> entityClazz , Dao dao ) {
+    public DaoBasicUtil( Class<?> entityClazz , Dao dao ) {
         this.dao = dao;
         this.entityParser = ENTITYPARSER_TABLE.getAndCreateIfAbsent(entityClazz);
     }
