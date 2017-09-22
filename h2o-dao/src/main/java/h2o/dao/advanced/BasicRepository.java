@@ -20,11 +20,11 @@ public class BasicRepository<E> {
         return this.createDaoBasicUtil(entity).edit(entity);
     }
 
-    public int editByUnique(E entity, String uniqueName) {
+    protected final int editByUnique(E entity, String uniqueName) {
         return this.createDaoBasicUtil(entity).editByUnique(entity, uniqueName);
     }
 
-    public int editByAttrNames(E entity, String[] attrNames) {
+    protected final int editByAttrNames(E entity, String[] attrNames) {
         return this.createDaoBasicUtil(entity).editByAttrNames(entity, attrNames);
     }
 
@@ -36,15 +36,15 @@ public class BasicRepository<E> {
         return this.createDaoBasicUtil(entity).getAndLock(entity);
     }
 
-    public E get(E entity, boolean lock) {
+    protected final E get(E entity, boolean lock) {
         return this.createDaoBasicUtil(entity).get(entity, lock);
     }
 
-    public E getByUnique(E entity, String uniqueName, boolean lock) {
+    protected final E getByUnique(E entity, String uniqueName, boolean lock) {
         return this.createDaoBasicUtil(entity).getByUnique(entity, uniqueName, lock);
     }
 
-    public E getByAttrNames(E entity, String[] attrNames, boolean lock) {
+    protected final E getByAttrNames(E entity, String[] attrNames, boolean lock) {
         return this.createDaoBasicUtil(entity).getByAttrNames(entity, attrNames, lock);
     }
 
@@ -52,11 +52,11 @@ public class BasicRepository<E> {
         return this.createDaoBasicUtil(entity).del(entity);
     }
 
-    public int delByUnique(E entity, String uniqueName) {
+    protected final int delByUnique(E entity, String uniqueName) {
         return this.createDaoBasicUtil(entity).delByUnique(entity, uniqueName);
     }
 
-    public int delByAttrNames(E entity, String[] attrNames) {
+    protected final int delByAttrNames(E entity, String[] attrNames) {
         return this.createDaoBasicUtil(entity).delByAttrNames(entity, attrNames);
     }
 
