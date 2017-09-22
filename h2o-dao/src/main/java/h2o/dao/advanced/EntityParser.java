@@ -3,13 +3,11 @@ package h2o.dao.advanced;
 import h2o.common.spring.util.Assert;
 import h2o.common.util.collections.CollectionUtil;
 import h2o.common.util.collections.builder.ListBuilder;
-import h2o.common.util.collections.builder.MapBuilder;
 import h2o.dao.colinfo.ColInfo;
 import h2o.dao.colinfo.ColInfoUtil;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class EntityParser {
 

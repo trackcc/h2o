@@ -1,7 +1,6 @@
 package h2o.dao.colinfo;
 
 import h2o.dao.annotation.ColumnDefValue;
-import h2o.dao.annotation.Unique;
 
 public class ColInfo {
 
