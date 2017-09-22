@@ -27,24 +27,23 @@ public class ReliableExecution {
 
             try {
 
-                if (executor.exec(i)) {
+                if ( executor.exec(i) ) {
                     break;
                 }
 
             } catch (Exception e) {
 
-                if (executor.exceptionHandler(i, e)) {
-
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(tryInterval);
-                    } catch (Exception e1) {
-                    }
-
-                } else {
+                if ( ! executor.exceptionHandler(i, e) ) {
                     break;
                 }
 
             }
+
+            try {
+                TimeUnit.MILLISECONDS.sleep(tryInterval);
+            } catch (Exception e1) {
+            }
+
         }
 
     }
