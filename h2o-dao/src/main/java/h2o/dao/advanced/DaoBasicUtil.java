@@ -4,6 +4,7 @@ import h2o.common.concurrent.factory.InstanceFactory;
 import h2o.common.concurrent.factory.InstanceTable;
 import h2o.common.spring.util.Assert;
 import h2o.common.util.collections.builder.ListBuilder;
+import h2o.common.util.debug.Mode;
 import h2o.common.util.lang.StringUtil;
 import h2o.dao.Dao;
 import h2o.dao.DbUtil;
@@ -15,6 +16,8 @@ import java.util.List;
  * Created by zhangjianwei on 2017/7/1.
  */
 public final class DaoBasicUtil<E> {
+
+    private static boolean CACHE = Mode.isUserMode("DONT_CACHE_ENTITYPARSER") ? false : true;
 
     private static final InstanceTable<Class<?>,EntityParser> ENTITYPARSER_TABLE =
             new InstanceTable<Class<?>, EntityParser>( new InstanceFactory<EntityParser>() {
@@ -35,13 +38,13 @@ public final class DaoBasicUtil<E> {
 
 
     public DaoBasicUtil( Class<?> entityClazz ) {
-        this.dao = DbUtil.getDao();
-        this.entityParser = ENTITYPARSER_TABLE.getAndCreateIfAbsent(entityClazz);
+        this( entityClazz , DbUtil.getDao() );
     }
 
     public DaoBasicUtil( Class<?> entityClazz , Dao dao ) {
         this.dao = dao;
-        this.entityParser = ENTITYPARSER_TABLE.getAndCreateIfAbsent(entityClazz);
+        this.entityParser = CACHE ? ENTITYPARSER_TABLE.getAndCreateIfAbsent(entityClazz) :
+                new EntityParser( entityClazz );
     }
 
 

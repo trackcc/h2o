@@ -20,7 +20,7 @@ import static h2o.common.util.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
 @SuppressWarnings({"rawtypes","unchecked"})
 public class ButterflyDao {
 
-    private static boolean SHOWSQL = Mode.isUserMode("DONTSHOWSQL") ? false : true;
+    private static boolean SHOWSQL = Mode.isUserMode("DONT_SHOW_SQL") ? false : true;
 
     private IDaos daos;
 	private final IJdbcDao jdbcDao;
