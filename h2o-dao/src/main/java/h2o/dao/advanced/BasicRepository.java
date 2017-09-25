@@ -25,7 +25,7 @@ public class BasicRepository<E> {
     }
 
     protected final int editByAttrNames(E entity, String[] attrNames) {
-        return this.createDaoBasicUtil(entity).editByAttrNames(entity, attrNames);
+        return this.createDaoBasicUtil(entity).editByAttrs(entity, attrNames);
     }
 
     public E get(E entity) {
@@ -45,7 +45,7 @@ public class BasicRepository<E> {
     }
 
     protected final E getByAttrNames(E entity, String[] attrNames, boolean lock) {
-        return this.createDaoBasicUtil(entity).getByAttrNames(entity, attrNames, lock);
+        return this.createDaoBasicUtil(entity).getByAttrs(entity, attrNames, lock);
     }
 
     public int del(E entity) {
@@ -57,7 +57,7 @@ public class BasicRepository<E> {
     }
 
     protected final int delByAttrNames(E entity, String[] attrNames) {
-        return this.createDaoBasicUtil(entity).delByAttrNames(entity, attrNames);
+        return this.createDaoBasicUtil(entity).delByAttrs(entity, attrNames);
     }
 
     protected DaoBasicUtil<E> createDaoBasicUtil( E entity ) {
