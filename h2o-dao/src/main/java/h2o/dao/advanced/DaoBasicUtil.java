@@ -66,7 +66,7 @@ public final class DaoBasicUtil<E> {
         return editByColInfos( entity , checkAndGetUnique(uniqueName) );
     }
 
-    public int editByAttrs( E entity , String[] attrNames  ) {
+    public int editByAttr( E entity , String... attrNames  ) {
         return editByColInfos( entity , checkAndGetAttrs(attrNames) );
     }
 
@@ -98,11 +98,11 @@ public final class DaoBasicUtil<E> {
         return getByColInfos( entity , checkAndGetPk() , lock );
     }
 
-    public E getByUnique( E entity , String uniqueName , boolean lock ) {
+    public E getByUnique( E entity , boolean lock , String uniqueName  ) {
         return getByColInfos( entity , checkAndGetUnique(uniqueName) , lock );
     }
 
-    public E getByAttrs( E entity , String[] attrNames , boolean lock  ) {
+    public E getByAttr( E entity , boolean lock , String... attrNames  ) {
         return getByColInfos( entity , checkAndGetAttrs(attrNames) , lock );
     }
 
@@ -120,7 +120,7 @@ public final class DaoBasicUtil<E> {
     }
 
 
-    public List<E> loadByAttrs( E entity , String... attrNames  ) {
+    public List<E> loadByAttr( E entity , String... attrNames  ) {
 
         List<ColInfo> cis = checkAndGetAttrs(attrNames);
 
@@ -141,7 +141,7 @@ public final class DaoBasicUtil<E> {
         return delByColInfos( entity , checkAndGetUnique(uniqueName) );
     }
 
-    public int delByAttrs( E entity , String[] attrNames  ) {
+    public int delByAttr( E entity , String... attrNames  ) {
         return delByColInfos( entity , checkAndGetAttrs(attrNames) );
     }
 

@@ -24,8 +24,8 @@ public class BasicRepository<E> {
         return this.createDaoBasicUtil(entity).editByUnique(entity, uniqueName);
     }
 
-    protected final int editByAttrNames(E entity, String[] attrNames) {
-        return this.createDaoBasicUtil(entity).editByAttrs(entity, attrNames);
+    protected final int editByAttr(E entity, String... attrNames) {
+        return this.createDaoBasicUtil(entity).editByAttr(entity, attrNames);
     }
 
     public E get(E entity) {
@@ -40,13 +40,18 @@ public class BasicRepository<E> {
         return this.createDaoBasicUtil(entity).get(entity, lock);
     }
 
-    protected final E getByUnique(E entity, String uniqueName, boolean lock) {
-        return this.createDaoBasicUtil(entity).getByUnique(entity, uniqueName, lock);
+    protected final E getByUnique(E entity, boolean lock, String uniqueName ) {
+        return this.createDaoBasicUtil(entity).getByUnique(entity,lock ,uniqueName );
     }
 
-    protected final E getByAttrNames(E entity, String[] attrNames, boolean lock) {
-        return this.createDaoBasicUtil(entity).getByAttrs(entity, attrNames, lock);
+    protected final E getByAttr(E entity , boolean lock , String... attrNames) {
+        return this.createDaoBasicUtil(entity).getByAttr(entity, lock, attrNames );
     }
+
+    public final List<E> loadByAttr(E entity, String... attrNames) {
+        return this.createDaoBasicUtil(entity).loadByAttr(entity, attrNames);
+    }
+
 
     public int del(E entity) {
         return this.createDaoBasicUtil(entity).del(entity);
@@ -56,8 +61,8 @@ public class BasicRepository<E> {
         return this.createDaoBasicUtil(entity).delByUnique(entity, uniqueName);
     }
 
-    protected final int delByAttrNames(E entity, String[] attrNames) {
-        return this.createDaoBasicUtil(entity).delByAttrs(entity, attrNames);
+    protected final int delByAttr(E entity, String... attrNames) {
+        return this.createDaoBasicUtil(entity).delByAttr(entity, attrNames);
     }
 
     protected DaoBasicUtil<E> createDaoBasicUtil( E entity ) {
