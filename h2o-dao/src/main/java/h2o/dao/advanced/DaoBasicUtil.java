@@ -53,7 +53,7 @@ public final class DaoBasicUtil<E> {
     }
 
     public void batAdd( List<E> entities ) {
-        dao.update( DbUtil.sqlBuilder.buildInsertSqlIncludeNull(entities.get(0)) , entities );
+        dao.batchUpdate( DbUtil.sqlBuilder.buildInsertSqlIncludeNull( entities.get(0) ) , entities );
     }
 
 
