@@ -177,7 +177,7 @@ public class StreamUtil {
 			try {
 				reader.close();
 			} catch (IOException e) {
-				Tools.log.debug("Reader.close()", e);
+				Tools.log.error("Reader.close()", e);
 			}
 		}
 	}
@@ -187,7 +187,7 @@ public class StreamUtil {
 			try {
 				writer.close();
 			} catch (IOException e) {
-				Tools.log.debug("Writer.close()", e);
+				Tools.log.error("Writer.close()", e);
 			}
 		}
 	}
@@ -199,7 +199,7 @@ public class StreamUtil {
 			try {
 				in.close();
 			} catch (IOException e) {
-				Tools.log.debug("InputStream.close()", e);
+				Tools.log.error("InputStream.close()", e);
 			}
 		}
 	}
@@ -209,7 +209,7 @@ public class StreamUtil {
 			try {
 				out.close();
 			} catch (IOException e) {
-				Tools.log.debug("OutputStream.close()", e);
+				Tools.log.error("OutputStream.close()", e);
 			}
 		}
 	}
