@@ -95,7 +95,7 @@ public class Dispatcher {
 
 						} catch( Throwable e) {
 
-							Tools.log.debug("Dispatcher-run",e);
+							Tools.log.error("Dispatcher-run",e);
 							st = errSleepTime.getVar();
 
 						}
@@ -106,7 +106,7 @@ public class Dispatcher {
 					
 				
 				} catch( InterruptedException e ) {
-					Tools.log.info("InterruptedException", e);
+					Tools.log.error("InterruptedException", e);
 				}
 				
 				stop = true;
