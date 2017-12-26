@@ -1,6 +1,6 @@
 package h2o.common.web.action.result;
 
-import h2o.common.WebTools;
+import h2o.common.web.WebTools;
 import h2o.common.web.action.Result;
 import h2o.common.web.action.ResultProcessor;
 

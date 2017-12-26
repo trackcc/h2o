@@ -1,6 +1,6 @@
 package h2o.event.impl.redis;
 
-import h2o.common.redis.JedisCallBack;
+import h2o.common.thirdparty.redis.JedisCallBack;
 import h2o.event.Event;
 import h2o.event.EventSender;
 import redis.clients.jedis.Jedis;

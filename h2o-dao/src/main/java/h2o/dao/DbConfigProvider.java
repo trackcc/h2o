@@ -1,7 +1,7 @@
 package h2o.dao;
 
-import h2o.common.util.ioc.ButterflyFactory;
-import h2o.common.util.ioc.Factory;
+import h2o.common.ioc.ButterflyFactory;
+import h2o.common.ioc.Factory;
 
 /**
  * Created by zhangjianwei on 2016/11/14.

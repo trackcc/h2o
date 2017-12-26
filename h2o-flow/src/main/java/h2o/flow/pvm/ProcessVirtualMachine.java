@@ -7,9 +7,9 @@ package h2o.flow.pvm;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-import h2o.common.util.collections.CollectionUtil;
-import h2o.common.util.collections.builder.ListBuilder;
-import h2o.common.util.collections.tuple.Tuple2;
+import h2o.common.collections.CollectionUtil;
+import h2o.common.collections.builder.ListBuilder;
+import h2o.common.collections.tuple.Tuple2;
 import h2o.flow.pvm.elements.Line;
 import h2o.flow.pvm.elements.Node;
 import h2o.flow.pvm.elements.SignalNode;

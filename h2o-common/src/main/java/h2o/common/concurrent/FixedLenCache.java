@@ -1,10 +1,10 @@
 package h2o.common.concurrent;
 
-import h2o.common.util.collections.builder.MapBuilder;
-import h2o.common.util.collections.link.DNode;
-import h2o.common.util.collections.link.DoublyLinkedList;
-import h2o.common.util.collections.tuple.Tuple2;
-import h2o.common.util.collections.tuple.TupleUtil;
+import h2o.common.collections.builder.MapBuilder;
+import h2o.common.collections.link.DNode;
+import h2o.common.collections.link.DoublyLinkedList;
+import h2o.common.collections.tuple.Tuple2;
+import h2o.common.collections.tuple.TupleUtil;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Lock;

@@ -1,7 +1,7 @@
 package h2o.dao;
 
 import h2o.common.Tools;
-import h2o.common.util.collections.builder.MapBuilder;
+import h2o.common.collections.builder.MapBuilder;
 import h2o.dao.colinfo.ColInfo;
 import h2o.dao.colinfo.ColInfoUtil;
 import h2o.dao.exception.DaoException;

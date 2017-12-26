@@ -4,12 +4,12 @@ import com.jenkov.db.itf.IDaos;
 import com.jenkov.db.itf.IResultSetProcessor;
 import com.jenkov.db.itf.PersistenceException;
 import h2o.common.exception.ExceptionUtil;
-import h2o.common.util.collections.CollectionUtil;
-import h2o.common.util.collections.builder.ListBuilder;
-import h2o.common.util.collections.tuple.Tuple2;
-import h2o.common.util.dao.butterflydb.ButterflyDao;
-import h2o.common.util.dao.butterflydb.ButterflyDb;
-import h2o.common.util.dao.butterflydb.impl.PreparedStatementManagerBatch;
+import h2o.common.collections.CollectionUtil;
+import h2o.common.collections.builder.ListBuilder;
+import h2o.common.collections.tuple.Tuple2;
+import h2o.common.dao.butterflydb.ButterflyDao;
+import h2o.common.dao.butterflydb.ButterflyDb;
+import h2o.common.dao.butterflydb.impl.PreparedStatementManagerBatch;
 import h2o.dao.Dao;
 import h2o.dao.RsCallback;
 import h2o.dao.SqlSource;
@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import static h2o.common.util.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
+import static h2o.common.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
 
 
 public class DaoImpl extends AbstractDao implements Dao {

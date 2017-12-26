@@ -3,9 +3,9 @@ package h2o.common.concurrent;
 import h2o.common.Tools;
 import h2o.common.schedule.Dispatcher;
 import h2o.common.schedule.RepetitiveTask;
-import h2o.common.util.collections.tuple.Tuple2;
-import h2o.common.util.collections.tuple.Tuple3;
-import h2o.common.util.collections.tuple.TupleUtil;
+import h2o.common.collections.tuple.Tuple2;
+import h2o.common.collections.tuple.Tuple3;
+import h2o.common.collections.tuple.TupleUtil;
 
 import java.util.ArrayList;
 import java.util.List;

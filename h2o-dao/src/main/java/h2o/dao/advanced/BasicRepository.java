@@ -1,6 +1,6 @@
 package h2o.dao.advanced;
 
-import h2o.common.util.collections.CollectionUtil;
+import h2o.common.collections.CollectionUtil;
 
 import java.util.List;
 

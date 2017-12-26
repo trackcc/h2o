@@ -1,7 +1,7 @@
 package h2o.common.web.action;
 
-import h2o.common.util.collections.builder.MapBuilder;
-import h2o.common.util.ioc.ButterflyFactory;
+import h2o.common.collections.builder.MapBuilder;
+import h2o.common.ioc.ButterflyFactory;
 
 import java.util.Map;
 

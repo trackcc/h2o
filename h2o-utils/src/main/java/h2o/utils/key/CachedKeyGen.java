@@ -2,8 +2,8 @@ package h2o.utils.key;
 
 import h2o.common.Tools;
 import h2o.common.concurrent.Locks;
-import h2o.common.util.collections.tuple.Tuple2;
-import h2o.common.util.math.IntArith;
+import h2o.common.collections.tuple.Tuple2;
+import h2o.common.math.IntArith;
 
 import java.math.BigInteger;
 import java.util.concurrent.TimeUnit;

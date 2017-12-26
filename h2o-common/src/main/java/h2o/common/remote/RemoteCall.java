@@ -1,9 +1,9 @@
 package h2o.common.remote;
 
 import h2o.common.Tools;
-import h2o.common.util.collections.tuple.Tuple2;
-import h2o.common.util.collections.tuple.TupleUtil;
-import h2o.common.util.ioc.ObjectFactory;
+import h2o.common.collections.tuple.Tuple2;
+import h2o.common.collections.tuple.TupleUtil;
+import h2o.common.ioc.ObjectFactory;
 import jodd.util.ReflectUtil;
 
 public class RemoteCall implements RemoteCallI {

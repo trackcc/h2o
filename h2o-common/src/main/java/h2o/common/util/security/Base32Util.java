@@ -2,7 +2,7 @@ package h2o.common.util.security;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-import h2o.common.util.collections.ConcurrentBiMap;
+import h2o.common.collections.ConcurrentBiMap;
 
 import java.io.*;
 

@@ -1,6 +1,6 @@
 package h2o.dao.impl.tx;
 
-import h2o.common.util.dao.butterflydb.ButterflyDb;
+import h2o.common.dao.butterflydb.ButterflyDb;
 import h2o.dao.ScopeManager;
 
 

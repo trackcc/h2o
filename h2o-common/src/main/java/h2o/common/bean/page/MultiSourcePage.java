@@ -1,9 +1,9 @@
 package h2o.common.bean.page;
 
-import h2o.common.util.collections.CollectionUtil;
-import h2o.common.util.collections.builder.ListBuilder;
-import h2o.common.util.collections.tuple.Tuple2;
-import h2o.common.util.collections.tuple.TupleUtil;
+import h2o.common.collections.CollectionUtil;
+import h2o.common.collections.builder.ListBuilder;
+import h2o.common.collections.tuple.Tuple2;
+import h2o.common.collections.tuple.TupleUtil;
 
 import java.util.List;
 

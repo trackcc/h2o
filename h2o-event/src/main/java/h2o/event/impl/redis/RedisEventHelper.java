@@ -1,6 +1,6 @@
 package h2o.event.impl.redis;
 
-import h2o.common.redis.JedisUtil;
+import h2o.common.thirdparty.redis.JedisUtil;
 import h2o.event.Event;
 import h2o.event.EventEncoder;
 

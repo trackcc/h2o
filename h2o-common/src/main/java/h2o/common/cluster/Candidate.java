@@ -1,12 +1,8 @@
 package h2o.common.cluster;
 
-import h2o.common.Tools;
 import h2o.common.concurrent.RunUtil;
-import h2o.common.redis.JedisCallBack;
-import h2o.common.redis.JedisUtil;
-import h2o.common.spring.util.Assert;
-import h2o.common.util.id.UuidUtil;
-import redis.clients.jedis.Jedis;
+import h2o.common.thirdparty.redis.JedisUtil;
+import h2o.common.thirdparty.spring.util.Assert;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,9 +1,9 @@
 package h2o.common.web.action;
 
 import h2o.common.Tools;
-import h2o.common.util.collections.builder.MapBuilder;
-import h2o.common.util.collections.tuple.Tuple2;
-import h2o.common.util.collections.tuple.TupleUtil;
+import h2o.common.collections.builder.MapBuilder;
+import h2o.common.collections.tuple.Tuple2;
+import h2o.common.collections.tuple.TupleUtil;
 import h2o.common.util.date.DateUtil;
 import h2o.common.util.id.UuidUtil;
 import jodd.io.StreamUtil;

@@ -2,7 +2,7 @@ package h2o.common.util.bean.support;
 
 import h2o.common.util.bean.BeanUtil;
 import h2o.common.util.bean.Map2BeanProcessor;
-import h2o.common.util.collections.IgnoreCaseMap;
+import h2o.common.collections.IgnoreCaseMap;
 
 import java.util.Map;
 

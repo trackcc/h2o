@@ -2,9 +2,9 @@ package h2o.common.util.bean;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-import h2o.common.util.collections.builder.MapBuilder;
-import h2o.common.util.collections.tuple.Tuple2;
-import h2o.common.util.collections.tuple.TupleUtil;
+import h2o.common.collections.builder.MapBuilder;
+import h2o.common.collections.tuple.Tuple2;
+import h2o.common.collections.tuple.TupleUtil;
 import h2o.common.util.lang.Null;
 import h2o.common.util.lang.type.TypeConverter;
 import h2o.common.util.lang.type.converter.*;

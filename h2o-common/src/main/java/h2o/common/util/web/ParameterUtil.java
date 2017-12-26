@@ -1,7 +1,7 @@
 package h2o.common.util.web;
 
-import h2o.common.util.collections.builder.ListBuilder;
-import h2o.common.util.collections.builder.MapBuilder;
+import h2o.common.collections.builder.ListBuilder;
+import h2o.common.collections.builder.MapBuilder;
 
 import javax.servlet.ServletRequest;
 import java.util.Collection;

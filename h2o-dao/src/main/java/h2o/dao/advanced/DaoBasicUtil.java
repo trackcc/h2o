@@ -2,9 +2,9 @@ package h2o.dao.advanced;
 
 import h2o.common.concurrent.factory.InstanceFactory;
 import h2o.common.concurrent.factory.InstanceTable;
-import h2o.common.spring.util.Assert;
-import h2o.common.util.collections.builder.ListBuilder;
-import h2o.common.util.debug.Mode;
+import h2o.common.thirdparty.spring.util.Assert;
+import h2o.common.collections.builder.ListBuilder;
+import h2o.common.Mode;
 import h2o.common.util.lang.StringUtil;
 import h2o.dao.Dao;
 import h2o.dao.DbUtil;

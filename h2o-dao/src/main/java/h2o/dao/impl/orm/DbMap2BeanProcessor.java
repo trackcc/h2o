@@ -2,7 +2,7 @@ package h2o.dao.impl.orm;
 
 import h2o.common.util.bean.Map2BeanProcessor;
 import h2o.common.util.bean.support.DefaultMap2BeanProcessor;
-import h2o.common.util.collections.builder.MapBuilder;
+import h2o.common.collections.builder.MapBuilder;
 import h2o.dao.colinfo.ColInfo;
 import h2o.dao.colinfo.ColInfoUtil;
 

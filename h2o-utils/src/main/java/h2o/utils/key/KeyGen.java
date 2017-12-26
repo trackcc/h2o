@@ -1,27 +1,17 @@
 package h2o.utils.key;
 
 
-import com.jenkov.db.itf.IDaos;
-import com.jenkov.db.itf.IResultSetProcessor;
-import com.jenkov.db.itf.PersistenceException;
 import h2o.common.Tools;
 import h2o.common.concurrent.LockMap;
-import h2o.common.util.collections.tuple.Tuple2;
-import h2o.common.util.collections.tuple.Tuple3;
-import h2o.common.util.collections.tuple.TupleUtil;
-import h2o.common.util.dao.butterflydb.ButterflyDao;
-import h2o.common.util.dao.butterflydb.ButterflyDb;
-import h2o.common.util.dao.butterflydb.ButterflyDbCallback;
-import h2o.common.util.math.IntArith;
+import h2o.common.collections.tuple.Tuple2;
+import h2o.common.collections.tuple.TupleUtil;
+import h2o.common.math.IntArith;
 import h2o.dao.Dao;
 import h2o.dao.DbUtil;
 import h2o.dao.TxCallback;
 import org.apache.commons.lang.StringUtils;
 
 import java.math.BigInteger;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

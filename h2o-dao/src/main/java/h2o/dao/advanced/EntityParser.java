@@ -1,8 +1,8 @@
 package h2o.dao.advanced;
 
-import h2o.common.spring.util.Assert;
-import h2o.common.util.collections.CollectionUtil;
-import h2o.common.util.collections.builder.ListBuilder;
+import h2o.common.thirdparty.spring.util.Assert;
+import h2o.common.collections.CollectionUtil;
+import h2o.common.collections.builder.ListBuilder;
 import h2o.dao.colinfo.ColInfo;
 import h2o.dao.colinfo.ColInfoUtil;
 

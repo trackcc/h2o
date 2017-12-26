@@ -2,14 +2,14 @@ package h2o.common.util.bean;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-import h2o.common.spring.util.Assert;
+import h2o.common.thirdparty.spring.util.Assert;
 import h2o.common.util.bean.serialize.BeanEncoder;
 import h2o.common.util.bean.serialize.BeanSerialize;
 import h2o.common.util.bean.support.BeanDescriptorImpl;
 import h2o.common.util.bean.support.BeanUtilVOImpl;
 import h2o.common.util.bean.support.DefaultBeanPropertyInfoImpl;
 import h2o.common.util.bean.support.MapVOImpl;
-import h2o.common.util.collections.CollectionUtil;
+import h2o.common.collections.CollectionUtil;
 import h2o.common.util.lang.InstanceUtil;
 import org.apache.commons.beanutils.BeanUtils;
 

@@ -8,22 +8,20 @@
     <parent>
         <groupId>h2o</groupId>
         <artifactId>h2o</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>5-SNAPSHOT</version>
     </parent>
 
     <groupId>h2o</groupId>
     <artifactId>h2o-flow</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${versions.h2o}-SNAPSHOT</version>
 
 
     <dependencies>
 
-
-
         <dependency>
             <groupId>h2o</groupId>
             <artifactId>h2o-common</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
+            <version>${versions.h2o}-SNAPSHOT</version>
         </dependency>
 
 

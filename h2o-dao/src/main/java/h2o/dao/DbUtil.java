@@ -2,12 +2,12 @@ package h2o.dao;
 
 
 import h2o.common.Tools;
-import h2o.common.freemarker.TemplateUtil;
+import h2o.common.thirdparty.freemarker.TemplateUtil;
 import h2o.common.util.bean.Map2BeanUtil;
-import h2o.common.util.collections.builder.MapBuilder;
-import h2o.common.util.dao.SqlTable;
-import h2o.common.util.dao.butterflydb.ButterflyDb;
-import h2o.common.util.ioc.Factory;
+import h2o.common.collections.builder.MapBuilder;
+import h2o.common.dao.SqlTable;
+import h2o.common.dao.butterflydb.ButterflyDb;
+import h2o.common.ioc.Factory;
 import h2o.dao.exception.DaoException;
 
 import javax.sql.DataSource;

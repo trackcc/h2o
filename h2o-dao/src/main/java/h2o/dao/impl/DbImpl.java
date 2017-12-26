@@ -1,6 +1,6 @@
 package h2o.dao.impl;
 
-import h2o.common.util.dao.butterflydb.ButterflyDb;
+import h2o.common.dao.butterflydb.ButterflyDb;
 import h2o.dao.Dao;
 import h2o.dao.Db;
 import h2o.dao.DbUtil;
