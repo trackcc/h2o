@@ -13,7 +13,7 @@ public class SpringFactory implements BeanFactoryAware {
 
 	private static volatile BeanFactory beanFactory;
 
-	public  static void setStaticConfigPath(String path) {
+	public  static void setStaticConfigPath(String... path) {
 		lock.lock();
 		try {
 			beanFactory = new ClassPathXmlApplicationContext(path);
@@ -22,7 +22,7 @@ public class SpringFactory implements BeanFactoryAware {
 		}	
 	}
 	
-	public void setConfigPath(String path) {
+	public void setConfigPath(String... path) {
 		setStaticConfigPath(path);
 	}
 
