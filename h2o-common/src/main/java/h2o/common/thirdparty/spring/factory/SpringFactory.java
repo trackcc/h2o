@@ -3,7 +3,9 @@ package h2o.common.thirdparty.spring.factory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.ResolvableType;
 
 import java.util.concurrent.locks.Lock;
 
@@ -26,36 +28,91 @@ public class SpringFactory implements BeanFactoryAware {
 		setStaticConfigPath(path);
 	}
 
+    public void setBeanFactory(BeanFactory bf) throws BeansException {
+        lock.lock();
+        try {
+            beanFactory = bf;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public static BeanFactory getBeanFactory()  {
+        BeanFactory bf = beanFactory;
+        if (bf == null) {
+            lock.lock();
+            try {
+                bf = beanFactory;
+                if (bf == null) {
+                    setStaticConfigPath("/applicationContext.xml");
+                    bf = beanFactory;
+                }
+            } finally {
+                lock.unlock();
+            }
+        }
+        return bf;
+    }
+
+
 	@SuppressWarnings("unchecked")
 	public static <T> T getObject(String beanId) {
 		
 		return (T) getBeanFactory().getBean(beanId);
 	}
 
-	public void setBeanFactory(BeanFactory bf) throws BeansException {
-		lock.lock();
-		try {
-			beanFactory = bf;
-		} finally {
-			lock.unlock();
-		}
-	}
-	
-	public static BeanFactory getBeanFactory()  {
-		BeanFactory bf = beanFactory;
-		if (bf == null) {
-			lock.lock();
-			try {
-				bf = beanFactory;
-				if (bf == null) {
-					setStaticConfigPath("/applicationContext.xml");
-					bf = beanFactory;
-				}
-			} finally {
-				lock.unlock();
-			}
-		}
-		return bf;
-	}
+
+	/*====== delegate =====*/
+
+
+    public static Object getBean(String name) throws BeansException {
+        return beanFactory.getBean(name);
+    }
+
+    public static <T> T getBean(String name, Class<T> requiredType) throws BeansException {
+        return beanFactory.getBean(name, requiredType);
+    }
+
+    public static <T> T getBean(Class<T> requiredType) throws BeansException {
+        return beanFactory.getBean(requiredType);
+    }
+
+    public static Object getBean(String name, Object... args) throws BeansException {
+        return beanFactory.getBean(name, args);
+    }
+
+    public static <T> T getBean(Class<T> requiredType, Object... args) throws BeansException {
+        return beanFactory.getBean(requiredType, args);
+    }
+
+    public static boolean containsBean(String name) {
+        return beanFactory.containsBean(name);
+    }
+
+    public static boolean isSingleton(String name) throws NoSuchBeanDefinitionException {
+        return beanFactory.isSingleton(name);
+    }
+
+    public static boolean isPrototype(String name) throws NoSuchBeanDefinitionException {
+        return beanFactory.isPrototype(name);
+    }
+
+    public static boolean isTypeMatch(String name, ResolvableType typeToMatch) throws NoSuchBeanDefinitionException {
+        return beanFactory.isTypeMatch(name, typeToMatch);
+    }
+
+    public static boolean isTypeMatch(String name, Class<?> typeToMatch) throws NoSuchBeanDefinitionException {
+        return beanFactory.isTypeMatch(name, typeToMatch);
+    }
+
+    public static Class<?> getType(String name) throws NoSuchBeanDefinitionException {
+        return beanFactory.getType(name);
+    }
+
+    public static String[] getAliases(String name) {
+        return beanFactory.getAliases(name);
+    }
+
+
 
 }
