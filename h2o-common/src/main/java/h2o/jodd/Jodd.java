@@ -162,7 +162,7 @@ public class Jodd {
 			}
 
 
-			String moduleClass = "jodd." + packageName + ".Jodd" + moduleName;
+			String moduleClass = "h2o.jodd." + packageName + ".Jodd" + moduleName;
 
 			NAMES[index] = moduleClass;
 
