@@ -66,51 +66,51 @@ public class SpringFactory implements BeanFactoryAware {
 
 
     public static Object getBean(String name) throws BeansException {
-        return beanFactory.getBean(name);
+        return getBeanFactory().getBean(name);
     }
 
     public static <T> T getBean(String name, Class<T> requiredType) throws BeansException {
-        return beanFactory.getBean(name, requiredType);
+        return getBeanFactory().getBean(name, requiredType);
     }
 
     public static <T> T getBean(Class<T> requiredType) throws BeansException {
-        return beanFactory.getBean(requiredType);
+        return getBeanFactory().getBean(requiredType);
     }
 
     public static Object getBean(String name, Object... args) throws BeansException {
-        return beanFactory.getBean(name, args);
+        return getBeanFactory().getBean(name, args);
     }
 
     public static <T> T getBean(Class<T> requiredType, Object... args) throws BeansException {
-        return beanFactory.getBean(requiredType, args);
+        return getBeanFactory().getBean(requiredType, args);
     }
 
     public static boolean containsBean(String name) {
-        return beanFactory.containsBean(name);
+        return getBeanFactory().containsBean(name);
     }
 
     public static boolean isSingleton(String name) throws NoSuchBeanDefinitionException {
-        return beanFactory.isSingleton(name);
+        return getBeanFactory().isSingleton(name);
     }
 
     public static boolean isPrototype(String name) throws NoSuchBeanDefinitionException {
-        return beanFactory.isPrototype(name);
+        return getBeanFactory().isPrototype(name);
     }
 
     public static boolean isTypeMatch(String name, ResolvableType typeToMatch) throws NoSuchBeanDefinitionException {
-        return beanFactory.isTypeMatch(name, typeToMatch);
+        return getBeanFactory().isTypeMatch(name, typeToMatch);
     }
 
     public static boolean isTypeMatch(String name, Class<?> typeToMatch) throws NoSuchBeanDefinitionException {
-        return beanFactory.isTypeMatch(name, typeToMatch);
+        return getBeanFactory().isTypeMatch(name, typeToMatch);
     }
 
     public static Class<?> getType(String name) throws NoSuchBeanDefinitionException {
-        return beanFactory.getType(name);
+        return getBeanFactory().getType(name);
     }
 
     public static String[] getAliases(String name) {
-        return beanFactory.getAliases(name);
+        return getBeanFactory().getAliases(name);
     }
 
 
