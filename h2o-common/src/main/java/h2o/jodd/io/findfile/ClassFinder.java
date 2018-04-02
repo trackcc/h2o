@@ -26,15 +26,15 @@
 package h2o.jodd.io.findfile;
 
 import h2o.jodd.util.*;
-import jodd.io.FileNameUtil;
-import jodd.util.ClassLoaderUtil;
-import jodd.util.InExRules;
-import jodd.util.StringUtil;
-import jodd.util.Wildcard;
-import jodd.util.ArraysUtil;
-import jodd.io.FileUtil;
-import jodd.io.StreamUtil;
-import jodd.io.ZipUtil;
+import h2o.jodd.io.FileNameUtil;
+import h2o.jodd.util.ClassLoaderUtil;
+import h2o.jodd.util.InExRules;
+import h2o.jodd.util.StringUtil;
+import h2o.jodd.util.Wildcard;
+import h2o.jodd.util.ArraysUtil;
+import h2o.jodd.io.FileUtil;
+import h2o.jodd.io.StreamUtil;
+import h2o.jodd.io.ZipUtil;
 
 import java.net.URL;
 import java.util.zip.ZipFile;
@@ -46,8 +46,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.FileNotFoundException;
 
-import static jodd.util.InExRuleMatcher.WILDCARD_PATH_RULE_MATCHER;
-import static jodd.util.InExRuleMatcher.WILDCARD_RULE_MATCHER;
+import static h2o.jodd.util.InExRuleMatcher.WILDCARD_PATH_RULE_MATCHER;
+import static h2o.jodd.util.InExRuleMatcher.WILDCARD_RULE_MATCHER;
 
 /**
  * Simple utility that scans <code>URL</code>s for classes.

@@ -26,7 +26,6 @@
 package h2o.jodd.util;
 
 import h2o.jodd.util.cl.ClassLoaderStrategy;
-import jodd.util.cl.ClassLoaderStrategy;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AccessibleObject;

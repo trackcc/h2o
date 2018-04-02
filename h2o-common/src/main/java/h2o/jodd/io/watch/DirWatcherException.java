@@ -26,7 +26,6 @@
 package h2o.jodd.io.watch;
 
 import h2o.jodd.exception.UncheckedException;
-import jodd.exception.UncheckedException;
 
 /**
  * Exception for {@link DirWatcher}.

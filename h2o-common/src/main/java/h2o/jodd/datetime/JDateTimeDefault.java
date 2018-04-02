@@ -27,8 +27,7 @@ package h2o.jodd.datetime;
 
 import h2o.jodd.datetime.format.Iso8601JdtFormatter;
 import h2o.jodd.datetime.format.JdtFormatter;
-import jodd.datetime.format.Iso8601JdtFormatter;
-import jodd.datetime.format.JdtFormatter;
+
 
 import java.util.TimeZone;
 import java.util.Locale;

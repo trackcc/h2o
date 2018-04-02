@@ -25,18 +25,18 @@
 
 package h2o.jodd.util;
 
-import jodd.core.JoddCore;
+import h2o.jodd.core.JoddCore;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static jodd.util.CharUtil.isAlpha;
-import static jodd.util.CharUtil.isDigit;
-import static jodd.util.CharUtil.isPchar;
-import static jodd.util.CharUtil.isSubDelimiter;
-import static jodd.util.CharUtil.isUnreserved;
+import static h2o.jodd.util.CharUtil.isAlpha;
+import static h2o.jodd.util.CharUtil.isDigit;
+import static h2o.jodd.util.CharUtil.isPchar;
+import static h2o.jodd.util.CharUtil.isSubDelimiter;
+import static h2o.jodd.util.CharUtil.isUnreserved;
 
 /**
  * Encodes URLs correctly, significantly faster and more convenient.

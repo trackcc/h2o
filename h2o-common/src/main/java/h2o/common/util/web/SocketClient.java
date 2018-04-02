@@ -2,7 +2,7 @@ package h2o.common.util.web;
 
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
-import jodd.io.StreamUtil;
+import h2o.jodd.io.StreamUtil;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.BufferedInputStream;

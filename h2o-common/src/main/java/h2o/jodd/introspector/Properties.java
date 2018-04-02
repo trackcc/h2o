@@ -26,7 +26,6 @@
 package h2o.jodd.introspector;
 
 import h2o.jodd.util.ReflectUtil;
-import jodd.util.ReflectUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -35,8 +34,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 
-import static jodd.util.ReflectUtil.METHOD_GET_PREFIX;
-import static jodd.util.ReflectUtil.METHOD_IS_PREFIX;
+import static h2o.jodd.util.ReflectUtil.METHOD_GET_PREFIX;
+import static h2o.jodd.util.ReflectUtil.METHOD_IS_PREFIX;
 
 /**
  * Bean properties collection. Property in Java is defined as a pair of

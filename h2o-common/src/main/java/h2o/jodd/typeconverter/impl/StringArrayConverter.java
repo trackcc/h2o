@@ -25,7 +25,7 @@
 
 package h2o.jodd.typeconverter.impl;
 
-import jodd.typeconverter.TypeConverterManagerBean;
+import h2o.jodd.typeconverter.TypeConverterManagerBean;
 
 /**
  * Converts given object to <code>String[]</code>.

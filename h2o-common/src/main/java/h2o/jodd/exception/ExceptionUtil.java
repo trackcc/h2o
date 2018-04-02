@@ -26,8 +26,7 @@
 package h2o.jodd.exception;
 
 import h2o.jodd.util.StringUtil;
-import jodd.io.StreamUtil;
-import jodd.util.StringUtil;
+import h2o.jodd.io.StreamUtil;
 
 import java.io.StringWriter;
 import java.io.PrintWriter;

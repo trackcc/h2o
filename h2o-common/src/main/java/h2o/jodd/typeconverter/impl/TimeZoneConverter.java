@@ -25,7 +25,7 @@
 
 package h2o.jodd.typeconverter.impl;
 
-import jodd.typeconverter.TypeConverter;
+import h2o.jodd.typeconverter.TypeConverter;
 
 import java.util.TimeZone;
 

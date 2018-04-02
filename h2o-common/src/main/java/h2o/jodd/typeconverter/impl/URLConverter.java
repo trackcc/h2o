@@ -25,9 +25,9 @@
 
 package h2o.jodd.typeconverter.impl;
 
-import jodd.io.FileUtil;
-import jodd.typeconverter.TypeConversionException;
-import jodd.typeconverter.TypeConverter;
+import h2o.jodd.io.FileUtil;
+import h2o.jodd.typeconverter.TypeConversionException;
+import h2o.jodd.typeconverter.TypeConverter;
 
 import java.io.File;
 import java.net.URI;

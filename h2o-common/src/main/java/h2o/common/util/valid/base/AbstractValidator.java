@@ -34,7 +34,7 @@ public abstract class AbstractValidator implements Validator {
 	}
 
 	public boolean validate( Object bean) {
-		return this.validateV( jodd.bean.BeanUtil.silent.getProperty(bean, k)  );
+		return this.validateV( h2o.jodd.bean.BeanUtil.silent.getProperty(bean, k)  );
 	}
 	
 	protected boolean validateV( Object v ) {

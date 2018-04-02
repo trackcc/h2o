@@ -41,13 +41,9 @@ import h2o.jodd.util.MultiComparator;
 import h2o.jodd.util.NaturalOrderComparator;
 import h2o.jodd.util.StringUtil;
 import h2o.jodd.util.collection.JoddArrayList;
-import jodd.io.FileNameUtil;
-import jodd.io.FileUtil;
-import jodd.util.InExRules;
-import jodd.util.MultiComparator;
-import jodd.util.NaturalOrderComparator;
-import jodd.util.StringUtil;
-import jodd.util.collection.JoddArrayList;
+import h2o.jodd.io.FileNameUtil;
+import h2o.jodd.io.FileUtil;
+
 
 /**
  * Generic iterative file finder. Searches all files on specified search path.

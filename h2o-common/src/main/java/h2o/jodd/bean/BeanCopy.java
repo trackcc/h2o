@@ -29,8 +29,8 @@ import h2o.jodd.util.StringPool;
 
 import java.util.Map;
 
-import static jodd.util.StringPool.LEFT_SQ_BRACKET;
-import static jodd.util.StringPool.RIGHT_SQ_BRACKET;
+import static h2o.jodd.util.StringPool.LEFT_SQ_BRACKET;
+import static h2o.jodd.util.StringPool.RIGHT_SQ_BRACKET;
 
 /**
  * Powerful tool for copying properties from one bean into another.

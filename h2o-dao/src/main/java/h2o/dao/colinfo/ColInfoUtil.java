@@ -154,7 +154,7 @@ public class ColInfoUtil {
 		
 		List<ColInfo> colInfos = new ArrayList<ColInfo>();
 		
-		Field[] fs = jodd.util.ReflectUtil.getSupportedFields(beanClass);
+		Field[] fs = h2o.jodd.util.ReflectUtil.getSupportedFields(beanClass);
 		for( Field f : fs ) {
 			
 			Column colAnn = f.getAnnotation(Column.class);			

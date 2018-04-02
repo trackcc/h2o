@@ -4,7 +4,7 @@ import h2o.common.Tools;
 import h2o.common.collections.tuple.Tuple2;
 import h2o.common.collections.tuple.TupleUtil;
 import h2o.common.ioc.ObjectFactory;
-import jodd.util.ReflectUtil;
+import h2o.jodd.util.ReflectUtil;
 
 public class RemoteCall implements RemoteCallI {
 

@@ -25,11 +25,11 @@ public class FileResultProcessor implements ResultProcessor {
         }
         
         OutputStream outputStream = response.getOutputStream();
-        
-       jodd.io.StreamUtil.copy(fileData.fileStream , outputStream);
-       
-       jodd.io.StreamUtil.close( fileData.fileStream );
-       jodd.io.StreamUtil.close( outputStream );
+
+        h2o.jodd.io.StreamUtil.copy(fileData.fileStream , outputStream);
+
+        h2o.jodd.io.StreamUtil.close( fileData.fileStream );
+        h2o.jodd.io.StreamUtil.close( outputStream );
 	}
 
 }

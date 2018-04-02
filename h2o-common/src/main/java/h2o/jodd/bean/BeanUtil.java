@@ -25,7 +25,7 @@
 
 package h2o.jodd.bean;
 
-import jodd.introspector.Introspector;
+import h2o.jodd.introspector.Introspector;
 
 /**
  * Supreme utility for reading and writing bean properties. However, this one is the fastest available.

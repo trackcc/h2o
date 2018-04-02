@@ -26,7 +26,6 @@
 package h2o.jodd.io;
 
 import h2o.jodd.util.StringPool;
-import jodd.util.StringPool;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

@@ -280,7 +280,7 @@ public class SqlBuilder {
 	
 	
 	private Object getVal( Object bean , String attrName ) {
-		return jodd.bean.BeanUtil.silent.getProperty(bean, attrName);
+		return h2o.jodd.bean.BeanUtil.silent.getProperty(bean, attrName);
 	}
 	
 	

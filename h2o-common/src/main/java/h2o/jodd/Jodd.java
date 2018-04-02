@@ -26,7 +26,6 @@
 package h2o.jodd;
 
 import h2o.jodd.exception.UncheckedException;
-import jodd.exception.UncheckedException;
 
 import java.lang.reflect.Field;
 

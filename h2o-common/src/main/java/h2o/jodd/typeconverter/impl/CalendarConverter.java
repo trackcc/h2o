@@ -27,10 +27,9 @@ package h2o.jodd.typeconverter.impl;
 
 import h2o.jodd.datetime.JDateTime;
 import h2o.jodd.util.StringUtil;
-import jodd.datetime.JDateTime;
-import jodd.typeconverter.TypeConversionException;
-import jodd.typeconverter.TypeConverter;
-import jodd.util.StringUtil;
+import h2o.jodd.typeconverter.TypeConversionException;
+import h2o.jodd.typeconverter.TypeConverter;
+
 
 import java.util.Calendar;
 import java.util.Date;

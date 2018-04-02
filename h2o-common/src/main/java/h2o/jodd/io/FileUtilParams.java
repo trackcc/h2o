@@ -25,7 +25,7 @@
 
 package h2o.jodd.io;
 
-import jodd.core.JoddCore;
+import h2o.jodd.core.JoddCore;
 
 /**
  * {@link FileUtil File utilities} parameters.

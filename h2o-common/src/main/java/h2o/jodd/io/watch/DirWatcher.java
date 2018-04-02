@@ -28,10 +28,8 @@ package h2o.jodd.io.watch;
 import h2o.jodd.mutable.MutableLong;
 import h2o.jodd.util.StringPool;
 import h2o.jodd.util.Wildcard;
-import jodd.io.FileUtil;
-import jodd.mutable.MutableLong;
-import jodd.util.StringPool;
-import jodd.util.Wildcard;
+import h2o.jodd.io.FileUtil;
+
 
 import java.io.File;
 import java.io.IOException;

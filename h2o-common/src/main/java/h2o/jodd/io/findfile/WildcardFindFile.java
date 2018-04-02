@@ -27,8 +27,6 @@ package h2o.jodd.io.findfile;
 
 import h2o.jodd.util.InExRuleMatcher;
 import h2o.jodd.util.InExRules;
-import jodd.util.InExRuleMatcher;
-import jodd.util.InExRules;
 
 /**
  * {@link FindFile} that matches file names using <code>*</code>, <code>?</code>

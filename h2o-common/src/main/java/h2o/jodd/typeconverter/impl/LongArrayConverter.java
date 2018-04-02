@@ -26,9 +26,9 @@
 package h2o.jodd.typeconverter.impl;
 
 import h2o.jodd.util.StringUtil;
-import jodd.typeconverter.TypeConverter;
-import jodd.typeconverter.TypeConverterManagerBean;
-import jodd.util.StringUtil;
+import h2o.jodd.typeconverter.TypeConverter;
+import h2o.jodd.typeconverter.TypeConverterManagerBean;
+
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -3,7 +3,7 @@ package h2o.common.util.security;
 import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.collections.ConcurrentBiMap;
-import jodd.util.Base64;
+import h2o.jodd.util.Base64;
 
 import java.io.*;
 

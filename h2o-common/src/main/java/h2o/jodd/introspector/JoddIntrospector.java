@@ -26,7 +26,6 @@
 package h2o.jodd.introspector;
 
 import h2o.jodd.Jodd;
-import jodd.Jodd;
 
 public class JoddIntrospector {
 

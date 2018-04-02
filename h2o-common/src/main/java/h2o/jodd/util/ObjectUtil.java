@@ -25,8 +25,8 @@
 
 package h2o.jodd.util;
 
-import jodd.io.FastByteArrayOutputStream;
-import jodd.io.StreamUtil;
+import h2o.jodd.io.FastByteArrayOutputStream;
+import h2o.jodd.io.StreamUtil;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

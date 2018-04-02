@@ -26,7 +26,6 @@
 package h2o.jodd.io.findfile;
 
 import h2o.jodd.util.ClassLoaderUtil;
-import jodd.util.ClassLoaderUtil;
 
 import java.net.URL;
 import java.io.File;

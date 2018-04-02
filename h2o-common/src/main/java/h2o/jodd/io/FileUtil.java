@@ -29,11 +29,11 @@ import h2o.jodd.util.StringPool;
 import h2o.jodd.util.StringUtil;
 import h2o.jodd.util.SystemUtil;
 import h2o.jodd.util.URLDecoder;
-import jodd.core.JoddCore;
-import jodd.util.StringPool;
-import jodd.util.StringUtil;
-import jodd.util.SystemUtil;
-import jodd.util.URLDecoder;
+import h2o.jodd.core.JoddCore;
+import h2o.jodd.util.StringPool;
+import h2o.jodd.util.StringUtil;
+import h2o.jodd.util.SystemUtil;
+import h2o.jodd.util.URLDecoder;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -58,7 +58,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.ArrayList;
 
-import static jodd.core.JoddCore.fileUtilParams;
+import static h2o.jodd.core.JoddCore.fileUtilParams;
 
 /**
  * File utilities.

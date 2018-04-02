@@ -25,8 +25,8 @@
 
 package h2o.jodd.util;
 
-import jodd.io.StreamUtil;
-import jodd.io.findfile.ClassScanner;
+import h2o.jodd.io.StreamUtil;
+import h2o.jodd.io.findfile.ClassScanner;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

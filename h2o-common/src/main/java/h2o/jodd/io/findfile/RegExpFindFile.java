@@ -26,7 +26,6 @@
 package h2o.jodd.io.findfile;
 
 import h2o.jodd.util.InExRules;
-import jodd.util.InExRules;
 
 import java.util.regex.Pattern;
 

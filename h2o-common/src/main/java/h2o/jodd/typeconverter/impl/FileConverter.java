@@ -26,10 +26,10 @@
 package h2o.jodd.typeconverter.impl;
 
 import h2o.jodd.util.ArraysUtil;
-import jodd.io.FileUtil;
-import jodd.typeconverter.TypeConversionException;
-import jodd.typeconverter.TypeConverter;
-import jodd.util.ArraysUtil;
+import h2o.jodd.io.FileUtil;
+import h2o.jodd.typeconverter.TypeConversionException;
+import h2o.jodd.typeconverter.TypeConverter;
+import h2o.jodd.util.ArraysUtil;
 
 import java.io.File;
 import java.io.IOException;

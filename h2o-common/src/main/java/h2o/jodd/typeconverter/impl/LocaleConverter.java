@@ -26,8 +26,7 @@
 package h2o.jodd.typeconverter.impl;
 
 import h2o.jodd.util.LocaleUtil;
-import jodd.typeconverter.TypeConverter;
-import jodd.util.LocaleUtil;
+import h2o.jodd.typeconverter.TypeConverter;
 
 import java.util.Locale;
 

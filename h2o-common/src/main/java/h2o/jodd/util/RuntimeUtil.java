@@ -25,8 +25,8 @@
 
 package h2o.jodd.util;
 
-import jodd.Jodd;
-import jodd.io.StreamGobbler;
+import h2o.jodd.Jodd;
+import h2o.jodd.io.StreamGobbler;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

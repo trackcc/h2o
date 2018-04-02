@@ -26,7 +26,6 @@
 package h2o.jodd.bean;
 
 import h2o.jodd.util.StringTemplateParser;
-import jodd.util.StringTemplateParser;
 
 /**
  * Bean template is a string template with JSP-alike

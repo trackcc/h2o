@@ -26,8 +26,7 @@
 package h2o.jodd.datetime;
 
 import h2o.jodd.util.HashCode;
-import jodd.util.HashCode;
-import static jodd.util.HashCode.hash;
+import static h2o.jodd.util.HashCode.hash;
 
 import java.math.BigDecimal;
 import java.io.Serializable;

@@ -26,7 +26,6 @@
 package h2o.jodd.io.findfile;
 
 import h2o.jodd.exception.UncheckedException;
-import jodd.exception.UncheckedException;
 
 /**
  * Exception during finding files or classes.

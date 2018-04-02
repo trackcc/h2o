@@ -25,9 +25,9 @@
 
 package h2o.jodd.io;
 
-import static jodd.core.JoddCore.ioBufferSize;
+import static h2o.jodd.core.JoddCore.ioBufferSize;
 
-import jodd.core.JoddCore;
+import h2o.jodd.core.JoddCore;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

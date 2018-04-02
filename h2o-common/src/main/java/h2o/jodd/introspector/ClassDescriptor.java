@@ -26,7 +26,6 @@
 package h2o.jodd.introspector;
 
 import h2o.jodd.util.ReflectUtil;
-import jodd.util.ReflectUtil;
 
 import java.util.Map;
 import java.util.List;

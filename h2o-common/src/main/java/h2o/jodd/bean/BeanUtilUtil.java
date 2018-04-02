@@ -26,12 +26,11 @@
 package h2o.jodd.bean;
 
 import h2o.jodd.util.ReflectUtil;
-import jodd.introspector.Getter;
-import jodd.introspector.Introspector;
-import jodd.introspector.Setter;
-import jodd.typeconverter.TypeConverterManager;
-import jodd.typeconverter.TypeConverterManagerBean;
-import jodd.util.ReflectUtil;
+import h2o.jodd.introspector.Getter;
+import h2o.jodd.introspector.Introspector;
+import h2o.jodd.introspector.Setter;
+import h2o.jodd.typeconverter.TypeConverterManager;
+import h2o.jodd.typeconverter.TypeConverterManagerBean;
 
 import java.lang.reflect.Array;
 import java.util.Collection;

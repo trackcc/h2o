@@ -25,11 +25,11 @@
 
 package h2o.jodd.bean;
 
-import jodd.introspector.ClassDescriptor;
-import jodd.introspector.Introspector;
-import jodd.introspector.PropertyDescriptor;
-import jodd.introspector.Getter;
-import jodd.introspector.Setter;
+import h2o.jodd.introspector.ClassDescriptor;
+import h2o.jodd.introspector.Introspector;
+import h2o.jodd.introspector.PropertyDescriptor;
+import h2o.jodd.introspector.Getter;
+import h2o.jodd.introspector.Setter;
 
 /**
  * Represents a bean named property. Contains two information:

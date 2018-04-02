@@ -42,7 +42,7 @@ public class Args implements java.io.Serializable {
 	public Args( Object... args ) {
 		try {
 			for( int i = 0 , len = args.length > 10 ? 10 : args.length ; i < len ; i++ ) {
-				jodd.util.ReflectUtil.invoke(this, "setA" + ( i  + 1 ), new Class[] { Object.class } , new Object[] { args[i] } );
+                h2o.jodd.util.ReflectUtil.invoke(this, "setA" + ( i  + 1 ), new Class[] { Object.class } , new Object[] { args[i] } );
 			}
 		} catch( Exception e ) {
 			throw ExceptionUtil.toRuntimeException(e);

@@ -28,9 +28,6 @@ package h2o.jodd.io;
 import h2o.jodd.util.StringPool;
 import h2o.jodd.util.StringUtil;
 import h2o.jodd.util.Wildcard;
-import jodd.util.StringPool;
-import jodd.util.StringUtil;
-import jodd.util.Wildcard;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

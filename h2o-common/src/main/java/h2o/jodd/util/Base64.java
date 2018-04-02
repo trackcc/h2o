@@ -25,7 +25,7 @@
 
 package h2o.jodd.util;
 
-import jodd.core.JoddCore;
+import h2o.jodd.core.JoddCore;
 
 import java.util.Arrays;
 import java.io.UnsupportedEncodingException;

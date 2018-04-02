@@ -26,9 +26,8 @@
 package h2o.jodd.typeconverter.impl;
 
 import h2o.jodd.util.CsvUtil;
-import jodd.typeconverter.TypeConverter;
-import jodd.typeconverter.TypeConverterManagerBean;
-import jodd.util.CsvUtil;
+import h2o.jodd.typeconverter.TypeConverter;
+import h2o.jodd.typeconverter.TypeConverterManagerBean;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

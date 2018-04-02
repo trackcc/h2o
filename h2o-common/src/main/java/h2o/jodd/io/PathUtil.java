@@ -26,7 +26,6 @@
 package h2o.jodd.io;
 
 import h2o.jodd.util.StringUtil;
-import jodd.util.StringUtil;
 
 import java.io.BufferedReader;
 import java.io.File;

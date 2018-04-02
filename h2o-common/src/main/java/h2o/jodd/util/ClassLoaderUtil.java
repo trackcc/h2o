@@ -26,9 +26,9 @@
 package h2o.jodd.util;
 
 import h2o.jodd.util.cl.DefaultClassLoaderStrategy;
-import jodd.core.JoddCore;
-import jodd.io.FileUtil;
-import jodd.io.StreamUtil;
+import h2o.jodd.core.JoddCore;
+import h2o.jodd.io.FileUtil;
+import h2o.jodd.io.StreamUtil;
 
 import java.io.File;
 import java.io.FileInputStream;

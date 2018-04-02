@@ -25,7 +25,7 @@
 
 package h2o.jodd.util;
 
-import static jodd.util.StringPool.EMPTY;
+import static h2o.jodd.util.StringPool.EMPTY;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Locale;

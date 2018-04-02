@@ -26,9 +26,9 @@
 package h2o.jodd.bean;
 
 import h2o.jodd.Jodd;
-import jodd.Jodd;
-import jodd.introspector.Introspector;
-import jodd.introspector.JoddIntrospector;
+import h2o.jodd.Jodd;
+import h2o.jodd.introspector.Introspector;
+import h2o.jodd.introspector.JoddIntrospector;
 
 /**
  * Jodd BEAN module.

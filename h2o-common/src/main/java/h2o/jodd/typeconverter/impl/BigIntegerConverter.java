@@ -25,8 +25,8 @@
 
 package h2o.jodd.typeconverter.impl;
 
-import jodd.typeconverter.TypeConversionException;
-import jodd.typeconverter.TypeConverter;
+import h2o.jodd.typeconverter.TypeConversionException;
+import h2o.jodd.typeconverter.TypeConverter;
 
 import java.math.BigInteger;
 

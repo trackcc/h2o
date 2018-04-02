@@ -27,8 +27,6 @@ package h2o.jodd.introspector;
 
 import h2o.jodd.util.ArraysUtil;
 import h2o.jodd.util.ReflectUtil;
-import jodd.util.ArraysUtil;
-import jodd.util.ReflectUtil;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

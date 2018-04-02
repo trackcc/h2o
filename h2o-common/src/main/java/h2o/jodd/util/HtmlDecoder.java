@@ -25,7 +25,7 @@
 
 package h2o.jodd.util;
 
-import jodd.io.StreamUtil;
+import h2o.jodd.io.StreamUtil;
 
 import java.io.InputStream;
 import java.util.Arrays;

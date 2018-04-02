@@ -26,7 +26,6 @@
 package h2o.jodd.format;
 
 import h2o.jodd.util.StringPool;
-import jodd.util.StringPool;
 
 import java.math.BigInteger;
 

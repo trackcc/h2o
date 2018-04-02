@@ -27,10 +27,8 @@ package h2o.jodd.typeconverter.impl;
 
 import h2o.jodd.util.ClassLoaderUtil;
 import h2o.jodd.util.StringUtil;
-import jodd.typeconverter.TypeConversionException;
-import jodd.typeconverter.TypeConverter;
-import jodd.util.ClassLoaderUtil;
-import jodd.util.StringUtil;
+import h2o.jodd.typeconverter.TypeConversionException;
+import h2o.jodd.typeconverter.TypeConverter;
 
 /**
  * Converts given object to <code>Class</code>.

@@ -26,7 +26,6 @@
 package h2o.jodd.io;
 
 import h2o.jodd.util.buffer.FastCharBuffer;
-import jodd.util.buffer.FastCharBuffer;
 
 import java.io.IOException;
 import java.io.Writer;

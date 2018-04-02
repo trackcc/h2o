@@ -26,7 +26,6 @@
 package h2o.jodd.typeconverter;
 
 import h2o.jodd.exception.UncheckedException;
-import jodd.exception.UncheckedException;
 
 /**
  * Type conversion exception.

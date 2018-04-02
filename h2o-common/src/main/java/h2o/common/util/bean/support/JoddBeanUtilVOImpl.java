@@ -1,7 +1,7 @@
 package h2o.common.util.bean.support;
 
 import h2o.common.util.bean.ValOperate;
-import jodd.bean.BeanUtilBean;
+import h2o.jodd.bean.BeanUtilBean;
 
 
 public class JoddBeanUtilVOImpl implements ValOperate , java.io.Serializable {

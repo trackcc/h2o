@@ -26,9 +26,8 @@
 package h2o.jodd.typeconverter.impl;
 
 import h2o.jodd.mutable.MutableLong;
-import jodd.mutable.MutableLong;
-import jodd.typeconverter.TypeConverter;
-import jodd.typeconverter.TypeConverterManagerBean;
+import h2o.jodd.typeconverter.TypeConverter;
+import h2o.jodd.typeconverter.TypeConverterManagerBean;
 
 /**
  * Converts given object to a {@link MutableLong}.

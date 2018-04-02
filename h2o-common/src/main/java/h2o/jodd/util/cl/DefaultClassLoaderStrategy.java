@@ -25,8 +25,8 @@
 
 package h2o.jodd.util.cl;
 
-import jodd.util.ReflectUtil;
-import jodd.util.StringUtil;
+import h2o.jodd.util.ReflectUtil;
+import h2o.jodd.util.StringUtil;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;

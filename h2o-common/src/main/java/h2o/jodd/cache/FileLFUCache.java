@@ -25,7 +25,7 @@
 
 package h2o.jodd.cache;
 
-import jodd.io.FileUtil;
+import h2o.jodd.io.FileUtil;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package h2o.common.util.bean;
 
-import jodd.bean.BeanUtil;
+import h2o.jodd.bean.BeanUtil;
 
 /**
  * Created by zhangjianwei on 2017/5/15.

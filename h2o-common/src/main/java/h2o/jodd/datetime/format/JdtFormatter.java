@@ -25,8 +25,8 @@
 
 package h2o.jodd.datetime.format;
 
-import jodd.datetime.DateTimeStamp;
-import jodd.datetime.JDateTime;
+import h2o.jodd.datetime.DateTimeStamp;
+import h2o.jodd.datetime.JDateTime;
 
 import java.io.Serializable;
 

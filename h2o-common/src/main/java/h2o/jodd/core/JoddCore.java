@@ -31,11 +31,7 @@ import h2o.jodd.io.FileUtilParams;
 import h2o.jodd.util.StringPool;
 import h2o.jodd.util.cl.ClassLoaderStrategy;
 import h2o.jodd.util.cl.DefaultClassLoaderStrategy;
-import jodd.Jodd;
-import jodd.io.FileUtilParams;
-import jodd.util.StringPool;
-import jodd.util.cl.ClassLoaderStrategy;
-import jodd.util.cl.DefaultClassLoaderStrategy;
+
 
 /**
  * Jodd CORE module.

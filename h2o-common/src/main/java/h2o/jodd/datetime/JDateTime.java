@@ -28,9 +28,6 @@ package h2o.jodd.datetime;
 import h2o.jodd.datetime.format.JdtFormat;
 import h2o.jodd.datetime.format.JdtFormatter;
 import h2o.jodd.util.HashCode;
-import jodd.datetime.format.JdtFormat;
-import jodd.datetime.format.JdtFormatter;
-import jodd.util.HashCode;
 
 import java.io.Serializable;
 import java.sql.Time;
@@ -40,7 +37,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import static jodd.util.HashCode.hash;
+import static h2o.jodd.util.HashCode.hash;
 
 /**
  * Universal all-in-one date and time class that uses Astronomical Julian
