@@ -23,7 +23,7 @@ public class Mode {
 
     public static final boolean debugMode;
 	
-	private static final Set<String> userModeSet = new HashSet<String>();
+	private static final String[] userModeArrays;
 	
 	static {
 		
@@ -32,6 +32,8 @@ public class Mode {
         boolean d = false;
 
         boolean debug = false;
+
+        String[] uma = new String[0];
 
 		String m;
 		
@@ -59,10 +61,8 @@ public class Mode {
 			String userModes = config.getString("userMode","").trim().toUpperCase();
 			
 			if( !"".equals(userModes) ) {
-
                 List<String> ums =  CollectionUtil.string2List( false , userModes, new String[] {":",",",";"," ", "\t"} , null );
-			    userModeSet.addAll( ums );
-
+                uma = ums.toArray( new String[ums.size()] );
 			}
 			
 			
@@ -82,11 +82,13 @@ public class Mode {
 
 		debugMode   = debug;
 
+		userModeArrays = uma;
+
 		mode = m;
 		
 		Tools.log.info("Mode : {}"       , mode );
         Tools.log.info("Debug Mode : {}" , debugMode );
-		Tools.log.info("User Mode : {}"  , userModeSet );
+		Tools.log.info("User Mode : {}"  , userModeArrays );
 	}
 	
 	private Mode() {}
@@ -110,8 +112,16 @@ public class Mode {
 		if(m == null) {
 			return false;
 		}
-		
-		return userModeSet.contains( m.trim().toUpperCase() );
+
+		String um = m.trim().toUpperCase();
+
+		for ( String u : userModeArrays  ) {
+		    if ( u.equals(um) ) {
+		        return true;
+            }
+        }
+
+        return false;
 	}
 	
 	
