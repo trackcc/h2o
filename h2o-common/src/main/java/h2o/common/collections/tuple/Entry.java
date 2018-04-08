@@ -1,8 +1,10 @@
 package h2o.common.collections.tuple;
 
-public class Entry<K,V> {
-	
-	private K key;
+public class Entry<K,V> implements java.io.Serializable {
+
+    private static final long serialVersionUID = -8304096067686246637L;
+
+    private K key;
 	
 	private V value;
 	
