@@ -21,6 +21,17 @@ public class TransStatus implements Serializable {
 
     private String msg;
 
+    public TransStatus() {
+    }
+
+    public TransStatus( TransStatus transStatus ) {
+        this.setFinal( transStatus.isFinal() );
+        this.setSuccess( transStatus.isSuccess() );
+        this.setStatus( transStatus.getStatus() );
+        this.setCode( transStatus.getCode() );
+        this.setMsg( transStatus.getMsg() );
+    }
+
     public boolean isFinal() {
         return isFinal;
     }
