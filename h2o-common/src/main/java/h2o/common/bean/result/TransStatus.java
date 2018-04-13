@@ -7,11 +7,11 @@ import java.io.Serializable;
 /**
  * Created by zhangjianwei on 2017/6/7.
  */
-public class TransStatus implements Serializable {
+public class TransStatus<S> implements Serializable {
 
     private static final long serialVersionUID = -8626841949944329920L;
 
-    private int status = -1;
+    private S status;
 
     private boolean isFinal;
 
@@ -24,7 +24,7 @@ public class TransStatus implements Serializable {
     public TransStatus() {
     }
 
-    public TransStatus( TransStatus transStatus ) {
+    public TransStatus( TransStatus<S> transStatus ) {
         this.setFinal( transStatus.isFinal() );
         this.setSuccess( transStatus.isSuccess() );
         this.setStatus( transStatus.getStatus() );
@@ -36,7 +36,7 @@ public class TransStatus implements Serializable {
         return isFinal;
     }
 
-    public TransStatus setFinal(boolean aFinal) {
+    public TransStatus<S> setFinal(boolean aFinal) {
         isFinal = aFinal;
         return this;
     }
@@ -45,26 +45,25 @@ public class TransStatus implements Serializable {
         return success;
     }
 
-    public TransStatus setSuccess(boolean success) {
+    public TransStatus<S> setSuccess(boolean success) {
         this.success = success;
         return this;
     }
 
-    public int getStatus() {
+    public S getStatus() {
         return status;
     }
 
-    public TransStatus setStatus(int status) {
+    public TransStatus<S> setStatus(S status) {
         this.status = status;
         return this;
     }
-
 
     public String getCode() {
         return code;
     }
 
-    public TransStatus setCode(String code) {
+    public TransStatus<S> setCode(String code) {
         this.code = code;
         return this;
     }
@@ -73,7 +72,7 @@ public class TransStatus implements Serializable {
         return msg;
     }
 
-    public TransStatus setMsg(String msg) {
+    public TransStatus<S> setMsg(String msg) {
         this.msg = msg;
         return this;
     }

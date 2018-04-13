@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by zhangjianwei on 2017/6/7.
  */
-public class TransResult<R> extends TransStatus implements Serializable {
+public class TransResult<S,R> extends TransStatus<S> implements Serializable {
 
     private static final long serialVersionUID = -1448116426261181686L;
 
@@ -13,7 +13,7 @@ public class TransResult<R> extends TransStatus implements Serializable {
         super();
     }
 
-    public TransResult( TransStatus transStatus ) {
+    public TransResult( TransStatus<S> transStatus ) {
         super(transStatus);
     }
 
@@ -42,32 +42,32 @@ public class TransResult<R> extends TransStatus implements Serializable {
     }
 
     @Override
-    public TransResult setFinal(boolean aFinal) {
+    public TransResult<S,R> setFinal(boolean aFinal) {
         super.setFinal(aFinal);
         return this;
     }
 
     @Override
-    public TransResult setSuccess(boolean success) {
+    public TransResult<S,R>  setSuccess(boolean success) {
         super.setSuccess(success);
         return this;
     }
 
     @Override
-    public TransResult setStatus(int status) {
+    public TransResult<S,R> setStatus(S status) {
         super.setStatus(status);
         return this;
     }
 
 
     @Override
-    public TransResult setCode(String code) {
+    public TransResult<S,R> setCode(String code) {
         super.setCode(code);
         return this;
     }
 
     @Override
-    public TransResult setMsg(String msg) {
+    public TransResult<S,R> setMsg(String msg) {
         super.setMsg(msg);
         return this;
     }
