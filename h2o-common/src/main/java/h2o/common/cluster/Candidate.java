@@ -1,7 +1,7 @@
 package h2o.common.cluster;
 
 import h2o.common.concurrent.RunUtil;
-import h2o.common.thirdparty.redis.JedisUtil;
+import h2o.common.thirdparty.redis.JedisProvider;
 import h2o.common.thirdparty.spring.util.Assert;
 
 import java.util.concurrent.TimeUnit;
@@ -12,11 +12,11 @@ public class Candidate {
 
     private final int timeout;
 
-    public Candidate( JedisUtil jedisUtil, String topic , int timeout ) {
+    public Candidate(JedisProvider jedisProvider, String topic , int timeout ) {
 
         Assert.isTrue( timeout > 0  , "'timeout' value must be greater than 0" );
         this.timeout = timeout;
-        this.lock = new ClusterLock( jedisUtil , "H2OCandidate_" + topic , timeout );
+        this.lock = new ClusterLock( jedisProvider , "H2OCandidate_" + topic , timeout );
     }
 
     public void attend() {

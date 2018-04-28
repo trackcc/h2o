@@ -2,7 +2,7 @@ package h2o.common.cluster;
 
 import h2o.common.Tools;
 import h2o.common.thirdparty.redis.JedisCallBack;
-import h2o.common.thirdparty.redis.JedisUtil;
+import h2o.common.thirdparty.redis.JedisProvider;
 import h2o.common.util.id.UuidUtil;
 import redis.clients.jedis.Jedis;
 
@@ -14,7 +14,7 @@ public class ClusterLock {
 
     private final String id = UuidUtil.getUuid();
 
-    private final JedisUtil jedisUtil;
+    private final JedisProvider jedisProvider;
 
     private final Jedis _jedis;
 
@@ -27,15 +27,15 @@ public class ClusterLock {
     private volatile boolean locked = false;
 
 
-    public ClusterLock( JedisUtil jedisUtil, String key, int expire ) {
-        this.jedisUtil = jedisUtil;
+    public ClusterLock(JedisProvider jedisProvider, String key, int expire ) {
+        this.jedisProvider = jedisProvider;
         this._jedis = null;
         this.key = "H2OClusterLock_" + key;
         this.expire = expire;
     }
 
     public ClusterLock( Jedis jedis, String key, int expire ) {
-        this.jedisUtil = null;
+        this.jedisProvider = null;
         this._jedis = jedis;
         this.key = "H2OClusterLock_" + key;
         this.expire = expire;
@@ -61,11 +61,11 @@ public class ClusterLock {
 
         try {
 
-            if ( jedisUtil == null ) {
+            if ( jedisProvider == null ) {
 
                 tryLock( this._jedis );
 
-            } else jedisUtil.callback(new JedisCallBack<Void>() {
+            } else jedisProvider.callback(new JedisCallBack<Void>() {
 
                 @Override
                 public Void doCallBack(Jedis jedis) throws Exception {
@@ -135,11 +135,11 @@ public class ClusterLock {
 
         try {
 
-            if ( jedisUtil == null ) {
+            if ( jedisProvider == null ) {
 
                 unlock( this._jedis );
 
-            } else jedisUtil.callback(new JedisCallBack<Void>() {
+            } else jedisProvider.callback(new JedisCallBack<Void>() {
 
                 @Override
                 public Void doCallBack(Jedis jedis) throws Exception {

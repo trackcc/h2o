@@ -28,7 +28,7 @@ public class RedisEventReceiver extends AbstractDispatcherEventReceiver implemen
 
         final List<Event> events = ListBuilder.newList();
 
-        helper.jedisUtil.callback(new JedisCallBack<Void>() {
+        helper.jedisProvider.callback(new JedisCallBack<Void>() {
 
             @Override
             public Void doCallBack(Jedis jedis) throws Exception {

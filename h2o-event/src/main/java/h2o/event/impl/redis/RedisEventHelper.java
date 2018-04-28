@@ -1,6 +1,6 @@
 package h2o.event.impl.redis;
 
-import h2o.common.thirdparty.redis.JedisUtil;
+import h2o.common.thirdparty.redis.JedisProvider;
 import h2o.event.Event;
 import h2o.event.EventEncoder;
 
@@ -11,17 +11,17 @@ public class RedisEventHelper {
 
     public final String eventQueueName;
 
-    public final JedisUtil jedisUtil;
+    public final JedisProvider jedisProvider;
 
     private final EventEncoder<String> eventEncoder;
 
-    public RedisEventHelper( EventEncoder<String> eventEncoder , JedisUtil jedisUtil ) {
-        this(eventEncoder , jedisUtil, "EventQueue");
+    public RedisEventHelper( EventEncoder<String> eventEncoder , JedisProvider jedisProvider ) {
+        this(eventEncoder , jedisProvider, "EventQueue");
     }
 
-    public RedisEventHelper( EventEncoder<String> eventEncoder , JedisUtil jedisUtil , String eventQueue ) {
+    public RedisEventHelper(EventEncoder<String> eventEncoder , JedisProvider jedisProvider , String eventQueue ) {
         this.eventEncoder = eventEncoder;
-        this.jedisUtil = jedisUtil;
+        this.jedisProvider = jedisProvider;
         this.eventQueueName = eventQueue;
     }
 

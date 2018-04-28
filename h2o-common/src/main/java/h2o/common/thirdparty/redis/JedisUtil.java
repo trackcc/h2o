@@ -1,20 +1,19 @@
 package h2o.common.thirdparty.redis;
 
 import h2o.common.Tools;
-import h2o.common.exception.ExceptionUtil;
 import org.apache.commons.lang.StringUtils;
 import redis.clients.jedis.Jedis;
 
-public class JedisUtil {
+public class JedisUtil extends AbstractJedisProvider implements JedisProvider {
 
     private final RedisConfig[] redisConfigs;
 
 	private volatile int ji = -1;
 
-	public JedisUtil( String... confs ) {
-		
+	public JedisUtil(String... confs ) {
+
 		redisConfigs = new RedisConfig[confs.length];
-		
+
 		int i = 0;
 		for( String conf : confs ) {
 
@@ -23,18 +22,18 @@ public class JedisUtil {
                 pass = StringUtils.substringAfter( conf , "@");
                 conf = StringUtils.substringBefore( conf , "@");
             }
-			
+
 			String host = StringUtils.substringBefore( conf , ":");
 			String p = StringUtils.substringAfter( conf , ":");
 			Integer port = StringUtils.isBlank(p) ? 6379 : new Integer(p);
-			
+
 			redisConfigs[i++] = new RedisConfig( host , port , pass );
 		}
 
 	}
 
 
-    public JedisUtil( RedisConfig... confs ) {
+    public JedisUtil(RedisConfig... confs ) {
         redisConfigs = confs;
     }
 
@@ -49,7 +48,7 @@ public class JedisUtil {
 		} else {
 			return select();
 		}
-		
+
 	}
 
     private Jedis select() {
@@ -140,32 +139,6 @@ public class JedisUtil {
     }
 
 
-	
-	public <T> T callback( JedisCallBack<T> jedisCallBack) {
-		return callback(jedisCallBack,false);
-	}
-	
-	public <T> T callback( JedisCallBack<T> jedisCallBack , boolean isSilently ) {
-		
-		Jedis jedis = getJedis();
-		if( jedis == null ) {
-			if(isSilently) {
-				return null;
-			} else {
-				throw new RuntimeException("Not available jedis!");
-			}
-		}
-		
-		try {
-			return jedisCallBack.doCallBack(jedis);
-		} catch( Exception e ) {
-			throw ExceptionUtil.toRuntimeException(e);
-		} finally {
-            release(jedis);
-		}
-		
-		
-	}
-	
+
 
 }

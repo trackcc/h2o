@@ -20,7 +20,7 @@ public class RedisEventSender implements EventSender {
     @Override
     public void putEvents( final Event... events) {
 
-        helper.jedisUtil.callback(new JedisCallBack<Void>() {
+        helper.jedisProvider.callback(new JedisCallBack<Void>() {
 
             @Override
             public Void doCallBack(Jedis jedis) throws Exception {

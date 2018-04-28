@@ -2,7 +2,7 @@ package h2o.common.thirdparty.quartz;
 
 import h2o.common.Tools;
 import h2o.common.thirdparty.redis.JedisCallBack;
-import h2o.common.thirdparty.redis.JedisUtil;
+import h2o.common.thirdparty.redis.JedisProvider;
 import h2o.common.thirdparty.spring.util.Assert;
 import redis.clients.jedis.Jedis;
 
@@ -11,7 +11,7 @@ import redis.clients.jedis.Jedis;
  */
 public abstract class AbstractExecuteOneTime<C> {
 
-    protected JedisUtil jedisUtil;
+    protected JedisProvider jedisProvider;
 
     protected String jobId;
 
@@ -23,10 +23,10 @@ public abstract class AbstractExecuteOneTime<C> {
 
             this.init( context );
 
-            Assert.notNull(jedisUtil , "JedisUtil must not be null");
+            Assert.notNull(jedisProvider, "jedisProvider must not be null");
 
 
-            Boolean jr =  jedisUtil.callback( new JedisCallBack<Boolean>() {
+            Boolean jr =  jedisProvider.callback(new JedisCallBack<Boolean>() {
 
                 @Override
                 public Boolean doCallBack(Jedis jedis) throws Exception {
