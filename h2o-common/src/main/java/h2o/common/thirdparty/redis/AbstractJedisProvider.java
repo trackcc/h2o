@@ -18,7 +18,7 @@ public abstract class AbstractJedisProvider implements JedisProvider {
             if(isSilently) {
                 return null;
             } else {
-                throw new RuntimeException("Not available jedis!");
+                throw new JedisProviderException("Not available jedis!");
             }
         }
 
