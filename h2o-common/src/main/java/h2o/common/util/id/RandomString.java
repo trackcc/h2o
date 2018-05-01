@@ -2,9 +2,20 @@ package h2o.common.util.id;
 
 import java.util.Random;
 
-public final class RandomString {
+public class RandomString {
 
-    private RandomString() {
+    private final Random rand;
+
+    public RandomString() {
+        this.rand = new Random();
+    }
+
+    public RandomString( long seed ) {
+        this.rand = new Random( seed );
+    }
+
+    public RandomString( Random rand ) {
+        this.rand = rand;
     }
 
     private final static char[] c = new char[]{
@@ -20,9 +31,8 @@ public final class RandomString {
     private final static char[] d = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
 
-    public static String makeCode(int len) {
+    public String makeCode(int len) {
         StringBuilder sb = new StringBuilder();
-        Random rand = new Random();
         for (int i = 0; i < len; i++) {
             int r = rand.nextInt(c.length);
             sb.append(c[r]);
@@ -32,9 +42,8 @@ public final class RandomString {
     }
 
 
-    public static String makeNumberCode(int len) {
+    public String makeNumberCode(int len) {
         StringBuilder sb = new StringBuilder();
-        Random rand = new Random();
         for (int i = 0; i < len; i++) {
             int r = rand.nextInt(d.length);
             sb.append(d[r]);
@@ -43,9 +52,6 @@ public final class RandomString {
         return sb.toString();
     }
 
-    public static String makeUuid() {
-        return UuidUtil.getUuid();
-    }
 
 
 }
