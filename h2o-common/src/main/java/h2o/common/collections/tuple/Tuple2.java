@@ -20,6 +20,14 @@ public class Tuple2<A,B> implements Tuple {
 		return e1;
 	}
 
+    public A _1() {
+        return e0;
+    }
+
+    public B _2() {
+        return e1;
+    }
+
 	public int size() {		
 		return 2;
 	}

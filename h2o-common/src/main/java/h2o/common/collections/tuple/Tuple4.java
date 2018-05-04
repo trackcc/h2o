@@ -43,9 +43,30 @@ public final class Tuple4<A,B,C,D> implements Tuple {
 
 
 
+    public A _1() {
+        return e0;
+    }
+
+
+    public B _2() {
+        return e1;
+    }
+
+
+    public C _3() {
+        return e2;
+    }
+
+
+    public D _4() {
+        return e3;
+    }
+
+
 	public int size() {		
 		return 4;
 	}
+
 
 
 
