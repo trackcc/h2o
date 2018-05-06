@@ -37,6 +37,8 @@ public final class DaoBasicUtil<E> {
     private final EntityParser entityParser;
 
 
+
+
     public DaoBasicUtil( Class<?> entityClazz ) {
         this( entityClazz , DbUtil.getDao() );
     }
@@ -45,6 +47,10 @@ public final class DaoBasicUtil<E> {
         this.dao = dao;
         this.entityParser = CACHE ? ENTITYPARSER_TABLE.getAndCreateIfAbsent(entityClazz) :
                 new EntityParser( entityClazz );
+    }
+
+    public String tableName() {
+        return this.entityParser.getTableName();
     }
 
 
