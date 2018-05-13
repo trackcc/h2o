@@ -12,6 +12,14 @@ public class Page<T> implements java.io.Serializable {
 
 	private List<T> records;
 
+	public Page() {}
+
+	public Page( Pageable pageInfo , List<T> records ) {
+	    this.pageInfo = pageInfo;
+	    this.records = records;
+    }
+
+
 	public Pageable getPageInfo() {
 		return pageInfo;
 	}
