@@ -5,7 +5,6 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.ResolvableType;
 
 import java.util.concurrent.locks.Lock;
 
@@ -81,9 +80,6 @@ public class SpringFactory implements BeanFactoryAware {
         return getBeanFactory().getBean(name, args);
     }
 
-    public static <T> T getBean(Class<T> requiredType, Object... args) throws BeansException {
-        return getBeanFactory().getBean(requiredType, args);
-    }
 
     public static boolean containsBean(String name) {
         return getBeanFactory().containsBean(name);
@@ -95,10 +91,6 @@ public class SpringFactory implements BeanFactoryAware {
 
     public static boolean isPrototype(String name) throws NoSuchBeanDefinitionException {
         return getBeanFactory().isPrototype(name);
-    }
-
-    public static boolean isTypeMatch(String name, ResolvableType typeToMatch) throws NoSuchBeanDefinitionException {
-        return getBeanFactory().isTypeMatch(name, typeToMatch);
     }
 
     public static boolean isTypeMatch(String name, Class<?> typeToMatch) throws NoSuchBeanDefinitionException {
