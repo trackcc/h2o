@@ -18,7 +18,7 @@ public class PageInfo implements Pageable, Serializable {
 
 	public PageInfo(long pageNo, long pageRecordSize) {
 
-		this.pageNo = pageNo;
+		this.pageNo = pageNo < 1 ? 1L : pageNo;
 		this.pageRecordSize = pageRecordSize;
 
 	}
@@ -26,9 +26,14 @@ public class PageInfo implements Pageable, Serializable {
 	public PageInfo(long pageNo, long pageRecordSize, long totalRecord) {
 
 		this(pageNo, pageRecordSize);
+
 		this.totalRecord = totalRecord;
 
         this.calcTotalPage();
+
+        if ( this.pageNo > totalPage) {
+            this.pageNo = totalPage;
+        }
 	}
 
 
