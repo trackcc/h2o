@@ -3,6 +3,7 @@ package h2o.common.bean.page;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class ResultInfo implements Serializable {
 
@@ -10,6 +11,8 @@ public class ResultInfo implements Serializable {
 
 	private long firstResult;
 	private long maxResult;
+
+    private List<SortInfo> sorts;
 
 	public ResultInfo() {}
 	
@@ -28,7 +31,13 @@ public class ResultInfo implements Serializable {
 		this.setFirstResult((pageInfo.getPageNo() - 1) * pageInfo.getPageRecordSize());
 	}
 
-	public long getMaxResult() {
+    public ResultInfo( PageRequest pageRequest ) {
+        this.setMaxResult(pageRequest.getPageRecordSize());
+        this.setFirstResult((pageRequest.getPageNo() - 1) * pageRequest.getPageRecordSize());
+        this.sorts = pageRequest.getSorts();
+    }
+
+    public long getMaxResult() {
 		return maxResult;
 	}
 
@@ -44,7 +53,15 @@ public class ResultInfo implements Serializable {
 		this.firstResult = firstResult;
 	}
 
-	@Override
+    public List<SortInfo> getSorts() {
+        return sorts;
+    }
+
+    public void setSorts(List<SortInfo> sorts) {
+        this.sorts = sorts;
+    }
+
+    @Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
