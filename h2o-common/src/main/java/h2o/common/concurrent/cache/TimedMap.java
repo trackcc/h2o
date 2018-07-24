@@ -1,4 +1,4 @@
-package h2o.common.concurrent;
+package h2o.common.concurrent.cache;
 
 import h2o.common.Tools;
 import h2o.common.schedule.Dispatcher;

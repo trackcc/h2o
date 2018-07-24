@@ -1,4 +1,4 @@
-package h2o.common.concurrent;
+package h2o.common.concurrent.cache;
 
 import java.util.concurrent.atomic.AtomicLong;
 
