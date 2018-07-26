@@ -3,7 +3,7 @@ package h2o.common.util.bean.serialize;
 /**
  * Created by zhangjianwei on 16/8/24.
  */
-public interface BeanStrSerialize {
+public interface BeanStrSerializer {
 
     String bean2string( Object bean );
 

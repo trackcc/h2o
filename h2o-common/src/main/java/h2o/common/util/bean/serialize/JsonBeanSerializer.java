@@ -13,17 +13,17 @@ import java.io.UnsupportedEncodingException;
 /**
  * Created by zhangjianwei on 16/8/24.
  */
-public class JsonBeanSerialize implements BeanStrSerialize , BeanSerialize  {
+public class JsonBeanSerializer implements BeanStrSerializer, BeanSerializer {
 
     private final FastJsonConfig fastJsonConfig = new FastJsonConfig();
 
     private final String charsetName;
 
-    public JsonBeanSerialize() {
+    public JsonBeanSerializer() {
         this("UTF-8");
     }
 
-    public JsonBeanSerialize( String charsetName ) {
+    public JsonBeanSerializer(String charsetName ) {
         this.charsetName = charsetName;
     }
 

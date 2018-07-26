@@ -11,7 +11,7 @@ import java.io.ByteArrayOutputStream;
 /**
  * Created by zhangjianwei on 2017/6/25.
  */
-public class HessianBeanSerialize implements BeanSerialize {
+public class HessianBeanSerializer implements BeanSerializer {
 
 
     @Override

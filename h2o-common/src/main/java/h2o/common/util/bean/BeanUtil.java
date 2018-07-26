@@ -4,7 +4,7 @@ import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.thirdparty.spring.util.Assert;
 import h2o.common.util.bean.serialize.BeanEncoder;
-import h2o.common.util.bean.serialize.BeanSerialize;
+import h2o.common.util.bean.serialize.BeanSerializer;
 import h2o.common.util.bean.support.BeanDescriptorImpl;
 import h2o.common.util.bean.support.BeanUtilVOImpl;
 import h2o.common.util.bean.support.DefaultBeanPropertyInfoImpl;
@@ -19,7 +19,7 @@ import java.util.*;
 public class BeanUtil {
 	
 	
-	private final  BeanSerialize beanSerialize =  new BeanEncoder();
+	private final BeanSerializer beanSerializer =  new BeanEncoder();
 	
 
 	private volatile ValOperate beanVo ;
@@ -179,8 +179,8 @@ public class BeanUtil {
 	@SuppressWarnings("unchecked")
 	public <T extends java.io.Serializable> T deepClone(T obj) {
 		try {
-			byte[] bs = beanSerialize.bean2bytes(obj);
-			return (T) beanSerialize.bytes2bean(bs);
+			byte[] bs = beanSerializer.bean2bytes(obj);
+			return (T) beanSerializer.bytes2bean(bs);
 		} catch (Exception e) {
 			Tools.log.debug("deepClone", e);
 			throw ExceptionUtil.toRuntimeException(e);

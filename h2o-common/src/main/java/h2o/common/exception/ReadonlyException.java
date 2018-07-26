@@ -6,22 +6,18 @@ public class ReadonlyException extends RuntimeException {
 
 	public ReadonlyException() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public ReadonlyException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
 	}
 
 	public ReadonlyException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 	public ReadonlyException(Throwable cause) {
 		super(cause);
-		// TODO Auto-generated constructor stub
 	}
 	
 	

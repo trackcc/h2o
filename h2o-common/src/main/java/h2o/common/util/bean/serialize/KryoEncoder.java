@@ -8,7 +8,7 @@ import h2o.common.exception.ExceptionUtil;
 
 import java.io.ByteArrayOutputStream;
 
-public class KryoEncoder implements BeanSerialize {
+public class KryoEncoder implements BeanSerializer {
 
 	public final Kryo kryo;
 	

@@ -5,24 +5,24 @@ import h2o.common.util.security.Base64Util;
 /**
  * Created by zhangjianwei on 2017/6/24.
  */
-public class Base64StrSerializeProxy implements BeanSerialize , BeanStrSerialize {
+public class Base64StrSerializeProxy implements BeanSerializer, BeanStrSerializer {
 
-    private final BeanSerialize realBeanSerialize;
+    private final BeanSerializer realBeanSerializer;
 
     private volatile Base64Util base64Util = new Base64Util();
 
-    public Base64StrSerializeProxy(BeanSerialize realBeanSerialize) {
-        this.realBeanSerialize = realBeanSerialize;
+    public Base64StrSerializeProxy(BeanSerializer beanSerializer) {
+        this.realBeanSerializer = beanSerializer;
     }
 
     @Override
     public byte[] bean2bytes(Object bean) {
-        return realBeanSerialize.bean2bytes(bean);
+        return realBeanSerializer.bean2bytes(bean);
     }
 
     @Override
     public Object bytes2bean(byte[] bs) {
-        return realBeanSerialize.bytes2bean(bs);
+        return realBeanSerializer.bytes2bean(bs);
     }
 
     @Override

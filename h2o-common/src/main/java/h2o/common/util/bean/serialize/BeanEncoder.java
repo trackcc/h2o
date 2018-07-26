@@ -10,7 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class BeanEncoder implements BeanSerialize , BeanStrSerialize {
+public class BeanEncoder implements BeanSerializer, BeanStrSerializer {
 
     private final String charsetName;
 
