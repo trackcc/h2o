@@ -1,19 +1,16 @@
 package h2o.common.concurrent;
 
-import h2o.common.concurrent.factory.InstanceFactory;
+import h2o.common.concurrent.factory.AbstractInstanceFactory;
 import h2o.common.concurrent.factory.InstanceTable;
 
 import java.util.concurrent.locks.Lock;
 
 public class LockMap {
 	
-	private final InstanceTable<String,Lock> lockIT = new InstanceTable<String,Lock>(new InstanceFactory<Lock>() {
+	private final InstanceTable<String,Lock> lockIT = new InstanceTable<String,Lock>(new AbstractInstanceFactory<Lock>() {
 
 		public Lock create(Object id) {
 			return new java.util.concurrent.locks.ReentrantLock();
-		}
-
-		public void free(Object id, Lock i) {
 		}
 
 	});

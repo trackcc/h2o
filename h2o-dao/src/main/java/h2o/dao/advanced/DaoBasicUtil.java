@@ -1,10 +1,10 @@
 package h2o.dao.advanced;
 
-import h2o.common.concurrent.factory.InstanceFactory;
+import h2o.common.Mode;
+import h2o.common.collections.builder.ListBuilder;
+import h2o.common.concurrent.factory.AbstractInstanceFactory;
 import h2o.common.concurrent.factory.InstanceTable;
 import h2o.common.thirdparty.spring.util.Assert;
-import h2o.common.collections.builder.ListBuilder;
-import h2o.common.Mode;
 import h2o.common.util.lang.StringUtil;
 import h2o.dao.Dao;
 import h2o.dao.DbUtil;
@@ -20,17 +20,13 @@ public final class DaoBasicUtil<E> {
     private static boolean CACHE = Mode.isUserMode("DONT_CACHE_ENTITYPARSER") ? false : true;
 
     private static final InstanceTable<Class<?>,EntityParser> ENTITYPARSER_TABLE =
-            new InstanceTable<Class<?>, EntityParser>( new InstanceFactory<EntityParser>() {
+            new InstanceTable<Class<?>, EntityParser>( new AbstractInstanceFactory<EntityParser>() {
 
                 @Override
                 public EntityParser create( Object entityClazz ) {
                     return new EntityParser( (Class<?>) entityClazz );
                 }
 
-                @Override
-                public void free(Object id, EntityParser entityParser) {
-
-                }
             });
 
     private final Dao dao;

@@ -1,5 +1,8 @@
 package h2o.common.concurrent.factory;
 
+import h2o.common.collections.builder.MapBuilder;
+
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class InstanceTable<K,V> {
@@ -45,7 +48,9 @@ public class InstanceTable<K,V> {
 					v = m.putIfAbsent(key, newv);
 					if(v == null) {
 						v = newv;
-					}
+					} else {
+                        instanceFactory.destroy( newv );
+                    }
 				}
 				
 			} 
@@ -62,8 +67,7 @@ public class InstanceTable<K,V> {
 	public V putIfAbsent( K key , V value ) {
 		return m.putIfAbsent(key, value);
 	}
-	
-	
+
 
 	public void remove( K key ) {		
 		V v = m.remove(key);	
@@ -71,5 +75,11 @@ public class InstanceTable<K,V> {
 			instanceFactory.free(key, v);
 		}
 	}
+
+	public Map<K,V> export() {
+	    return new MapBuilder<K,V>().putAll(m).get();
+    }
+
+
 
 }

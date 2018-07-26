@@ -1,6 +1,6 @@
 package h2o.common;
 
-import h2o.common.concurrent.factory.InstanceFactory;
+import h2o.common.concurrent.factory.AbstractInstanceFactory;
 import h2o.common.concurrent.factory.InstanceTable;
 import h2o.common.util.lang.RuntimeUtil;
 import h2o.common.util.lang.StringUtil;
@@ -23,17 +23,13 @@ public class Logger {
 	private static final String DEFFMT = "{}";
 
 	
-	private final InstanceTable<String, org.slf4j.Logger> loggers = new InstanceTable<String, org.slf4j.Logger>(new InstanceFactory<org.slf4j.Logger> () {
+	private final InstanceTable<String, org.slf4j.Logger> loggers = new InstanceTable<String, org.slf4j.Logger>(new AbstractInstanceFactory<org.slf4j.Logger>() {
 
 		@Override
 		public org.slf4j.Logger create(Object id) {
 			return LoggerFactory.getLogger((String)id);
 		}
 
-		@Override
-		public void free(Object id, org.slf4j.Logger logger ) {
-		}
-		
 	});
 
 	private org.slf4j.Logger getLogger() {

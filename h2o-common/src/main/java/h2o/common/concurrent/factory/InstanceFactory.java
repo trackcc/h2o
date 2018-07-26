@@ -4,6 +4,8 @@ public interface InstanceFactory<I> {
 	
 	I create(Object id);
 	
-	void free(Object id, I i);
+	void free(Object id, I ins );
+
+	void destroy( I ins );
 
 }
