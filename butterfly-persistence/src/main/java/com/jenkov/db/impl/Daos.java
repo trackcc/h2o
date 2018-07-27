@@ -32,7 +32,6 @@ public class Daos implements IDaos {
     protected PersistenceManager persistenceManager   = null;
     protected Connection                connection    = null;
     protected IPersistenceConfiguration configuration = null;
-    protected IObjectDao objectDao     = null;
     protected IJdbcDao                  jdbcDao       = null;
     protected IMapDao                   mapDao        = null;
 
@@ -54,12 +53,7 @@ public class Daos implements IDaos {
         return configuration;
     }
 
-    public synchronized IObjectDao getObjectDao() {
-        if(this.objectDao == null){
-            this.objectDao = new ObjectDao(this.connection, this.configuration);
-        }
-        return objectDao;
-    }
+
 
     public synchronized IJdbcDao getJdbcDao() {
         if(this.jdbcDao == null){
@@ -75,27 +69,7 @@ public class Daos implements IDaos {
         return this.mapDao;
     }
 
-    /*
-    public synchronized ResultSetView getResultSetView(Object objectMappingKey, ResultSet result) throws PersistenceException {
-        IObjectMapping    objectMapping = configuration.getObjectMapper().getObjectMapping(objectMappingKey, this.configuration, this.connection);
-        ResultSetMetaData metaData      = null;
-        Set               columns       = new LinkedHashSet();
-        try {
-            metaData = result.getMetaData();
-            for(int i=1, n=metaData.getColumnCount(); i<=n; i++){
-                String column = metaData.getColumnName(i);
-                if(objectMapping.getSetterMapping(column) != null){
-                    columns.add(column);
-                }
-            }
 
-            ResultSetMetaDataView metaDataView = new ResultSetMetaDataView(result.getMetaData(), columns);
-            return new ResultSetView(result, metaDataView);
-        } catch (SQLException e) {
-            throw new PersistenceException("Error creating ResultSetView for ResultSet", e);
-        }
-    }
-    */
 
     public void closeConnection() throws PersistenceException {
         if(this.connection != null){

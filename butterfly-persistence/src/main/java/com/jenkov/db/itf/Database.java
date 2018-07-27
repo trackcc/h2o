@@ -113,61 +113,6 @@ public class Database {
     }
 
 
-    ///CLOVER:OFF
-    public static void main(String[] args) throws SQLException {
-        if("--".equals(args[2])){
-            args[2] = "";
-        }
-        if("--".equals(args[3])){
-            args[3] = "";
-        }
-
-        DataSource dataSource = new SimpleDataSource(args[0], args[1], args[2], args[3]);
-        Connection connection = dataSource.getConnection();
-        Database database = Database.determineDatabase(connection);
-        System.out.println("Database name = '" + database + "'");
-
-        PreparedStatement statement = null;
-        try {
-            statement = connection.prepareStatement("select * from persistent_object where id=? and name=?");
-            System.out.println("Parameter Count = " + statement.getParameterMetaData().getParameterCount());
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            statement = connection.prepareStatement("select * from persistent_object where id=? and name=?", Statement.RETURN_GENERATED_KEYS);
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-//            statement = connection.prepareStatement("insert into persistent_object (id, name, objectValue) values (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-//            statement.setLong  (1, 1);
-//            statement.setString(2, "lalala-name");
-//            statement.setString(3, "lalala-object-value");
-            statement = connection.prepareStatement("insert into persistent_object (name, objectValue) values (?, ?)", Statement.RETURN_GENERATED_KEYS);
-//            statement = connection.prepareStatement("insert into persistent_object (name, objectValue) values (?, ?)");
-            statement.setString(1, "lalala-name");
-            statement.setString(2, "lalala-object-value");
-            statement.executeUpdate();
-
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            while(generatedKeys.next()){
-                System.out.println(generatedKeys.getObject(1));
-            }
-            generatedKeys.close();
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        connection.close();
-
-    }
-
 
 
 }

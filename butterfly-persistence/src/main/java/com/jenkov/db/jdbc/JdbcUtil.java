@@ -16,12 +16,11 @@
 
 
 
-package com.jenkov.db.util;
+package com.jenkov.db.jdbc;
 
 import com.jenkov.db.itf.PersistenceException;
-import com.jenkov.db.itf.IObjectDao;
-import com.jenkov.db.impl.mapping.method.AsciiStream;
-import com.jenkov.db.impl.mapping.method.CharacterStream;
+import com.jenkov.db.jdbc.stream.AsciiStream;
+import com.jenkov.db.jdbc.stream.CharacterStream;
 
 import java.sql.*;
 import java.math.BigDecimal;
@@ -30,35 +29,6 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class JdbcUtil {
-
-    /**
-     * Closes the connection enclosed in the given <code>IGenericDao</code> instance.
-     * If the dao parameter is null, or its enclosed connection reference is null,
-     * nothing happens.
-     * @param dao The dao to close the enclosed connection of.
-     * @throws PersistenceException If an error occurs when closing the connection.
-     */
-    public static void close(IObjectDao dao) throws PersistenceException{
-        if(dao != null){
-            close(dao.getConnection());
-        }
-    }
-
-    /**
-     * Closes the connection enclosed in the given <code>IGenericDao</code> instance.
-     * If the dao parameter is null, or its enclosed connection reference is null,
-     * nothing happens. Any exceptions thrown while closing the connection are ignored.
-     * @param dao The dao to close the enclosed connection of.
-     */
-    public static void closeIgnore(IObjectDao dao){
-        if(dao != null){
-            try {
-                close(dao.getConnection());
-            } catch (PersistenceException e) {
-                //ignore.
-            }
-        }
-    }
 
 
 

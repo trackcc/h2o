@@ -23,6 +23,7 @@ import com.jenkov.db.itf.PersistenceException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 /**
 
@@ -36,10 +37,14 @@ public class DatabaseVersionDeterminer {
 
         if(!dbInfoTableExists) return -1;
 
-        DbInfo versionInfo = (DbInfo) daos.getObjectDao().read(DbInfo.class, "select * from db_info where name='version' ");
-        if(versionInfo == null){
+        Map<String,Object> dbInfoMap = (Map<String,Object>) daos.getMapDao().readMap( "select * from db_info where name='version' ");
+        if(dbInfoMap == null){
             throw new PersistenceException("Database not property initialized: db_info table is missing version record!");
         }
+
+        DbInfo versionInfo = new DbInfo();
+        versionInfo.setName( (String)dbInfoMap.get("name") );
+        versionInfo.setValue( (String)dbInfoMap.get("value") );
 
         return versionInfo.getValueAsInt();
     }

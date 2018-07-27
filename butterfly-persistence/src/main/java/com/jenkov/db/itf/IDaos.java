@@ -18,13 +18,7 @@
 
 package com.jenkov.db.itf;
 
-import com.jenkov.db.itf.IObjectDao;
-import com.jenkov.db.itf.IPersistenceConfiguration;
-import com.jenkov.db.itf.IJdbcDao;
-import com.jenkov.db.itf.IMapDao;
-
 import java.sql.Connection;
-import java.sql.ResultSet;
 
 /**
  * todo JavaDoc this interface.
@@ -48,13 +42,6 @@ public interface IDaos {
     public IPersistenceConfiguration getConfiguration();
 
 
-    /**
-     * Returns an IObjectDao instance. If this method is called more than once, the same IObjectDao
-     * instance is returned.
-     *
-     * @return An IObjectDao instance.
-     */
-    public IObjectDao                getObjectDao();
 
     /**
      * Returns an IJdbcDao instance. If this method is called more than once, the same IJdbcDao

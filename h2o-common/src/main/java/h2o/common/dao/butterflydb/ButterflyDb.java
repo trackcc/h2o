@@ -55,9 +55,7 @@ public class ButterflyDb {
 		return new ButterflyDao(daos, autoClose);
 	}
 
-	public ButterflyObjectDao getObjectDao() {
-		return new ButterflyObjectDao(this.getDaos().getObjectDao());
-	}
+
 
 	public ButterflyDao getDao(Connection connection) {
 		return this.getDao(connection,autoClose);
@@ -70,11 +68,7 @@ public class ButterflyDb {
 
 	}
 
-	public ButterflyObjectDao getObjectDao(Connection connection) {
-		return new ButterflyObjectDao(this.getDaos(connection).getObjectDao());
-	}
-	
-	
+
 	public <T> T scopeCallback(ButterflyDbCallback<T> butterflyDbCallback) {
 		
 		this.persistenceManager.getScopingDataSource().beginConnectionScope();

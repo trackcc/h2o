@@ -2,7 +2,7 @@ package h2o.common.dao.butterflydb.impl;
 
 import com.jenkov.db.itf.IPreparedStatementManager;
 import com.jenkov.db.itf.PersistenceException;
-import com.jenkov.db.util.JdbcUtil;
+import com.jenkov.db.jdbc.JdbcUtil;
 import h2o.common.Tools;
 import h2o.common.collections.tuple.Tuple2;
 

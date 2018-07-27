@@ -16,7 +16,7 @@
 
 
 
-package com.jenkov.db.impl.mapping.method;
+package com.jenkov.db.jdbc.stream;
 
 import java.io.Reader;
 
