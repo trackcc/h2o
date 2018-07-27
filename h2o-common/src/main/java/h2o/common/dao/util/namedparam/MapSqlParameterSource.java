@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2006 the original author or authors.
+ * Copyright 2002-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,11 @@
 
 package h2o.common.dao.util.namedparam;
 
-import h2o.common.thirdparty.spring.jdbc.core.SqlParameterValue;
-import h2o.common.thirdparty.spring.util.Assert;
-
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
+
+import h2o.common.thirdparty.spring.util.Assert;
 
 
 /**
@@ -31,8 +29,8 @@ import java.util.Map;
  * <p>This class is intended for passing in a simple Map of parameter values
  * to the methods of the {@link NamedParameterJdbcTemplate} class.
  *
- * <p>The <code>addValue</code> methods on this class will make adding several
- * values easier. The methods return a reference to the {@link MapSqlParameterSource}
+ * <p>The {@code addValue} methods on this class will make adding several values
+ * easier. The methods return a reference to the {@link MapSqlParameterSource}
  * itself, so you can chain several method calls together within a single statement.
  *
  * @author Thomas Risberg
@@ -43,16 +41,14 @@ import java.util.Map;
  * @see #registerSqlType
  * @see NamedParameterJdbcTemplate
  */
+class MapSqlParameterSource extends AbstractSqlParameterSource {
 
-@SuppressWarnings({"unchecked","rawtypes"})
-public class MapSqlParameterSource extends AbstractSqlParameterSource {
-
-	private final Map values = new HashMap();
+	private final Map<String, Object> values = new LinkedHashMap<String, Object>();
 
 
 	/**
 	 * Create an empty MapSqlParameterSource,
-	 * with values to be added via <code>addValue</code>.
+	 * with values to be added via {@code addValue}.
 	 * @see #addValue(String, Object)
 	 */
 	public MapSqlParameterSource() {
@@ -71,9 +67,9 @@ public class MapSqlParameterSource extends AbstractSqlParameterSource {
 
 	/**
 	 * Create a new MapSqlParameterSource based on a Map.
-	 * @param values a Map holding existing parameter values (can be <code>null</code>)
+	 * @param values a Map holding existing parameter values (can be {@code null})
 	 */
-	public MapSqlParameterSource(Map values) {
+	public MapSqlParameterSource(Map<String, ?> values) {
 		addValues(values);
 	}
 
@@ -88,9 +84,6 @@ public class MapSqlParameterSource extends AbstractSqlParameterSource {
 	public MapSqlParameterSource addValue(String paramName, Object value) {
 		Assert.notNull(paramName, "Parameter name must not be null");
 		this.values.put(paramName, value);
-		if (value != null && value instanceof SqlParameterValue) {
-			registerSqlType(paramName, ((SqlParameterValue)value).getSqlType());
-		}
 		return this;
 	}
 
@@ -128,19 +121,14 @@ public class MapSqlParameterSource extends AbstractSqlParameterSource {
 
 	/**
 	 * Add a Map of parameters to this parameter source.
-	 * @param values a Map holding existing parameter values (can be <code>null</code>)
+	 * @param values a Map holding existing parameter values (can be {@code null})
 	 * @return a reference to this parameter source,
 	 * so it's possible to chain several calls together
 	 */
-	public MapSqlParameterSource addValues(Map values) {
+	public MapSqlParameterSource addValues(Map<String, ?> values) {
 		if (values != null) {
-			this.values.putAll(values);
-			for (Iterator iter = values.keySet().iterator(); iter.hasNext();) {
-				Object k =  iter.next();
-				Object o = values.get(k);
-				if (o != null && k instanceof String && o instanceof SqlParameterValue) {
-					registerSqlType((String)k, ((SqlParameterValue)o).getSqlType());
-				}
+			for (Map.Entry<String, ?> entry : values.entrySet()) {
+				this.values.put(entry.getKey(), entry.getValue());
 			}
 		}
 		return this;
@@ -149,15 +137,17 @@ public class MapSqlParameterSource extends AbstractSqlParameterSource {
 	/**
 	 * Expose the current parameter values as read-only Map.
 	 */
-	public Map getValues() {
+	public Map<String, Object> getValues() {
 		return Collections.unmodifiableMap(this.values);
 	}
 
 
+	@Override
 	public boolean hasValue(String paramName) {
 		return this.values.containsKey(paramName);
 	}
 
+	@Override
 	public Object getValue(String paramName) {
 		if (!hasValue(paramName)) {
 			throw new IllegalArgumentException("No value registered for key '" + paramName + "'");

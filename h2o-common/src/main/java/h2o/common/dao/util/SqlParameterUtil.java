@@ -7,6 +7,7 @@ import h2o.common.collections.tuple.Tuple2;
 import h2o.common.collections.tuple.Tuple3;
 import h2o.common.collections.tuple.TupleUtil;
 import h2o.common.dao.util.namedparam.NamedParameterUtils;
+import h2o.common.dao.util.namedparam.SqlParameterInfo;
 import h2o.common.util.bean.BeanUtil;
 import h2o.common.util.bean.support.JoddBeanUtilVOImpl;
 
@@ -105,10 +106,10 @@ public class SqlParameterUtil {
 	@SuppressWarnings("rawtypes")
 	public static Tuple2<String,Object[]> toPreparedSqlAndPara( String sql, Map paramMap ) {
 		
-		Tuple3<String,Object[],int[]> sqlAndPara = NamedParameterUtils.map2Objects(sql, paramMap);
+		SqlParameterInfo sqlAndPara = NamedParameterUtils.mapPara2ObjectsPara(sql, paramMap);
 		
 		List<Object> para = ListBuilder.newList();
-		for( Object value : sqlAndPara.e1 ) {
+		for( Object value : sqlAndPara.getParams() ) {
 			if (value instanceof Collection) {
 				Iterator entryIter = ((Collection) value).iterator();
 				
@@ -133,7 +134,7 @@ public class SqlParameterUtil {
 			}
 		}
 		
-		return TupleUtil.t( sqlAndPara.e0 , para.toArray() );
+		return TupleUtil.t( sqlAndPara.getSql() , para.toArray() );
 		
 	}
 	

@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2008 the original author or authors.
+ * Copyright 2002-2012 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,13 +30,11 @@ import java.util.Map;
  * @author Juergen Hoeller
  * @since 2.0
  */
+abstract class AbstractSqlParameterSource implements SqlParameterSource {
 
-@SuppressWarnings({"unchecked","rawtypes"})
-public abstract class AbstractSqlParameterSource implements SqlParameterSource {
+	private final Map<String, Integer> sqlTypes = new HashMap<String, Integer>();
 
-	private final Map sqlTypes = new HashMap();
-
-	private final Map typeNames = new HashMap();
+	private final Map<String, String> typeNames = new HashMap<String, String>();
 
 
 	/**
@@ -46,7 +44,7 @@ public abstract class AbstractSqlParameterSource implements SqlParameterSource {
 	 */
 	public void registerSqlType(String paramName, int sqlType) {
 		Assert.notNull(paramName, "Parameter name must not be null");
-		this.sqlTypes.put(paramName, new Integer(sqlType));
+		this.sqlTypes.put(paramName, sqlType);
 	}
 
 	/**
@@ -63,13 +61,14 @@ public abstract class AbstractSqlParameterSource implements SqlParameterSource {
 	 * Return the SQL type for the given parameter, if registered.
 	 * @param paramName the name of the parameter
 	 * @return the SQL type of the parameter,
-	 * or <code>TYPE_UNKNOWN</code> if not registered
+	 * or {@code TYPE_UNKNOWN} if not registered
 	 */
+	@Override
 	public int getSqlType(String paramName) {
 		Assert.notNull(paramName, "Parameter name must not be null");
-		Integer sqlType = (Integer) this.sqlTypes.get(paramName);
+		Integer sqlType = this.sqlTypes.get(paramName);
 		if (sqlType != null) {
-			return sqlType.intValue();
+			return sqlType;
 		}
 		return TYPE_UNKNOWN;
 	}
@@ -78,11 +77,12 @@ public abstract class AbstractSqlParameterSource implements SqlParameterSource {
 	 * Return the type name for the given parameter, if registered.
 	 * @param paramName the name of the parameter
 	 * @return the type name of the parameter,
-	 * or <code>null</code> if not registered
+	 * or {@code null} if not registered
 	 */
+	@Override
 	public String getTypeName(String paramName) {
 		Assert.notNull(paramName, "Parameter name must not be null");
-		return (String) this.typeNames.get(paramName);
+		return this.typeNames.get(paramName);
 	}
 
 }
