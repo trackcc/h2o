@@ -16,11 +16,11 @@
 
 package h2o.common.dao.util.namedparam;
 
+import h2o.common.thirdparty.spring.util.Assert;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import h2o.common.thirdparty.spring.util.Assert;
 
 
 /**

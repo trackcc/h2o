@@ -4,7 +4,6 @@ import h2o.common.collections.CollectionUtil;
 import h2o.common.collections.builder.ListBuilder;
 import h2o.common.collections.builder.MapBuilder;
 import h2o.common.collections.tuple.Tuple2;
-import h2o.common.collections.tuple.Tuple3;
 import h2o.common.collections.tuple.TupleUtil;
 import h2o.common.dao.util.namedparam.NamedParameterUtils;
 import h2o.common.dao.util.namedparam.SqlParameterInfo;
