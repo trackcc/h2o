@@ -26,13 +26,7 @@
 package h2o.jodd.util.collection;
 
 import java.lang.reflect.Array;
-import java.util.AbstractList;
-import java.util.Collection;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.ListIterator;
-import java.util.NoSuchElementException;
-import java.util.RandomAccess;
+import java.util.*;
 
 /**
  * Faster drop-in replacement for <code>ArrayList</code> and <code>LinkedList</code>.

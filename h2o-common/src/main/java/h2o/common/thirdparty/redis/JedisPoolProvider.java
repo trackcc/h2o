@@ -1,10 +1,13 @@
 package h2o.common.thirdparty.redis;
 
-import h2o.common.Tools;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 public class JedisPoolProvider extends AbstractJedisProvider implements JedisProvider{
+
+    private static final Logger log = LoggerFactory.getLogger( JedisPoolProvider.class.getName() );
 
 
     private final JedisPool jedisPool;
@@ -21,7 +24,7 @@ public class JedisPoolProvider extends AbstractJedisProvider implements JedisPro
             return jedisPool.getResource();
 
         } catch ( Exception e ) {
-            Tools.log.error(e);
+            log.error( "" , e );
             return null;
         }
 

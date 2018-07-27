@@ -25,11 +25,9 @@
 
 package h2o.jodd.typeconverter.impl;
 
-import h2o.jodd.util.StringPool;
 import h2o.jodd.typeconverter.TypeConversionException;
 import h2o.jodd.typeconverter.TypeConverter;
-
-import static h2o.jodd.util.StringPool.*;
+import h2o.jodd.util.StringPool;
 
 /**
  * Converts given object to <code>Boolean</code>.

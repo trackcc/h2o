@@ -1,22 +1,25 @@
 package h2o.dao;
 
 
-import h2o.common.Tools;
-import h2o.common.thirdparty.freemarker.TemplateUtil;
-import h2o.common.util.bean.Map2BeanUtil;
 import h2o.common.collections.builder.MapBuilder;
 import h2o.common.dao.SqlTable;
 import h2o.common.dao.butterflydb.ButterflyDb;
 import h2o.common.ioc.Factory;
+import h2o.common.thirdparty.freemarker.TemplateUtil;
+import h2o.common.util.bean.Map2BeanUtil;
 import h2o.dao.exception.DaoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.util.Map;
 
 public final class DbUtil {
-	
-	
-	public static final Factory dbConfig = DbConfigProvider.getDbConfig();
+
+    private static final Logger log = LoggerFactory.getLogger( DbUtil.class.getName() );
+
+
+    public static final Factory dbConfig = DbConfigProvider.getDbConfig();
 	
 	
 	public static final SqlTable sqlTable = newSqlTable();
@@ -56,7 +59,7 @@ public final class DbUtil {
 	
 	public static DataSource getDataSource(String name) {
 		
-		Tools.log.debug(" getDataSource('{}') ... " , name );
+		log.debug(" getDataSource('{}') ... " , name );
 		
 		DataSource ds =  S.dbUtil.dsMap.get( name );
 		if( ds == null ) {

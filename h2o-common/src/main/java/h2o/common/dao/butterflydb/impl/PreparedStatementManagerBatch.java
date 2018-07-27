@@ -3,8 +3,10 @@ package h2o.common.dao.butterflydb.impl;
 import com.jenkov.db.itf.IPreparedStatementManager;
 import com.jenkov.db.itf.PersistenceException;
 import com.jenkov.db.jdbc.JdbcUtil;
-import h2o.common.Tools;
+import h2o.common.Mode;
 import h2o.common.collections.tuple.Tuple2;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +18,10 @@ import java.util.Map;
 import static h2o.common.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
 
 public class PreparedStatementManagerBatch implements IPreparedStatementManager {
+
+    private static final Logger log = LoggerFactory.getLogger( PreparedStatementManagerBatch.class.getName() );
+
+    private static boolean SHOWSQL = Mode.isUserMode("DONT_SHOW_SQL") ? false : true;
 	
 	
 	private final Collection<?> batch_parameters;
@@ -67,8 +73,10 @@ public class PreparedStatementManagerBatch implements IPreparedStatementManager 
 				
 			}
 		}
-		
-		Tools.log.info("updateBatch--sql:{}" , sql );
+
+        if ( SHOWSQL ) {
+            log.info("updateBatch--sql:{}", sql);
+        }
 		
 		return connection.prepareStatement(sql);
 		
@@ -89,8 +97,10 @@ public class PreparedStatementManagerBatch implements IPreparedStatementManager 
 			} else {				
 				para = (Object[]) parameters;				
 			}
-			
-			Tools.log.debug("updateBatch--para:{}" ,  Arrays.asList(para) );
+
+            if ( SHOWSQL ) {
+                log.debug("updateBatch--para:{}", Arrays.asList(para));
+            }
 			
 			JdbcUtil.insertParameters(paramPreparedStatement, para);
 			paramPreparedStatement.addBatch();
@@ -101,7 +111,7 @@ public class PreparedStatementManagerBatch implements IPreparedStatementManager 
 	public Object execute(PreparedStatement paramPreparedStatement) throws SQLException, PersistenceException {
 		
 		
-		Tools.log.debug("executeBatch..." );
+		log.debug("executeBatch..." );
 		
 		this.updateRows = paramPreparedStatement.executeBatch();		
 		paramPreparedStatement.clearBatch();

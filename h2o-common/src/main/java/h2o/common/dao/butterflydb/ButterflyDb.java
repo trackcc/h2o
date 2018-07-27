@@ -4,16 +4,19 @@ import com.jenkov.db.PersistenceManager;
 import com.jenkov.db.itf.IDaos;
 import com.jenkov.db.itf.PersistenceException;
 import com.jenkov.db.scope.ScopingDataSource;
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ButterflyDb {
-	
-	private volatile boolean isRollBack = false;
+
+    private static final Logger log = LoggerFactory.getLogger( ButterflyDb.class.getName() );
+
+    private volatile boolean isRollBack = false;
 	
 	private volatile boolean autoClose = false;
 
@@ -78,7 +81,7 @@ public class ButterflyDb {
 			
 		} catch (Throwable e) {
 
-			Tools.log.debug("", e);
+			log.debug("", e);
 			throw ExceptionUtil.toRuntimeException(e);
 			
 		} finally {
@@ -98,12 +101,12 @@ public class ButterflyDb {
 
 			if( this.isRollBack ) {
 				
-				Tools.log.debug("NeedRollBack!!!");
+				log.debug("NeedRollBack!!!");
 				
 				try {
 					this.persistenceManager.getScopingDataSource().abortTransactionScope(null);
 				} catch( Throwable e ) {
-					Tools.log.debug("", e);
+					log.debug("", e);
 				}
 				
 			} else {
@@ -116,7 +119,7 @@ public class ButterflyDb {
 
 		} catch (Throwable e) {
 
-			Tools.log.debug("", e);
+			log.debug("", e);
 
 			this.persistenceManager.getScopingDataSource().abortTransactionScope(e);
 
@@ -141,7 +144,7 @@ public class ButterflyDb {
 				try {
 					connection.rollback();
 				} catch (SQLException e1) {
-					Tools.log.debug("", e1);
+					log.debug("", e1);
 				}
 			} else {
 				connection.commit();
@@ -151,12 +154,12 @@ public class ButterflyDb {
 
 		} catch (Exception e) {
 
-			Tools.log.debug("", e);
+			log.debug("", e);
 
 			try {
 				connection.rollback();
 			} catch (SQLException e1) {
-				Tools.log.debug("", e1);
+				log.debug("", e1);
 			}
 
 			throw ExceptionUtil.toRuntimeException(e);

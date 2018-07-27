@@ -2,13 +2,13 @@ package com.jenkov.container.java;
 
 import com.jenkov.container.IContainer;
 import com.jenkov.container.impl.factory.FactoryUtil;
-import com.jenkov.container.itf.factory.IGlobalFactory;
 import com.jenkov.container.itf.factory.FactoryException;
+import com.jenkov.container.itf.factory.IGlobalFactory;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 /**
    A JavaFactoryBuilder is capable of adding JavaFactory's to an IContainer instance.

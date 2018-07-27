@@ -1,10 +1,13 @@
 package h2o.common.ioc;
 
-import h2o.common.Tools;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ButterflyFactory implements Factory {
-	
-	private final String name;
+
+    private static final Logger log = LoggerFactory.getLogger( ButterflyFactory.class.getName() );
+
+    private final String name;
 	
 	private final Butterfly bf;
 	
@@ -16,7 +19,7 @@ public class ButterflyFactory implements Factory {
 	
 	public <T> T get( String id , Object... args) {
 		
-		Tools.log.debug("{}: get({})", name , id);
+		log.debug("{}: get({})", name , id);
 		
 		return bf.instance(id , args );
 	}
@@ -29,7 +32,7 @@ public class ButterflyFactory implements Factory {
 			return get(id , args );
 			
 		} catch( Exception e ) {
-			Tools.log.debug("",e);
+			log.debug("",e);
 		}
 		
 		return null;

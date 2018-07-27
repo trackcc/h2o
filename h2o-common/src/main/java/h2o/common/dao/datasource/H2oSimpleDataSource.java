@@ -1,7 +1,8 @@
 package h2o.common.dao.datasource;
 
-import h2o.common.Tools;
 import h2o.common.concurrent.RunUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -11,8 +12,10 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public class H2oSimpleDataSource extends AbstractDataSourceProxy {
-	
-	private final BlockingQueue<Connection> cbq;
+
+    private static final Logger log = LoggerFactory.getLogger( H2oSimpleDataSource.class.getName() );
+
+    private final BlockingQueue<Connection> cbq;
 
     private volatile boolean stop = false;
 
@@ -37,7 +40,7 @@ public class H2oSimpleDataSource extends AbstractDataSourceProxy {
 					try {
 						c = getConnection0();						
 					} catch ( Exception e ) {
-						Tools.log.debug("Get Connection Exception : {} ", e.getMessage());						
+						log.debug("Get Connection Exception : {} ", e.getMessage());
 					}
 					
 					try {
@@ -50,7 +53,7 @@ public class H2oSimpleDataSource extends AbstractDataSourceProxy {
 					} catch (InterruptedException e) {
 					} catch ( Exception e) {
 						e.printStackTrace();
-						Tools.log.error(e);
+						log.error("",e);
 					} finally {
 						if( c != null ) {
 							try {
@@ -87,7 +90,7 @@ public class H2oSimpleDataSource extends AbstractDataSourceProxy {
 			return super.getConnection();
 		} finally {
 			long e = System.currentTimeMillis();
-			Tools.log.debug("Get Connection : {}ms ", e - s );
+			log.debug("Get Connection : {}ms ", e - s );
 		}
 	}
 	

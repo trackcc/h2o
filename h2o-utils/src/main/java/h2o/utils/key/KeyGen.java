@@ -1,15 +1,16 @@
 package h2o.utils.key;
 
 
-import h2o.common.Tools;
-import h2o.common.concurrent.LockMap;
 import h2o.common.collections.tuple.Tuple2;
 import h2o.common.collections.tuple.TupleUtil;
+import h2o.common.concurrent.LockMap;
 import h2o.common.math.IntArith;
 import h2o.dao.Dao;
 import h2o.dao.DbUtil;
 import h2o.dao.TxCallback;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigInteger;
 import java.util.Map;
@@ -17,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 
 public class KeyGen {
+
+    private static final Logger log = LoggerFactory.getLogger( KeyGen.class.getName() );
 
     public static final String DEFAULT_CYCLICSPACE = "_null_";
 
@@ -80,7 +83,7 @@ public class KeyGen {
                 throw new RuntimeException("getKey 失败!!!");
             }
 
-            Tools.log.info("getKey({})============>{}", seqObj, k);
+            log.info("getKey({})============>{}", seqObj, k);
 
             return k;
 
@@ -131,7 +134,7 @@ public class KeyGen {
                         dao.update( INSSEQ , "seqobj", key , "cyclicspace" , DEFAULT_CYCLICSPACE );
 
                     } catch (Exception e) {
-                        Tools.log.error(e);
+                        log.error("",e);
                     }
 
                     rr[0] = null;
@@ -158,7 +161,7 @@ public class KeyGen {
                         rr[1] = r0;
 
                     } catch ( Exception e ) {
-                        Tools.log.error(e);
+                        log.error("",e);
                         rr[0] = null;
                     }
 

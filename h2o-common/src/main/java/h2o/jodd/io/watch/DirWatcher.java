@@ -25,20 +25,14 @@
 
 package h2o.jodd.io.watch;
 
+import h2o.jodd.io.FileUtil;
 import h2o.jodd.mutable.MutableLong;
 import h2o.jodd.util.StringPool;
 import h2o.jodd.util.Wildcard;
-import h2o.jodd.io.FileUtil;
-
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class DirWatcher {
 

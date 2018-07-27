@@ -1,7 +1,8 @@
 package h2o.common.schedule;
 
-import h2o.common.Tools;
 import h2o.common.concurrent.RunUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
@@ -10,7 +11,9 @@ import java.util.concurrent.TimeoutException;
 
 public class InterruptAbleRepetitiveTask implements RepetitiveTask {
 
-	private final long timeout;
+    private static final Logger log = LoggerFactory.getLogger( InterruptAbleRepetitiveTask.class.getName() );
+
+    private final long timeout;
 
 	private final RepetitiveTask realRepetitiveTask;
 
@@ -38,7 +41,7 @@ public class InterruptAbleRepetitiveTask implements RepetitiveTask {
 				} catch (Exception e) {
 					throw e;
 				} catch (Throwable e) {
-					Tools.log.error("", e);
+					log.error("", e);
 					throw new Exception(e);
 				}
 

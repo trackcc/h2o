@@ -1,21 +1,22 @@
 package h2o.common.schedule;
 
-import h2o.common.Tools;
 import h2o.common.concurrent.Door;
 import h2o.common.concurrent.Locks;
 import h2o.common.concurrent.OneTimeInitVar;
 import h2o.common.concurrent.RunUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.Date;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 
 public class Dispatcher {
-	
 
-	private final Door door = new Door( true );	
+    private static final Logger log = LoggerFactory.getLogger( Dispatcher.class.getName() );
+
+
+    private final Door door = new Door( true );
 	
 	private final OneTimeInitVar<Boolean> f = new OneTimeInitVar<Boolean>("Has started");
 	
@@ -95,7 +96,7 @@ public class Dispatcher {
 
 						} catch( Throwable e) {
 
-							Tools.log.error("Dispatcher-run",e);
+							log.error("Dispatcher-run",e);
 							st = errSleepTime.getVar();
 
 						}
@@ -106,7 +107,7 @@ public class Dispatcher {
 					
 				
 				} catch( InterruptedException e ) {
-					Tools.log.error("InterruptedException", e);
+					log.error("InterruptedException", e);
 				}
 				
 				stop = true;
@@ -136,7 +137,7 @@ public class Dispatcher {
                     throw e;
                 }
 			} catch (Throwable e) {
-				Tools.log.debug("Sleepping", e);
+				log.debug("Sleepping", e);
 			} finally {
 				door.open();
 			}

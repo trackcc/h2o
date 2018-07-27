@@ -25,8 +25,8 @@
 
 package h2o.jodd.exception;
 
-import java.io.PrintWriter;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 
 /**
  * Unchecked exception and also a wrapper for checked exceptions.

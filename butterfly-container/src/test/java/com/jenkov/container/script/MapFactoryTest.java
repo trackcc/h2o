@@ -1,9 +1,9 @@
 package com.jenkov.container.script;
 
-import junit.framework.TestCase;
-import com.jenkov.container.IContainer;
 import com.jenkov.container.Container;
+import com.jenkov.container.IContainer;
 import com.jenkov.container.itf.factory.IGlobalFactory;
+import junit.framework.TestCase;
 
 import java.util.Map;
 

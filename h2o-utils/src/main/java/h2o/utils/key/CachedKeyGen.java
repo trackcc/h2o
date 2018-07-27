@@ -1,9 +1,10 @@
 package h2o.utils.key;
 
-import h2o.common.Tools;
-import h2o.common.concurrent.Locks;
 import h2o.common.collections.tuple.Tuple2;
+import h2o.common.concurrent.Locks;
 import h2o.common.math.IntArith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigInteger;
 import java.util.concurrent.TimeUnit;
@@ -11,6 +12,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 
 public class CachedKeyGen {
+
+    private static final Logger log = LoggerFactory.getLogger( CachedKeyGen.class.getName() );
 
     private final int cache_size;
     private final String seqObj;
@@ -83,7 +86,7 @@ public class CachedKeyGen {
             throw new RuntimeException("getKey 失败!!!");
         }
 
-        Tools.log.info("getKey({})============>{}", seqObj, kk);
+        log.info("getKey({})============>{}", seqObj, kk);
 
 
         return new KeyCache(kk.e1, this.cache_size);

@@ -5,7 +5,6 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.io.Tcp;
 import com.typesafe.config.ConfigFactory;
-import h2o.common.Tools;
 import h2o.event.Event;
 import h2o.event.EventEncoder;
 import h2o.event.EventReceiver;
@@ -13,11 +12,15 @@ import h2o.event.impl.AbstractEventReceiver;
 import h2o.event.impl.NothingEventContext;
 import h2o.event.impl.socket.akka.Processor;
 import h2o.event.impl.socket.akka.SocketServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by zhangjianwei on 16/7/2.
  */
 public class SocketEventReceiver extends AbstractEventReceiver implements EventReceiver , Processor {
+
+    private static final Logger log = LoggerFactory.getLogger( SocketEventReceiver.class.getName() );
 
 
     protected final EventEncoder<String> eventEncoder;
@@ -76,7 +79,7 @@ public class SocketEventReceiver extends AbstractEventReceiver implements EventR
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            Tools.log.error(e);
+            log.error("",e);
         }
 
         return "ok";

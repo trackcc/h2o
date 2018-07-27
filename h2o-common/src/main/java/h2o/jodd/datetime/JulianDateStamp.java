@@ -26,10 +26,9 @@
 package h2o.jodd.datetime;
 
 import h2o.jodd.util.HashCode;
-import static h2o.jodd.util.HashCode.hash;
 
-import java.math.BigDecimal;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * Julian Date stamp, for high precision calculations. Julian date is a real

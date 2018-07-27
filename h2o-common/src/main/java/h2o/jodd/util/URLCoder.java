@@ -32,12 +32,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static h2o.jodd.util.CharUtil.isAlpha;
-import static h2o.jodd.util.CharUtil.isDigit;
-import static h2o.jodd.util.CharUtil.isPchar;
-import static h2o.jodd.util.CharUtil.isSubDelimiter;
-import static h2o.jodd.util.CharUtil.isUnreserved;
-
 /**
  * Encodes URLs correctly, significantly faster and more convenient.
  * <p>

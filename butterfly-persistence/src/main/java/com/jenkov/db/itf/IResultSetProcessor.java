@@ -18,8 +18,6 @@
 
 package com.jenkov.db.itf;
 
-import com.jenkov.db.itf.IDaos;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

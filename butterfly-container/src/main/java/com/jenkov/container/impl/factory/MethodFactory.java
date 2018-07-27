@@ -4,9 +4,6 @@ import com.jenkov.container.itf.factory.FactoryException;
 import com.jenkov.container.itf.factory.ILocalFactory;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Type;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -25,20 +25,16 @@
 
 package h2o.jodd.util;
 
-import h2o.jodd.util.cl.DefaultClassLoaderStrategy;
 import h2o.jodd.core.JoddCore;
 import h2o.jodd.io.FileUtil;
 import h2o.jodd.io.StreamUtil;
+import h2o.jodd.util.cl.DefaultClassLoaderStrategy;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.net.URLConnection;
+import java.net.*;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Set;

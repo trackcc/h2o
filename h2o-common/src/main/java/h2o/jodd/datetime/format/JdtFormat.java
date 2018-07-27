@@ -25,8 +25,8 @@
 
 package h2o.jodd.datetime.format;
 
-import h2o.jodd.datetime.JDateTime;
 import h2o.jodd.datetime.DateTimeStamp;
+import h2o.jodd.datetime.JDateTime;
 
 /**
  * Immutable format-formatter pair.

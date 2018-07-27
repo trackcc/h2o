@@ -26,7 +26,6 @@
 package h2o.jodd.bean;
 
 import h2o.jodd.Jodd;
-import h2o.jodd.Jodd;
 import h2o.jodd.introspector.Introspector;
 import h2o.jodd.introspector.JoddIntrospector;
 

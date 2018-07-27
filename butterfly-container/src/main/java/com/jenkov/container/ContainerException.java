@@ -1,7 +1,7 @@
 package com.jenkov.container;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jakob Jenkov - Copyright 2004-2006 Jenkov Development

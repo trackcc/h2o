@@ -1,9 +1,10 @@
 package h2o.common.util.web;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.jodd.io.StreamUtil;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -12,6 +13,8 @@ import java.net.Socket;
 
 
 public class SocketClient {
+
+    private static final Logger log = LoggerFactory.getLogger( SocketClient.class.getName() );
 
 
 	private volatile String server;
@@ -47,7 +50,7 @@ public class SocketClient {
 
 			
 		} catch (Exception e) {
-			Tools.log.error("Send Exception", e);
+			log.error("Send Exception", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}  finally {
 			
@@ -55,7 +58,7 @@ public class SocketClient {
 				try {
 					in.close();
 				} catch(IOException e) {
-					Tools.log.error("in.close()", e);
+					log.error("in.close()", e);
 				}
 			}
 			
@@ -63,7 +66,7 @@ public class SocketClient {
 				try {
 					out.close();
 				} catch(IOException e) {
-					Tools.log.error("out.close()", e);
+					log.error("out.close()", e);
 				}
 			}
 			
@@ -71,7 +74,7 @@ public class SocketClient {
 				try {
 					socket.close();
 				} catch (IOException e) {
-					Tools.log.error("socket.close()", e);
+					log.error("socket.close()", e);
 				}
 			}
 		}

@@ -1,15 +1,18 @@
 package h2o.common.util.bean.support;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.bean.ValOperate;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class BeanUtilVOImpl implements ValOperate , java.io.Serializable {
-	
 
-	private static final long serialVersionUID = 7101963633193511412L;
+    private static final Logger log = LoggerFactory.getLogger( BeanUtilVOImpl.class.getName() );
+
+
+    private static final long serialVersionUID = 7101963633193511412L;
 	
 	private boolean isSilently;	
 
@@ -29,7 +32,7 @@ public class BeanUtilVOImpl implements ValOperate , java.io.Serializable {
 		try {
 			return PropertyUtils.isReadable(target, pName) ? PropertyUtils.getProperty(target, pName) : null;
 		} catch (Exception e) {
-			Tools.log.debug("get", e);
+			log.debug("get", e);
 			if( this.isSilently ) {
 				return null;
 			} else {
@@ -44,7 +47,7 @@ public class BeanUtilVOImpl implements ValOperate , java.io.Serializable {
 				PropertyUtils.setProperty(target, pName, val);
 			}
 		} catch (Exception e) {
-			Tools.log.debug("set", e);
+			log.debug("set", e);
 			if( !this.isSilently ) {
 				throw ExceptionUtil.toRuntimeException(e);
 			}

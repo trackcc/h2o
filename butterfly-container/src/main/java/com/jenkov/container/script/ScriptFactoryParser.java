@@ -4,11 +4,8 @@ import com.jenkov.container.ContainerException;
 import com.jenkov.container.impl.factory.FactoryUtil;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
-import java.math.BigInteger;
-import java.math.BigDecimal;
-import java.net.URL;
+import java.util.List;
 
 /**
  * @author Jakob Jenkov - Copyright 2004-2006 Jenkov Development

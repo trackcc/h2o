@@ -1,6 +1,5 @@
 package h2o.common.util.web;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
@@ -12,12 +11,16 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
 
 public class HttpClient {
+
+    private static final Logger log = LoggerFactory.getLogger( HttpClient.class.getName() );
 
     private final CloseableHttpClient client;
 
@@ -130,7 +133,7 @@ public class HttpClient {
 
         } catch( Exception e ) {
 
-            Tools.log.debug("echoPost",e);
+            log.debug("echoPost",e);
             throw ExceptionUtil.toRuntimeException(e);
 
         }
@@ -205,7 +208,7 @@ public class HttpClient {
             client.close();
 
         } catch (IOException e) {
-            Tools.log.debug( "", e );
+            log.debug( "", e );
         }
     }
 	

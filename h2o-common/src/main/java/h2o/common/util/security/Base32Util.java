@@ -1,14 +1,17 @@
 package h2o.common.util.security;
 
-import h2o.common.Tools;
-import h2o.common.exception.ExceptionUtil;
 import h2o.common.collections.ConcurrentBiMap;
+import h2o.common.exception.ExceptionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
 public class Base32Util {
-	
-	private static final String STD_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567=";
+
+    private static final Logger log = LoggerFactory.getLogger( Base32Util.class.getName() );
+
+    private static final String STD_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567=";
 
 	
 	public final String CHARS;
@@ -90,7 +93,7 @@ public class Base32Util {
 		try {
 			return encode(s.getBytes(charSet));
 		} catch (UnsupportedEncodingException e) {
-			Tools.log.debug("encode", e);
+			log.debug("encode", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 
@@ -105,7 +108,7 @@ public class Base32Util {
 		try {
 			return new String(decode(b32), charSet );
 		} catch (UnsupportedEncodingException e) {
-			Tools.log.debug("decode2s", e);
+			log.debug("decode2s", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}
@@ -126,7 +129,7 @@ public class Base32Util {
 
 			return encode(bam.toByteArray());
 		} catch (IOException e) {
-			Tools.log.debug("objectToString", e);
+			log.debug("objectToString", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 
@@ -146,7 +149,7 @@ public class Base32Util {
 
 			return is.readObject();
 		} catch (Exception e) {
-			Tools.log.debug("stringToObject", e);
+			log.debug("stringToObject", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 

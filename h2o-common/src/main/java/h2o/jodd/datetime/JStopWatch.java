@@ -25,8 +25,8 @@
 
 package h2o.jodd.datetime;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Nice thread-aware stopwatch that supports time spans, cumulative times and laps.

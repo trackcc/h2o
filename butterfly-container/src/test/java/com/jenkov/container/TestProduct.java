@@ -1,10 +1,8 @@
 package com.jenkov.container;
 
-import com.jenkov.container.IContainer;
-
+import java.net.URL;
 import java.util.List;
 import java.util.Set;
-import java.net.URL;
 
 /**
  * @author Jakob Jenkov - Copyright 2004-2006 Jenkov Development

@@ -2,8 +2,9 @@ package h2o.common.thirdparty.freemarker;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -12,8 +13,10 @@ import java.io.Writer;
 import java.util.Map;
 
 public class TemplateUtil {
-	
-	
+
+    private static final Logger log = LoggerFactory.getLogger( TemplateUtil.class.getName() );
+
+
     @SuppressWarnings("deprecation")
 	protected Configuration createDefaultConfiguration() {
         Configuration config = new Configuration();
@@ -47,7 +50,7 @@ public class TemplateUtil {
 		try {
 			sw.close();
 		} catch (IOException e) {			
-			Tools.log.debug("process" , e);
+			log.debug("process" , e);
 		}
 		
 		return sw.toString();
@@ -65,7 +68,7 @@ public class TemplateUtil {
 		try {
 			sw.close();
 		} catch (IOException e) {			
-			Tools.log.debug("process" , e);
+			log.debug("process" , e);
 		}
 		
 		return sw.toString();
@@ -82,7 +85,7 @@ public class TemplateUtil {
 			
 			
 		} catch( Exception e) {			
-			Tools.log.debug("process" , e);
+			log.debug("process" , e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 			
@@ -95,7 +98,7 @@ public class TemplateUtil {
 			t.process(data , w );	
 				
 		} catch( Exception e) {			
-			Tools.log.debug("process" , e);
+			log.debug("process" , e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 			

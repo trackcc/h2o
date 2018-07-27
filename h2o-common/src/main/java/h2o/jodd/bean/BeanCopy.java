@@ -29,9 +29,6 @@ import h2o.jodd.util.StringPool;
 
 import java.util.Map;
 
-import static h2o.jodd.util.StringPool.LEFT_SQ_BRACKET;
-import static h2o.jodd.util.StringPool.RIGHT_SQ_BRACKET;
-
 /**
  * Powerful tool for copying properties from one bean into another.
  * <code>BeanCopy</code> works with POJO beans, but also with <code>Map</code>.

@@ -1,14 +1,16 @@
 package h2o.dao.impl;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.dao.Dao;
 import h2o.dao.Db;
 import h2o.dao.TxCallback;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public abstract class AbstractDb implements Db {
-	
+
+    private static final Logger log = LoggerFactory.getLogger( AbstractDb.class.getName() );
 
 	@Override
 	public abstract Dao getDao();
@@ -24,19 +26,19 @@ public abstract class AbstractDb implements Db {
 			return txCallback.doCallBack(dao);
 			
 		} catch (Exception e) {
-			Tools.log.debug("doCallBack",e);			
+			log.debug("doCallBack",e);
 			throw ExceptionUtil.toRuntimeException(e);			
 		} finally {
 			
 			try {
 				dao.endScope();
 			} catch( Exception e ) {
-				Tools.log.error("dao.endScope()",e);
+				log.error("dao.endScope()",e);
 			}
 			try {
 				dao.close();
 			} catch( Exception e ) {
-				Tools.log.error("dao.close()",e);
+				log.error("dao.close()",e);
 			}
 			
 			
@@ -62,7 +64,7 @@ public abstract class AbstractDb implements Db {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
-			Tools.log.debug("doCallBack",e);
+			log.debug("doCallBack",e);
 			
 			dao.rollBack();
 			
@@ -73,7 +75,7 @@ public abstract class AbstractDb implements Db {
 			try {
 				dao.close();
 			} catch( Exception e ) {
-				Tools.log.error("dao.close()",e);
+				log.error("dao.close()",e);
 			}
 			
 			

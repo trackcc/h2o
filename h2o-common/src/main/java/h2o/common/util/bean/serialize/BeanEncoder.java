@@ -1,7 +1,8 @@
 package h2o.common.util.bean.serialize;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -11,6 +12,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class BeanEncoder implements BeanSerializer, BeanStrSerializer {
+
+    private static final Logger log = LoggerFactory.getLogger( BeanEncoder.class.getName() );
 
     private final String charsetName;
 
@@ -35,7 +38,7 @@ public class BeanEncoder implements BeanSerializer, BeanStrSerializer {
 			return bao.toByteArray();
 
 		} catch (Exception e) {
-			Tools.log.debug(e);
+			log.debug( "" , e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}
@@ -58,7 +61,7 @@ public class BeanEncoder implements BeanSerializer, BeanStrSerializer {
 			return obj;
 
 		} catch (Exception e) {
-			Tools.log.debug(e);
+			log.debug( "" , e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 
@@ -77,7 +80,7 @@ public class BeanEncoder implements BeanSerializer, BeanStrSerializer {
 			return new String(bao.toByteArray(), charsetName);
 
 		} catch (Exception e) {
-			Tools.log.debug(e);
+			log.debug( "" , e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}
@@ -95,7 +98,7 @@ public class BeanEncoder implements BeanSerializer, BeanStrSerializer {
 			return bean;
 
 		} catch (Exception e) {
-			Tools.log.debug(e);
+			log.debug( "" , e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}

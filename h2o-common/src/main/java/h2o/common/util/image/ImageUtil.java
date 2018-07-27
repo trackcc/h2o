@@ -3,8 +3,9 @@ package h2o.common.util.image;
 import com.sun.jimi.core.Jimi;
 import com.sun.jimi.core.JimiWriter;
 import com.sun.jimi.core.options.JPGOptions;
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageProducer;
@@ -14,6 +15,8 @@ import java.io.File;
 import java.io.InputStream;
 
 public class ImageUtil {
+
+    private static final Logger log = LoggerFactory.getLogger( ImageUtil.class.getName() );
 
 	private ImageUtil() {}
 
@@ -57,7 +60,7 @@ public class ImageUtil {
 
 
 		} catch (Exception e) {
-			Tools.log.debug("convert", e);
+			log.debug("convert", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 
@@ -84,7 +87,7 @@ public class ImageUtil {
 			}
 
 		} catch (Exception je) {
-			Tools.log.debug("toJPG", je);
+			log.debug("toJPG", je);
 			throw ExceptionUtil.toRuntimeException(je);
 		}
 	}

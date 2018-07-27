@@ -1,14 +1,17 @@
 package h2o.common.util.lang;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import org.apache.commons.lang.ClassUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Constructor;
 
 public class InstanceUtil {
-	
-	private InstanceUtil() {}
+
+    private static final Logger log = LoggerFactory.getLogger( InstanceUtil.class.getName() );
+
+    private InstanceUtil() {}
 	
 	@SuppressWarnings("rawtypes")
 	public static <T> T newInstance( Class<T> clazz , Class[] argsTypes ,  Object[] args ) {
@@ -51,7 +54,7 @@ public class InstanceUtil {
 		try {
 			return ClassUtils.getClass(clazzName);
 		} catch (ClassNotFoundException e) {
-			Tools.log.error("getClass", e);
+			log.error("getClass", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}
@@ -62,7 +65,7 @@ public class InstanceUtil {
 		try {
 			return ClassUtils.getClass(classLoader, clazzName);
 		} catch (ClassNotFoundException e) {
-			Tools.log.error("getClass", e);
+			log.error("getClass", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}

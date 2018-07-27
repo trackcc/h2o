@@ -26,10 +26,11 @@
 package h2o.jodd.typeconverter;
 
 import h2o.jodd.datetime.JDateTime;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Date;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Static version of {@link ConvertBean} of default {@link TypeConverterManagerBean}.

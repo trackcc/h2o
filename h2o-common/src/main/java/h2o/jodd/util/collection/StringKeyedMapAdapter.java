@@ -26,9 +26,9 @@
 package h2o.jodd.util.collection;
 
 import java.util.AbstractMap;
-import java.util.Set;
-import java.util.Iterator;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * Adapter for map whose keys are <code>String</code> values.

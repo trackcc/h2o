@@ -29,11 +29,7 @@ import h2o.jodd.io.StreamUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Map file extensions to MIME types. Based on the most recent Apache mime.types file.

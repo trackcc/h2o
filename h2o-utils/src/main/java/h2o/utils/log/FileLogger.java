@@ -1,12 +1,12 @@
 package h2o.utils.log;
 
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.date.DateUtil;
 import h2o.common.util.io.FileUtil;
 import h2o.common.util.io.StreamUtil;
 import h2o.common.util.lang.StringUtil;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -16,6 +16,8 @@ import java.util.Date;
  * Created by zhangjianwei on 16/8/18.
  */
 public class FileLogger implements Logger {
+
+    private static final org.slf4j.Logger slfLog = LoggerFactory.getLogger( FileLogger.class.getName() );
 
     private final String baseDir;
 
@@ -64,7 +66,7 @@ public class FileLogger implements Logger {
 
         } catch (IOException e) {
 
-            Tools.log.error("日志纪录错误",e);
+            slfLog.error("日志纪录错误",e);
 
         } finally {
             StreamUtil.close(w);

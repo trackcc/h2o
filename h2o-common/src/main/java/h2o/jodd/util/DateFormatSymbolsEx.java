@@ -25,8 +25,8 @@
 
 package h2o.jodd.util;
 
-import java.util.Locale;
 import java.text.DateFormatSymbols;
+import java.util.Locale;
 
 /**
  * Simple holder for <code>DateFormatSymbols</code> that doesn't create new array on each call.

@@ -27,8 +27,8 @@ package h2o.jodd.io.findfile;
 
 import h2o.jodd.util.ClassLoaderUtil;
 
-import java.net.URL;
 import java.io.File;
+import java.net.URL;
 
 /**
  * A class scanner, user-friendly version of {@link ClassFinder} a class scanner.

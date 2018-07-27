@@ -27,8 +27,8 @@ package h2o.jodd.util;
 
 import h2o.jodd.core.JoddCore;
 
-import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
 /**
  * The <b>fastest</b> Base64 encoder/decoder implementations.

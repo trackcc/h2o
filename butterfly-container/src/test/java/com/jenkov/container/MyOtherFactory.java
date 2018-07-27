@@ -1,7 +1,7 @@
 package com.jenkov.container;
 
-import com.jenkov.container.java.JavaFactory;
 import com.jenkov.container.itf.factory.IGlobalFactory;
+import com.jenkov.container.java.JavaFactory;
 
 /**
 

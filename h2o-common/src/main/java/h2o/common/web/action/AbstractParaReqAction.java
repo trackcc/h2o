@@ -1,8 +1,9 @@
 package h2o.common.web.action;
 
-import h2o.common.Tools;
 import h2o.common.util.web.ParameterUtil;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,9 @@ import java.io.IOException;
 
 abstract public class AbstractParaReqAction extends AbstractAction implements Action {
 
-	@Override
+    private static final Logger log = LoggerFactory.getLogger( AbstractParaReqAction.class.getName() );
+
+    @Override
 	protected  Result init(HttpServletRequest request, HttpServletResponse response,
 			HttpServlet servlet) throws ServletException, IOException {
 		
@@ -23,7 +26,7 @@ abstract public class AbstractParaReqAction extends AbstractAction implements Ac
 			this.fullPara(request, servlet);	
 		}
 		
-		Tools.log.debug("para:{}" , this.getPara() );
+		log.debug("{} - para:{}" , this.getClass().getSimpleName() , this.getPara() );
 		
 		return null;
 	}

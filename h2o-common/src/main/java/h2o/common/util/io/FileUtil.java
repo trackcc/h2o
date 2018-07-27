@@ -1,14 +1,17 @@
 package h2o.common.util.io;
 
-import h2o.common.Tools;
 import org.apache.commons.configuration.ConfigurationUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.net.URL;
 
 public class FileUtil {
 
-	private FileUtil() {}
+    private static final Logger log = LoggerFactory.getLogger( FileUtil.class.getName() );
+
+    private FileUtil() {}
 
 	private static void rm(File f) {
 		if (f.isDirectory()) {
@@ -54,10 +57,10 @@ public class FileUtil {
 	
 	public static File newFile( String path ) {
 		
-		Tools.log.debug("newFile path -- {}" , path );
+		log.debug("newFile path -- {}" , path );
 		URL fileUrl = ConfigurationUtils.locate(path);
 		
-		Tools.log.debug("newFile fileUrl -- {}" , fileUrl );
+		log.debug("newFile fileUrl -- {}" , fileUrl );
 		
 		return ConfigurationUtils.fileFromURL(fileUrl);
 	}

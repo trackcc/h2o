@@ -1,11 +1,12 @@
 package h2o.common.thirdparty.smooks;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.io.StreamUtil;
 import org.milyn.Smooks;
 import org.milyn.container.ExecutionContext;
 import org.milyn.payload.JavaResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -14,7 +15,9 @@ import java.io.Reader;
 
 public class SmooksUtil {
 
-	private volatile Smooks smooks;
+    private static final Logger log = LoggerFactory.getLogger( SmooksUtil.class.getName() );
+
+    private volatile Smooks smooks;
 
 	private volatile JavaResult result;
 
@@ -34,7 +37,7 @@ public class SmooksUtil {
 		try {
 			this.smooks = new Smooks(smooksConfigPath);
 		} catch (Exception e) {
-			Tools.log.debug("setSmooksConfig", e);
+			log.debug("setSmooksConfig", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}

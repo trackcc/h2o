@@ -1,12 +1,15 @@
 package h2o.common.remote;
 
-import h2o.common.Tools;
 import h2o.common.collections.tuple.Tuple2;
 import h2o.common.collections.tuple.TupleUtil;
 import h2o.common.ioc.ObjectFactory;
 import h2o.jodd.util.ReflectUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class RemoteCall implements RemoteCallI {
+
+    private static final Logger log = LoggerFactory.getLogger( RemoteCall.class.getName() );
 
 //	@Override
 	public RemoteRes call(RemoteReq req) {
@@ -27,7 +30,7 @@ public class RemoteCall implements RemoteCallI {
 			
 		} catch( Exception e ) {
 			e.printStackTrace();
-			Tools.log.debug("" , e);
+			log.debug("" , e);
 			return new RemoteRes(null,e);
 		}
 		

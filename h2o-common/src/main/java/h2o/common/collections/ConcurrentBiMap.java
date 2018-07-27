@@ -1,8 +1,8 @@
 package h2o.common.collections;
 
-import h2o.common.exception.ReadonlyException;
 import h2o.common.collections.tuple.Tuple2;
 import h2o.common.collections.tuple.TupleUtil;
+import h2o.common.exception.ReadonlyException;
 
 import java.util.HashMap;
 import java.util.Map;

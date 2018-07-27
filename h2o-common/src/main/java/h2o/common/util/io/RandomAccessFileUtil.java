@@ -1,12 +1,15 @@
 package h2o.common.util.io;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public final class RandomAccessFileUtil {
+
+    private static final Logger log = LoggerFactory.getLogger(RandomAccessFileUtil.class.getName());
 
 	private RandomAccessFileUtil() {
 	}
@@ -20,7 +23,7 @@ public final class RandomAccessFileUtil {
 			accessFile.setLength(size);
 
 		} catch (Exception e) {
-			Tools.log.debug("", e);
+			log.debug("", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		} finally {
 			close( accessFile );
@@ -37,7 +40,7 @@ public final class RandomAccessFileUtil {
 			return accessFile.length();
 
 		} catch (Exception e) {
-			Tools.log.debug("", e);
+			log.debug("", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		} finally {
 			close( accessFile );
@@ -55,7 +58,7 @@ public final class RandomAccessFileUtil {
 			accessFile.write(data, off, len);
 
 		} catch (Exception e) {
-			Tools.log.debug("", e);
+			log.debug("", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		} finally {
 			close( accessFile );
@@ -85,7 +88,7 @@ public final class RandomAccessFileUtil {
 
 		} catch (Exception e) {
 
-			Tools.log.debug("", e);
+			log.debug("", e);
 			throw ExceptionUtil.toRuntimeException(e);
 
 		} finally {

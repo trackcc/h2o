@@ -2,11 +2,12 @@ package h2o.common.util.bean.serialize;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.lang.InstanceUtil;
 import h2o.common.util.lang.StringUtil;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 
@@ -14,6 +15,8 @@ import java.io.UnsupportedEncodingException;
  * Created by zhangjianwei on 16/8/24.
  */
 public class JsonBeanSerializer implements BeanStrSerializer, BeanSerializer {
+
+    private static final Logger log = LoggerFactory.getLogger( JsonBeanSerializer.class.getName() );
 
     private final FastJsonConfig fastJsonConfig = new FastJsonConfig();
 
@@ -39,7 +42,7 @@ public class JsonBeanSerializer implements BeanStrSerializer, BeanSerializer {
 
         } catch (UnsupportedEncodingException e) {
 
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
 
         }
@@ -55,7 +58,7 @@ public class JsonBeanSerializer implements BeanStrSerializer, BeanSerializer {
 
         } catch (UnsupportedEncodingException e) {
 
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
 
         }

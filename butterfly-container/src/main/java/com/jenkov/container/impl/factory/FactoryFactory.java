@@ -2,8 +2,8 @@ package com.jenkov.container.impl.factory;
 
 import com.jenkov.container.IContainer;
 import com.jenkov.container.itf.factory.FactoryException;
-import com.jenkov.container.itf.factory.ILocalFactory;
 import com.jenkov.container.itf.factory.IGlobalFactory;
+import com.jenkov.container.itf.factory.ILocalFactory;
 
 import java.lang.reflect.Proxy;
 

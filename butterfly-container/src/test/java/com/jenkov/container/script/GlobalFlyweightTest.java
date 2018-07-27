@@ -1,8 +1,8 @@
 package com.jenkov.container.script;
 
 import com.jenkov.container.Container;
-import com.jenkov.container.TestProduct;
 import com.jenkov.container.IContainer;
+import com.jenkov.container.TestProduct;
 import junit.framework.TestCase;
 
 /**

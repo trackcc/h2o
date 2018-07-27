@@ -30,9 +30,9 @@ import h2o.jodd.typeconverter.TypeConversionException;
 import h2o.jodd.typeconverter.TypeConverter;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
-import java.net.MalformedURLException;
 
 /**
  * Converts given object to <code>URL</code>.

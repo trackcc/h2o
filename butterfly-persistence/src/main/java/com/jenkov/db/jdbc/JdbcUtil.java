@@ -22,9 +22,9 @@ import com.jenkov.db.itf.PersistenceException;
 import com.jenkov.db.jdbc.stream.AsciiStream;
 import com.jenkov.db.jdbc.stream.CharacterStream;
 
-import java.sql.*;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.sql.*;
 import java.util.Collection;
 import java.util.Iterator;
 

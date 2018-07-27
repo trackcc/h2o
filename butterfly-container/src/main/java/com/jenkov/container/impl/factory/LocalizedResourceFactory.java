@@ -1,10 +1,10 @@
 package com.jenkov.container.impl.factory;
 
-import com.jenkov.container.itf.factory.ILocalFactory;
 import com.jenkov.container.itf.factory.IGlobalFactory;
+import com.jenkov.container.itf.factory.ILocalFactory;
 
-import java.util.Map;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * @author Jakob Jenkov - Copyright 2004-2006 Jenkov Development

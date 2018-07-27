@@ -27,10 +27,10 @@ package h2o.jodd.introspector;
 
 import h2o.jodd.util.ReflectUtil;
 
-import java.util.Map;
-import java.util.List;
-import java.util.Set;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * A descriptor class for all methods/fields/properties/constructors of a class.

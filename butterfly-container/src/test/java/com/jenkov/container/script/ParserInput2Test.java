@@ -2,8 +2,8 @@ package com.jenkov.container.script;
 
 import junit.framework.TestCase;
 
-import java.io.IOException;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 
 /**
  * @author Jakob Jenkov - Copyright 2004-2006 Jenkov Development

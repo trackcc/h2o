@@ -18,9 +18,8 @@
 
 package com.jenkov.db.impl.init;
 
-import com.jenkov.db.itf.init.IDatabaseInitialization;
 import com.jenkov.db.itf.IDaos;
-import com.jenkov.db.itf.PersistenceException;
+import com.jenkov.db.itf.init.IDatabaseInitialization;
 
 /**
 

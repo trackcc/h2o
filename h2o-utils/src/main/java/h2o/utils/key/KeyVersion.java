@@ -1,13 +1,16 @@
 package h2o.utils.key;
 
 
-import h2o.common.Tools;
 import h2o.dao.Dao;
 import h2o.dao.DbUtil;
 import h2o.dao.TxCallback;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class KeyVersion {
+
+    private static final Logger log = LoggerFactory.getLogger( KeyVersion.class.getName() );
 
     private static final String SELSEQ = DbUtil.sqlTable.getSql("selseq");
     private static final String INSSEQ = DbUtil.sqlTable.getSql("insseq");
@@ -25,7 +28,7 @@ public class KeyVersion {
                     if ( dao.get(SELSEQ, "seqobj", key) == null ) try {
                         dao.update(INSSEQ, "seqobj", key);
                     } catch (Exception e) {
-                        Tools.log.error(e);
+                        log.error("",e);
                     }
 
                     return dao.update( UPDSEQ , "seqobj", key ) > 0;

@@ -1,9 +1,9 @@
 package com.jenkov.container.script;
 
-import junit.framework.TestCase;
-import com.jenkov.container.IContainer;
 import com.jenkov.container.Container;
+import com.jenkov.container.IContainer;
 import com.jenkov.container.TestProduct;
+import junit.framework.TestCase;
 
 /**
  * @author Jakob Jenkov - Copyright 2004-2006 Jenkov Development

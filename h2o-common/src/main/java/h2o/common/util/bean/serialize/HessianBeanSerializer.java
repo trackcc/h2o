@@ -2,8 +2,9 @@ package h2o.common.util.bean.serialize;
 
 import com.caucho.hessian.io.HessianInput;
 import com.caucho.hessian.io.HessianOutput;
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -12,6 +13,8 @@ import java.io.ByteArrayOutputStream;
  * Created by zhangjianwei on 2017/6/25.
  */
 public class HessianBeanSerializer implements BeanSerializer {
+
+    private static final Logger log = LoggerFactory.getLogger( HessianBeanSerializer.class.getName() );
 
 
     @Override
@@ -25,7 +28,7 @@ public class HessianBeanSerializer implements BeanSerializer {
             return os.toByteArray();
 
         } catch (Exception e) {
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -40,7 +43,7 @@ public class HessianBeanSerializer implements BeanSerializer {
             return hi.readObject();
 
         } catch (Exception e) {
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
 

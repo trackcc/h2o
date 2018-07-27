@@ -1,11 +1,12 @@
 package h2o.event.impl.rabbitmq;
 
 import com.rabbitmq.client.*;
-import h2o.common.Tools;
 import h2o.event.Event;
 import h2o.event.EventReceiver;
 import h2o.event.impl.AbstractEventReceiver;
 import h2o.event.impl.NothingEventContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -14,6 +15,8 @@ import java.io.IOException;
  * Created by zhangjianwei on 2017/5/20.
  */
 public class RabbitMQEventReceiver extends AbstractEventReceiver implements EventReceiver {
+
+    private static final Logger log = LoggerFactory.getLogger( RabbitMQEventReceiver.class.getName() );
 
 
     protected final RabbitMQEventHelper helper;
@@ -38,7 +41,7 @@ public class RabbitMQEventReceiver extends AbstractEventReceiver implements Even
         } catch ( Exception e ) {
 
             e.printStackTrace();
-            Tools.log.error(e);
+            log.error("",e);
 
             this.close();
 

@@ -1,6 +1,5 @@
 package com.jenkov.container.java;
 
-import com.jenkov.container.IContainer;
 import com.jenkov.container.itf.factory.IGlobalFactory;
 
 /**

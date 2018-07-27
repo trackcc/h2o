@@ -28,12 +28,7 @@ package h2o.jodd.util;
 import h2o.jodd.io.StreamUtil;
 
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * HTML decoder.

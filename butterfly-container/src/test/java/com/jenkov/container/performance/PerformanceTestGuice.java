@@ -1,16 +1,6 @@
 package com.jenkov.container.performance;
 
 //import com.google.inject.*;
-import com.jenkov.container.TestProduct;
-import com.jenkov.container.Container;
-import com.jenkov.container.IContainer;
-import com.jenkov.container.itf.factory.IGlobalFactory;
-import com.jenkov.container.script.ScriptFactoryBuilder;
-import com.jenkov.container.java.JavaFactoryBuilder;
-import com.jenkov.container.java.JavaFactory;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 /**
 

@@ -19,9 +19,6 @@
 package com.jenkov.db.itf.init;
 
 import com.jenkov.db.itf.IDaos;
-import com.jenkov.db.itf.PersistenceException;
-
-import java.sql.Connection;
 
 /**
 

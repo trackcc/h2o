@@ -1,11 +1,12 @@
 package h2o.common.concurrent.cache;
 
-import h2o.common.Tools;
-import h2o.common.schedule.Dispatcher;
-import h2o.common.schedule.RepetitiveTask;
 import h2o.common.collections.tuple.Tuple2;
 import h2o.common.collections.tuple.Tuple3;
 import h2o.common.collections.tuple.TupleUtil;
+import h2o.common.schedule.Dispatcher;
+import h2o.common.schedule.RepetitiveTask;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,10 @@ import java.util.concurrent.locks.Lock;
 
 
 public class TimedMap<K,V> {
-	
-	class LongV {
+
+    private static final Logger log = LoggerFactory.getLogger( TimedMap.class.getName() );
+
+    class LongV {
 		
 		public final AtomicLong v;
 		
@@ -141,7 +144,7 @@ public class TimedMap<K,V> {
 				timedMapListener.onRemoved( key, value );
 			} catch( Throwable e ) {
 				e.printStackTrace();
-				Tools.log.info("",e);
+				log.info("",e);
 			}
 		}
 	}

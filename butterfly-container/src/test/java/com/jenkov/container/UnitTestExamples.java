@@ -1,7 +1,7 @@
 package com.jenkov.container;
 
-import junit.framework.TestCase;
 import com.jenkov.container.script.ScriptFactoryBuilder;
+import junit.framework.TestCase;
 //import com.jenkov.testing.mock.impl.MockFactory;
 //import com.jenkov.testing.mock.itf.IMock;
 

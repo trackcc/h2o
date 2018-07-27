@@ -1,10 +1,10 @@
 package com.jenkov.container;
 
-import junit.framework.TestCase;
-import com.jenkov.container.script.ScriptFactoryBuilder;
-import com.jenkov.container.java.JavaFactoryBuilder;
-import com.jenkov.container.java.JavaFactory;
 import com.jenkov.container.itf.factory.IGlobalFactory;
+import com.jenkov.container.java.JavaFactory;
+import com.jenkov.container.java.JavaFactoryBuilder;
+import com.jenkov.container.script.ScriptFactoryBuilder;
+import junit.framework.TestCase;
 
 /**
 

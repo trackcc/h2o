@@ -24,10 +24,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 package h2o.jodd.util.collection;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.ArrayList;
 
 /**
  * Iterator that combines multiple iterators.

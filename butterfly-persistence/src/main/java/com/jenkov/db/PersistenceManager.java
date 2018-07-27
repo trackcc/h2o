@@ -18,10 +18,12 @@
 
 package com.jenkov.db;
 
-import com.jenkov.db.impl.PersistenceConfiguration;
 import com.jenkov.db.impl.Daos;
+import com.jenkov.db.impl.PersistenceConfiguration;
 import com.jenkov.db.impl.init.DatabaseInitializer;
-import com.jenkov.db.itf.*;
+import com.jenkov.db.itf.IDaos;
+import com.jenkov.db.itf.IPersistenceConfiguration;
+import com.jenkov.db.itf.PersistenceException;
 import com.jenkov.db.scope.ScopingDataSource;
 
 import javax.sql.DataSource;

@@ -22,8 +22,8 @@ import com.jenkov.db.itf.IPreparedStatementManager;
 import com.jenkov.db.itf.PersistenceException;
 import com.jenkov.db.jdbc.JdbcUtil;
 
-import java.sql.PreparedStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**

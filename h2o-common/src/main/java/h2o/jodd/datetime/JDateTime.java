@@ -37,8 +37,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import static h2o.jodd.util.HashCode.hash;
-
 /**
  * Universal all-in-one date and time class that uses Astronomical Julian
  * Dates for time calculations. Guaranteed precision for all manipulations

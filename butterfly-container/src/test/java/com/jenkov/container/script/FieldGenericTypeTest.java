@@ -1,11 +1,11 @@
 package com.jenkov.container.script;
 
-import junit.framework.TestCase;
 import com.jenkov.container.TestProduct;
+import junit.framework.TestCase;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 /**
 

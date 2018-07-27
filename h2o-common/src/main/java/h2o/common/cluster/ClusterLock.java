@@ -1,14 +1,17 @@
 package h2o.common.cluster;
 
-import h2o.common.Tools;
 import h2o.common.thirdparty.redis.JedisCallBack;
 import h2o.common.thirdparty.redis.JedisProvider;
 import h2o.common.util.id.UuidUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
 import java.util.concurrent.TimeUnit;
 
 public class ClusterLock {
+
+    private static final Logger log = LoggerFactory.getLogger( ClusterLock.class.getName() );
 
     private static final long DEFAULT_TIME_OUT = 30000;
 
@@ -81,7 +84,7 @@ public class ClusterLock {
         } catch (Exception e) {
 
             e.printStackTrace();
-            Tools.log.error(e);
+            log.error( "" , e);
 
             locked = false;
 
@@ -155,7 +158,7 @@ public class ClusterLock {
         } catch ( Exception e ) {
 
             e.printStackTrace();
-            Tools.log.error(e);
+            log.error( "" , e);
 
         }
 

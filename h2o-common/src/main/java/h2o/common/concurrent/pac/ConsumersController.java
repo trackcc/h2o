@@ -1,15 +1,18 @@
 package h2o.common.concurrent.pac;
 
-import h2o.common.Tools;
 import org.apache.commons.lang.Validate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.concurrent.*;
 
 public class ConsumersController<T> {
-	
-	
-	private volatile boolean stop;
+
+    private static final Logger log = LoggerFactory.getLogger( ConsumersController.class.getName() );
+
+
+    private volatile boolean stop;
 	
 	private final BlockingQueue<T> basket;
 	
@@ -38,12 +41,12 @@ public class ConsumersController<T> {
 
                 } catch ( InterruptedException e ) {
 				} catch( Throwable e) {
-					Tools.log.debug("ConsumersController.ConsumerThread::call",e);					
+					log.debug("ConsumersController.ConsumerThread::call",e);
 				}
 				
 			}
 			
-			Tools.log.info("OK");
+			log.info("OK");
 			
 			return null;
 			

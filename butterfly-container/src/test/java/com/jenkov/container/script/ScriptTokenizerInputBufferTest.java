@@ -2,9 +2,9 @@ package com.jenkov.container.script;
 
 import junit.framework.TestCase;
 
-import java.io.StringReader;
-import java.io.Reader;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 
 /**
  * @author Jakob Jenkov - Copyright 2004-2006 Jenkov Development

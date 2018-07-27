@@ -1,17 +1,18 @@
 package h2o.dao.impl;
 
-import h2o.common.Tools;
 import h2o.dao.Dao;
 import h2o.dao.ScopeManager;
 import h2o.dao.TxManager;
 import h2o.dao.orm.ArgProcessor;
 import h2o.dao.orm.OrmProcessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class AbstractDao implements Dao {
-	
-	
-	
-	protected volatile ArgProcessor argProcessor;
+
+    private static final Logger log = LoggerFactory.getLogger( AbstractDao.class.getName() );
+
+    protected volatile ArgProcessor argProcessor;
 	
 	protected volatile OrmProcessor ormProcessor;
 	
@@ -53,7 +54,7 @@ public abstract class AbstractDao implements Dao {
 	@Override
 	public void beginTransaction() {
 		if( this.txManager == null ) {
-			Tools.log.warn("TxManager is null");
+			log.warn("TxManager is null");
 		} else {
 			this.txManager.beginTransaction();
 		}
@@ -62,7 +63,7 @@ public abstract class AbstractDao implements Dao {
 	@Override
 	public void setRollbackOnly() {
 		if( this.txManager == null ) {
-			Tools.log.warn("TxManager is null");
+			log.warn("TxManager is null");
 		} else {
 			this.txManager.setRollbackOnly();
 		}
@@ -71,7 +72,7 @@ public abstract class AbstractDao implements Dao {
 	@Override
 	public void rollBack() {
 		if( this.txManager == null ) {
-			Tools.log.warn("TxManager is null");
+			log.warn("TxManager is null");
 		} else {
 			this.txManager.rollBack();
 		}
@@ -80,7 +81,7 @@ public abstract class AbstractDao implements Dao {
 	@Override
 	public void commit() {
 		if( this.txManager == null ) {
-			Tools.log.warn("TxManager is null");
+			log.warn("TxManager is null");
 		} else {
 			this.txManager.commit();
 		}
@@ -90,7 +91,7 @@ public abstract class AbstractDao implements Dao {
 	@Override
 	public void beginScope() {
 		if( this.txManager == null ) {
-			Tools.log.warn("ScopeManager is null");
+			log.warn("ScopeManager is null");
 		} else {
 			this.scopeManager.beginScope();;
 		}
@@ -99,7 +100,7 @@ public abstract class AbstractDao implements Dao {
 	@Override
 	public void endScope() {
 		if( this.txManager == null ) {
-			Tools.log.warn("ScopeManager is null");
+			log.warn("ScopeManager is null");
 		} else {
 			this.scopeManager.endScope();;
 		}

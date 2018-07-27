@@ -1,6 +1,5 @@
 package h2o.common.util.web;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
@@ -16,6 +15,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URI;
@@ -24,8 +25,10 @@ import java.util.List;
 import java.util.Map;
 
 public class HttpClientUtil {
-	
-	private HttpClientUtil() {}	
+
+    private static final Logger log = LoggerFactory.getLogger( HttpClientUtil.class.getName() );
+
+    private HttpClientUtil() {}
 	
 	public static String get(URI uri) {
 
@@ -154,7 +157,7 @@ public class HttpClientUtil {
 			
 		} catch( Exception e ) {
 
-			Tools.log.debug("echoPost",e);
+			log.debug("echoPost",e);
 			throw ExceptionUtil.toRuntimeException(e);
 
 		}
@@ -267,7 +270,7 @@ public class HttpClientUtil {
 
         } catch( Exception e ) {
 
-            Tools.log.debug("echo",e);
+            log.debug("echo",e);
             throw ExceptionUtil.toRuntimeException(e);
 
         } finally {
@@ -277,7 +280,7 @@ public class HttpClientUtil {
                 response.close();
 
             } catch (IOException e) {
-                Tools.log.debug( "", e );
+                log.debug( "", e );
             }
 
             if ( close && httpclient != null ) try {
@@ -285,7 +288,7 @@ public class HttpClientUtil {
                 httpclient.close();
 
             } catch (IOException e) {
-                Tools.log.debug( "", e );
+                log.debug( "", e );
             }
 
         }

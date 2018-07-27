@@ -1,17 +1,21 @@
 package h2o.common.dao;
 
-import h2o.common.Tools;
+import h2o.common.collections.builder.MapBuilder;
 import h2o.common.concurrent.LockMap;
 import h2o.common.thirdparty.freemarker.TemplateUtil;
-import h2o.common.collections.builder.MapBuilder;
 import h2o.common.util.io.StreamUtil;
 import h2o.common.util.lang.RuntimeUtil;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
 
 public class SqlTable {
+
+
+    private static final Logger log = LoggerFactory.getLogger( SqlTable.class.getName() );
 	
 	
 	private final Map<String,Map<String,String>> classNameSqlMap = new java.util.concurrent.ConcurrentHashMap<String,Map<String,String>>();
@@ -117,7 +121,7 @@ public class SqlTable {
 			sqlTable.put(key, sql);
 		}
 		
-		Tools.log.debug("Load sqlTable from path:{}\n{}",path , sqlTable);
+		log.debug("Load sqlTable from path:{}\n{}",path , sqlTable);
 		
 		return sqlTable;
 	}
@@ -193,7 +197,7 @@ public class SqlTable {
 		
 		path = convertPath(path);
 		
-		Tools.log.debug("Get sql from  path:{}" , path );
+		log.debug("Get sql from  path:{}" , path );
 		
 		Map<String,String> sqlMap;
 		if( this.cache ) {
@@ -239,7 +243,7 @@ public class SqlTable {
 	
 	public String getSql( String path, String queryName ) {		
 		String sql = this.getSqlMap( path ).get( queryName );
-		Tools.log.debug("Get [{}] sql :{}", queryName ,  sql );
+		log.debug("Get [{}] sql :{}", queryName ,  sql );
 		return sql;
 	}
 	
@@ -270,7 +274,7 @@ public class SqlTable {
 		
 		String sql = this.templateUtil.process(dataTmp, st);
 		
-		Tools.log.debug("Get [{}] sql T :{}", queryName , sql );
+		log.debug("Get [{}] sql T :{}", queryName , sql );
 		
 		return sql;
 	}

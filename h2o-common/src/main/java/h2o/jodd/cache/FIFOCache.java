@@ -25,8 +25,8 @@
 
 package h2o.jodd.cache;
 
-import java.util.LinkedHashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 /**
  * FIFO (first in first out) cache.

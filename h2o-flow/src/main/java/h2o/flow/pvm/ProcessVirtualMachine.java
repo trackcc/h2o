@@ -4,26 +4,28 @@
 package h2o.flow.pvm;
 
 
-
-import h2o.common.Tools;
-import h2o.common.exception.ExceptionUtil;
 import h2o.common.collections.CollectionUtil;
 import h2o.common.collections.builder.ListBuilder;
 import h2o.common.collections.tuple.Tuple2;
+import h2o.common.exception.ExceptionUtil;
 import h2o.flow.pvm.elements.Line;
 import h2o.flow.pvm.elements.Node;
 import h2o.flow.pvm.elements.SignalNode;
 import h2o.flow.pvm.runtime.RunContext;
 import h2o.flow.pvm.runtime.RunStatus;
 import h2o.flow.pvm.runtime.TransactionManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.List;
 
 public final class ProcessVirtualMachine {
-	
 
-	//=================================================
+    private static final Logger log = LoggerFactory.getLogger( ProcessVirtualMachine.class.getName() );
+
+
+            //=================================================
 	//  运行监听器
 	//=================================================
 	
@@ -149,7 +151,7 @@ public final class ProcessVirtualMachine {
 			
 			e.printStackTrace();
 			
-			Tools.log.error("", e);			
+			log.error("", e);
 			
 			if( e instanceof FlowException  ) {
 				throw (FlowException) e;

@@ -1,17 +1,18 @@
 package h2o.common;
 
-import h2o.common.Tools;
-import h2o.common.exception.ExceptionUtil;
 import h2o.common.collections.CollectionUtil;
+import h2o.common.exception.ExceptionUtil;
 import org.apache.commons.configuration.PropertiesConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Mode {
-	
-	public static final String PROD     = "PROD";
+
+    private static final Logger log = LoggerFactory.getLogger( Mode.class.getName() );
+
+    public static final String PROD     = "PROD";
 	public static final String TEST     = "TEST";
     public static final String DEV      = "DEV";
 	
@@ -70,7 +71,7 @@ public class Mode {
 		} catch (Throwable e) {
 
 		    e.fillInStackTrace();
-		    Tools.log.error( e );
+		    log.error( "" , e );
 
 		    throw ExceptionUtil.toRuntimeException(e);
 
@@ -86,9 +87,9 @@ public class Mode {
 
 		mode = m;
 		
-		Tools.log.info("Mode : {}"       , mode );
-        Tools.log.info("Debug Mode : {}" , debugMode );
-		Tools.log.info("User Mode : {}"  , userModeArrays );
+		log.info("Mode : {}"       , mode );
+        log.info("Debug Mode : {}" , debugMode );
+		log.info("User Mode : {}"  , userModeArrays );
 	}
 	
 	private Mode() {}

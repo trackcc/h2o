@@ -1,15 +1,18 @@
 package h2o.common.thirdparty.quartz;
 
-import h2o.common.Tools;
 import h2o.common.thirdparty.redis.JedisCallBack;
 import h2o.common.thirdparty.redis.JedisProvider;
 import h2o.common.thirdparty.spring.util.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
 /**
  * Created by zhangjianwei on 2017/6/18.
  */
 public abstract class AbstractExecuteOneTime<C> {
+
+    private static final Logger log = LoggerFactory.getLogger( AbstractExecuteOneTime.class.getName() );
 
     protected JedisProvider jedisProvider;
 
@@ -46,7 +49,7 @@ public abstract class AbstractExecuteOneTime<C> {
         } catch ( Exception e ) {
 
             e.printStackTrace();
-            Tools.log.error(e);
+            log.error("",e);
 
             this.execOneTime( context , null , e );
 
@@ -60,13 +63,13 @@ public abstract class AbstractExecuteOneTime<C> {
 
         if ( jr != null && jr ) {
 
-            Tools.log.debug( "执行任务:{}" , jobId );
+            log.debug( "执行任务:{}" , jobId );
 
             this.execOneTime( context );
 
         } else {
 
-            Tools.log.debug( "跳过任务:{}" ,jobId );
+            log.debug( "跳过任务:{}" ,jobId );
 
         }
     }

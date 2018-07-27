@@ -25,9 +25,9 @@
 
 package h2o.jodd.datetime.format;
 
-import h2o.jodd.util.CharUtil;
 import h2o.jodd.datetime.DateTimeStamp;
 import h2o.jodd.datetime.JDateTime;
+import h2o.jodd.util.CharUtil;
 
 /**
  * Abstract formatter for easier {@link JdtFormatter} implementations.

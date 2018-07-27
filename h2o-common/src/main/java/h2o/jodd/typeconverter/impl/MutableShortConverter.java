@@ -26,7 +26,6 @@
 package h2o.jodd.typeconverter.impl;
 
 import h2o.jodd.mutable.MutableShort;
-import h2o.jodd.mutable.MutableShort;
 import h2o.jodd.typeconverter.TypeConverter;
 import h2o.jodd.typeconverter.TypeConverterManagerBean;
 

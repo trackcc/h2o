@@ -1,7 +1,5 @@
 package com.jenkov.container.script;
 
-import com.jenkov.container.script.ParserException;
-
 /**
  * @author Jakob Jenkov - Copyright 2004-2006 Jenkov Development
  */

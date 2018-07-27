@@ -26,6 +26,7 @@
 package h2o.jodd.util;
 
 import java.lang.reflect.Array;
+
 import static h2o.jodd.util.StringPool.NULL;
 
 /**

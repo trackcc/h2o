@@ -3,16 +3,19 @@ package h2o.common.ioc;
 import com.jenkov.container.Container;
 import com.jenkov.container.IContainer;
 import com.jenkov.container.script.ScriptFactoryBuilder;
-import h2o.common.Tools;
 import h2o.common.util.io.StreamUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.concurrent.locks.Lock;
 
 public class Butterfly {
-	
-	private final Lock lock = new java.util.concurrent.locks.ReentrantLock();
+
+    private static final Logger log = LoggerFactory.getLogger( Butterfly.class.getName() );
+
+    private final Lock lock = new java.util.concurrent.locks.ReentrantLock();
 	
 	
 	private volatile String path =  "butterfly.bcs";
@@ -82,7 +85,7 @@ public class Butterfly {
 				
 			
 			} catch (Exception e) {				
-				Tools.log.debug("Butterfly::load()" , e );
+				log.debug("Butterfly::load()" , e );
 			} finally {
 				lock.unlock();
 			}

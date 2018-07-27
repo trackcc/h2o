@@ -1,12 +1,13 @@
 package h2o.dao;
 
-import h2o.common.Tools;
 import h2o.common.collections.builder.MapBuilder;
 import h2o.dao.colinfo.ColInfo;
 import h2o.dao.colinfo.ColInfoUtil;
 import h2o.dao.exception.DaoException;
 import h2o.dao.impl.sql.TSql;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -16,9 +17,11 @@ import java.util.Map;
 
 
 
-public class SqlBuilder {	
-	
-	private volatile boolean isSilently = true;
+public class SqlBuilder {
+
+    private static final Logger log = LoggerFactory.getLogger( SqlBuilder.class.getName() );
+
+    private volatile boolean isSilently = true;
 	
 	public void setSilently(boolean isSilently) {
 		this.isSilently = isSilently;
@@ -140,7 +143,7 @@ public class SqlBuilder {
 		
 		String sql = sb.append(sbv).toString();
 		
-		Tools.log.debug("buildInsertSql ======= <{}>" , sql);
+		log.debug("buildInsertSql ======= <{}>" , sql);
 		
 		TSql tSql = new TSql(sql);
 		tSql.setData( MapBuilder.so().put("_COL_INFO", colInfoMap).get() );
@@ -269,7 +272,7 @@ public class SqlBuilder {
 		
 		String sql = sb.toString();
 		
-		Tools.log.debug("buildUpdateSql ======= <{}>" , sql);
+		log.debug("buildUpdateSql ======= <{}>" , sql);
 		
 		TSql tSql = new TSql(sql);
 		tSql.setData( MapBuilder.so().put("_COL_INFO", colInfoMap).get() );

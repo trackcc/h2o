@@ -18,10 +18,8 @@
 
 package com.jenkov.db.itf;
 
-import com.jenkov.db.jdbc.SimpleDataSource;
-
-import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 
 /**

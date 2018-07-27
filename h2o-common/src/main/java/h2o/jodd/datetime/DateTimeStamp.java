@@ -26,7 +26,6 @@
 package h2o.jodd.datetime;
 
 import h2o.jodd.util.HashCode;
-import static h2o.jodd.util.HashCode.hash;
 
 import java.io.Serializable;
 

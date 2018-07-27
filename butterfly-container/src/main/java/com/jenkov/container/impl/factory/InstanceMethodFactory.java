@@ -1,11 +1,11 @@
 package com.jenkov.container.impl.factory;
 
-import com.jenkov.container.itf.factory.ILocalFactory;
 import com.jenkov.container.itf.factory.FactoryException;
+import com.jenkov.container.itf.factory.ILocalFactory;
 
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
 

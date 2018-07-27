@@ -1,15 +1,18 @@
 package h2o.common.util.io;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import org.apache.commons.configuration.ConfigurationUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.net.URL;
 
 public class StreamUtil {
 
-	private StreamUtil() {
+    private static final Logger log = LoggerFactory.getLogger( StreamUtil.class.getName() );
+
+    private StreamUtil() {
 	}
 
 	public static Reader readFile(String path) {
@@ -27,17 +30,17 @@ public class StreamUtil {
         try {
             return getURL( path ).openStream();
         } catch (IOException e) {
-            Tools.log.debug("openStream", e);
+            log.debug("openStream", e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
 
     public static URL getURL( String path ) {
 
-        Tools.log.debug("path -- {}", path);
+        log.debug("path -- {}", path);
         URL url = ConfigurationUtils.locate(path);
 
-        Tools.log.debug("url -- {}", url);
+        log.debug("url -- {}", url);
 
         return url;
 
@@ -54,7 +57,7 @@ public class StreamUtil {
 		try {
 			return toReader(new FileInputStream(f), characterEncoding);
 		} catch (FileNotFoundException e) {
-			Tools.log.debug("readFile", e);
+			log.debug("readFile", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 
@@ -85,7 +88,7 @@ public class StreamUtil {
 			return new String( h2o.jodd.io.StreamUtil.readChars(r));
 			
 		} catch (IOException e) {
-			Tools.log.debug("readReaderContent", e);
+			log.debug("readReaderContent", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		} finally {
 			if( closeReader ) {
@@ -108,7 +111,7 @@ public class StreamUtil {
 				return new java.io.InputStreamReader(is, characterEncoding);
 			}
 		} catch (IOException e) {
-			Tools.log.debug("toReader", e);
+			log.debug("toReader", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}
@@ -127,7 +130,7 @@ public class StreamUtil {
 
 	public static Writer writeFile(String path, String characterEncoding, boolean append) {
 
-		Tools.log.debug("writeFile path -- {}", path);
+		log.debug("writeFile path -- {}", path);
 		return writeFile(new File(path), characterEncoding, append);
 
 	}
@@ -149,7 +152,7 @@ public class StreamUtil {
 		try {
 			return toWriter(new FileOutputStream(f, append), characterEncoding);
 		} catch (FileNotFoundException e) {
-			Tools.log.debug("writeFile", e);
+			log.debug("writeFile", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 
@@ -167,7 +170,7 @@ public class StreamUtil {
 				return new OutputStreamWriter(os, characterEncoding);
 			}
 		} catch (IOException e) {
-			Tools.log.debug("toWriter", e);
+			log.debug("toWriter", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}
@@ -177,7 +180,7 @@ public class StreamUtil {
 			try {
 				reader.close();
 			} catch (IOException e) {
-				Tools.log.error("Reader.close()", e);
+				log.error("Reader.close()", e);
 			}
 		}
 	}
@@ -187,7 +190,7 @@ public class StreamUtil {
 			try {
 				writer.close();
 			} catch (IOException e) {
-				Tools.log.error("Writer.close()", e);
+				log.error("Writer.close()", e);
 			}
 		}
 	}
@@ -199,7 +202,7 @@ public class StreamUtil {
 			try {
 				in.close();
 			} catch (IOException e) {
-				Tools.log.error("InputStream.close()", e);
+				log.error("InputStream.close()", e);
 			}
 		}
 	}
@@ -209,7 +212,7 @@ public class StreamUtil {
 			try {
 				out.close();
 			} catch (IOException e) {
-				Tools.log.error("OutputStream.close()", e);
+				log.error("OutputStream.close()", e);
 			}
 		}
 	}

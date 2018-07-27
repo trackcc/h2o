@@ -1,13 +1,14 @@
 package h2o.common.util.bean;
 
-import h2o.common.Tools;
-import h2o.common.exception.ExceptionUtil;
 import h2o.common.collections.builder.MapBuilder;
 import h2o.common.collections.tuple.Tuple2;
 import h2o.common.collections.tuple.TupleUtil;
+import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.lang.Null;
 import h2o.common.util.lang.type.TypeConverter;
 import h2o.common.util.lang.type.converter.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.util.Map;
@@ -15,9 +16,11 @@ import java.util.Map;
 
 @SuppressWarnings({ "rawtypes","unchecked" })
 public class ParaTypeConverter {
-	
-	
-	private final Map<Tuple2<Class,Class>,TypeConverter> typeConverterMap;
+
+    private static final Logger log = LoggerFactory.getLogger( ParaTypeConverter.class.getName() );
+
+
+    private final Map<Tuple2<Class,Class>,TypeConverter> typeConverterMap;
 	
 	
 	public ParaTypeConverter() {
@@ -85,7 +88,7 @@ public class ParaTypeConverter {
 		
 		Tuple2<Class,Object> tt = t.get(k);				
 		
-		Tools.log.debug("Convert [{}]{}-->{}:{}" , v , sc.getName() , tt.e0.getName() , tt.e1  );
+		log.debug("Convert [{}]{}-->{}:{}" , v , sc.getName() , tt.e0.getName() , tt.e1  );
 		
 		Object nv;
 		TypeConverter typeConverter = typeConverterMap.get( TupleUtil.t(sc, tt.e0));
@@ -99,7 +102,7 @@ public class ParaTypeConverter {
 			nv = v;
 		}
 				
-		Tools.log.info("Convert:{} ===> [{}]{}-->[{} {}]{}:{}" , typeConverter , v , sc.getName() , nv == null ? "Null" : nv.getClass().getName() ,  nv , tt.e0.getName() , tt.e1  );
+		log.info("Convert:{} ===> [{}]{}-->[{} {}]{}:{}" , typeConverter , v , sc.getName() , nv == null ? "Null" : nv.getClass().getName() ,  nv , tt.e0.getName() , tt.e1  );
 		
 		return nv;
 	}

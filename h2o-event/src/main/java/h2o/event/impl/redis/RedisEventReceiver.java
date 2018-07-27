@@ -1,11 +1,12 @@
 package h2o.event.impl.redis;
 
-import h2o.common.Tools;
-import h2o.common.thirdparty.redis.JedisCallBack;
 import h2o.common.collections.builder.ListBuilder;
+import h2o.common.thirdparty.redis.JedisCallBack;
 import h2o.event.Event;
 import h2o.event.EventReceiver;
 import h2o.event.impl.AbstractDispatcherEventReceiver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
 import java.util.List;
@@ -14,6 +15,9 @@ import java.util.List;
  * Created by zhangjianwei on 16/7/2.
  */
 public class RedisEventReceiver extends AbstractDispatcherEventReceiver implements EventReceiver {
+
+
+    private static final Logger log = LoggerFactory.getLogger( RedisEventReceiver.class.getName() );
 
     private final RedisEventHelper helper;
 
@@ -49,7 +53,7 @@ public class RedisEventReceiver extends AbstractDispatcherEventReceiver implemen
 
         });
 
-        Tools.log.debug("recvEvent ========= {} " , events );
+        log.debug("recvEvent ========= {} " , events );
 
         return events;
     }

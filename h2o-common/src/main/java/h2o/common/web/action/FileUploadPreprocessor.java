@@ -1,6 +1,5 @@
 package h2o.common.web.action;
 
-import h2o.common.Tools;
 import h2o.common.collections.builder.MapBuilder;
 import h2o.common.collections.tuple.Tuple2;
 import h2o.common.collections.tuple.TupleUtil;
@@ -11,6 +10,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +24,10 @@ import java.util.List;
 import java.util.Map;
 
 public class FileUploadPreprocessor implements ActionPreprocessor {
-	
-	private String characterEncoding;
+
+    private static final Logger log = LoggerFactory.getLogger( FileUploadPreprocessor.class.getName() );
+
+    private String characterEncoding;
 	private String filePath = "/";
 	private String tempPath;
 	private String absolutePathFilePath;
@@ -35,19 +38,19 @@ public class FileUploadPreprocessor implements ActionPreprocessor {
 	
 	
 	public void setFilePath(String filePath) {
-		Tools.log.debug("setFilePath:{}" , filePath);
+		log.debug("setFilePath:{}" , filePath);
 		this.filePath = filePath;
 	}
 
 
 	public void setTempPath(String tempPath) {
-		Tools.log.debug("setTempPath:{}" , tempPath);
+		log.debug("setTempPath:{}" , tempPath);
 		this.tempPath = tempPath;
 	}
 
 
 	public void setAbsolutePathFilePath(String absolutePathFilePath) {
-		Tools.log.debug("setAbsolutePathFilePath:{}" , absolutePathFilePath);
+		log.debug("setAbsolutePathFilePath:{}" , absolutePathFilePath);
 		this.absolutePathFilePath = absolutePathFilePath;
 	}
 

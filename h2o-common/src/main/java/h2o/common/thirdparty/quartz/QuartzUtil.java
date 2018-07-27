@@ -1,10 +1,11 @@
 package h2o.common.thirdparty.quartz;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.thirdparty.spring.util.Assert;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 import java.util.Map;
@@ -13,6 +14,8 @@ import java.util.Map;
  * Created by zhangjianwei on 2017/2/4.
  */
 public class QuartzUtil {
+
+    private static final Logger log = LoggerFactory.getLogger( QuartzUtil.class.getName() );
 
     private final Scheduler sched;
 
@@ -27,7 +30,7 @@ public class QuartzUtil {
             this.sched = sf.getScheduler();
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("",e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -39,7 +42,7 @@ public class QuartzUtil {
             this.sched = sf.getScheduler(schedName);
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug( "" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -50,7 +53,7 @@ public class QuartzUtil {
             this.sched = sf.getScheduler();
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug( "" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -61,7 +64,7 @@ public class QuartzUtil {
             this.sched = sf.getScheduler(schedName);
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug( "" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -110,11 +113,11 @@ public class QuartzUtil {
             ft = sched.scheduleJob(job, trigger);
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
 
-        Tools.log.info("{} will run at: {}" , jobKey , ft );
+        log.info("{} will run at: {}" , jobKey , ft );
 
         return ft;
     }
@@ -124,7 +127,7 @@ public class QuartzUtil {
             return sched.deleteJob(jobKey);
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -134,7 +137,7 @@ public class QuartzUtil {
             sched.pauseJob(jobKey);
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -144,7 +147,7 @@ public class QuartzUtil {
             sched.resumeJob(jobKey);
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -154,7 +157,7 @@ public class QuartzUtil {
             sched.pauseAll();
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -164,7 +167,7 @@ public class QuartzUtil {
             sched.resumeAll();
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -174,7 +177,7 @@ public class QuartzUtil {
             sched.clear();
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -185,7 +188,7 @@ public class QuartzUtil {
             sched.start();
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -195,7 +198,7 @@ public class QuartzUtil {
             sched.startDelayed(seconds);
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -205,7 +208,7 @@ public class QuartzUtil {
             return sched.isStarted();
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -215,7 +218,7 @@ public class QuartzUtil {
             sched.shutdown();
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -225,7 +228,7 @@ public class QuartzUtil {
             sched.shutdown(waitForJobsToComplete);
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }
@@ -235,7 +238,7 @@ public class QuartzUtil {
             return sched.isShutdown();
         } catch (SchedulerException e) {
             e.printStackTrace();
-            Tools.log.debug(e);
+            log.debug("" , e);
             throw ExceptionUtil.toRuntimeException(e);
         }
     }

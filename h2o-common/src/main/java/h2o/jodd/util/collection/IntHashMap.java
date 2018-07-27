@@ -26,15 +26,7 @@
 package h2o.jodd.util.collection;
 
 import java.io.Serializable;
-import java.util.AbstractCollection;
-import java.util.AbstractMap;
-import java.util.AbstractSet;
-import java.util.Collection;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
 
 /**
  * A Map that accepts int or Integer keys only. The implementation is based on

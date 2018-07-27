@@ -1,7 +1,7 @@
 package h2o.common.util.bean;
 
-import h2o.common.util.bean.support.DefaultMap2BeanProcessor;
 import h2o.common.collections.builder.ListBuilder;
+import h2o.common.util.bean.support.DefaultMap2BeanProcessor;
 import h2o.common.util.lang.InstanceUtil;
 
 import java.util.Collection;

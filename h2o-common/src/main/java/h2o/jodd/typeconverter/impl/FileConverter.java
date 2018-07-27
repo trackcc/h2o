@@ -25,7 +25,6 @@
 
 package h2o.jodd.typeconverter.impl;
 
-import h2o.jodd.util.ArraysUtil;
 import h2o.jodd.io.FileUtil;
 import h2o.jodd.typeconverter.TypeConversionException;
 import h2o.jodd.typeconverter.TypeConverter;

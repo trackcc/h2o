@@ -5,7 +5,10 @@ import com.jenkov.container.IContainer;
 import com.jenkov.container.TestProduct;
 import com.jenkov.container.script.ScriptFactoryBuilder;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
 

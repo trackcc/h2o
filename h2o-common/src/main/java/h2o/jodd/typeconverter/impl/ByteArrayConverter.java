@@ -25,11 +25,11 @@
 
 package h2o.jodd.typeconverter.impl;
 
-import h2o.jodd.util.StringUtil;
 import h2o.jodd.io.FileUtil;
 import h2o.jodd.typeconverter.TypeConversionException;
 import h2o.jodd.typeconverter.TypeConverter;
 import h2o.jodd.typeconverter.TypeConverterManagerBean;
+import h2o.jodd.util.StringUtil;
 
 import java.io.File;
 import java.io.IOException;

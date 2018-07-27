@@ -3,7 +3,6 @@ package com.jenkov.container.script;
 import com.jenkov.container.Container;
 import com.jenkov.container.TestProduct;
 import com.jenkov.container.impl.factory.*;
-import com.jenkov.container.itf.factory.IGlobalFactory;
 import junit.framework.TestCase;
 
 import java.io.FileInputStream;

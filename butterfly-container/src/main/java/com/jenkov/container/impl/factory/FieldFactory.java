@@ -4,8 +4,6 @@ import com.jenkov.container.itf.factory.FactoryException;
 import com.jenkov.container.itf.factory.ILocalFactory;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
-import java.lang.reflect.ParameterizedType;
 
 /**
  * @author Jakob Jenkov - Copyright 2005 Jenkov Development

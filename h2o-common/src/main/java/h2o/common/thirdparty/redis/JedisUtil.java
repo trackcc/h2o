@@ -1,10 +1,13 @@
 package h2o.common.thirdparty.redis;
 
-import h2o.common.Tools;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
 public class JedisUtil extends AbstractJedisProvider implements JedisProvider {
+
+    private static final Logger log = LoggerFactory.getLogger( JedisUtil.class.getName() );
 
     private final RedisConfig[] redisConfigs;
 
@@ -81,7 +84,7 @@ public class JedisUtil extends AbstractJedisProvider implements JedisProvider {
 
         } catch ( Exception e ) {
 
-		    Tools.log.error( e );
+		    log.error( "" ,  e );
 
 		    return null;
 
@@ -115,7 +118,7 @@ public class JedisUtil extends AbstractJedisProvider implements JedisProvider {
 		try {
 			return "PONG".equals(jedis.ping());
 		} catch (Exception e) {
-			Tools.log.debug("Check Jedis[{}] error!", jedis);
+			log.debug("Check Jedis[{}] error!", jedis);
             release(jedis);
 		}
 
@@ -134,7 +137,7 @@ public class JedisUtil extends AbstractJedisProvider implements JedisProvider {
         if( jedis != null ) try {
             jedis.close();
         } catch (Exception e) {
-            Tools.log.error("Close Jedis[" + jedis + "] error!", e );
+            log.error("Close Jedis[" + jedis + "] error!", e );
         }
     }
 

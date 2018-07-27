@@ -25,24 +25,19 @@
 
 package h2o.jodd.io.findfile;
 
-import java.io.File;
-import java.io.Serializable;
-import java.net.URI;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-
+import h2o.jodd.io.FileNameUtil;
+import h2o.jodd.io.FileUtil;
 import h2o.jodd.util.InExRules;
 import h2o.jodd.util.MultiComparator;
 import h2o.jodd.util.NaturalOrderComparator;
 import h2o.jodd.util.StringUtil;
 import h2o.jodd.util.collection.JoddArrayList;
-import h2o.jodd.io.FileNameUtil;
-import h2o.jodd.io.FileUtil;
+
+import java.io.File;
+import java.io.Serializable;
+import java.net.URI;
+import java.net.URL;
+import java.util.*;
 
 
 /**

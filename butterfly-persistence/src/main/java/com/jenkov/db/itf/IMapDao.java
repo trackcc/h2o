@@ -18,8 +18,8 @@
 
 package com.jenkov.db.itf;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Jakob Jenkov - Copyright 2005 Jenkov Development

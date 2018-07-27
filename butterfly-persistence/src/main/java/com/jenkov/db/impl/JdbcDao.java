@@ -18,11 +18,7 @@
 
 package com.jenkov.db.impl;
 
-import com.jenkov.db.itf.IJdbcDao;
-import com.jenkov.db.itf.IPreparedStatementManager;
-import com.jenkov.db.itf.IResultSetProcessor;
-import com.jenkov.db.itf.PersistenceException;
-import com.jenkov.db.itf.IDaos;
+import com.jenkov.db.itf.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

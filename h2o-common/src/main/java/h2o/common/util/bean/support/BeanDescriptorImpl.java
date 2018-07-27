@@ -1,15 +1,18 @@
 package h2o.common.util.bean.support;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.bean.BeanDescriptor;
 import org.apache.commons.beanutils.BeanUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Set;
 
 public class BeanDescriptorImpl implements BeanDescriptor {
-	
-	private boolean excludeClass = true;
+
+    private static final Logger log = LoggerFactory.getLogger( BeanDescriptorImpl.class.getName() );
+
+    private boolean excludeClass = true;
 	
 	
 
@@ -39,7 +42,7 @@ public class BeanDescriptorImpl implements BeanDescriptor {
 			return (String[]) ps.toArray(new String[ps.size()]);
 
 		} catch (Exception e) {
-			Tools.log.debug("getPrepNames", e);
+			log.debug("getPrepNames", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}

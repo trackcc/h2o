@@ -18,9 +18,9 @@
 
 package com.jenkov.db.impl;
 
+import com.jenkov.db.itf.IDaos;
 import com.jenkov.db.itf.IResultSetProcessor;
 import com.jenkov.db.itf.PersistenceException;
-import com.jenkov.db.itf.IDaos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

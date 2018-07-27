@@ -2,13 +2,14 @@ package h2o.common.dao.butterflydb;
 
 
 import com.jenkov.db.itf.*;
-import h2o.common.Tools;
+import h2o.common.Mode;
 import h2o.common.collections.CollectionUtil;
 import h2o.common.collections.IgnoreCaseMap;
 import h2o.common.collections.builder.ListBuilder;
 import h2o.common.collections.tuple.Tuple2;
 import h2o.common.dao.rowproc.RowDataProcessor;
-import h2o.common.Mode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +20,8 @@ import static h2o.common.dao.util.SqlParameterUtil.toPreparedSqlAndPara;
 
 @SuppressWarnings({"rawtypes","unchecked"})
 public class ButterflyDao {
+
+    private static final Logger log = LoggerFactory.getLogger( ButterflyDao.class.getName() );
 
     private static boolean SHOWSQL = Mode.isUserMode("DONT_SHOW_SQL") ? false : true;
 
@@ -44,7 +47,7 @@ public class ButterflyDao {
 	public Long readLong(String sql) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readLong(sql):{}", sql);
+            log.info("readLong(sql):{}", sql);
         }
 
 		try {
@@ -60,7 +63,7 @@ public class ButterflyDao {
 	public Long readLong(String sql, Object... parameters) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readLong(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+            log.info("readLong(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
         }
 
 		try {
@@ -77,7 +80,7 @@ public class ButterflyDao {
 	public Long readLong(String sql, Map paramMap) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readLong(sql, Map):{}, para:{}", sql, paramMap);
+            log.info("readLong(sql, Map):{}, para:{}", sql, paramMap);
         }
 
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
@@ -90,7 +93,7 @@ public class ButterflyDao {
 	public String readIdString(String sql) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readIdString(sql]):{}", sql);
+            log.info("readIdString(sql]):{}", sql);
         }
 
 		try {
@@ -106,7 +109,7 @@ public class ButterflyDao {
 	public String readIdString(String sql, Object... parameters) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readIdString(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+            log.info("readIdString(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
         }
 
 		try {
@@ -123,7 +126,7 @@ public class ButterflyDao {
 	public String readIdString(String sql,  Map paramMap) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readIdString(sql, Map):{}, para:{}", sql, paramMap);
+            log.info("readIdString(sql, Map):{}, para:{}", sql, paramMap);
         }
 
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
@@ -136,7 +139,7 @@ public class ButterflyDao {
 	public String readIdString(String sql, IPreparedStatementManager statementManager) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readIdString(sql,IPreparedStatementManager):{}", sql);
+            log.info("readIdString(sql,IPreparedStatementManager):{}", sql);
         }
 
 		try {
@@ -152,7 +155,7 @@ public class ButterflyDao {
 	public <T> T read(String sql, IResultSetProcessor processor) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("read(sql,IResultSetProcessor):{}", sql);
+            log.info("read(sql,IResultSetProcessor):{}", sql);
         }
 
 		try {
@@ -168,7 +171,7 @@ public class ButterflyDao {
 	public <T> T read(String sql, IResultSetProcessor processor, Object... parameters) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("read(sql,IResultSetProcessor,Object...):{}, para:{}", sql, Arrays.asList(parameters));
+            log.info("read(sql,IResultSetProcessor,Object...):{}, para:{}", sql, Arrays.asList(parameters));
         }
 
 		try {
@@ -185,7 +188,7 @@ public class ButterflyDao {
 	public <T> T read(String sql, IResultSetProcessor processor,  Map paramMap) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("read(sql,IResultSetProcessor,Map):{}, para:{}", sql, paramMap);
+            log.info("read(sql,IResultSetProcessor,Map):{}, para:{}", sql, paramMap);
         }
 
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
@@ -197,7 +200,7 @@ public class ButterflyDao {
 	public <T> T read(String sql, IPreparedStatementManager statementManager, IResultSetProcessor processor) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("read(sql,IPreparedStatementManager,IResultSetProcessor):{}", sql);
+            log.info("read(sql,IPreparedStatementManager,IResultSetProcessor):{}", sql);
         }
 
 		try {
@@ -213,7 +216,7 @@ public class ButterflyDao {
 	public int update(String sql) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("update(sql):{}", sql);
+            log.info("update(sql):{}", sql);
         }
 
 		try {
@@ -229,7 +232,7 @@ public class ButterflyDao {
 	public int update(String sql, Object... parameters) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("update(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+            log.info("update(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
         }
 
 		try {
@@ -245,7 +248,7 @@ public class ButterflyDao {
 
 	public int update(String sql, Map paramMap) {
 	    if ( SHOWSQL ) {
-            Tools.log.info("update(sql, Map):{}, para:{}", sql, paramMap);
+            log.info("update(sql, Map):{}, para:{}", sql, paramMap);
         }
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
 		
@@ -255,7 +258,7 @@ public class ButterflyDao {
 	public int update(String sql, IPreparedStatementManager statementManager) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("update(sql, IPreparedStatementManager):{}", sql);
+            log.info("update(sql, IPreparedStatementManager):{}", sql);
         }
 
 		try {
@@ -319,7 +322,7 @@ public class ButterflyDao {
 	public <T> T readObject(String sql) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readObject(sql):{}", sql);
+            log.info("readObject(sql):{}", sql);
         }
 		
 		try {
@@ -338,7 +341,7 @@ public class ButterflyDao {
 	public <T> T readObject(String sql, Object... parameters) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readObject(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+            log.info("readObject(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
         }
 
 		try {
@@ -354,9 +357,12 @@ public class ButterflyDao {
 	}
 	
 
-	public <T> T readObject(String sql, Map paramMap) {	
-		
-		Tools.log.info("readObject(sql, Map):{}, para:{}" , sql , paramMap);
+	public <T> T readObject(String sql, Map paramMap) {
+
+        if ( SHOWSQL ) {
+            log.info("readObject(sql, Map):{}, para:{}", sql, paramMap);
+        }
+
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
 		
 		return readObject(sqlAndPara.e0,sqlAndPara.e1);
@@ -375,7 +381,7 @@ public class ButterflyDao {
 	public Map<String,Object> readMap(String sql) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readMap(sql):{}", sql);
+            log.info("readMap(sql):{}", sql);
         }
 
 		try {
@@ -392,7 +398,7 @@ public class ButterflyDao {
 	public Map<String,Object> readMap(String sql, Object... parameters) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readMap(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+            log.info("readMap(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
         }
 
 		try {
@@ -408,7 +414,7 @@ public class ButterflyDao {
 	public Map<String,Object> readMap(String sql, Map paramMap) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readMap(sql, Map):{}, para:{}", sql, paramMap);
+            log.info("readMap(sql, Map):{}, para:{}", sql, paramMap);
         }
 
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
@@ -421,7 +427,7 @@ public class ButterflyDao {
 	public Map<String,Object> readMap(String sql, IPreparedStatementManager statementManager) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readMap(sql, IPreparedStatementManager):{}", sql);
+            log.info("readMap(sql, IPreparedStatementManager):{}", sql);
         }
 
 		try {
@@ -441,7 +447,7 @@ public class ButterflyDao {
 	public List<Map<String,Object>> readMapList(String sql) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readMapList(sql):{}", sql);
+            log.info("readMapList(sql):{}", sql);
         }
 
 		try {
@@ -458,7 +464,7 @@ public class ButterflyDao {
 	public List<Map<String,Object>> readMapList(String sql, Object... parameters) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readMapList(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
+            log.info("readMapList(sql, Object...):{}, para:{}", sql, Arrays.asList(parameters));
         }
 
 		try {
@@ -474,7 +480,7 @@ public class ButterflyDao {
 	public List<Map<String,Object>> readMapList(String sql, Map paramMap) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readMapList(sql, Map):{}, para:{}", sql, paramMap);
+            log.info("readMapList(sql, Map):{}, para:{}", sql, paramMap);
         }
 
 		Tuple2<String,Object[]> sqlAndPara = toPreparedSqlAndPara(sql, paramMap);
@@ -487,7 +493,7 @@ public class ButterflyDao {
 	public List<Map<String,Object>> readMapList(String sql, IPreparedStatementManager statementManager) {
 
 	    if ( SHOWSQL ) {
-            Tools.log.info("readMapList(sql, IPreparedStatementManager):{}", sql);
+            log.info("readMapList(sql, IPreparedStatementManager):{}", sql);
         }
 
 		try {
@@ -523,7 +529,7 @@ public class ButterflyDao {
 		try {
 			this.daos.closeConnection();
 		} catch (PersistenceException e) {					
-			Tools.log.error("closeConnection", e);
+			log.error("closeConnection", e);
 		}
 	}
 	

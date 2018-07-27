@@ -25,21 +25,14 @@
 
 package h2o.jodd.bean;
 
+import h2o.jodd.introspector.*;
 import h2o.jodd.util.InExRuleMatcher;
 import h2o.jodd.util.InExRules;
 import h2o.jodd.util.StringPool;
-import h2o.jodd.introspector.ClassDescriptor;
-import h2o.jodd.introspector.ClassIntrospector;
-import h2o.jodd.introspector.FieldDescriptor;
-import h2o.jodd.introspector.MethodDescriptor;
-import h2o.jodd.introspector.PropertyDescriptor;
 
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
-
-import static h2o.jodd.util.StringPool.LEFT_SQ_BRACKET;
-import static h2o.jodd.util.StringPool.RIGHT_SQ_BRACKET;
 
 /**
  * Visitor for bean properties. It extracts properties names

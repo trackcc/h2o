@@ -1,10 +1,11 @@
 package h2o.common.web;
 
-import h2o.common.Tools;
-import h2o.common.exception.ExceptionUtil;
 import h2o.common.collections.builder.MapBuilder;
+import h2o.common.exception.ExceptionUtil;
 import h2o.common.util.web.Beanfilter;
 import h2o.common.util.web.JsonUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
@@ -12,8 +13,10 @@ import java.util.Map;
 
 
 public class WebTools {
-	
-	private volatile Beanfilter bf;	
+
+    private static final Logger log = LoggerFactory.getLogger( WebTools.class.getName() );
+
+    private volatile Beanfilter bf;
 	
 	public WebTools setBeanfilter(Beanfilter beanfilter) {
 		this.bf = beanfilter;
@@ -96,7 +99,7 @@ public class WebTools {
 		try {
 			response.getWriter().print(msg);
 		} catch (Exception e) {
-			Tools.log.debug("out", e);
+			log.debug("out", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}

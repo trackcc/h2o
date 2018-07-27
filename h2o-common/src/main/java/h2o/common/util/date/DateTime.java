@@ -1,7 +1,8 @@
 package h2o.common.util.date;
 
-import h2o.common.Tools;
 import h2o.common.exception.ExceptionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,8 +14,10 @@ import java.util.GregorianCalendar;
 
 public final class DateTime {
 
-	
-	private volatile boolean silently;
+    private static final Logger log = LoggerFactory.getLogger( DateTime.class.getName() );
+
+
+    private volatile boolean silently;
 	
 	
 
@@ -76,7 +79,7 @@ public final class DateTime {
 		try {
 			return new SimpleDateFormat(fmt).parse(sd);
 		} catch (ParseException e) {			
-			Tools.log.debug("toDate" , e);
+			log.debug("toDate" , e);
 			if( !this.silently ) {
 				throw ExceptionUtil.toRuntimeException(e);
 			}
@@ -119,7 +122,7 @@ public final class DateTime {
 			}
 			return days;
 		} catch (Exception e) {			
-			Tools.log.debug("getDaysBetween", e);
+			log.debug("getDaysBetween", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}
@@ -139,7 +142,7 @@ public final class DateTime {
 			return c.getTime();
 			
 		} catch (Exception e) {			
-			Tools.log.debug("getAfterDay", e);
+			log.debug("getAfterDay", e);
 			
 			if( this.silently) {
 				return null;

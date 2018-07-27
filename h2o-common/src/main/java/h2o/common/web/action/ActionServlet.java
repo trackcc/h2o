@@ -1,12 +1,13 @@
 package h2o.common.web.action;
 
-import h2o.common.Tools;
-import h2o.common.exception.ExceptionUtil;
 import h2o.common.collections.builder.MapBuilder;
 import h2o.common.collections.tuple.Tuple2;
 import h2o.common.collections.tuple.TupleUtil;
+import h2o.common.exception.ExceptionUtil;
 import h2o.common.web.action.result.*;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -22,8 +23,10 @@ public class ActionServlet extends HttpServlet {
 
 
 	private static final long serialVersionUID = -4403148334408543400L;
-	
-	private volatile String prePath = null;
+
+    private static final Logger log = LoggerFactory.getLogger( ActionServlet.class.getName() );
+
+    private volatile String prePath = null;
 	private volatile String appName = null;
 	
 	private volatile ActionFactory factory = null;
@@ -92,14 +95,14 @@ public class ActionServlet extends HttpServlet {
 			
 			String reqUri = StringUtils.substringAfter(uri, request.getContextPath() + prePath);		
 			
-			Tools.log.debug( "reqUri ========{}" , reqUri  );
+			log.debug( "reqUri ========{}" , reqUri  );
 			
 			Tuple2<String, Map<String, Object>> pr = parse(reqUri, request, response);
 			
 			String actionId = pr.e0;
 			Map<String, Object> para = pr.e1;
 			
-			Tools.log.debug( "Action ========{}:{}" , appName ,  actionId  );
+			log.debug( "Action ========{}:{}" , appName ,  actionId  );
 	
 			
 			Action action = factory.getAction(actionId);
@@ -112,22 +115,22 @@ public class ActionServlet extends HttpServlet {
 			
 			Result r = action.procRequest( request, response, this);
 			
-			Tools.log.debug("Action[{}:{}]--return:{}" , appName ,  actionId , r);
+			log.debug("Action[{}:{}]--return:{}" , appName ,  actionId , r);
 			
 			this.response(r, request, response);
 		
 			long et = System.currentTimeMillis();
 			
-			Tools.log.info( "Action[{}:{}] OK,  {} ms ." , appName ,  actionId  , ( et - st ) );
+			log.info( "Action[{}:{}] OK,  {} ms ." , appName ,  actionId  , ( et - st ) );
 		
 		} catch( ServletException e ) {
-			Tools.log.debug("",e);
+			log.debug("",e);
 			throw e;			
 		} catch( IOException e ) {
-			Tools.log.debug("",e);
+			log.debug("",e);
 			throw e;
 		} catch( Throwable e ) {
-			Tools.log.debug("",e);
+			log.debug("",e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}

@@ -25,15 +25,15 @@
 
 package h2o.jodd.exception;
 
-import h2o.jodd.util.StringUtil;
 import h2o.jodd.io.StreamUtil;
+import h2o.jodd.util.StringUtil;
 
-import java.io.StringWriter;
 import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.sql.SQLException;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * Few exception utilities.

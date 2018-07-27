@@ -6,7 +6,6 @@ import com.jenkov.container.script.ScriptFactoryBuilder;
 
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class Resources {
 

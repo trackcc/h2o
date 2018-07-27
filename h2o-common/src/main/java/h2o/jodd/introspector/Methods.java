@@ -29,12 +29,7 @@ import h2o.jodd.util.ArraysUtil;
 import h2o.jodd.util.ReflectUtil;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Methods collection.

@@ -4,8 +4,6 @@ import junit.framework.TestCase;
 
 import java.nio.charset.Charset;
 import java.util.SortedMap;
-import java.io.Reader;
-import java.io.InputStreamReader;
 
 /**
 

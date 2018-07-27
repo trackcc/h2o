@@ -1,7 +1,7 @@
 package com.jenkov.container.script;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
   This pool should make sure that Token instances are reused throughout the parser.

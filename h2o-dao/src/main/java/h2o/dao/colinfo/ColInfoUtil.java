@@ -1,21 +1,22 @@
 package h2o.dao.colinfo;
 
-import h2o.common.Tools;
 import h2o.common.collections.CollectionUtil;
 import h2o.common.collections.builder.ListBuilder;
 import h2o.dao.annotation.*;
 import h2o.dao.exception.DaoException;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.util.*;
 
 public class ColInfoUtil {
-	
-	private ColInfoUtil() {}
-	
 
-	
+    private static final Logger log = LoggerFactory.getLogger( ColInfoUtil.class.getName() );
+
+    private ColInfoUtil() {}
+
 	public static boolean hasTableAnnotation( Object bean ) {
 		
 		if( bean == null ) {
@@ -139,7 +140,7 @@ public class ColInfoUtil {
 			
 		}
 		
-		Tools.log.debug("colInfos ===== {}" , colInfos);
+		log.debug("colInfos ===== {}" , colInfos);
 		
 		return colInfos;
 		

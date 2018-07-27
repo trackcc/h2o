@@ -25,15 +25,7 @@
 
 package h2o.jodd.util;
 
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.MissingResourceException;
+import java.util.*;
 
 /**
  * Resolves messages from resource bundles.

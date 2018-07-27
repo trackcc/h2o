@@ -25,10 +25,10 @@
 
 package h2o.jodd.util;
 
-import java.util.Locale;
-import java.util.HashMap;
-import java.util.Map;
 import java.text.NumberFormat;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Locale utilities.

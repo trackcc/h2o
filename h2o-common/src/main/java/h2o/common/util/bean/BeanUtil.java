@@ -1,6 +1,6 @@
 package h2o.common.util.bean;
 
-import h2o.common.Tools;
+import h2o.common.collections.CollectionUtil;
 import h2o.common.exception.ExceptionUtil;
 import h2o.common.thirdparty.spring.util.Assert;
 import h2o.common.util.bean.serialize.BeanEncoder;
@@ -9,17 +9,20 @@ import h2o.common.util.bean.support.BeanDescriptorImpl;
 import h2o.common.util.bean.support.BeanUtilVOImpl;
 import h2o.common.util.bean.support.DefaultBeanPropertyInfoImpl;
 import h2o.common.util.bean.support.MapVOImpl;
-import h2o.common.collections.CollectionUtil;
 import h2o.common.util.lang.InstanceUtil;
 import org.apache.commons.beanutils.BeanUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
 
 public class BeanUtil {
-	
-	
-	private final BeanSerializer beanSerializer =  new BeanEncoder();
+
+    private static final Logger log = LoggerFactory.getLogger( BeanUtil.class.getName() );
+
+
+    private final BeanSerializer beanSerializer =  new BeanEncoder();
 	
 
 	private volatile ValOperate beanVo ;
@@ -171,7 +174,7 @@ public class BeanUtil {
 		try {
 			return (T) BeanUtils.cloneBean(bean);
 		} catch (Exception e) {
-			Tools.log.debug("cloneBean", e);
+			log.debug("cloneBean", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}
@@ -182,7 +185,7 @@ public class BeanUtil {
 			byte[] bs = beanSerializer.bean2bytes(obj);
 			return (T) beanSerializer.bytes2bean(bs);
 		} catch (Exception e) {
-			Tools.log.debug("deepClone", e);
+			log.debug("deepClone", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 	}
@@ -443,7 +446,7 @@ public class BeanUtil {
 		try {
 			prepnames = this.getPrepNames(cerateBean(beanClazz));
 		} catch (Exception e) {
-			Tools.log.debug("mapList2JavaBeanList", e);
+			log.debug("mapList2JavaBeanList", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		}
 

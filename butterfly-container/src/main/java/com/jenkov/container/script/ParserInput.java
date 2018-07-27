@@ -1,8 +1,9 @@
 package com.jenkov.container.script;
 
-import com.jenkov.container.script.ParserException;
-
-import java.io.*;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
 import java.util.Stack;
 
 /**

@@ -16,11 +16,11 @@
 
 package h2o.common.dao.util.namedparam;
 
+import h2o.common.collections.tuple.Tuple3;
+import h2o.common.collections.tuple.TupleUtil;
 import h2o.common.thirdparty.spring.jdbc.core.SqlParameter;
 import h2o.common.thirdparty.spring.jdbc.core.SqlParameterValue;
 import h2o.common.thirdparty.spring.util.Assert;
-import h2o.common.collections.tuple.Tuple3;
-import h2o.common.collections.tuple.TupleUtil;
 
 import java.util.*;
 

@@ -2,10 +2,10 @@ package com.jenkov.container.script;
 
 //import com.jenkov.container.itf.factory.FactoryException;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Jakob Jenkov - Copyright 2004-2006 Jenkov Development

@@ -1,8 +1,8 @@
 package com.jenkov.container.script;
 
-import junit.framework.TestCase;
-import com.jenkov.container.IContainer;
 import com.jenkov.container.Container;
+import com.jenkov.container.IContainer;
+import junit.framework.TestCase;
 
 /**
   Tests if the container can be used for property file style application configuration, for instance

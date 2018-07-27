@@ -1,18 +1,21 @@
 package h2o.common.util.io;
 
-import h2o.common.Tools;
-import h2o.common.exception.ExceptionUtil;
 import h2o.common.collections.tuple.Tuple2;
 import h2o.common.collections.tuple.TupleUtil;
+import h2o.common.exception.ExceptionUtil;
 import org.apache.commons.vfs2.FileObject;
 import org.apache.commons.vfs2.FileSystemException;
 import org.apache.commons.vfs2.VFS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
 public class VFSStreamUtil {
 
-	private VFSStreamUtil() {
+    private static final Logger log = LoggerFactory.getLogger( VFSStreamUtil.class.getName() );
+
+    private VFSStreamUtil() {
 	}
 
 	public static FileObject getFileObject(String path) {
@@ -47,7 +50,7 @@ public class VFSStreamUtil {
 
 	public static Tuple2<Reader, FileObject> readFile(String path, String characterEncoding) {
 
-		Tools.log.debug("readFile path -- {}", path);
+		log.debug("readFile path -- {}", path);
 
 		Tuple2<InputStream, FileObject> input = getFileInputStream(path);
 
@@ -83,7 +86,7 @@ public class VFSStreamUtil {
 		try {
 			return new String( h2o.jodd.io.StreamUtil.readChars(r.e0));
 		} catch (IOException e) {
-			Tools.log.debug("readFileContent", e);
+			log.debug("readFileContent", e);
 			throw ExceptionUtil.toRuntimeException(e);
 		} finally {
 			
@@ -115,7 +118,7 @@ public class VFSStreamUtil {
 
 	public static Tuple2<Writer, FileObject> writeFile(String path, String characterEncoding, boolean append) {
 
-		Tools.log.debug("writeFile path -- {}", path);
+		log.debug("writeFile path -- {}", path);
 
 		Tuple2<OutputStream, FileObject> out = getFileOutputStream(path, append);
 
@@ -154,7 +157,7 @@ public class VFSStreamUtil {
 			try {
 				f.close();
 			} catch (Exception e) {
-				Tools.log.debug("fileObject.close()", e);
+				log.debug("fileObject.close()", e);
 			}
 		}
 	}

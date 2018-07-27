@@ -25,21 +25,11 @@
 
 package h2o.jodd.io;
 
-import static h2o.jodd.core.JoddCore.ioBufferSize;
-
 import h2o.jodd.core.JoddCore;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.Closeable;
-import java.io.Flushable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
+import java.io.*;
+
+import static h2o.jodd.core.JoddCore.ioBufferSize;
 
 /**
  * Optimized byte and character stream utilities.

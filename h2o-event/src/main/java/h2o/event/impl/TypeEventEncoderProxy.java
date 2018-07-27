@@ -1,10 +1,11 @@
 package h2o.event.impl;
 
-import h2o.common.Tools;
 import h2o.common.collections.builder.MapBuilder;
 import h2o.event.Event;
 import h2o.event.EventEncoder;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -12,6 +13,8 @@ import java.util.Map;
  * Created by zhangjianwei on 2017/5/20.
  */
 public class TypeEventEncoderProxy implements EventEncoder<String> {
+
+    private static final Logger log = LoggerFactory.getLogger( TypeEventEncoderProxy.class.getName() );
 
 
     private final Map<String,EventEncoder<String>> ees = MapBuilder.newConcurrentHashMap();
@@ -23,7 +26,7 @@ public class TypeEventEncoderProxy implements EventEncoder<String> {
 
         EventEncoder<String> eventEncoder = ees.get( type );
         if( eventEncoder == null ) {
-            Tools.log.error("没有对应的解码处理器[{}]",type);
+            log.error("没有对应的解码处理器[{}]",type);
             return null;
         }
 
@@ -43,7 +46,7 @@ public class TypeEventEncoderProxy implements EventEncoder<String> {
         String type = event.getEventType();
         EventEncoder<String> eventEncoder = ees.get( type );
         if( eventEncoder == null ) {
-            Tools.log.error("没有对应的编码处理器[{}]",type);
+            log.error("没有对应的编码处理器[{}]",type);
             return null;
         }
 
