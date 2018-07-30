@@ -1,0 +1,10 @@
+<repositories>
+    <repository>
+        <id>locale-maven--repo</id>
+        <url>file://${project.basedir}/mvn-repo</url>
+    </repository>
+    <repository>
+        <id>h2o-maven-repo</id>
+        <url>https://raw.githubusercontent.com/sixshot626/h2o/master/deploy/mvn-repo</url>
+    </repository>
+</repositories>
